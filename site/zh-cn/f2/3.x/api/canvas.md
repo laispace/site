@@ -82,4 +82,4 @@ fill: 'r(0.5,0.5,0.1) 0:#ffffff 1:#1890ff'
 | `fontWeight` | 规定字体的粗细。可能的值：'normal', 'bold', 'bolder', 'lighter', '100', '200, '300', '400','500', '600', '700', '800', '900' |
 | `fontVariant` | 规定字体变体。可能的值：'normal', 'small-caps' |
 | `lineHeight` | 规定行高，以像素计  |
-| `roate` | 设置文本旋转的角度，单位为弧度 |
+| `rotate` | 设置文本旋转的角度，单位为弧度 |
