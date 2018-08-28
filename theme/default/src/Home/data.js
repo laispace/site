@@ -25,7 +25,7 @@ export const page1 = [
     img: `${assets}/image/home/intro-f2.svg`,
     title: 'F2',
     href: `${base}zh-cn/f2/3.x/index.html`,
-    description: ' 是一套精简、高性能、易扩展的移动端可视化解决方案。',
+    description: ' 是一套为移动而生，开箱即用的可视化解决方案。',
     links: [
       { text: '图表示例', href: '/zh-cn/f2/3.x/demo/index.html' },
       { text: 'API 文档', href: '/zh-cn/f2/3.x/api/index.html' },
@@ -37,17 +37,20 @@ export const page1_1 = [
   {
     img: `${assets}/image/home/features-chart.svg`,
     title: '图表用法',
-    description: '从数据出发，从功能角度对常见图表进行分类，提供规范使用指引。'
+    description: '从数据出发，从功能角度对常见图表进行分类，提供规范使用指引。',
+    href: '/zh-cn/vis/chart/index.html',
   },
   {
     img: `${assets}/image/home/features-design.svg`,
     title: '设计原则',
-    description: '对数据图形进行拆解、提炼，抽象出一套数据图形可视化交互视觉规范。'
+    description: '对数据图形进行拆解、提炼，抽象出一套数据图形可视化交互视觉规范。',
+    href: '/zh-cn/vis/design/index.html',
   },
   {
     img: `${assets}/image/home/features-resource.svg`,
     title: '资源',
-    description: '研究、设计与开发过程中发现、整理的优秀书籍和资源。'
+    description: '研究、设计与开发过程中发现、整理的优秀书籍和资源。',
+    href: '/zh-cn/vis/resource/index.html'
   },
 ];
 
