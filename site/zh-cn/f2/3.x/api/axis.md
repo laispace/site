@@ -42,17 +42,16 @@ title: Axis
 
 - `config`: Object
 
-坐标轴的配置信息，可对坐标轴的各个组成元素进行配置：
+坐标轴的配置信息，可对坐标轴的各个组成元素进行配置，`config` 是由以下参数组成的对象：
 
 | 属性 | 类型 | 使用说明 |
 | -------- | -------- | -------- |
-| `line`     |   Object/null   |  坐标轴线的配置信息，设置 null 时不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html)  |
-| `labelOffset`     |  Number    |   坐标轴文本距离轴线的距离  |
-| `grid`     |   Object/Function/null  |  坐标轴网格线的配置项，设置 null 时不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html)，支持回调函数，**另外在极坐标下，可以通过配置 `type: 'arc'` 将其绘制为圆弧** |
-| `tickLine`     |  Object/null    |  坐标轴刻度线的样式配置，设置 null 不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html)   |
-| `label`     |   Object/Function/null   |  坐标轴文本配置，设置 null 不显示, 支持所有的 canvas 属性，参考[绘图属性](./canvas.html)，支持回调函数    |
+| `line`     |   Object/null   |  坐标轴线的配置信息，设置 null 时不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html)，**如需调整显示层级，可设置 `top: true` 展示在最上层图形或者 `top: false` 展示在最下层图形**。 |
+| `labelOffset`     |  Number    |   坐标轴文本距离轴线的距离 |
+| `grid`     |   Object/Function/null  |  坐标轴网格线的配置项，设置 null 时不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html)，支持回调函数，**另外在极坐标下，可以通过配置 `type: 'arc'` 将其绘制为圆弧**；**如需调整显示层级，可设置 `top: true` 展示在最上层图形或者 `top: false` 展示在最下层图形**。|
+| `tickLine`     |  Object/null    |  坐标轴刻度线的样式配置，设置 null 不显示，支持所有的 canvas 属性，参考[绘图属性](./canvas.html) ，**如需调整显示层级，可设置 `top: true` 展示在最上层图形或者 `top: false` 展示在最下层图形**。|
+| `label`     |   Object/Function/null   |  坐标轴文本配置，设置 null 不显示, 支持所有的 canvas 属性，参考[绘图属性](./canvas.html)，支持回调函数，**如需调整显示层级，可设置 `top: true` 展示在最上层图形或者 `top: false` 展示在最下层图形**。|
 | `position`     | String     | 坐标轴显示位置配置，x 轴默认位于底部 'bottom'，y 轴可设置 position 为 'left'、'right' |
-| `top`     | Boolean     | 调整图层层级，true 表示展示在最上层图形，false 表示展示在最下层图形 |
 
 
 **注意：grid 和 label 为回调函数时，返回值必须是对象!**
@@ -63,7 +62,8 @@ title: Axis
 chart.axis('field', {
   line: {
     lineWidth: 1,
-    stroke: '#ccc'
+    stroke: '#ccc',
+    top: true, // 展示在最上层
   }, // 设置坐标轴线的样式，如果值为 null，则不显示坐标轴线，图形属性
   labelOffset: 20, // 坐标轴文本距离轴线的距离
   tickLine: {
