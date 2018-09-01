@@ -103,7 +103,7 @@ npm install @antv/g6 --save
 ```
 
 </div>
-<a href="https://www.yuque.com/antv/g6/tutorial"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
+<a href="https://www.yuque.com/antv/g6/quick-start"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
 <!-- chart1 -->
