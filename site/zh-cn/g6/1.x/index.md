@@ -64,7 +64,7 @@ resource:
                 <h1>G6关系数据可视化</h1>
                 <p class="main-info">G6 是关系数据可视化引擎，开发者可以基于 G6 拓展出属于自己的图分析应用或者图编辑器应用。</p>
                 <a href="{{ products.g6.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
-                <a href="{{base}}zh-cn/g6/1.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
+                <a href="https://www.yuque.com/antv/g6/quick-start#_%E5%AE%89%E8%A3%85" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
                 <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=g6&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
             </div>
             <div id="mountNode" class="col-md-7 outter-graph-container"></div>
@@ -93,7 +93,7 @@ resource:
     
 ```html
 <!-- 引入在线资源 -->
-<script src="{{ url.g6 }}"></script>
+<script src="https://unpkg.com/@antv/g6/build/g6.js"></script>
 ```
 
 <p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
@@ -103,7 +103,7 @@ npm install @antv/g6 --save
 ```
 
 </div>
-<a href="{{ products.g6.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
+<a href="https://www.yuque.com/antv/g6/quick-start"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
 <!-- chart1 -->
