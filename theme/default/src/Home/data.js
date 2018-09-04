@@ -67,7 +67,7 @@ export const page3 = [
   },
   {
     img: `${assets}/image/home/features-powerful.svg`,
-    title: '无限可能',
+    title: '不限可能',
     description: '任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。',
   }
 ];
