@@ -24,7 +24,7 @@ export default function Page5() {
         leaveReverse
         key="a"
       >
-        <h2 key="h2">2000+用户正在使用</h2>
+        <h2 key="h2">2000+ 企业正在使用</h2>
         <span className="separator" key="span"></span>
         <Row
           className="page text-center"
