@@ -10,6 +10,7 @@ resource:
     - ${url.g2}
     - ${url.dataSet}
 tocifyWithAnchor: false
+isHome: true
 -->
 
 <style>
@@ -39,6 +40,9 @@ tocifyWithAnchor: false
     p.contact {
         display: none;
     }
+    .member-card {
+        width: 100%;
+    }
     .member-card:hover p.contact {
         display: inline-block;
     }
@@ -47,6 +51,10 @@ tocifyWithAnchor: false
         text-decoration: none;
         padding: 0 5px;
     }
+    p.contact a:hover {
+        color: #1890ff;
+    }
+
     @media (max-width: 768px) {
         .bg-left, .bg-right {
             display: none;

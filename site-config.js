@@ -9,7 +9,7 @@ const g6Version = '2.0.5';
 const g6EditorVersion = '1.0.7';
 module.exports = {
     url: {
-        g2: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.2.7/dist/g2.min.js',
+        g2: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.2.8-beta.5/dist/g2.min.js',
         'g2-brush': 'https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js',
         'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-plugin-slider-2.0.4/dist/g2-plugin-slider.min.js',
         d3: 'https://gw.alipayobjects.com/os/antv/assets/lib/d3-4.13.0.min.js',
@@ -49,19 +49,9 @@ module.exports = {
             template: 'g2-demo-standalone'
         },
         {
-            src: 'zh-cn/g6/1.x/demo',
-            dest: '${assets}/dist/${pkg.version}/g6/1.x',
-            template: 'g6-demo-standalone'
-        },
-        {
             src: 'zh-cn/f2/3.x/demo',
             dest: '${assets}/dist/${pkg.version}/f2/3.x',
             template: 'f2-demo-standalone'
-        },
-        {
-            src: 'zh-cn/gallery/g2',
-            dest: '${assets}/dist/${pkg.version}/gallery/g2',
-            template: 'g2-demo-standalone'
         },
     ],
     indices: [{
