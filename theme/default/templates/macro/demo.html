@@ -68,6 +68,7 @@
 {% endif %}{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}
 <script src="{{ url.jquery }}"></script>
+<!-- 在 PC 上模拟 touch 事件 -->
 <script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
 {% if selfContainer == true %}
   {{ content | safe }}
