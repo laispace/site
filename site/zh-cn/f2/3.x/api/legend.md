@@ -241,7 +241,19 @@ valueStyle: {
 
 - `triggerOn`: String
 
-图例筛选行为的触发事件，默认为 `click`。
+图例筛选行为的触发事件，默认为 `click`。该属性只能通过以下方式声明才可生效：
+
+```js
+// 生效
+chart.legend({
+  triggerOn: 'click'
+});
+
+// 不会生效
+chart.legend('fieldName', {
+  triggerOn: 'click'
+});
+```
 
 - `selectedMode`: String
 
