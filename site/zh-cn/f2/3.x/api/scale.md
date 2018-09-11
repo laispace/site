@@ -54,7 +54,7 @@ chart.scale('fieldName', {
 ----|----|----
 `type` | String | 指定不同的度量类型，支持的 type 为 `identity`、`linear`、`cat`、`timeCat`。
 `formatter` | Function | 回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、提示信息 tooltip 上的显示。
-`range` | Array | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+`range` | Array | 输出数据的范围，数值类型的默认值为 [0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
 `alias` | String | 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。
 `tickCount` | Number | 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。
 `ticks` | Array | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
@@ -79,7 +79,7 @@ chart.scale('aqi',  {
 `nice` | Boolean | 默认为 true，用于优化数值范围，使绘制的坐标轴刻度线均匀分布。例如原始数据的范围为 [3, 97]，如果 nice 为 true，那么就会将数值范围调整为 [0, 100]。
 `min` | Number | 定义数值范围的最小值。
 `max` | Number |定义数值范围的最大值。
-`range` | Array | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+`range` | Array | 输出数据的范围，数值类型的默认值为 [0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
 `formatter` | Function | 回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。
 `ticks` | Array | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
 `tickCount` | Number | 定义坐标轴刻度线的条数，默认为 5。
@@ -90,7 +90,7 @@ chart.scale('aqi',  {
 属性名| 类型 | 说明
 ----|----|----
 `alias` | String | 别名。
-`range` | Array | 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+`range` | Array | 输出数据的范围，数值类型的默认值为 [0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
 `formatter` | Function | 回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。
 `ticks` | Array | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
 `tickCount`| Number | 定义坐标轴刻度线的条数，默认为 5。
@@ -158,7 +158,7 @@ chart.render();
 `tickCount`| Number | 坐标点的个数，默认是 5。但不一定是准确值。
 `values` | Array | 具体的分类的值，一般用于指定具体的顺序和枚举的对应关系。
 `alias` | String | 别名。
-`range` | Array |输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+`range` | Array |输出数据的范围，数值类型的默认值为 [0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
 `formatter`| Function | 回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。
 `ticks`| Array | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
 `isRounding` | Boolean | 默认值为 `false`, 在计算 ticks 的时候是否允许取整以满足刻度之间的均匀分布，取整后可能会和用户设置的 tickCount 不符合。
