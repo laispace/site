@@ -5,6 +5,72 @@
 
 # 更新日志
 
+#### 3.2.8 (2018-09-14)
+
+##### New Features
+
+* chore(dev): add test case. Closes #878
+* chore(dev): coord as an interval dependency
+* chore(dev): upgrade babel
+* chore(dev): upgrade dataset, support grouped KED transform
+* chore(dev): upgrade utils, fix donut arc, etc. Closes #878
+* chore(naming): demos/data/Iris-flower.json -> demos/data/iris-flower.json
+* chore(test): add test cases for violinDodge and violin smooth shapes, etc.
+* chore(util): values -> @antv/util/lib/array/values-of-key, etc.
+* feat(geom): support dodge adjust for violin geom
+* feat(geom): support violin and add demos / test cases, etc.
+* feat(geom): violin geom supports smooth/smoothHollow shapes
+* feat(guide): add start,end support
+* refactor(arc): sort out codes related to Math
+* refactor(polar): add endAngle until endAngle > startAngle
+
+##### Bug Fixes
+
+* fix(Global): G2.Global.animate setting is not working, Closes #856
+* fix(arc): fix unable to draw circle
+* fix(arc): when start and end is equal, it should not be a circle
+* fix(chart): getSnapRecords for points. Closes #885
+* fix(dev): upgrade babel preset env for torchjs
+* fix(label): modify unit tests of label rotation
+* fix(label): stop setting rotation in attr(), use shape.transform instead
+* fix(legend):field option error
+* fix(liquidfill): clip shape should not be added into group
+* fix(polar): add endAngle until endAngle > startAngle
+* fix(polar): avoid possible exception when startAngle > endAngle
+* fix: add issue test case, Closes #838
+* fix: add unit test of Polar coord when startAngle > endAngle
+* fix: add unit test of drawing arc
+* fix: modify test case accordingly
+* fix: resume origin code of direction
+* fix: 修复shared为false，tooltip不随动的bug
+* fix: 修复test不通过的问题，应该是改为svg和canvas通用以后的遗留问题
+* fix: 修改tooltip方法，旧的存在bug，导致typscript报错，无法使用第一个方法。
+
+#### 3.2.7 (2018-08-17)
+
+##### New Features
+
+* chore(dev): remove svg-related building code
+* chore(dev): update g and interaction
+* chore(test): fixing test cases for new renderer
+* chore(tooltip): blockTooltipChange -> stopTooltip
+* feat(renderer): chart scope renderer switching
+* feat(tooltip): add blockTooltipChange state
+* feat(track): add trackingInfo for product analysis
+* refactor(g): change `__attrs` to `_attrs` in tests
+
+##### Bug Fixes
+
+* fix(chart): downlownImage not working in svg context
+* fix(event): fixed bug of guide-line click
+* fix(g): avoid initializing matrix again, use reset instead
+* fix(g): new a rect as clip instead of add the shape into a group
+* fix(legend): fix continuous error position when useHtml is true
+* fix(legend): slider mousemove events under the condition that legend container is a seperate canvas
+* fix(region-filter): 判断layer销毁不执行创建shape的行为
+* fix(tooltip): fixed tooltip bug of enterable feature
+* fix(tooltip, event): fix plotleave and tooltip hide bugs
+
 #### 3.2.6 (2018-07-28)
 
 ##### New Features
@@ -47,7 +113,7 @@
 ##### New Features
 
 * chore(dev): fix test coverage generator
-* chore(dev): remove `lodash`, use `@antv/util` instead
+* chore(dev): remove lodash, use `@antv/util` instead
 * chore(dev): support svg (add entry for svg version)
 * chore(dev): upgrade `@antv/g` to svg supported version
 * chore(dev): use `@antv/interaction` instead
