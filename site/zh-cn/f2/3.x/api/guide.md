@@ -41,6 +41,16 @@ const chart = new F2.Chart({
 });
 ```
 
+**说明：**
+
+如果您引入的是 `@antv/f2`，那么默认不包含 `Guide.Point` 和 `Guide.RegionFilter`，如您要使用这两个辅助类，那么需要将其引入，方法如下：
+
+```js
+import f2 from '@antv/f2/lib/index';
+require('@antv/f2/lib/component/guide/point'); // 加载 Guide.Point 组件
+require('@antv/f2/lib/component/guide/region-filter'); // 加载 Guide.RegionFilter 组件
+```
+
 ## API
 
 ### Line
@@ -192,6 +202,14 @@ chart.guide().text({
 `chart.guide().point({})`
 
 绘制辅助点。
+
+**说明：**
+如果您引入的是 `@antv/f2`，那么默认不包含 `Guide.Point`，如您要使用这个辅助类，那么需要将其引入，方法如下：
+
+```js
+import f2 from '@antv/f2/lib/index';
+require('@antv/f2/lib/component/guide/point');
+```
 
 ```js
 chart.guide().point({
@@ -592,6 +610,14 @@ chart.guide().arc({
 `chart.guide.regionFilter({})`
 
 辅助过滤区域。
+
+**说明：**
+如果您引入的是 `@antv/f2`，那么默认不包含 `Guide.RegionFilter`，如您要使用这个辅助类，那么需要将其引入，方法如下：
+
+```js
+import f2 from '@antv/f2/lib/index';
+require('@antv/f2/lib/component/guide/region-filter');
+```
 
 ```js
 chart.guide().regionFilter({
