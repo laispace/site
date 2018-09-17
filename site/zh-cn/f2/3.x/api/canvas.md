@@ -15,8 +15,10 @@ title: 绘图属性
 | :--- | :--- |
 | `fill` | Canvas 2D API 使用内部方式描述颜色和样式的属性。默认值是 #000 （黑色）， 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillStyle)|
 | `fillStyle` | 同 `fill` |
+| `fillOpacity` | 用于设置图形填充颜色的透明度。 |
 | `stroke` |  Canvas 2D API 描述画笔（绘制图形）颜色或者样式的属性。默认值是 #000 (black)，参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeStyle) |
 | `strokeStyle` | 同 `stroke` |
+| `strokeOpacity` | 用于设置边颜色的透明度。 |
 | `shadowColor` | Canvas 2D API 描述阴影颜色的属性，参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowColor)  |
 | `shadowBlur` | Canvas 2D API 描述模糊效果程度的属性； 它既不对应像素值也不受当前转换矩阵的影响。 默认值是 0，参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowBlur) |
 | `shadowOffsetX` | Canvas 2D API 描述阴影水平偏移距离的属性，参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowOffsetX) |
