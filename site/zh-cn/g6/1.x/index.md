@@ -93,7 +93,7 @@ resource:
     
 ```html
 <!-- 引入在线资源 -->
-<script src="https://unpkg.com/@antv/g6/build/g6.js"></script>
+<script src="{{ url.g6 }}"></script>
 ```
 
 <p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
@@ -110,106 +110,109 @@ npm install @antv/g6 --save
 
 ```js-
 $.getJSON('/assets/data/g6-index.json', data => {
-    const Template = G6.Plugins['template.maxSpanningForest'];
-    const Mapper = G6.Plugins['tool.d3.mapper'];
     const { forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide } = d3;
-    const nodeSizeMapper = new Mapper('node', 'weight', 'size', [8, 20], {
-    legendCfg: null
-    });
-    const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [1, 8], {
-    legendCfg: null
-    });
-    const nodeColorMapper = new Mapper('node', 'weight', 'color', ['#E0F5FF', '#BAE7FF', '#91D5FF', '#69C0FF', '#3DA0F2', '#1581E6', '#0860BF'], {
-    legendCfg: null
-    });
-    const template = new Template();
-    const force = {
+      const Template = G6.Plugins['template.maxSpanningForest'];
+      const Mapper = G6.Plugins['tool.d3.mapper'];
+      const nodeSizeMapper = new Mapper('node', 'weight', 'size', [8, 20], {
+        legendCfg: null
+      });
+      const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [1, 8], {
+        legendCfg: null
+      });
+      const nodeColorMapper = new Mapper('node', 'weight', 'color', ['#E0F5FF', '#BAE7FF', '#91D5FF', '#69C0FF', '#3DA0F2', '#1581E6', '#0860BF'], {
+        legendCfg: null
+      });
+      const force = {
         execute() {
-            const nodes = this.nodes;
-            const edges = this.edges;
-            const graph = this.graph;
-            const width = graph.getWidth();
-            const height = graph.getHeight();
-            const simulation = forceSimulation(nodes)
-            .force('charge', forceManyBody().distanceMax(width * 3))
-            .force('link', forceLink(G6.Util.cloneDeep(edges))
-                .id(model => {
-                return model.id;
-                })
-                .strength(1)
-            )
-            .force('center', forceCenter(width / 2, height / 2))
-            .force('collision', forceCollide().radius(model => {
-                return model.width / 2 * 1.2;
-            }));
-            simulation.stop();
-            for (let i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+          const nodes = this.nodes;
+          const edges = this.edges;
+          const graph = this.graph;
+          const width = graph.getWidth();
+          const height = graph.getHeight();
+          const simulation = forceSimulation(nodes)
+          .force('charge', forceManyBody().distanceMax(width * 3))
+          .force('link', forceLink(G6.Util.cloneDeep(edges))
+            .id(model => {
+              return model.id;
+            })
+            .strength(1)
+          )
+          .force('center', forceCenter(width / 2, height / 2))
+          .force('collision', forceCollide().radius(model => {
+            return model.width / 2 * 1.2;
+          }));
+          simulation.stop();
+          for (let i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
             simulation.tick();
-            }
-            nodes.forEach(node => {
+          }
+          nodes.forEach(node => {
             delete node.vx;
             delete node.vy;
-            });
+          });
         }
-    };
-    const graph = new G6.Graph({
+      };
+      const template = new Template({
+        fisheye: false,
+        interactive: false,
+        textDisplay: false,
+        node_label: null,
+        edgeStyle(model) {
+          return {
+            stroke: graph.find(model.target).getModel().color,
+            strokeOpacity: 0.8
+          };
+        }
+      });
+      const graph = new G6.Graph({
         id: 'mountNode',             // dom id
         height: 400,
-        plugins: [template, nodeSizeMapper, nodeColorMapper, edgeSizeMapper],
-        animate: true,
         layout: {
-            processer: force
+          processer: force
+        },
+        plugins: [nodeSizeMapper, nodeColorMapper, edgeSizeMapper, template],
+        animate: true,
+      });
+      const circle = new G6.Layouts['Circle']({
+        sort(a, b) {
+          return a.weight - b.weight;
         }
-    });
-    const circle = new G6.Layouts.Circle({
-    sort(a, b) {
-        return a.weight - b.weight;
-    }
-    });
-    const grid = new G6.Layouts.Grid({
-    sort(a, b) {
-        return b.weight - a.weight;
-    }
-    });
-    const dagre = new G6.Layouts.Dagre({
-    nodesep() {
-        return graph.getWidth() / 50;
-    },
-    ranksep() {
-        return graph.getHeight() / 25;
-    },
-    marginx() {
-        return graph.getWidth() / 16;
-    },
-    marginy() {
-        return graph.getHeight() / 16;
-    },
-    useEdgeControlPoint: false,
-    });
-    const spiral = new G6.Layouts.ArchimeddeanSpiral({
-    sort(a, b) {
-        return b.weight - a.weight;
-    }
-    });
-    graph.edge({
-    style(model) {
-        return {
-        stroke: graph.find(model.target).getModel().color,
-        strokeOpacity: 0.8
-        };
-    }
-    });
-    graph.read(data);
-    setInterval(() => {
-    if (document.visibilityState === 'visible') {
-        let layouts = [circle, dagre, force, grid, spiral];
-        layouts = layouts.filter(layout => {
-        return layout !== graph.getLayout();
-        });
-        const layout = layouts[parseInt(layouts.length * Math.random())];
-        graph.changeLayout(layout);
-    }
-    }, 2000);
+      });
+      const grid = new G6.Layouts['Grid']({
+        sort(a, b) {
+          return b.weight - a.weight;
+        }
+      });
+      const dagre = new G6.Layouts['Dagre']({
+        nodesep() {
+          return graph.getWidth() / 50;
+        },
+        ranksep() {
+          return graph.getHeight() / 25;
+        },
+        marginx() {
+          return graph.getWidth() / 8;
+        },
+        marginy() {
+          return graph.getHeight() / 8;
+        },
+        useEdgeControlPoint: false,
+      });
+      const spiral = new G6.Layouts['ArchimeddeanSpiral']({
+        sort(a, b) {
+          return b.weight - a.weight;
+        }
+      });
+      graph.read(data);
+      setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          let layouts = [circle, dagre, force, grid, spiral];
+          layouts = layouts.filter(layout => {
+            return layout !== graph.getLayout();
+          });
+          const layout = layouts[parseInt(layouts.length * Math.random())];
+          graph.changeLayout(layout);
+        }
+      }, 2000);
 });
 ```
 
