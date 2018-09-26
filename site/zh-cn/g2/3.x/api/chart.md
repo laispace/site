@@ -70,7 +70,7 @@ const chart = new G2.Chart({
 2. `padding: 20`
 3. `padding: { top: 20, right: 30, bottom: 20, left: 30 }`
 4. `padding: 'auto'`
-5. `padding: [20, 'auto', 30, 'auto']` 
+5. `padding: [20, 'auto', 30, 'auto']`
 
 * 另外也支持设置百分比，如 `padding: [ '20%', '30%' ]`，该百分比相对于整个图表的宽高。
 * padding 为数字以及数组类型时使用方法同 CSS 盒模型。
@@ -88,7 +88,7 @@ background: {
   strokeOpacity: {number}, // 图表边框透明度
   opacity: {number}, // 图表整体透明度
   lineWidth: {number}, // 图表边框粗度
-  radius: {number} // 图表圆角大小 
+  radius: {number} // 图表圆角大小
 }
 ```
 
@@ -104,7 +104,7 @@ plotBackground: {
   strokeOpacity: {number}, // 图表边框透明度
   opacity: {number}, // 图表整体透明度
   lineWidth: {number}, // 图表边框粗度
-  radius: {number} // 图表圆角大小 
+  radius: {number} // 图表圆角大小
 }
 ```
 
@@ -197,7 +197,7 @@ chart.source(data, {
 
 为指定的数据字段进行列定义，返回 chart 实例。
 
-!注意: 如数据属性 field 在 `chart.source()` 和 `chart.scale()` 中均有定义，那么 `chart.scale()` 中的配置会覆盖 `chart.source()` 中的配置。 
+!注意: 如数据属性 field 在 `chart.source()` 和 `chart.scale()` 中均有定义，那么 `chart.scale()` 中的配置会覆盖 `chart.source()` 中的配置。
 
 ##### 参数
 
@@ -221,7 +221,7 @@ chart.source(data, {
 }
 ```
 
-!注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.html); 
+!注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.html);
 
 ##### 示例
 
@@ -236,7 +236,7 @@ const data = [
 chart.scale('x', {
   type: 'cat', // 声明 type 字段为分类类型
   values: [ 'A', 'B', 'C' ] // 重新显示的值
-  alias: '类型' // 设置属性的别名  
+  alias: '类型' // 设置属性的别名
 });
 ```
 
@@ -416,11 +416,11 @@ label: {
     fill: '#404040', // 文本的颜色
     fontSize: '12', // 文本大小
     fontWeight: 'bold', // 文本粗细
-    rotate: 30, 
+    rotate: 30,
     textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
   } | (text) => {
     // text: 坐标轴对应字段的数值
-  }, 
+  },
   autoRotate: {boolean}, // 文本是否需要自动旋转，默认为 true
   /**
    * 用于格式化坐标轴上显示的文本信息的回调函数
@@ -452,7 +452,7 @@ label: {
 
 ```js
 title: {
-  autoRotate: {boolean}, // 是否需要自动旋转，默认为 true 
+  autoRotate: {boolean}, // 是否需要自动旋转，默认为 true
   offset: {number}, // 数值，设置坐标轴标题距离坐标轴线的距离
   // 设置标题的文本样式
   textStyle: {
@@ -545,7 +545,7 @@ grid: {
 
 为数据字段 field 对应的图例进行配置，如下所示：
 
-```js 
+```js
 chart.legend('gender', {
   position: 'right'
 });
@@ -596,11 +596,11 @@ title: {
 
 对分类类型的图例生效，表示图例每项之间的间距，如果是水平排布则为左右间距，如果是竖直排布则为上下间距。
 
-7. `itemMarginBottom`: number 
+7. `itemMarginBottom`: number
 
 对分类类型的图例生效，表示各个图例项垂直方向的间距。
 
-8. `itemWidth`: number 
+8. `itemWidth`: number
 
 对分类类型的图例生效，设置图例项的宽度，当图例有很多图例项，并且用户想要这些图例项能垂直对齐时，此时这个属性可帮用户实现此效果。
 
@@ -731,7 +731,7 @@ hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.pn
  * @param  {number} x   该 marker 的横轴坐标
  * @param  {number} y   该 marker 的纵轴坐标
  * @param  {number} r   该 marker 的半径大小
- * @return {null}     
+ * @return {null}
  */
 marker(x, y, r) {}
 ```
@@ -789,7 +789,7 @@ textStyle: {
 /**
  * 自定义图例项鼠标 hover 事件，hoverable 为 false 不生效
  * @param  {object} ev 事件对象
- * @return {null}    
+ * @return {null}
  */
 onHover: ev => {}
 ```
@@ -821,7 +821,7 @@ onClick: ev => {}
 
 ```js
 containerTpl: '<div class="g2-legend" style="position:absolute;top:20px;right:60px;width:auto;">'
-  + '<h4 class="g2-legend-title"></h4>' 
+  + '<h4 class="g2-legend-title"></h4>'
   + '<ul class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></ul>'
   + '</div>';
 ```
@@ -867,23 +867,23 @@ itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{or
 chart.legend({
   custom: true,
   items: [
-    { 
+    {
       value: 'waiting', // 图例项的文本内容
       marker: {
         symbol: 'circle',  // 该图例项 marker 的形状，参见 marker 参数的说明
         fill: '#3182bd'  // 该图例项 marker 的填充颜色
       }
     },
-    { 
-      value: 'call', 
+    {
+      value: 'call',
       marker: {
         symbol: 'square',  // 该图例项 marker 的形状，参见 marker 参数的说明
         fill: '#99d8c9'  // 该图例项 marker 的填充颜色
       }
     },
-    { 
+    {
       value: 'people',
-      fill: '#fdae6b', 
+      fill: '#fdae6b',
       marker: {
         symbol: 'line',  // 该图例项 marker 的形状，参见 marker 参数的说明
         stroke: '#fdae6b',  // 该图例项 marker 的填充颜色
@@ -891,30 +891,30 @@ chart.legend({
       }
     }
   ],
-  onHover: ev => {}, // 自定义 hover 事件  
+  onHover: ev => {}, // 自定义 hover 事件
   onClick: ev => {}, // 自定义 click 事件
 });
 // 为特定的字段自定义图例
 chart.legend('field', {
   custom: true,
   items: [
-    { 
+    {
       value: 'waiting', // 图例项的文本内容
       marker: {
         symbol: 'circle',  // 该图例项 marker 的形状，参见 marker 参数的说明
         fill: '#3182bd'  // 该图例项 marker 的填充颜色
       }
     },
-    { 
-      value: 'call', 
+    {
+      value: 'call',
       marker: {
         symbol: 'square',  // 该图例项 marker 的形状，参见 marker 参数的说明
         fill: '#99d8c9'  // 该图例项 marker 的填充颜色
       }
     },
-    { 
+    {
       value: 'people',
-      fill: '#fdae6b', 
+      fill: '#fdae6b',
       marker: {
         symbol: 'line',  // 该图例项 marker 的形状，参见 marker 参数的说明
         stroke: '#fdae6b',  // 该图例项 marker 的填充颜色
@@ -922,7 +922,7 @@ chart.legend('field', {
       }
     }
   ],
-  onHover: ev => {}, // 自定义 hover 事件  
+  onHover: ev => {}, // 自定义 hover 事件
   onClick: ev => {}, // 自定义 click 事件
 });
 ```
@@ -961,8 +961,8 @@ chart.legend({
   custom: true,
   allowAllCanceled: true,
   items: [
-    { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} }, 
-    { value: 'call', marker: {symbol: 'hyphen', stroke: '#99d8c9', radius: 5, lineWidth: 3} }, 
+    { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} },
+    { value: 'call', marker: {symbol: 'hyphen', stroke: '#99d8c9', radius: 5, lineWidth: 3} },
     { value: 'people', marker: {symbol: 'hyphen', stroke: '#fdae6b', radius: 5, lineWidth: 3} }
   ],
   onClick: ev => {
@@ -1035,7 +1035,7 @@ chart.tooltip(true, {
 
 1. `triggerOn`: string
 
-tooltip 的触发方式，可配置的值为：'mousemove'、'click'、'none'，默认为 `mousemove`。 
+tooltip 的触发方式，可配置的值为：'mousemove'、'click'、'none'，默认为 `mousemove`。
 
 * 'mousemove': 鼠标移动触发；
 * 'click': 鼠标点击出发；
@@ -1219,15 +1219,11 @@ chart.render();
 ```js
 chart.guide().line({
   top: {boolean}, // 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {object} | {function} | {array}, // 辅助线起始位置，值为原始数据值，支持 callback
-  end: {object} | {function} | {array}, // 辅助线结束位置，值为原始数据值，支持 callback
-  lineStyle: {
-    stroke: '#999', // 线的颜色
-    lineDash: [ 0, 2, 2 ], // 虚线的设置
-    lineWidth: 3 // 线的宽度
-  }, // 图形样式配置
+  start: {object} | {function} | {array}, // 辅助线起始位置
+  end: {object} | {function} | {array}, // 辅助线结束位置
+  lineStyle: {object}, // 图形样式配置
   text: {
-    position: 'start' | 'center' | 'end' | '39%' | 0.5, // 文本的显示位置
+    position: {string} | {number}, // 文本的显示位置，可取值：'start','center','end', 0 ~ 1 范围的数字, '0%'至'100%'
     autoRotate: {boolean}, // 是否沿线的角度排布，默认为 true
     style: {object}, // 文本图形样式配置
     content: {string}, // 文本的内容
@@ -1236,8 +1232,6 @@ chart.guide().line({
   }
 });
 ```
-
-* lineStyle, style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1250,20 +1244,19 @@ chart.guide().line({
 指定辅助线的起始位置，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-    
-    ```js
-    chart.guide().text({
-      position(xScale, yScale) {
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().line({
+      start(xScales, yScales) {
         return []; // 位置信息
-      },
-      content: '最大值'
+      }
     });
-    ```
+  ```
 
 - `end`: object | array | function
 
@@ -1271,7 +1264,7 @@ chart.guide().line({
 
 - `lineStyle`: object
 
-用于设置辅助线的显示样式。
+用于设置辅助线的显示样式，`style` 的更详细的配置项 [绘图属性](graphic.html)。
 
 - `text`: object
 
@@ -1281,16 +1274,17 @@ chart.guide().line({
 text: {
   position: 'start' | 'center' | 'end' | '39%' | 0.5, // 文本的显示位置，值除了指定的常量外，还可以是百分比或者小数
   autoRotate: {boolean}, // 指定文本是否沿着线的方向排布，默认为 true，即沿着线排布
-  // 设置文本的显示样式
   style: {
-    fill: 'red'
-  },
+    fill: 'red',
+    fontSize: 12
+  }, // 设置文本的显示样式
   content: {string}, // 文本的内容
   offsetX: {number}, // x 方向的偏移量
   offsetY: {number} // y 方向的偏移量
 }
 ```
-* style 的更详细的配置项 [绘图属性](graphic.html)
+
+`style` 的更详细的配置项 [绘图属性](graphic.html)
 
 #### chart.guide().text(cfg)
 
@@ -1299,19 +1293,13 @@ text: {
 ```js
 chart.guide().text({
   top: {boolean}, // 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  position: {object} | {function} | {array}, // 文本的起始位置，值为原始数据值，支持 callback
+  position: {object} | {function} | {array}, // 文本的起始位置
   content: {string}, // 显示的文本内容
-  style: {
-    fill: '#666', // 文本颜色
-    fontSize: '12', // 文本大小
-    fontWeight: 'bold' // 文本粗细
-    rotate: 30 // 旋转角度
-  }, // 文本的图形样式属性
+  style: {object}}}, // 文本的图形样式属性
   offsetX: {number}, // x 方向的偏移量
   offsetY: {number} // y 方向偏移量
 });
 ```
-* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1324,20 +1312,20 @@ chart.guide().text({
 指定辅助文本的显示位置，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%'] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-    
-    ```js
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
     chart.guide().text({
-      position(xScale, yScale) {
+      position(xScales, yScales) {
         return []; // 位置信息
       },
       content: '最大值'
     });
-    ```
+  ```
 
 - `content`: string
 
@@ -1345,7 +1333,7 @@ chart.guide().text({
 
 - `style`: object
 
-用于设置辅助文本的显示样式。 style 的更详细的配置项 [绘图属性](graphic.html)
+用于设置辅助文本的显示样式，`style` 的更详细的配置项 [绘图属性](graphic.html)
 
 - `offsetX`: number
 
@@ -1360,21 +1348,12 @@ chart.guide().text({
 辅助图片。
 
 ```js
-// 辅助图片 image，只是指定了 start，则该点表示图片左上角坐标
 chart.guide().image({
   top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {object} | {function} | {array}, // 图片起始位置， 值为原始数据值，支持 callback
-  src: {string}, // 图片路径
-  width: {number},
-  height: {number},
-  offsetX: {number}, // x 方向的偏移量
-  offsetY: {number} // y 方向偏移量
-});
-// 辅助图片 image，通过指定 start 和 end 确定图片的位置和宽高
-chart.guide().image({
-  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层 
-  start: {array} | {function} | {array}, // 图片起始位置， 值为原始数据值，支持 callback
-  end: {array} | {function} | {array}, // 图片结束位置， 值为原始数据值，支持 callback
+  start: {array} | {function} | {array}, // 图片起始位置
+  end: {array} | {function} | {array}, // 图片结束位置
+  width: {number}, // 图片的宽度
+  height: {number}, // 图片的高度
   src: {string}, // 图片路径
   offsetX: {number}, // x 方向的偏移量
   offsetY: {number} // y 方向偏移量
@@ -1392,24 +1371,23 @@ chart.guide().image({
 指定辅助图片的起始位置，即图片的左上角，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-    
-    ```js
-    chart.guide().text({
-      position(xScale, yScale) {
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().image({
+      start(xScales, yScales) {
         return []; // 位置信息
-      },
-      content: '最大值'
+      }
     });
-    ```
+  ```
 
 - `end`: object | array | function
 
-可选，指定辅助图片的结束位置，即图片的右下角，该属性用法同 `start`。当 `start` 和 `end` 属性同时声明时，即指定了图片的宽度和高度。
+**可选**，指定辅助图片的结束位置，即图片的右下角，该属性用法同 `start`。当 `start` 和 `end` 属性同时声明时，图片的宽度和高度即已确定，此时可以不需要指定 `width` 和 `height` 这两个属性。
 
 - `src`: string
 
@@ -1417,11 +1395,11 @@ chart.guide().image({
 
 - `width`: number
 
-**当仅指定了 `start` 属性时**，用于设置图片的宽度。
+**当仅指定了 `start` 属性时使用**，用于设置图片的宽度。
 
 - `height`: number
 
-**当仅指定了 `start` 属性时**，用于设置图片的高度。
+**当仅指定了 `start` 属性时使用**，用于设置图片的高度。
 
 - `offsetX`: number
 
@@ -1438,17 +1416,11 @@ chart.guide().image({
 ```js
 chart.guide().region({
   top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
-  end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
-  style: {
-    lineWidth: 0, // 辅助框的边框宽度
-    fill: '#f80', // 辅助框填充的颜色
-    fillOpacity: 0.1, // 辅助框的背景透明度
-    stroke: '#ccc' // 辅助框的边框颜色设置
-  } // 辅助框的图形样式属性
+  start: {object} | {function} | {array}, // 辅助框起始位置
+  end: {object} | {function} | {array},// 辅助框结束位置
+  style: {object} // 辅助框的图形样式属性
 });
 ```
-* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1461,20 +1433,19 @@ chart.guide().region({
 指定辅助背景框的起始位置，即背景框的左上角，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-    
-    ```js
-    chart.guide().text({
-      position(xScale, yScale){
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().region({
+      start(xScales, yScales) {
         return []; // 位置信息
-      },
-      content: '最大值'
+      }
     });
-    ```
+  ```
 
 - `end`: object | array | function
 
@@ -1482,9 +1453,7 @@ chart.guide().region({
 
 - `style`: object
 
-用于设置辅助背景框的样式。
-
-* style 的更详细的配置项 [绘图属性](graphic.html)
+用于设置辅助背景框的样式，`style` 的更详细的配置项 [绘图属性](graphic.html)。
 
 #### chart.guide().html(cfg)
 
@@ -1492,12 +1461,12 @@ chart.guide().region({
 
 ```js
 chart.guide().html({
-  position: {object} | {function} | {array}, // html 的中心位置， 值为原始数据值，支持 callback
-  alignX: 'left' | 'middle' | 'right',
-  alignY: 'top' | 'middle' | 'bottom',
+  position: {object} | {function} | {array}, // html 的中心位置
+  htmlContent: {string}, // html 代码
+  alignX: {string}, // html 水平方向的布局，可取值为 'left'，'middle'，'right'
+  alignY: {string}, // html 垂直方向的布局，可取值为 'top'，'middle'，'bottom'
   offsetX: {number},
   offsetY: {number},
-  html: {string}, // html 代码
   zIndex: {number}
 });
 ```
@@ -1508,21 +1477,20 @@ chart.guide().html({
 
 设置 html 的显示位置，该值的类型如下：
 
-* object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-* array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
-  + x，y 都是原始数据 [ '2010-01-01', 200 ];
-  + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-  + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-* function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-  
-```js
-chart.guide().text({
-  position(xScale, yScale) {
-    return []; // 位置信息
-  },
-  content: '最大值'
-});
-```
+  * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().html({
+      position(xScales, yScales) {
+        return []; // 位置信息
+      }
+    });
+  ```
 
 - `alignX`: string
 
@@ -1532,7 +1500,7 @@ html 的水平对齐方式，可取值为： `left`、`middle`、`right`，默�
 
 html 的垂直对齐方式，可取值为： `top`、`middle`、`bottom`，默认值为 `middle`。
 
-- `html`: string
+- `htmlContent`: string
 
 需要显示的 html 内容。
 
@@ -1555,12 +1523,11 @@ html 层级。
 ```js
 chart.guide().arc({
   top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
-  end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
+  start: {object} | {function} | {array}, // 辅助框起始位置
+  end: {object} | {function} | {array},// 辅助框结束位置
   style: {object} // 图形样式属性
 });
 ```
-* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1573,20 +1540,19 @@ chart.guide().arc({
 指定辅助圆弧的起始位置，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y ]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
-    
-    ```js
-    chart.guide().text({
-      position(xScale, yScale) {
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().arc({
+      start(xScales, yScales) {
         return []; // 位置信息
-      },
-      content: '最大值'
+      }
     });
-    ```
+  ```
 
 - `end`: object | array | function
 
@@ -1594,9 +1560,7 @@ chart.guide().arc({
 
 - `style`: object
 
-设置圆弧的显示样式。
-
-* style 的更详细的配置项 [绘图属性](graphic.html)
+设置圆弧的显示样式，`style` 的更详细的配置项 [绘图属性](graphic.html)
 
 #### chart.guide().regionFilter(cfg)
 
@@ -1605,14 +1569,16 @@ chart.guide().arc({
 ```js
 chart.guide().regionFilter({
   top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 true, 即绘制在最上层
-  start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
-  end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
-  color:'#ccc', //染色色值
-  apply:{array} //可选，设定regionFilter只对特定geom类型起作用
+  start: {object} | {function} | {array}, // 起始位置
+  end: {object} | {function} | {array},// 结束位置
+  color: {string}, // 染色色值
+  apply: {array}, // 可选，设定 regionFilter 只对特定 geom 类型起作用
+  style: {object} // 可选，为 regionFilter 区域设定额外的样式
 });
 ```
 
 ##### 参数
+
 - `top`: boolean
 
 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
@@ -1622,11 +1588,19 @@ chart.guide().regionFilter({
 指定辅助过滤区域的起始位置，即过滤区域的左上角，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().regionFilter({
+      start(xScales, yScales) {
+        return []; // 位置信息
+      }
+    });
+  ```
 
 - `end`: object | array | function
 
@@ -1638,8 +1612,11 @@ chart.guide().regionFilter({
 
 - `apply`: array
 
-可选,设定regionFilter只对特定geom类型起作用，如apply:['area'],默认regionFilter的作用域为整个图表
+可选，设定 regionFilter 只对特定 geom 类型起作用，如 `apply: [ 'area' ]`，默认 regionFilter 的作用域为整个图表。
 
+- `style`: object
+
+可选，为过滤区域的图形设置额外的样式，`style` 的更详细的配置项 [绘图属性](graphic.html)。
 
 #### chart.guide().dataMarker(cfg)
 
@@ -1647,23 +1624,25 @@ chart.guide().regionFilter({
 
 ```js
 chart.guide().dataMarker({
-  top:true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为true, 即绘制在最上层
-  position: {object} | {function} | {array}, // 标注点起始位置，值为原始数据值，支持 callback ,
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 true, 即绘制在最上层
+  position: {object} | {function} | {array}, // 标注点起始位置
   content: {string}, // 显示的文本内容
   style: {
-    text: {object},
-    point:{object},
-    line:{object}
-  },//可选，文本/point/line样式
+    text: {object}, // 设置文本的显示样式
+    point:{object}, // 设置标注点的显示样式
+    line: {object} // 设置标注线的显示样式
+  },// 可选
   display:{
-    text:{boolean},
-    point:{boolean},
-    line:{boolean}
-  },//可选，是否显示文本/point/line，默认为全部显示
-  lineLength:{number},//可选，line长度，default为30
-  direction:'upward' | 'downward' //可选，朝向，默认为upwaard
+    text: {boolean}, // 是否显示文本
+    point: {boolean}, // 是否显示标注点
+    line: {boolean} // 是否显示标注线
+  },// 可选，是否显示文本/point/line，默认为全部显示
+  lineLength: {number}, //可选，line 长度，default 为 20
+  direction: {string}, // 可选，朝向，默认为 upward，可选值为 'upward' 或者 'downward'
+  autoAdjust: {boolean} // 可选，文本超出绘制区域时，是否自动调节文本方向，默认为 true
 });
 ```
+
 ##### 参数
 
 - `top`: boolean
@@ -1675,11 +1654,19 @@ chart.guide().dataMarker({
 指定特殊数据点标注的位置，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().dataMarker({
+      position(xScales, yScales) {
+        return []; // 位置信息
+      }
+    });
+  ```
 
 - `content`: string
 
@@ -1687,27 +1674,23 @@ chart.guide().dataMarker({
 
 - `style`: object
 
-style:{ point:{},
-        line:{},
-        text:{}
-        }，
-point/line/text样式，更详细的配置项 [绘图属性](graphic.html)
+用于设置 point/line/text 样式，更详细的配置项 [绘图属性](graphic.html)
 
 - `display`: object
 
-display:{ point:true | false,
-          line:true | false,
-          text:true | false
-        }，
-是否显示point/line/text。
+用于设置是否显示 point/line/text。
 
 - `lineLength`: number
 
-line的长度，default为30。
+设置 line 的长度，default为 20。
 
 - `direction`: string
 
-标注点朝向：'upward' | 'downward', default为'upward'，即向上
+标注点朝向：'upward' | 'downward', default为 'upward'，即向上。
+
+- `autoAdjust`: Boolean
+
+当文本超出绘制区域时，是否自动调节文本方向，默认为 true，内部会自动调节文本方向。
 
 #### chart.guide().dataRegion(cfg)
 
@@ -1715,22 +1698,15 @@ line的长度，default为30。
 
 ```js
 chart.guide().dataRegion({
-  top:true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 true, 即绘制在最上层
-  start: {object} | {function} | {array}, // 标注点起始位置，值为原始数据值，支持 callback ,
-  end: {object} | {function} | {array}, // 标注点结束位置，值为原始数据值，支持 callback ,
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 true, 即绘制在最上层
+  start: {object} | {function} | {array}, // 标注点起始位置
+  end: {object} | {function} | {array}, // 标注点结束位置
   content: {string}, // 显示的文本内容
   style: {
-    text: {object},
-    point:{object},
-    line:{object}
-  },//可选，文本/point/line样式
-  display:{
-    text:{boolean},
-    point:{boolean},
-    line:{boolean}
-  },//可选，是否显示文本/point/line，默认为全部显示
-  lineLength:{number},//可选，line长度，default为30
-  direction:'upward' | 'downward' //可选，朝向，默认为upwaard
+    region: {object}, // 填充区域的显示样式设置
+    text: {object} // 文本的显示样式设置
+  },// 可选
+  lineLength: {number} // 可选，line长度，default为 0
 });
 ```
 ##### 参数
@@ -1741,18 +1717,26 @@ chart.guide().dataRegion({
 
 - `start`: object | array | function
 
-指定特殊数据点标注的起始位置，该值的类型如下：
+指定特殊数据区间标注的起始位置，该值的类型如下：
 
   * object: 使用图表 x,y 对应的原始数据例如： { time: '2010-01-01', value: 200 }
-  * array: 数组来配置位置 [ x, y]，根据数组中的值的存在以下几种形式：
-    + x，y 都是原始数据 [ '2010-01-01', 200 ];
-    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：[ 'median', 200 ]
-    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如 [ '50%', '50%' ] 使得辅助元素居中
-  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+  * array: 使用数组来配置位置 [ x, y ]，数组中的值可以是以下三种类型的任意一种，即支持三种数值类型的混合使用：
+    + 对应数据源中的原始数据;
+    + 关键字：'min', 'max', 'median', 'start', 'end'，分别代表数据的最大值、最小值、中间值以及坐标系区间的起始和结束
+    + 百分比的形式，如 30%，在绘图区域定位。注意：对于 Y 轴，起始点为 Y 轴上方。
+  * function: 回调函数，可以动态得确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+
+  ```js
+    chart.guide().dataRegion({
+      start(xScales, yScales) {
+        return []; // 位置信息
+      }
+    });
+  ```
 
 - `end`: object | array | function
 
-指定特殊数据点标注的起始位置，该属性用法同 `start`。
+指定特殊数据区间标注的结束位置，该属性用法同 `start`。
 
 - `content`: string
 
@@ -1760,32 +1744,11 @@ chart.guide().dataRegion({
 
 - `style`: object
 
-style:{ point:{},
-        line:{},
-        text:{}
-        }，
-point/line/text样式，更详细的配置项 [绘图属性](graphic.html)
-
-- `display`: object
-
-display:{ point:true | false,
-          line:true | false,
-          text:true | false
-        }，
-是否显示point/line/text。
+region/text 的显示样式，更详细的配置项 [绘图属性](graphic.html)
 
 - `lineLength`: number
 
-line的长度，default为30。
-
-- `regionStyle`: object
-
-区间area样式，更详细的配置项 [绘图属性](graphic.html)
-
-- `direction`: string
-
-标注点朝向：'upward' | 'downward', default为'upward'，即向上
-
+line 的长度，default为 0。
 
 ### facet
 
@@ -1953,7 +1916,7 @@ chart.facet('tree', {
     });
     view.intervalStack().position('percent').color('gender');
   }
-}); 
+});
 chart.render();
 ```
 
@@ -1965,7 +1928,7 @@ chart.render();
 
 #### 参数
 
-- `field`: string 
+- `field`: string
 
   指定过滤的数据字段。
 
@@ -2110,7 +2073,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 #### 参数
 
 - `width`: number
- 
+
   图表宽度。
 
 - `height`: number
@@ -2126,7 +2089,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 #### 参数
 
 - `width`: number
- 
+
   图表宽度。
 
 ### changeHeight
@@ -2138,7 +2101,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 #### 参数
 
 - `height`: number
- 
+
   图表高度。
 
 ### getXScale
@@ -2255,7 +2218,7 @@ point 是一个对象，代表画布上的坐标点，参数格式如下：
 
 隐藏 tooltip，返回 chart 对象。
 
-### getTooltipItems 
+### getTooltipItems
 
 (point: object)
 
@@ -2287,7 +2250,7 @@ chart.on('touchend', ev => {});
 ```
 
 2. 绘图区域事件，如 plotmove plotclick 等；
- 
+
 ```js
 chart.on('plotenter', ev => {});
 chart.on('plotmove', ev => {});
@@ -2303,7 +2266,7 @@ chart.on('tooltip:show', ev => {}); // tooltip 展示
 chart.on('tooltip:hide', ev => {}); // tooltip 隐藏
 chart.on('tooltip:change', ev => {}); // tooltip 内容发生变化的时候
 ```
- 
+
 4. 图形元素事件，即组成图表的各种图形元素；
 
 我们以 『图形元素名』+ 『基础事件名』 的方式来组合图形元素上的事件，帮助用户进行更精准的事件监听，同时也给交互提供了更大的可能性。图形元素事件对象上都会携带 `shape` 属性，即表示当前被触发的图形元素。
