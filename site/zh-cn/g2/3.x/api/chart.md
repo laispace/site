@@ -770,7 +770,7 @@ textStyle: {
 
 **针对分类类型的图例**，设置图例项是否允许点击，默认为 true，即允许点击。
 
-18.  `selectedMode`: string
+17.  `selectedMode`: string
 
 **针对分类类型图例**，当 clickable 为 true 时该配置项生效，用于设置图例的选中交互模式，可配置的属性:
 
@@ -786,7 +786,7 @@ textStyle: {
 onHover: ev => {}
 ```
 
-19. `onClick`: function
+18. `onClick`: function
 
 **针对分类类型的图例**，用于自定义鼠标点击图例项的交互，当 `clickable` 为 false 不生效。
 
@@ -799,19 +799,19 @@ onHover: ev => {}
 onClick: ev => {}
 ```
 
-20. `useHtml`: boolean
+19. `useHtml`: boolean
 
 **针对分类类型图例**，用于开启是否使用 HTML 渲染图例，默认为 false，true 表示使用 HTML 渲染图例。
 
-21. `flipPage`: boolean
+20. `flipPage`: boolean
 
 **针对 HTML 版本的分类类型图例，即 useHtml 为 true 时**。指定是否使用翻页的方式来交互超出容器的图例项。默认为 false ，即不使用翻页方式，而使用滚轮滚动的交互方式。
 
-22. `container`: string
+21. `container`: string
 
 **当 `useHtml` 为 true 时生效**，用于指定生成图例的 dom 容器，那么该值必须为 dom 容器的 id 值为分类类型的话，则支持传入索引值。
 
-23. `containerTpl`: string
+22. `containerTpl`: string
 
 **当 `useHtml` 为 true 时生效**，用于指定图例容器的模板，默认值如下：
 
@@ -824,11 +824,11 @@ containerTpl: '<div class="g2-legend" style="position:absolute;top:20px;right:60
 
 如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
-24. `itemTpl`: string
+23. `itemTpl`: string
 
 **当 `useHtml` 为 true 时生效**，用于指定生成图例的图例项 HTML 模板，默认值如下：
 
-25. `itemTpl`: string
+24. `itemTpl`: string
 当 `useHtml` 为 true 时生效。HTML 版本的分类图例的图例项 HTML 模版。默认为：
 
 ```js
@@ -839,35 +839,35 @@ itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{or
 
 !注意：自定义模板时必须包含各个 dom 节点的 class，样式可以自定义。
 
-26. `slidable`: boolean
+25. `slidable`: boolean
 
 **针对连续图例**，用于设置连续图例是否允许滑动，默认为 true，即开启滑动操作。
 
-27. `width`: number
+26. `width`: number
 
 **针对连续图例**，用于设置图例的宽度。
 
-28. `height`: number
+27. `height`: number
 
 **针对连续图例**，用于设置图例的高度。
 
-29. `hoverable`: boolean
+28. `hoverable`: boolean
 
 设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
 
-30. `onHover`: function
+29. `onHover`: function
 
 用于自定义鼠标 hover 图例项的交互，当 `hoverable` 为 false 不生效。
 
-31. `reactive`: boolean
+30. `reactive`: boolean
 
 设置是否开启鼠标 hover 图表元素时，图例对应项的高亮效果。默认为 false，即不开启动画。
 
-32. `isSegment`: boolean
+31. `isSegment`: boolean
 
 **针对连续的颜色图例**，设置图例样式是否为分块颜色模式，默认为 false，即非分块颜色模式，为渐变颜色模式。
 
-33. `sizeType`: string
+32. `sizeType`: string
 
 **针对连续的大小图例**，设置图例是否是针对节点大小映射的样式。可选 'circle' | 'normal' | null, 默认为 null，即针对除节点以外的其他元素的大小映射。
 当 sizeType 为 'circle' 时的样式：
@@ -878,7 +878,7 @@ itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{or
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/MGbEMcquJGArjRtHAXAh.png" style="width: 20%;max-width:600px;">
 
-34. `custom`: boolean
+33. `custom`: boolean
 
 默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义非 HTML 版本的分类类型图例，包括具体的图例项以及 click、hover 交互。
 
