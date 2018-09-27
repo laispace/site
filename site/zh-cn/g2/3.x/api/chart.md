@@ -557,7 +557,7 @@ chart.legend('gender', {
 
 图例对应的字段名。如果值为 `true`，表示该配置对所有的图例生效。
 
-- legendConfig: object
+- `legendConfig`: object
 
 是一个对象，该对象可配置的属性如下：
 
@@ -567,7 +567,7 @@ chart.legend('gender', {
 
 2. `layout`: string
 
-对分类类型的图例生效，用于设置各个图例项的排列方式，可设置值包括：`vertical`、`horizontal`，分别表示垂直和水平排布。
+用于设置各个图例项的排列方式，可设置值包括：`vertical`、`horizontal`，分别表示垂直和水平排布。
 
 3. `title`: object | null
 
@@ -594,15 +594,15 @@ title: {
 
 6. `itemGap`: number
 
-对分类类型的图例生效，表示图例每项之间的间距，如果是水平排布则为左右间距，如果是竖直排布则为上下间距。
+**针对分类类型的图例**，表示图例每项之间的间距，如果是水平排布则为左右间距，如果是竖直排布则为上下间距。
 
 7. `itemMarginBottom`: number
 
-对分类类型的图例生效，表示各个图例项垂直方向的间距。
+**针对分类类型的图例**，表示各个图例项垂直方向的间距。
 
 8. `itemWidth`: number
 
-对分类类型的图例生效，设置图例项的宽度，当图例有很多图例项，并且用户想要这些图例项能垂直对齐时，此时这个属性可帮用户实现此效果。
+**镇对分类类型的图例**，设置图例项的宽度，当图例有很多图例项，并且用户想要这些图例项能垂直对齐时，此时这个属性可帮用户实现此效果。
 
 [在线示例](/zh-cn/g2/3.x/demo/other/polar-interval.html)：
 
@@ -668,11 +668,11 @@ chart.render();
 
 9. `unCheckColor`: string
 
-对分类类型的图例生效，用于取消选中的图例文本颜色。
+**针对分类类型的图例**，用于取消选中的图例文本颜色。
 
 10. `background`: object
 
-对分类类型的图例生效，用于设置图例的背景样式。
+**针对分类类型的图例**，用于设置图例的背景样式。
 
 ```js
 background: {
@@ -683,7 +683,7 @@ background: {
 
 11. `allowAllCanceled`: boolean
 
-对分类类型的图例生效，表示是否允许所有图例项被取消选中，默认为 false，即必须保留一个被选中的图例项。
+**针对分类类型的图例**，表示是否允许所有图例项被取消选中，默认为 false，即必须保留一个被选中的图例项。
 
 12. `itemFormatter`: function
 
@@ -697,33 +697,33 @@ itemFormatter(val) {
 
 13. `marker`: string | function
 
-对分类类型的图例生效，用于设置图例的 marker 样式，默认按照 geom 的类型显示。
+用于设置图例的 marker 样式，默认按照 geom 的类型显示。
 
-* 当为 string 类型时，即表示使用 G2 默认提供的类型，支持的类型如下：
+* 当为 string 类型时，即表示使用 G2 默认提供的类型，支持的类型如下。其中只有一部分支持 HTML 版本的分类图例：
 
-type | 样式
----- | ----
-circle | <img src="/assets/image/g2/tutorial/circle.png" style="width:50%">
-square | <img src="/assets/image/g2/tutorial/square.png" style="width:50%">
-bowtie | <img src="/assets/image/g2/tutorial/bowtie.png" style="width:50%">
-diamond | <img src="/assets/image/g2/tutorial/diamond.png" style="width:50%">
-hexagon | <img src="/assets/image/g2/tutorial/hexagon.png" style="width:50%">
-triangle | <img src="/assets/image/g2/tutorial/triangle.png" style="width:50%">
-triangle-down | <img src="/assets/image/g2/tutorial/triangle-down.png" style="width:50%">
-cross | <img src="/assets/image/g2/tutorial/cross.png" style="width:50%">
-tick | <img src="/assets/image/g2/tutorial/tick.png" style="width:50%">
-plus | <img src="/assets/image/g2/tutorial/plus.png" style="width:50%">
-hyphen | <img src="/assets/image/g2/tutorial/hyphen.png" style="width:50%">
-line | <img src="/assets/image/g2/tutorial/line.png" style="width:50%">
-hollowCircle | <img src="/assets/image/g2/tutorial/hollowCircle.png" style="width:50%">
-hollowSquare | <img src="/assets/image/g2/tutorial/hollowSquare.png" style="width:50%">
-hollowBowtie | <img src="/assets/image/g2/tutorial/hollowBowtie.png" style="width:50%">
-hollowDiamond | <img src="/assets/image/g2/tutorial/hollowDiamond.png" style="width:50%">
-hollowHexagon | <img src="/assets/image/g2/tutorial/hollowHexagon.png" style="width:50%">
-hollowTriangle | <img src="/assets/image/g2/tutorial/hollowTriangle.png" style="width:50%">
-hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.png" style="width:50%">
+type | 样式 | 是否支持 HTML
+---- | ---- | ----
+circle | <img src="/assets/image/g2/tutorial/circle.png" style="width:50%"> | 是
+square | <img src="/assets/image/g2/tutorial/square.png" style="width:50%"> | 是
+bowtie | <img src="/assets/image/g2/tutorial/bowtie.png" style="width:50%"> | 否
+diamond | <img src="/assets/image/g2/tutorial/diamond.png" style="width:50%"> | 否
+hexagon | <img src="/assets/image/g2/tutorial/hexagon.png" style="width:50%"> | 否
+triangle | <img src="/assets/image/g2/tutorial/triangle.png" style="width:50%"> | 否
+triangle-down | <img src="/assets/image/g2/tutorial/triangle-down.png" style="width:50%"> | 否
+cross | <img src="/assets/image/g2/tutorial/cross.png" style="width:50%"> | 否
+tick | <img src="/assets/image/g2/tutorial/tick.png" style="width:50%"> | 否
+plus | <img src="/assets/image/g2/tutorial/plus.png" style="width:50%"> | 否
+hyphen | <img src="/assets/image/g2/tutorial/hyphen.png" style="width:50%"> | 否
+line | <img src="/assets/image/g2/tutorial/line.png" style="width:50%"> | 否
+hollowCircle | <img src="/assets/image/g2/tutorial/hollowCircle.png" style="width:50%"> | 否
+hollowSquare | <img src="/assets/image/g2/tutorial/hollowSquare.png" style="width:50%"> | 否
+hollowBowtie | <img src="/assets/image/g2/tutorial/hollowBowtie.png" style="width:50%"> | 否
+hollowDiamond | <img src="/assets/image/g2/tutorial/hollowDiamond.png" style="width:50%"> | 否
+hollowHexagon | <img src="/assets/image/g2/tutorial/hollowHexagon.png" style="width:50%"> | 否
+hollowTriangle | <img src="/assets/image/g2/tutorial/hollowTriangle.png" style="width:50%"> | 否
+hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.png" style="width:50%"> | 否
 
-* marker 也支持自定义 shape，使用方式如下，
+* 非 HTML 版本的分类图例的 marker 也支持自定义 shape，使用方式如下，
 
 ```js
 /**
@@ -736,7 +736,7 @@ hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.pn
 marker(x, y, r) {}
 ```
 
-以下代码绘制了如图所示的 marker：<img src="https://gw.alipayobjects.com/zos/rmsportal/WOOfsuIGEAPWdtgsdciZ.png" style="width:20px">
+以下代码绘制了如图所示的 marker ：<img src="https://gw.alipayobjects.com/zos/rmsportal/WOOfsuIGEAPWdtgsdciZ.png" style="width:20px">
 
 ```js
 marker(x, y, r) {
@@ -764,26 +764,18 @@ textStyle: {
 
 15. `attachLast`:boolean
 
-是否启用尾部跟随图例(tail-legend)，尾部跟随图例自动跟随geom的最后一个数据点，适用的图表类型为`line`、`stackLine`、`area`、`stackArea`。 默认为false，即不启用。
+**针对分类类型的图例**，是否启用尾部跟随图例(tail-legend)，尾部跟随图例自动跟随geom的最后一个数据点，适用的图表类型为`line`、`stackLine`、`area`、`stackArea`。 默认为 false ，即不启用。
 
 16. `clickable`: boolean
 
-对分类类型的图例生效，设置图例项是否允许点击，默认为 true，即允许点击。
-
-17. `hoverable`: boolean
-
-对分类类型的图例生效，设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
+**针对分类类型的图例**，设置图例项是否允许点击，默认为 true，即允许点击。
 
 18.  `selectedMode`: string
 
-针对分类类型图例，当 clickable 为 true 时该配置项生效，用于设置图例的选中交互模式，可配置的属性:
+**针对分类类型图例**，当 clickable 为 true 时该配置项生效，用于设置图例的选中交互模式，可配置的属性:
 
 * `selectedMode: 'single'`：表示开启单选模式；
-* `selectedMode: 'multiple'`：表示开启多选模式，默认为 `multiple`。
-
-19. `onHover`: function
-
-针对分类类型的图例，用于自定义鼠标 hover 图例项的交互，当 `hoverable` 为 false 不生效。
+* `selectedMode: 'multiple'`：表示开启多选模式，默认为 `'multiple'`。
 
 ```js
 /**
@@ -794,9 +786,9 @@ textStyle: {
 onHover: ev => {}
 ```
 
-20. `onClick`: function
+19. `onClick`: function
 
-针对分类类型的图例，用于自定义鼠标点击图例项的交互，当 `clickable` 为 false 不生效。
+**针对分类类型的图例**，用于自定义鼠标点击图例项的交互，当 `clickable` 为 false 不生效。
 
 ```js
 /**
@@ -807,9 +799,13 @@ onHover: ev => {}
 onClick: ev => {}
 ```
 
-21. `useHtml`: boolean
+20. `useHtml`: boolean
 
-针对分类类型图例，用于开启是否使用 html 渲染图例，默认为 false，true 表示使用 html 渲染图例。
+**针对分类类型图例**，用于开启是否使用 HTML 渲染图例，默认为 false，true 表示使用 HTML 渲染图例。
+
+21. `flipPage`: boolean
+
+**针对 HTML 版本的分类类型图例，即 useHtml 为 true 时**。指定是否使用翻页的方式来交互超出容器的图例项。默认为 false ，即不使用翻页方式，而使用滚轮滚动的交互方式。
 
 22. `container`: string
 
@@ -830,35 +826,64 @@ containerTpl: '<div class="g2-legend" style="position:absolute;top:20px;right:60
 
 24. `itemTpl`: string
 
-**当 `useHtml` 为 true 时生效**，用于指定生成图例的图例项 html 模板，默认值如下：
+**当 `useHtml` 为 true 时生效**，用于指定生成图例的图例项 HTML 模板，默认值如下：
+
+25. `itemTpl`: string
+当 `useHtml` 为 true 时生效。HTML 版本的分类图例的图例项 HTML 模版。默认为：
 
 ```js
-itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 14px;">'
-  + '<i class="g2-legend-marker" style="width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:10px;background-color: {color};"></i>'
-  + '<span class="g2-legend-text">{value}</span>'
-  + '</li>';
+itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}">' +
+      '<i class="g2-legend-marker" style="background-color:{color};"></i>' +
+      '<span class="g2-legend-text">{value}</span></li>'
 ```
 
 !注意：自定义模板时必须包含各个 dom 节点的 class，样式可以自定义。
 
-25. `slidable`: boolean
+26. `slidable`: boolean
 
 **针对连续图例**，用于设置连续图例是否允许滑动，默认为 true，即开启滑动操作。
 
-26. `width`: number
+27. `width`: number
 
 **针对连续图例**，用于设置图例的宽度。
 
-27. `height`: number
+28. `height`: number
 
 **针对连续图例**，用于设置图例的高度。
 
-28. `custom`: boolean
+29. `hoverable`: boolean
 
-默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义图例，包括具体的图例项以及 click、hover 交互。
+设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
 
-自定义图例时需要用户自己声明具体的图例项 `items`(该属性是一个对象数组，数组中每一项为一个对象类型，结构为：
-`{ value: '', marker:{fill: 'red'}}`)以及图例项的 hover 和 click 事件。
+30. `onHover`: function
+
+用于自定义鼠标 hover 图例项的交互，当 `hoverable` 为 false 不生效。
+
+31. `reactive`: boolean
+
+设置是否开启鼠标 hover 图表元素时，图例对应项的高亮效果。默认为 false，即不开启动画。
+
+32. `isSegment`: boolean
+
+**针对连续的颜色图例**，设置图例样式是否为分块颜色模式，默认为 false，即非分块颜色模式，为渐变颜色模式。
+
+33. `sizeType`: string
+
+**针对连续的大小图例**，设置图例是否是针对节点大小映射的样式。可选 'circle' | 'normal' | null, 默认为 null，即针对除节点以外的其他元素的大小映射。
+当 sizeType 为 'circle' 时的样式：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/SvFuwFlbTMHGKaxCnFYa.png" style="width: 20%;max-width:600px;">
+
+当 sizeType 为 'normal' 或 null 时的样式：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/MGbEMcquJGArjRtHAXAh.png" style="width: 20%;max-width:600px;">
+
+34. `custom`: boolean
+
+默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义非 HTML 版本的分类类型图例，包括具体的图例项以及 click、hover 交互。
+
+自定义图例时需要用户自己声明具体的图例项 `items` (该属性是一个对象数组，数组中每一项为一个对象类型，结构为：
+`{ value: '', marker: { fill: 'red' } }`)以及图例项的 hover 和 click 事件。
 
 具体使用如下：
 
