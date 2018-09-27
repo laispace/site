@@ -853,7 +853,7 @@ itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{or
 
 28. `hoverable`: boolean
 
-设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
+**针对分类图例**，设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
 
 29. `onHover`: function
 
@@ -878,7 +878,7 @@ itemTpl: '<li class="g2-legend-list-item item-{index} {checked}" data-color="{or
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/MGbEMcquJGArjRtHAXAh.png" style="width: 20%;max-width:600px;">
 
-33. `custom`: boolean
+3. `custom`: boolean
 
 默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义非 HTML 版本的分类类型图例，包括具体的图例项以及 click、hover 交互。
 
