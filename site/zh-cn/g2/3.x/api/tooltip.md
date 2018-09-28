@@ -1,5 +1,5 @@
 <!--
-index: 10
+index: 9.1
 title: Tooltip
 -->
 
@@ -10,8 +10,13 @@ title: Tooltip
 提示信息(tooltip)，是指当鼠标悬停在图表上时，以信息框的形式展示相应的数据，如数据的标题、字段、数值等信息。
 
 ### 使用配置项配置tooltip
-#### chart.tooltip(tooltipConfig)
+
+```js
+chart.tooltip(tooltipConfig)
+```
+
 (tooltipConfig: object)
+
 ```js
 chart.tooltip(true, {
   showTitle: false,
@@ -20,8 +25,10 @@ chart.tooltip(true, {
 ```
 
 ### tooltip的渲染方式
+
 目前tooltip支持html和canvas两种渲染方式。html渲染支持更加灵活的自定义配置，适合较为复杂的、对交互行为和内容定制要求比较高的可视化场景。canvas渲染使用G2默认配置，适合基础可视化场景，如果希望生成包含tooltip的图片，也推荐使用canvas进行渲染。
 通过下面的配置项选择渲染模式：
+
 ```js
 chart.tooltip(
   {
@@ -31,11 +38,15 @@ chart.tooltip(
 ```
 
 ### 关闭tooltip功能
-#### chart.tooltip(false)
+
+```js
+chart.tooltip(false)
+```
 
 ## 属性
 
 ### 通用属性
+
 1. `useHtml`:string
 
 是否使用html渲染，默认为true, false时使用canvas渲染
@@ -49,6 +60,7 @@ tooltip类型，`mini`则启用只显示单个数据值的`miniTooltip`。
 3. `triggerOn` :boolean
 
 tooltip 的触发方式，可配置的值为：`mousemove`、`click`、`none`，默认为`mousemove`。
+
 * `mousemove`: 鼠标移动触发；
 * `click`: 鼠标点击出发；
 * `none`: 不触发 tooltip，用户通过`chart.showTooltip()` 和 `chart.hideTooltip()` 来控制 tooltip 的显示和隐藏。
@@ -86,6 +98,7 @@ tooltip 的触发方式，可配置的值为：`mousemove`、`click`、`none`，
 用于控制是否允许鼠标进入 tooltip，默认为 false，即不允许进入。
 
 ### 辅助元素属性
+
 1. `crosshairs`
 
 crosshairs是一个对象类型，用于设置 tooltip 的辅助线或者辅助框。  
@@ -97,6 +110,7 @@ tooltip垂注辅助线应用于多条曲线图表 |  tooltip矩形背景辅助�
 <img src="https://cdn.nlark.com/lark/0/2018/png/101986/1537947058148-d5e187af-1523-4808-a82d-ee5a41726270.png" style="width:100%"> | <img src="https://cdn.nlark.com/lark/0/2018/png/101986/1537947203936-25bc6501-c2e0-4681-9884-5d178e970a9d.png" style="width:100%"> 
 
 crosshairs支持的配置如下：
+
 * `type`:string
 
 `rect` | `x` | `y` | `cross`
@@ -252,4 +266,5 @@ mini tooltip是一种极简的tooltip形式，只显示单个数据的数值。�
 
 
 ## tooltip属性脑图
+
 <img src="https://cdn.nlark.com/lark/0/2018/png/101986/1537956588552-32c0a0a8-1026-4df0-a258-f544934b616f.png" style="width:60%">
