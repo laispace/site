@@ -518,78 +518,85 @@ chart.polygon()
 
 ##### 通用属性
 
-1. useHtml: boolean
+useHtml: boolean
 
-   是否使用html渲染，默认为`false`。
+是否使用html渲染，默认为`false`。
 
-2. formatter: function
+formatter: function
 
-   对显示文本进行格式化 。
+对显示文本进行格式化 。
+##### 代码示例
 
-   ```javascript
-   chart.point().position('x*y').label('x', {
-     /**
-      * 格式化文本信息
-      * @param  {string} text  文本值
-      * @param  {object} item  该文本值对应的原始数据记录
-      * @param  {number} index 索引值
-      * @return {string}       返回格式化后的文本
-      */
-       formatter: function(text, item, index) {
-           return text + item.point.y；     // 设置文本为 x + y
-       }
-   });
-   ```
+```js
+chart.point().position('x*y').label('x', {
+  /**
+   * 格式化文本信息
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回格式化后的文本
+   */
+    formatter: function(text, item, index) {
+        return text + item.point.y；     // 设置文本为 x + y
+    }
+});
+```
 
-3. type: string
+type: string
 
-   文本布局类型。默认为`'default'`。可选值如下：
+文本布局类型。默认为`'default'`。可选值如下：
 
-   1. scatter: 按照散点图label布局算法对所有label进行二次布局。数据过于密集的情况下会剔除放不下的label。
-   2. treemap: 剔除形状容纳不了的label。
-   3. map: label将会初始定位到地图板块的可视中心，为了防止label之间相互覆盖布局，尝试向四周偏移，会剔除放不下的label。
+- scatter: 按照散点图label布局算法对所有label进行二次布局。数据过于密集的情况下会剔除放不下的label。
 
-4. labelLine: object
+- treemap: 剔除形状容纳不了的label。
 
-   配置文本连线。如果值为 false，表示不展示文本线。
+- map: label将会初始定位到地图板块的可视中心，为了防止label之间相互覆盖布局，尝试向四周偏移，会剔除放不下的label。
 
-   ```
-   chart.line().label('x', {
-       labelLine: {
-         lineWidth: 1, // 线的粗细
-         stroke: '#ff8800', // 线的颜色
-         lineDash: [ 2, 1 ], // 虚线样式
-       }
-   });
-   ```
+labelLine: object
 
-​       注：为了更好的视觉效果，布局算法会忽略预设的`textAlign`和`textBaseline`。
+配置文本连线。如果值为 false，表示不展示文本线。
+##### 代码示例
+
+```js
+chart.line().label('x', {
+    labelLine: {
+      lineWidth: 1, // 线的粗细
+      stroke: '#ff8800', // 线的颜色
+      lineDash: [ 2, 1 ], // 虚线样式
+    }
+});
+```
+
+注：为了更好的视觉效果，布局算法会忽略预设的`textAlign`和`textBaseline`。
 
 ##### canvas专有配置属性
 
-1. offset: { array | number }
+offset: { array | number }
 
-   设置坐标轴文本 label 距离坐标轴线的距离，可以是数值或数组。默认为`[0, 20]`。数组可指定当前坐标轴x,y方向上的偏移。单个数值指定y方向上的偏移
+设置坐标轴文本 label 距离坐标轴线的距离，可以是数值或数组。默认为`[0, 20]`。数组可指定当前坐标轴x,y方向上的偏移。单个数值指定y方向上的偏移
 
-2. textStyle
+textStyle
 
-   设置文本的显示样式，具体请见更详细的配置项 [绘图属性](graphic.html)
+设置文本的显示样式，具体请见更详细的配置项 [绘图属性](graphic.html)
 
-3. autoRotate: boolean
+autoRotate: boolean
 
-   文本是否需要自动旋转，默认为 true
+文本是否需要自动旋转，默认为 true
 
-4. position：仅当chart的geom为`interval`时有效。指定当前label与当前图形的相对位置，可选参数为middle, top,bottom,left,right。默认为top。位置效果如下：
+position：string
 
-   ![position](https://gw.alipayobjects.com/zos/rmsportal/qmwKhVzMhjCmyMnxcTBe.png)
+仅当chart的geom为`interval`时有效。指定当前label与当前图形的相对位置，可选参数为middle, top,bottom,left,right。默认为top。位置效果如下：
+
+![position](https://gw.alipayobjects.com/zos/rmsportal/qmwKhVzMhjCmyMnxcTBe.png)
 
 ##### html专有配置属性
 
-1. htmlTemplate: function
+htmlTemplate: function
 
-   与`useHtml`配合使用。当useHtml为true时，指定html渲染文本。
+与`useHtml`配合使用。当useHtml为true时，指定html渲染文本。
+##### 代码示例
 
-```
+```js
    chart.area().label('x', {
        useHtml: true,
        htmlTemplate: (text, item, index) {
