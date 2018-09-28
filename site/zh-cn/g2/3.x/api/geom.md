@@ -510,6 +510,7 @@ chart.polygon()
     }
   });
 ```
+
 #### label(false)
 
 禁用label。
@@ -518,13 +519,14 @@ chart.polygon()
 
 ##### 通用属性
 
-useHtml: boolean
+###### `useHtml`: boolean
 
 是否使用html渲染，默认为`false`。
 
-formatter: function
+###### `formatter`: function
 
 对显示文本进行格式化 。
+
 ##### 代码示例
 
 ```js
@@ -542,19 +544,29 @@ chart.point().position('x*y').label('x', {
 });
 ```
 
-type: string
+###### `type`: string
 
 文本布局类型。默认为`'default'`。可选值如下：
 
-- scatter: 按照散点图label布局算法对所有label进行二次布局。数据过于密集的情况下会剔除放不下的label。
+  - scatter: 按照散点图 label 布局算法对所有 label 进行二次布局。数据过于密集的情况下会剔除放不下的 label。
 
-- treemap: 剔除形状容纳不了的label。
+| 散点图普通 label 布局 | 散点图指定 scatter label 布局 |
+| ------------------- | -------------------------- |
+| ![normal](https://gw.alipayobjects.com/zos/rmsportal/BtzyOFMEmKiyJOpXlQum.png) | ![scatter](https://gw.alipayobjects.com/zos/rmsportal/qJZTQMZKduqQZQrKvPFJ.png) |
 
-- map: label将会初始定位到地图板块的可视中心，为了防止label之间相互覆盖布局，尝试向四周偏移，会剔除放不下的label。
+  - treemap: 剔除形状容纳不了的 label。
 
-labelLine: object
+| treemap 普通布局 | 指定 treemap label 布局 |
+| ------------------- | -------------------------- |
+| ![normal](https://gw.alipayobjects.com/zos/rmsportal/UhtvMfssatoHEElcUqMQ.png) | ![treemap](https://gw.alipayobjects.com/zos/rmsportal/GwvMCDgpCamwsKLqgQfo.png) |
+
+
+  - map: label 将会初始定位到地图板块的可视中心，为了防止 label 之间相互覆盖布局，尝试向四周偏移，会剔除放不下的 label。
+
+###### `labelLine`: { object | boolean }
 
 配置文本连线。如果值为 false，表示不展示文本线。
+
 ##### 代码示例
 
 ```js
@@ -837,7 +849,9 @@ geom().animate({
 
 ## 其他方法
 
-### show 显示，默认 geometry 显示，如果在创建 geometry 时设置 visible: false 
+### show 显示
+
+geometry 显示，如果在创建 geometry 时设置 visible: false 
 
 ```js
 const line = chart.line({visible: false}).position('x*y');

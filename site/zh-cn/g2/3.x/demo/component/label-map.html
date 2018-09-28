@@ -1,0 +1,49 @@
+<!--
+index: 1
+title: 地图 label
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 地图或其他多边形图的 label 布局。
+plotUsage: 地图的 label 将会初始定位到地图板块的可视中心，为了防止 label 之间相互覆盖布局，尝试向四周偏移，会剔除放不下的 label。
+relativePlots:
+  - ${plotByName.map}
+-->
+<script>
+  $.getJSON('/assets/data/world.geo.json', function (mapData) {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [55, 20]
+    });
+    chart.tooltip(false);
+    chart.axis(false);
+    chart.legend('trend', {
+      position: 'left'
+    });
+    // 绘制世界地图背景
+    const worldMap = new DataSet.View().source(mapData, {
+      type: 'GeoJSON'
+    });
+    chart.source(worldMap);
+    chart.tooltip(false);
+    chart.polygon()
+      .position('longitude*latitude')
+      .label('name', {
+        type: 'map',
+        offset: 0,
+        textStyle: {
+          fill: 'black'
+        }
+      })
+      .style({
+        fill: '#ccc',
+        stroke: '#ddd',
+        lineWidth: 1
+      });
+    chart.render();
+  });
+</script>
+ 
