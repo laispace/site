@@ -10,7 +10,7 @@ resource:
 # Geom
 
 语法示例：
- 
+
 ```js
 chart.<geomType>()
   .position()
@@ -435,7 +435,7 @@ line.label('x', {
 
 #### label(field)
 
-显示 field 字段对应的文本。
+使用默认配置渲染 field 字段对应的文本。
 
 ##### 参数
 
@@ -451,56 +451,27 @@ chart.point().position('x*y').label('x');
 
 #### label(field, cfg)
 
-设置显示文本的配置信息。field 代表数据源中的数据字段名。
+设置全量文本的配置信息。所有配置项可见下文配置项。
 
 ```js
 chart.line().label('x', {
-  // 文本线的配置，如果值为 false，表示不展示文本线
-  labelLine: {
-    lineWidth: 1, // 线的粗细
-    stroke: '#ff8800', // 线的颜色
-    lineDash: [ 2, 1 ], // 虚线样式
-  } | false,
-  // 数值，设置坐标轴文本 label 距离坐标轴线的距离
-  offset: number, 
   // 设置文本的显示样式，还可以是个回调函数，回调函数的参数为该坐标轴对应字段的数值
   textStyle: {
     textAlign: 'center', // 文本对齐方向，可取值为： start middle end
     fill: '#404040', // 文本的颜色
     fontSize: '12', // 文本大小
     fontWeight: 'bold', // 文本粗细
-      rotate: 30, 
-      textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
-  } || (text) => {
-    // text: 坐标轴对应字段的数值
-  }, 
-  // 文本是否需要自动旋转，默认为 true
-  autoRotate: boolean,
-  /**
-   * 用于格式化坐标轴上显示的文本信息的回调函数
-   * @param  {string} text  文本值
-   * @param  {object} item  该文本值对应的原始数据记录
-   * @param  {number} index 索引值
-   * @return {string}       返回格式化后的文本
-   */
-  formatter(text, item, index) {},
-  /**
-   *  使用 html 渲染文本
-   * @param  {string} text  文本值
-   * @param  {object} item  该文本值对应的原始数据记录
-   * @param  {number} index 索引值
-   * @return {string}       返回 html 字符串
-   */
-  htmlTemplate(text, item, index) {}
+    rotate: 30, 
+    textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+  } 
 })
 ```
 
 * textStyle 的更详细的配置项 [绘图属性](graphic.html)
-* htmlTemplate 默认为 null, 配置为回调函数时，既开启 html 渲染文本
 
 #### label(field, callback, cfg)
 
-使用回调函数控制文本显示。
+使用回调函数控制文本显示效果。
 
 ##### 参数
 
@@ -522,19 +493,117 @@ chart.line().label('x', {
 chart.polygon()
   .position('children*value')
   .color('type').shape('stroke')
-  .label('name*children', (name, children) => { // 仅显示没有子节点的名称
+  .label('name*children', (name, children) => { 
+  	if (children === 0) {
+  	// 若children为0，不显示该项
+        return null;
+  	}
+  	// 设置没有子节点的标签为红色，有子节点的为蓝色
     if (!children) {
-      return name;
+      return { textStyle: { fill: 'red' } };
+    } else {
+      return { textStyle: { fill: 'blue' } };
     }
   }, {
     textStyle: {
-      fill: '#fff'
+      fontSize: 12
     }
   });
 ```
-* textStyle 的更详细的配置项 [绘图属性](graphic.html)
+#### label(false)
 
+禁用label。
 
+#### label配置项
+
+##### 通用属性
+
+useHtml: boolean
+
+是否使用html渲染，默认为`false`。
+
+formatter: function
+
+对显示文本进行格式化 。
+##### 代码示例
+
+```js
+chart.point().position('x*y').label('x', {
+  /**
+   * 格式化文本信息
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回格式化后的文本
+   */
+    formatter: function(text, item, index) {
+        return text + item.point.y；     // 设置文本为 x + y
+    }
+});
+```
+
+type: string
+
+文本布局类型。默认为`'default'`。可选值如下：
+
+- scatter: 按照散点图label布局算法对所有label进行二次布局。数据过于密集的情况下会剔除放不下的label。
+
+- treemap: 剔除形状容纳不了的label。
+
+- map: label将会初始定位到地图板块的可视中心，为了防止label之间相互覆盖布局，尝试向四周偏移，会剔除放不下的label。
+
+labelLine: object
+
+配置文本连线。如果值为 false，表示不展示文本线。
+##### 代码示例
+
+```js
+chart.line().label('x', {
+    labelLine: {
+      lineWidth: 1, // 线的粗细
+      stroke: '#ff8800', // 线的颜色
+      lineDash: [ 2, 1 ], // 虚线样式
+    }
+});
+```
+
+注：为了更好的视觉效果，布局算法会忽略预设的`textAlign`和`textBaseline`。
+
+##### canvas专有配置属性
+
+offset: { array | number }
+
+设置坐标轴文本 label 距离坐标轴线的距离，可以是数值或数组。默认为`[0, 20]`。数组可指定当前坐标轴x,y方向上的偏移。单个数值指定y方向上的偏移
+
+textStyle
+
+设置文本的显示样式，具体请见更详细的配置项 [绘图属性](graphic.html)
+
+autoRotate: boolean
+
+文本是否需要自动旋转，默认为 true
+
+position：string
+
+仅当chart的geom为`interval`时有效。指定当前label与当前图形的相对位置，可选参数为middle, top,bottom,left,right。默认为top。位置效果如下：
+
+![position](https://gw.alipayobjects.com/zos/rmsportal/qmwKhVzMhjCmyMnxcTBe.png)
+
+##### html专有配置属性
+
+htmlTemplate: function
+
+与`useHtml`配合使用。当useHtml为true时，指定html渲染文本。
+##### 代码示例
+
+```js
+   chart.area().label('x', {
+       useHtml: true,
+       htmlTemplate: (text, item, index) {
+           return '<div>' + text + '</div>';
+       }
+   })
+```
 
 ### tooltip
 
