@@ -68,7 +68,8 @@ chart.guide().line({
     stroke: '#999', // 线的颜色
     lineDash: [ 0, 2, 2 ], // 虚线的设置
     lineWidth: 3 // 线的宽度
-  } // 图形样式配置
+  }, // 图形样式配置
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -123,6 +124,10 @@ chart.guide().line({
 
 用于设置辅助线的显示样式，详见[绘图属性](./canvas.html)。
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 ### Text
 
 `chart.guide().text({})`
@@ -141,7 +146,8 @@ chart.guide().text({
     rotate: 30 // 旋转角度
   }, // 文本的图形样式属性
   offsetX: {Number}, // x 方向的偏移量
-  offsetY: {Number} // y 方向偏移量
+  offsetY: {Number}, // y 方向偏移量
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -197,6 +203,10 @@ chart.guide().text({
 
 设置辅助文本 y 方向的偏移量。
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 ### Point
 
 `chart.guide().point({})`
@@ -219,7 +229,8 @@ chart.guide().point({
     fill: '#666', // 点的填充颜色
   }, // 文本的图形样式属性
   offsetX: {Number}, // x 方向的偏移量
-  offsetY: {Number} // y 方向偏移量
+  offsetY: {Number}, // y 方向偏移量
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -270,6 +281,10 @@ chart.guide().point({
 
 设置辅助点 y 方向的偏移量。
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 ### Tag
 
 `chart.guide().tag({})`
@@ -303,7 +318,8 @@ chart.guide().tag({
     r: 3, // 半径
     lineWidth: 1, // 线的边框
     stroke: '#fff' // 线的描边
-  } // 点的样式
+  }, // 点的样式
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -378,6 +394,10 @@ background: {
 }
 ```
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 - `textStyle`: Object
 
 Tag 的字体样式设置，可设置的属性如下，详见[绘图属性](./canvas.md)：
@@ -413,7 +433,8 @@ chart.guide().rect({
     fill: '#f80', // 辅助框填充的颜色
     fillOpacity: 0.1, // 辅助框的背景透明度
     stroke: '#ccc' // 辅助框的边框颜色设置
-  } // 辅助框的图形样式属性
+  }, // 辅助框的图形样式属性
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -469,6 +490,10 @@ chart.guide().rect({
 
 用于设置辅助背景框的样式，详见绘图属性。
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 ### Html
 
 `chart.guide().html({})`
@@ -482,7 +507,8 @@ chart.guide().html({
   alignY: 'top' | 'middle' | 'bottom',
   offsetX: {Number},
   offsetY: {Number},
-  html: {String} // html 代码
+  html: {String}, // html 代码
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -538,6 +564,10 @@ html 的垂直对齐方式，可取值为： top、middle、bottom，默认值�
 
 设置 html 在 y 方向的偏移量。
 
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
+
 ### Arc
 
 `chart.guide().arc({})`
@@ -549,7 +579,8 @@ chart.arc({
   top: {Boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
   start: {Object} | {Function} | {Array}, // 辅助框起始位置，值为原始数据值，支持 callback
   end: {Object} | {Function} | {Array},// 辅助框结束位置，值为原始数据值，支持 callback
-  style: {Object} // 图形样式属性
+  style: {Object}, // 图形样式属性
+  limitInPlot: {Boolean} // 是否将 guide 元素限制在绘图区域图，默认为 false
 });
 ```
 
@@ -604,6 +635,10 @@ chart.guide().arc({
 - `style`: Object
 
 设置圆弧的显示样式，详见绘图属性。
+
+- `limitInPlot`: Boolean
+
+是否将 guide 元素限制在绘图区域图，默认为 false。
 
 ### RegionFilter
 
