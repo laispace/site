@@ -62,21 +62,27 @@ chartDetail: ${base}zh-cn/vis/chart/treemap.html
     });
     chart.axis(false);
     chart.legend(false);
-    chart.tooltip({
-      showTitle: false
-    });
+    chart.tooltip(false);
     chart.polygon()
       .position('x*y')
       .color('brand')
-      .tooltip('name*value', function (name, value) {
-        return {
-          name: name,
-          value: value
-        };
-      })
       .style({
         lineWidth: 1,
         stroke: '#fff'
+      })
+      .label('brand*depth*value', (brand, depth, value) => (depth === 1 && value > 0.2) ? brand : undefined, {
+        offset: 0,
+        textStyle: {
+          textBaseline: 'middle',
+          fill: '#000',
+          shadowBlur: 10,
+          shadowColor: '#fff'
+        },
+        formatter(val) {
+          if (val !== 'root') {
+            return val;
+          }
+        }
       })
       .label('name', {
         type: 'treemap'

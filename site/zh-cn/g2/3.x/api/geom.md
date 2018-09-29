@@ -548,20 +548,23 @@ chart.point().position('x*y').label('x', {
 
 文本布局类型。默认为`'default'`。可选值如下：
 
-  - scatter: 按照散点图 label 布局算法对所有 label 进行二次布局。数据过于密集的情况下会剔除放不下的 label。
+- scatter: 按照散点图 label 布局算法对所有 label 进行二次布局。数据过于密集的情况下会剔除放不下的 label。
 
 | 散点图普通 label 布局 | 散点图指定 scatter label 布局 |
 | ------------------- | -------------------------- |
-| ![normal](https://gw.alipayobjects.com/zos/rmsportal/BtzyOFMEmKiyJOpXlQum.png) | ![scatter](https://gw.alipayobjects.com/zos/rmsportal/qJZTQMZKduqQZQrKvPFJ.png) |
+| ![normal](https://gw.alipayobjects.com/zos/rmsportal/BtzyOFMEmKiyJOpXlQum.png) | ![scatter](https://gw.alipayobjects.com/zos/rmsportal/vXhXUgVsUHhRsTBgXRNe.png) |
 
-  - treemap: 剔除形状容纳不了的 label。
+- treemap: 剔除形状容纳不了的 label。
 
 | treemap 普通布局 | 指定 treemap label 布局 |
 | ------------------- | -------------------------- |
-| ![normal](https://gw.alipayobjects.com/zos/rmsportal/UhtvMfssatoHEElcUqMQ.png) | ![treemap](https://gw.alipayobjects.com/zos/rmsportal/GwvMCDgpCamwsKLqgQfo.png) |
+| ![normal](https://gw.alipayobjects.com/zos/rmsportal/UhtvMfssatoHEElcUqMQ.png) | ![treemap](https://gw.alipayobjects.com/zos/rmsportal/wCAAajFuoLPiZvptGLax.png) |
 
+- map: label 将会初始定位到地图板块的可视中心，为了防止 label 之间相互覆盖布局，尝试向四周偏移，会剔除放不下的 label。
 
-  - map: label 将会初始定位到地图板块的可视中心，为了防止 label 之间相互覆盖布局，尝试向四周偏移，会剔除放不下的 label。
+| map 普通布局 | 指定 map label 布局 |
+| ------------------- | -------------------------- |
+| ![normal](https://gw.alipayobjects.com/zos/rmsportal/MHQzrKAbIABmkEctrvDX.png) | ![map](https://gw.alipayobjects.com/zos/rmsportal/WTjMoJKlXJnlrxtvJxVR.png) |
 
 ###### `labelLine`: { object | boolean }
 

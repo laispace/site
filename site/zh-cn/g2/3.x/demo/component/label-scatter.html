@@ -15,9 +15,9 @@ relativePlots:
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: window.innerHeight
+      height: window.innerHeight,
+      padding: 'auto'
     });
-    // 数据格式： [{"gender":"female","height":161.2,"weight":51.6}]
     chart.source(data);
     chart.tooltip({
       showTitle: false,
@@ -37,7 +37,7 @@ relativePlots:
       .shape('circle')
       .opacity(0.65)
       .label('weight', {
-        // type: 'scatter',
+        type: 'scatter',
         offset: 0
       });
     chart.render();
