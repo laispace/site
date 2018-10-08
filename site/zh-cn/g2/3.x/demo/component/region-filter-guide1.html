@@ -9,17 +9,6 @@ plotDescription: regionFilter guide将图表中位于矩形选区中的图形元
 plotUsage: 数据来源：世界银行气温变化数据 https://climate.nasa.gov/vital-signs/global-temperature/。
 -->
 <script>
-  //page style
-  $('body').html('<select id="position-selector"><option value ="rect">直角坐标系</option><option value ="polar">极坐标</option></select><div id="mountNode"></div>');
-  $('#mountNode').css("margin-top", "55px");
-  $("#position-selector").css({
-    'position': 'absolute',
-    'top': '10px',
-    'left': '10px',
-    'width': '110px',
-    'height': '30px',
-    'z-index': 1000
-  });
  $.getJSON('/assets/data/tempChange.json', data => {
       const chart = new G2.Chart({
         container: 'mountNode',
@@ -69,10 +58,5 @@ plotUsage: 数据来源：世界银行气温变化数据 https://climate.nasa.go
         }
       });
       chart.render();
-      $("#position-selector").change(function () {
-        const value = $("#position-selector").val();
-        chart.coord(value);
-        chart.repaint();
-      });
     });
 </script>
