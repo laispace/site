@@ -164,7 +164,9 @@ const ds = new DataSet({
  */
 $.get('/assets/data/population-by-age.csv', data => {
   const dvForAll = ds
-    .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
+    .createView('populationByAge', {
+      watchingStates: [], // 用空数组，使得这个实例不监听 state 变化
+    }) // 在 DataSet 实例下创建名为 populationByAge 的数据视图
     .source(data, {
       type: 'csv', // 使用 CSV 类型的 Connector 装载 data
     });
