@@ -19,17 +19,6 @@ relativePlots:
       padding: 'auto'
     });
     chart.source(data);
-    chart.tooltip({
-      showTitle: false,
-      crosshairs: {
-        type: 'cross'
-      },
-      itemTpl: '<li data-index={index} style="margin-bottom:4px;">'
-        + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
-        + '{name}<br/>'
-        + '{value}'
-        + '</li>'
-    });
     chart.tooltip(false);
     chart.point()
       .position('height*weight')
@@ -43,4 +32,3 @@ relativePlots:
     chart.render();
   });
 </script>
-  

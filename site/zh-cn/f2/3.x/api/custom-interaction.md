@@ -99,7 +99,7 @@ const MyInteraction extends Interaction {
 }
 ```
 
-更多可参考 [pie-select](https://github.com/antvis/f2/blob/develop/src/interaction/pie-select.js) 交互行为类的实现。
+更多可参考 [pie-select](https://github.com/antvis/f2/blob/master/src/interaction/pie-select.js) 交互行为类的实现。
 
 
 ### 注册交互行为
