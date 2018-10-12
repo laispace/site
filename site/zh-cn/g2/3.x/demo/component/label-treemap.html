@@ -63,17 +63,22 @@ chartDetail: ${base}zh-cn/vis/chart/treemap.html
     chart.axis(false);
     chart.legend(false);
     chart.tooltip(false);
-    chart.polygon()
-      .position('x*y')
-      .color('brand')
-      .style({
-        lineWidth: 1,
-        stroke: '#fff'
-      })
-      .label('name', {
-        type: 'treemap'
-      });
+    chart.polygon().position('x*y').color('brand').style({
+      lineWidth: 1,
+      stroke: '#fff'
+    }).label('brand*depth*name', function(brand, depth, name) {
+      if (depth !== 1 || name === '其他') {
+        // 只有第一级显示文本，数值太小时不显示文本
+        return name;
+      }
+    }, {
+      type: 'treemap',
+      textStyle: {
+        shadowColor: 'rgba(0,0,0,0.5)',
+        shadowBlur: 3
+      },
+      offset: 0
+    });
     chart.render();
   });
 </script>
-  
