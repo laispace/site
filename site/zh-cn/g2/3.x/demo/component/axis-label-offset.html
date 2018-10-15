@@ -1,0 +1,48 @@
+<!--
+title: axis-label offset 配置
+plotDescription: Axis 组件支持 offset 双向配置
+plotUsage: 用于支持小画布中让坐标轴的 label 内嵌
+-->
+<script>
+  var data = [{
+    year: '1951 年',
+    sales: 38
+  }, {
+    year: '1952 年',
+    sales: 52
+  }, {
+    year: '1956 年',
+    sales: 61
+  }, {
+    year: '1957 年',
+    sales: 145
+  }, {
+    year: '1958 年',
+    sales: 48
+  }, {
+    year: '1959 年',
+    sales: 38
+  }, {
+    year: '1960 年',
+    sales: 38
+  }, {
+    year: '1962 年',
+    sales: 38
+  }];
+  var chart = new G2.Chart({
+    container: 'canvas',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(data);
+  chart.scale('sales', {
+    tickInterval: 20
+  });
+  chart.axis('sales', {
+    label: {
+      offset: [-10, 10]
+    }
+  });
+  chart.interval().position('year*sales');
+  chart.render();
+</script>

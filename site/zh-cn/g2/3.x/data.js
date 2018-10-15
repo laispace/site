@@ -22,6 +22,7 @@ const plotByName = {
     voronoi:     { icon: 'icon-voronoi', index: 18, url: '${base}zh-cn/g2/3.x/demo/relation/voronoi.html', name: 'voronoi图', },
     sankey:      { icon: 'icon-sankey', index: 19, url: '${base}zh-cn/g2/3.x/demo/relation/sankey.html', name: '桑基图', },
     arc:         { icon: 'icon-arc', index: 20, url: '${base}zh-cn/g2/3.x/demo/relation/arc.html', name: '弧长链接图', },
+    gallery:   { icon: 'icon-gallery', index: 0,  url: '${base}zh-cn/g2/3.x/demo/selection/line1.html', name: '精选案例', },
 };
 module.exports = {
     plotByName,
