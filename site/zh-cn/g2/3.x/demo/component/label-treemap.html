@@ -13,7 +13,7 @@ relativePlots:
 chartDetail: ${base}zh-cn/vis/chart/treemap.html
 -->
 <script>
-  $.getJSON('data/mobile.json', mobiles => {
+  $.getJSON('/assets/data/mobile.json', function(mobiles) {
     const { DataView } = DataSet;
     // 会通过子节点累加 value 值，所以设置为 0
     mobiles.forEach(function (mobile) {
