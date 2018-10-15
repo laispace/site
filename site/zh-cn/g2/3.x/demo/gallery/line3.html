@@ -39,6 +39,7 @@ plotUsage: 数据来源：天弘基金官网
         });
         chart.line().position('time*rate');
         chart.guide().dataMarker({
+            top:true,
             position: ['2014-01-03', 6.763],
             lineLength: 30,
             content: '受稳健货币政策影响，协定存款利\n率居高不下,收益率达6.763%',
@@ -48,10 +49,15 @@ plotUsage: 数据来源：天弘基金官网
                     fontSize: 12,
                     stroke:'white',
                     lineWidth:2
+                },
+                line:{
+                    stroke: '#A3B1BF',
+                    lineWidth: 2
                 }
             }
         });
         chart.guide().dataMarker({
+            top:true,
             position: ['2013-05-31', 2.093],
             lineLength: 50,
             content: '余额宝刚成立时，并未达到目标资产\n配置，故收益率较低',
@@ -61,6 +67,10 @@ plotUsage: 数据来源：天弘基金官网
                     fontSize: 12,
                     stroke:'white',
                     lineWidth:2
+                },
+                line:{
+                    stroke: '#A3B1BF',
+                    lineWidth: 2
                 }
             }
         });

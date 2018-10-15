@@ -47,12 +47,15 @@ plotUsage: 数据来源：Demo数据
            },{
              textStyle:{
                fill:'#7a7a7a',
-               fontSize:13
+               fontSize:13,
+               stroke:'white',
+               lineWidth:2
              }
            })
            .style({ lineWidth:3 });
       
       chart.guide().line({
+        top:true,
         start:['2012-09',5396],
         end:['2018-02',5396],
         lineStyle:{

@@ -52,6 +52,7 @@ plotUsage: 数据来源：Google Trends（不包括中国）
         chart.line().position('date*blockchain').color('#1890ff');
         chart.line().position('date*nlp').color('#2fc25b');
         chart.guide().dataMarker({
+            top:true,
             position: ['2016-02-28', 9],
             lineLength: 30,
             content: 'Blockchain 首超 NLP',
@@ -69,6 +70,7 @@ plotUsage: 数据来源：Google Trends（不包括中国）
             }
         });
         chart.guide().dataMarker({
+            top:true,
             position: ['2017-12-17', 100],
             lineLength: 30,
             content: '2017-12-17, 受比特币影响，\n blockchain搜索热度达到顶峰\n峰值：100',
@@ -81,6 +83,10 @@ plotUsage: 数据来源：Google Trends（不包括中国）
                 },
                 point: {
                     r: 4
+                },
+                line:{
+                    stroke: '#A3B1BF',
+                    lineWidth: 2
                 }
             }
         });
