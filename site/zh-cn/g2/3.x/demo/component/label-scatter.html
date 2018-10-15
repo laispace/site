@@ -18,16 +18,18 @@ relativePlots:
       padding: 'auto'
     });
     chart.source(data);
-    chart.tooltip(false);
-    chart.point()
-      .position('height*weight')
-      .size(4)
-      .shape('circle')
-      .opacity(0.65)
-      .label('weight', {
-        type: 'scatter',
-        offset: 0
-      });
+    chart.tooltip({
+      type: 'mini'
+    });
+    chart.point().position('height*weight').size(4).shape('circle').opacity(0.65).label('weight', {
+      type: 'scatter',
+      offset: 0,
+      textStyle: {
+        fill: 'rgba(0, 0, 0, 0.65)',
+        stroke: '#fff',
+        lineWidth:2
+      }
+    });
     chart.render();
   });
 </script>
