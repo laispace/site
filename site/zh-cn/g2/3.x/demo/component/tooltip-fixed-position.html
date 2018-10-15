@@ -54,6 +54,7 @@ const chart = new G2.Chart({
 chart.source(data);
 chart.tooltip({
   follow: false,
+  crosshairs:'y',
   htmlContent(title, items) {
     const alias = {
       download: '当日累计下载量',

@@ -8,14 +8,11 @@ resource:
 plotDescription: 使用htmlContent配置项实现tooltip高度自定义。
 -->
 <style>
-    body {
-        background-color: #e8e3ce
-    }
-
     .custom-tooltip {
         position: absolute;
         background-color: rgba(255, 255, 255, 0.96);
         color: #646464;
+        ;
         width: 150px;
         height: auto;
         border-radius: 3px;
@@ -133,10 +130,10 @@ plotDescription: 使用htmlContent配置项实现tooltip高度自定义。
     chart.tooltip({
         htmlContent(title, items) {
             const data = items[0].point._origin;
-            const titleDom = '<div class ="custom-tooltip-title">' + data.data + ' ></div>';
+            const titleDom = '<div class ="custom-tooltip-title">' + data.data + '</div>';
             const tempDom = '<div class = "custom-tooltip-value">'
-                + '<div class = "custom-tooltip-temp" style="margin-left:15px; float:left;"><span>低温</span>' + data.minTemp + '</div>'
-                + '<div class = "custom-tooltip-temp" style="margin-right:15px; float:right;"><span>高温</span>' + data.maxTemp + '</div>'
+                + '<div class = "custom-tooltip-temp"><span>低温</span>' + data.minTemp + '</div>'
+                + '<div class = "custom-tooltip-temp"><span>高温</span>' + data.maxTemp + '</div>'
                 + '</div>';
             const windDom = '<div class = "custom-tooltip-wind">风向:' + data.windDir + ',  风速:' + data.windSpeed + '</div>';
             let domClass;
