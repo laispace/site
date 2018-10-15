@@ -1,0 +1,57 @@
+<!--
+title: legend-color legend
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+<script>
+    $.get('/assets/data/day-hour-heatmap.tsv', data => {
+      const ds = new DataSet();
+      const dv = ds.createView('demo')
+        .source(data, {
+          type: 'tsv'
+        })
+        .transform({
+          type: 'map',
+          callback(row) {
+            row.day = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ][parseInt(row.day - 1, 10)];
+            // row.hour = parseInt(row.hour, 10); // keep row.hour as a string
+            row.value = parseInt(row.value, 10);
+            return row;
+          }
+        });
+      const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding:'auto'
+      });
+      chart.source(dv.rows);
+      chart.scale({
+        day: {
+          type: 'cat'
+        },
+        hour: {
+          type: 'cat'
+        }
+      });
+      chart.legend({ height: 8 });
+      chart.axis('hour', {
+        title: null,
+        grid: {
+          line: {
+            stroke: '#d9d9d9',
+            lineWidth: 1,
+            lineDash: [ 2, 2 ]
+          }
+        }
+      });
+      chart.axis('day', {
+        title: null
+      });
+      chart.polygon()
+        .position('hour*day')
+        .color('value', '#f6f6f6-#36B3C3');
+      chart.render();
+    });
+  </script>
