@@ -13,7 +13,7 @@ relativePlots:
 chartDetail: ${base}zh-cn/vis/chart/treemap.html
 -->
 <script>
-  $.getJSON('/assets/data/mobile.json', mobiles => {
+  $.getJSON('data/mobile.json', mobiles => {
     const { DataView } = DataSet;
     // 会通过子节点累加 value 值，所以设置为 0
     mobiles.forEach(function (mobile) {
@@ -64,8 +64,8 @@ chartDetail: ${base}zh-cn/vis/chart/treemap.html
     chart.legend(false);
     chart.tooltip(false);
     chart.polygon().position('x*y').color('brand').style({
-      lineWidth: 1,
-      stroke: '#fff'
+      lineWidth: 0.5,
+      stroke: 'rgba(255,255,255,0.65)'
     }).label('brand*depth*name', function(brand, depth, name) {
       if (depth !== 1 || name === '其他') {
         // 只有第一级显示文本，数值太小时不显示文本
