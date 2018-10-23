@@ -5,7 +5,8 @@
 {% endblock %}
 {% block content %}
 <div class="toc-container">
-    <div class="toc"></div>
+    <div class="toc">
+    </div>
 </div>
 <div class="demos container-fluid {% if currentProduct == 'f2' %}f2{% endif %}">
 {% if keywords %}
@@ -30,7 +31,7 @@
         <div class="col-12 col-md-12 col-xl-10">
             <div class="container content">
                 {% for cat in demos %}
-                <h5>{{ cat.title }}</h5>
+                <h5 data-icon="{{cat.plot.icon}}">{{ cat.title }}</h5>
                 <div class="row">
                     {% for demo in cat.demos %}
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center card-container" data-tags="{{demo.tag}}" data-recommend="{{demo.recommend}}">

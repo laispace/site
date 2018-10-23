@@ -166,9 +166,14 @@ function adjustScreenshotsSize() {
           $screenshot.height($screenshot.width() * 0.535);
         }
     });
-  $('.toc-container').height($('.demos').height());
+  $tocContainer.height($('.demos').height());
 }
 
 adjustScreenshotsSize();
+$('.toc-link').each(function() {
+  const $cat = $(this);
+  const style = 'iconfont ' + $('#_' + $cat.text()).attr('data-icon');
+  $cat.append('<span class="' + style + '"/>');
+});
 $(window).resize(adjustScreenshotsSize);
 
