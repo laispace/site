@@ -57,8 +57,9 @@ demoDirs.forEach(function (dir) {
             meta = _renderMd.meta;
 
         var index = meta.index,
-            title = meta.title;
-
+            title = meta.title,
+            recommend = meta.recommend,
+            tags = meta.tags;
         var name = basename(file, '.html');
         var href = base + 'zh-cn/g2/3.x/demo/' + category + '/' + name + '.html';
         var demo = {
@@ -68,7 +69,10 @@ demoDirs.forEach(function (dir) {
             index: index,
             name: name,
             category: category,
-            title: title
+            title: title,
+            recommend: recommend,
+            tag: tags,
+            tags: tags ? tags.split(',') : null
         };
         demoByHref[href] = demo;
         demosByCategory[category].demos.push(demo);
@@ -82,9 +86,8 @@ forIn(demosByCategory, function (item) {
     });
 });
 demos.sort(function (a, b) {
-    return a.index - b.index;
+  return a.index - b.index;
 });
-
 module.exports = {
     navName: 'demo',
     demos: demos,
@@ -92,5 +95,15 @@ module.exports = {
     canSwitchThemes: true,
     demosByCategory: demosByCategory,
     demoByHref: demoByHref,
-    showFooter: false
+    showFooter: false,
+  // demo页搜索选项
+    keywords: [
+    { root: '轴', children: ['隐藏轴线', '母子刻度', '复数值','轴排序'] },
+    { root: '图例', children: ['图例跟随','图上图例','图例排序','激活部分图例'] },
+    { root: '图形', children: [ '默认选中', '链接跳转', '联动', '下钻', '高亮' ] },
+    { root: '提示信息', children: ['明细汇总', '鼠标可进入', '工具栏'] },
+    { root: '辅助标注', children: [ '数据标注', '均值线', '预测线' ] },
+    { root: '标签', children: [ '峰谷值', '最新值'] },
+    { root: '仅看推荐' }
+  ],
 };

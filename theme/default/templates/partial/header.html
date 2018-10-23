@@ -42,9 +42,17 @@
         <ul class="navbar-nav mt-2 mt-lg-0" id="sub-site-nav">
             {% if isHome %}
                 {% for name, item in homepageNavs %}
-                <a href="{{ item.href }}" class="nav-link">
+            <div class="dropdown">
+                <a class="nav-link" href="{{ item.href }}" id="dropdown-{{ item.name }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ item.name }}
                 </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown-{{ item.name }}">
+                    {% for link, linkItem in item.links %}
+                    <a class="dropdown-item" href="{{ linkItem.href }}">{{ linkItem.text }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
                 {% endfor %}
             {% else %}
                 {% set product = products[currentProduct] %}
