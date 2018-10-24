@@ -62,7 +62,7 @@ function filterCategory(cards, keywords) {
 
 function filterDemos(keywords) {
   let $card, tags, flag = false, hasMatch = false;
-  $('h5').each(function () {
+  $('#categories h5').each(function () {
     const $cat = $(this);
     const cards = $cat.next('.row').find('.card-container');
     flag = filterCategory(cards, keywords);
