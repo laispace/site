@@ -19,12 +19,6 @@ relativePlots:
     { action: '完成交易', pv: 8000 }
   ];
   const dv = new DataView().source(data);
-  /*dv.transform({
-    type: 'percent',
-    field: 'pv',
-    dimension: 'action',
-    as: 'percent'
-  });*/
   dv.transform({
     type:'map',
     callback(row){
