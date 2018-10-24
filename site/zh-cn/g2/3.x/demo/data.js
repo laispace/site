@@ -59,6 +59,7 @@ demoDirs.forEach(function (dir) {
         var index = meta.index,
             title = meta.title,
             recommend = meta.recommend,
+            filter = meta.filter,
             tags = meta.tags;
         var name = basename(file, '.html');
         var href = base + 'zh-cn/g2/3.x/demo/' + category + '/' + name + '.html';
@@ -71,7 +72,7 @@ demoDirs.forEach(function (dir) {
             category: category,
             title: title,
             recommend: recommend,
-            tag: tags,
+            tag: filter,
             tags: tags ? tags.split(',') : null
         };
         demoByHref[href] = demo;

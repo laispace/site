@@ -11,7 +11,7 @@
 <div class="demos container-fluid {% if currentProduct == 'f2' %}f2{% endif %}">
 {% if keywords %}
     <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-12 col-xl-10">
+        <div class="col-12 col-md-12 col-xl-12">
             <h5>全部图表<i class="iconfont hide-search"></i><span id="toggleSearch" class="iconfont">收起筛选</span></h5>
                 <div class="search-container" id="searchContainer">
                     {% for type in keywords %}
@@ -26,9 +26,12 @@
                 </div>
         </div>
     </div>
+    <div id="noResult">
+        <img src="{{ assets }}/image/empty-result.png" alt="">
+    </div>
 {% endif %}
     <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-12 col-xl-10">
+        <div class="col-12 col-md-12 col-xl-12">
             <div class="container content">
                 {% for cat in demos %}
                 <h5 data-icon="{{cat.plot.icon}}">{{ cat.title }}</h5>
