@@ -10,7 +10,7 @@ resource:
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/eQcMeCRSfQoOTRhBhxVZ.png" style="width: 50%" />
 
-Scroll bar 是一个静态插件，主要用于辅助 pan 和 pinch 交互以。
+Scroll bar 是一个静态插件，主要用于辅助 pan 和 pinch 交互。
 
 ## API
 
