@@ -3,6 +3,29 @@
  title: 更新日志
 -->
 
+#### 3.2.4 (2018-10-25)
+
+##### Bug Fixes
+
+* fix the draw error caused by smooth area animation. Closed [#373](https://github.com/antvis/f2/pull/373). ([407fdf5c](https://github.com/antvis/f2/commit/407fdf5cb56646b0a8ea175e2a61a946c29bdcb1))
+* fix the draw error of polyline which has empty points but still fill the area. Closed [#363](https://github.com/antvis/f2/pull/363). ([2c336837](https://github.com/antvis/f2/commit/2c336837b59ad4140a32b80c8401f7a4e9fbbc77))
+* let 'interval-select' interaction work for mixed charts. Closed [#355](https://github.com/antvis/f2/pull/355). ([b80aa3ff](https://github.com/antvis/f2/commit/b80aa3ff31d157346bf98783c9bbd99b169ccaef))
+
+#### 3.2.3 (2018-09-27)
+
+##### Chores
+
+* upgrade @antv/util to 1.2.5 ([ff8eb0f7](https://github.com/antvis/f2/commit/ff8eb0f7036c216e5259cba7f6b3ec5d4e97526f))
+
+##### Bug Fixes
+
+* fix the error when draw Guide.regionFilter for area chart. Closed [#345](https://github.com/antvis/f2/pull/345). ([3900565d](https://github.com/antvis/f2/commit/3900565d132eebb43e36822e9d067a0656ae7e3c))
+* add some padding in the vertical direction of chart clip area. Closed [#336](https://github.com/antvis/f2/pull/336). ([ab485d15](https://github.com/antvis/f2/commit/ab485d1555448f95f469f0cc52cfe5086ec4c890))
+* fix the error that when the grid is a function and specify the type as 'arc'. Closed [#331](https://github.com/antvis/f2/pull/331). ([b27a0727](https://github.com/antvis/f2/commit/b27a0727d109c109532a226a04d28c84d2ea7b7b))
+* when the points is empty, return. Closed [#316](https://github.com/antvis/f2/pull/316). ([82d5c2c7](https://github.com/antvis/f2/commit/82d5c2c768c80d7356fe72b7408713eb5992e453))
+* fix the bug when customizing the legend, the function type marker not work. Closed [#317](https://github.com/antvis/f2/pull/317). ([d631466c](https://github.com/antvis/f2/commit/d631466c9d9dc2a3679164348ded1717a3b48077))
+* Optimized geometry shape's id generation strategy. Closed [#318](https://github.com/antvis/f2/pull/318). ([ea7adc9d](https://github.com/antvis/f2/commit/ea7adc9df8a3943f235e970e66c98f6580186dc7))
+
 #### 3.2.2 (2018-09-06)
 
 ##### Chores
