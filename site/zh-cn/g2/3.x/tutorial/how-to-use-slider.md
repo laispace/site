@@ -1,6 +1,6 @@
 <!--
 index: 19
-title: Slider 数据滑动条 
+title: Slider 数据滑动条
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -43,7 +43,7 @@ import '@antv/g2-plugin-slider';
 ```
 
 > !注意：Slider 组件作为 G2 的交互插件，必须在 G2 引入的前提下使用哦。
-                                           
+
 ### 创建 Slider 的 dom 容器
 
 然后还需要创建一个展示 Slider 插件的 DOM 容器，如：
@@ -101,12 +101,12 @@ $.getJSON('/assets/data/peking-aqi.json', data => {
     dv.source(data)
       .transform({ // !!! 根据状态量设置数据过滤规则，
         type: 'filter',
-        callback: obj => { 
-          return obj.date <= ds.state.end && obj.date >= ds.state.start; 
+        callback: obj => {
+          return obj.date <= ds.state.end && obj.date >= ds.state.start;
         }
       });
     const chart = new G2.Chart({
-      id: 'c1',
+      container: 'c1',
       forceFit: true,
       height: 400,
       animate: false
@@ -149,7 +149,7 @@ $.getJSON('/assets/data/peking-aqi.json', data => {
 
     // !!! 创建 slider 对象
     const slider = new Slider({
-      container: 'slider', 
+      container: 'slider',
       start: '2004-01-01',
       end: '2007-09-24',
       data, // !!! 注意是原始数据，不要传入 dv
@@ -161,6 +161,6 @@ $.getJSON('/assets/data/peking-aqi.json', data => {
         ds.setState('end', endText);
       }
     });
-    slider.render(); 
+    slider.render();
 });
 ```
