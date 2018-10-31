@@ -12,8 +12,8 @@
 {% if keywords %}
     <div class="row flex-xl-nowrap">
         <div class="col-12 col-md-12 col-xl-12">
-            <h5>全部图表<i class="iconfont hide-search"></i><span id="toggleSearch" class="iconfont">收起筛选</span></h5>
-                <div class="search-container" id="searchContainer">
+            <h5>全部图表<i class="iconfont show-search"></i><span id="toggleSearch" class="iconfont">展开筛选</span></h5>
+                <div class="search-container mini" id="searchContainer">
                     {% for type in keywords %}
                     <div>
                         <span data-text="{{type.root}}" class="tag root-tag" style="display: inline">{{type.root}}<span aria-hidden="true">&times;</span></span>

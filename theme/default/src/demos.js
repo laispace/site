@@ -9,7 +9,7 @@ const RECOMMEND = '仅看推荐';
 const SHOW_SEARCH = '展开筛选';
 const HIDE_SEARCH = '收起筛选';
 const selectedTags = {};
-let expansion = true;
+let expansion = false;
 let recommendOnly = false;
 
 function showRecommend($card) {
