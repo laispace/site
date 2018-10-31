@@ -2,6 +2,50 @@
 @import "./less/headroom.less";
 @import "./less/theme-switching.less";
 
+.toc-container {
+  left: 0;
+  width: 15%;
+  box-shadow: rgba(63,62,67,0.1) 2px 0 4px;
+  padding: 14px 0;
+  max-width: initial;
+  background-color: #F8FAFE;
+
+  .toc-list-item {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .toc-list {
+    padding-left: 0;
+  }
+
+  .toc-link {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.65);
+    width: 100%;
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .is-active-link::before {
+    background: transparent !important;
+  }
+  .is-active-link {
+    font-weight: 400;
+    color: #106EE9;
+    background-color: #E6F7FF;
+    border-right: 2px solid #188FFF;
+  }
+
+  .iconfont {
+    float: left;
+    color: #ABB3C9;
+    margin-right: 16px;
+  }
+}
+
+
 .demos {
   padding-left: 18.33333%;
   padding-right: 3.333%;
@@ -152,3 +196,4 @@
     }
   }
 }
+

@@ -159,7 +159,11 @@ $('header').headroom({
 });
 
 $('.tag').on('click', function (e) {
-  const tag = $(e.target);
+  var ele = e.target;
+  if (ele.classList.value.indexOf('tag') < 0) {
+    ele = ele.parentNode;
+  }
+  const tag = $(ele);
   const data = tag.attr('data-text');
   if (data === RECOMMEND) {
     recommendOnly = !recommendOnly;
