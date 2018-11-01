@@ -73,15 +73,19 @@ function resizePreview() {
     syncCode();
 }
 
-resizePreview();
-if($iframeContainer.hasClass('g2')) {
-  var height = window.innerHeight - 287;
-  $('#demo-preview').height(height - 50);
-  $('#preview').height(height - 120);
-  $('#resize-handler').height(height);
-  $('.code-panel').height(height);
-  $('.demo-container .border-secondary').height('auto');
+function resizeG2() {
+  if($iframeContainer.hasClass('g2')) {
+    var height = window.innerHeight - 287;
+    $('#demo-preview').height(height - 50);
+    $('#preview').height(height - 120);
+    $('#resize-handler').height(height);
+    $('.code-panel').height(height);
+    $('.demo-container .border-secondary').height('auto');
+  }
 }
+
+resizePreview();
+resizeG2();
 
 const $execute = $('#btn-execute');
 $execute.click(syncCode);
@@ -215,6 +219,31 @@ if ($iframeContainer.hasClass('f2')) {
         $iframeContainer.css('top', 82);
     }
 }
+
+$('#btn-fullscreen').click(function() {
+  const text = $(this).text();
+  if (~text.indexOf('全屏')) {
+    $(this).html('<span class="iconfont icon-exitfullscreen"></span> 还原');
+    $('#code-container').css({
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      zIndex: 10,
+    });
+    const height = window.innerHeight;
+    $('#demo-preview').height(height);
+    $('#preview').height(height - 60);
+    $('#resize-handler').height(height);
+    $('.code-panel').height(height);
+  } else {
+    $(this).html('<span class="iconfont icon-fullscreen"></span> 全屏');
+    $('#code-container').css({ position: 'relative' });
+    resizeG2();
+  }
+  syncCode();
+});
 
 const slider = $('#slider').lightSlider({
   item: 7,

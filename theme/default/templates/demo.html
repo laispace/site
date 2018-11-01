@@ -97,7 +97,7 @@
                 <img id="slider-next" src="{{ assets }}/image/slider-next.png" alt="下一张" />
             </div>
             {% endif %}
-            <div class="row d-flex flex-row border-secondary">
+            <div class="row d-flex flex-row border-secondary" id="code-container">
                 <div class="col detail" id="detail-container">
                     {% if template === 'g2-demo' %}
                         <div class="g2-demo-preview" id="demo-preview">
@@ -157,6 +157,10 @@
                                     <span id="alert-copy-fail" class="text-danger" style="display: none;">
                             {{ resource.translate.copyFail }}
                         </span>
+                                    <button id="btn-fullscreen" type="button" class="btn btn-light">
+                                        <span class="iconfont icon-quanpingzuidahua"></span>
+                                        {{ resource.translate.fullScreen }}
+                                    </button>
                                     <button id="btn-copy" type="button" class="btn btn-light">
                                         <span class="iconfont icon-copy"></span>
                                         {{ resource.translate.copy }}
