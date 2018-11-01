@@ -36,25 +36,25 @@ chart.legend({
   custom: true,
   allowAllCanceled: true,
   items: [
-    { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} }, 
+    { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} },
     { value: 'people', marker: {symbol: 'hyphen', stroke: '#fdae6b', radius: 5, lineWidth: 3} }
   ],
-  onClick: ev => {
-    const item = ev.item;
-    const value = item.value;
-    const checked = ev.checked;
-    const geoms = chart.getAllGeoms();
-    for (let i = 0; i < geoms.length; i++) {
-      const geom = geoms[i];
-      if (geom.getYScale().field === value) {
-        if (checked) {
-          geom.show();
-        } else {
-          geom.hide();
-        }
+  onClick: function onClick(ev) {
+  var item = ev.item;
+  var value = item.value;
+  var checked = item.checked;
+  var geoms = chart.getAllGeoms();
+  for (var i = 0; i < geoms.length; i++) {
+    var geom = geoms[i];
+    if (geom.getYScale().field === value) {
+      if (checked) {
+        geom.show();
       }
+    } else {
+      geom.hide();
     }
   }
+}
 });
 chart.axis('people', {
   grid: null,
