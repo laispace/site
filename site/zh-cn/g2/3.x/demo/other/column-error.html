@@ -4,6 +4,7 @@ plotDescription: 柱状图，误差
 plotUsage: 在柱状图中加入误差
 chartDetail: ${base}zh-cn/vis/chart/bar.html
 date: "2018-03-21"
+subCat: 其他
 -->
 
 <script>
@@ -13,7 +14,7 @@ date: "2018-03-21"
         {name: '类别三', value: 170, error: 5},
         {name: '类别四', value: 170, error: 5}
     ];
-    
+
     data.forEach(function(obj) {
         obj.range = [obj.value - obj.error, obj.value + obj.error];
     });

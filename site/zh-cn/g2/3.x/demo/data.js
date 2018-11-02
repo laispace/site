@@ -50,8 +50,10 @@ demoDirs.forEach(function (dir) {
         title: plotInfo.name || plotInfo.title,
         category: category,
         plot: plotInfo,
+        subCat: {},
         demos: []
     };
+    var demosCat = demosByCategory[category];
     files.forEach(function (file) {
         var _renderMd = renderMd(file),
             meta = _renderMd.meta;
@@ -71,12 +73,19 @@ demoDirs.forEach(function (dir) {
             name: name,
             category: category,
             title: title,
+            subCat: meta.subCat,
             recommend: recommend,
             tag: filter,
             tags: tags ? tags.split(',') : null
         };
         demoByHref[href] = demo;
-        demosByCategory[category].demos.push(demo);
+        if(meta.subCat) {
+          if (!demosCat.subCat[meta.subCat]) {
+            demosCat.subCat[meta.subCat] = [];
+          }
+          demosCat.subCat[meta.subCat].push(demo);
+        }
+        demosCat.demos.push(demo);
     });
 });
 var demos = [];
@@ -99,12 +108,14 @@ module.exports = {
     showFooter: false,
   // demo页搜索选项
     keywords: [
-    { root: '轴', children: ['隐藏轴线', '母子刻度', '复数值','轴排序'] },
-    { root: '图例', children: ['图例跟随','图上图例','图例排序','激活部分图例'] },
-    { root: '图形', children: [ '默认选中', '链接跳转', '联动', '下钻', '高亮' ] },
-    { root: '提示信息', children: ['明细汇总', '鼠标可进入', '工具栏'] },
-    { root: '辅助标注', children: [ '数据标注', '均值线', '预测线' ] },
-    { root: '标签', children: [ '峰谷值', '最新值'] },
-    { root: '仅看推荐' }
+      { root: '辅助标注', children: [ '辅助标记', '辅助线', '趋势线', '分段颜色' ] },
+      { root: '提示信息', children: ['自定义tooltip', 'tooltip加入统计值'] },
+      { root: '图例', children: ['legend位置', '自定义legend', 'legend翻页'] },
+      { root: '图形', children: ['自定义shape', '图形样式', '渐变填充'] },
+      { root: '标签', children: [ 'label位置', 'label样式'] },
+      { root: '轴', children: ['轴样式'] },
+      { root: '数据', children: ['数据处理'] },
+      { root: '伸缩' },
+      { root: '仅看推荐' }
   ],
 };
