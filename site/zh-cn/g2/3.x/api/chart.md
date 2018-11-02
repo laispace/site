@@ -430,6 +430,8 @@ label: {
    * @return {string}       返回格式化后的文本值
    */
   formatter(text, item, index) {},
+  
+  useHtml: {boolean}, // 是否以html方式渲染label, 默认为false
   /**
    * 使用 html 渲染文本
    * @param  {string} text  文本值

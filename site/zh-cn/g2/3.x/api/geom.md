@@ -586,9 +586,15 @@ chart.line().label('x', {
 
 ##### canvas专有配置属性
 
-offset: { array | number }
+offset: { number }
 
-设置坐标轴文本 label 距离坐标轴线的距离，可以是数值或数组。默认为`[0, 20]`。数组可指定当前坐标轴x,y方向上的偏移。单个数值指定y方向上的偏移
+设置文本 label 的相对偏移，受坐标轴系型影响。默认为`20`。
+
+offsetX: { number }
+设置文本水平方向上的绝对偏移量,不受坐标系类型影响。 默认为`0`。
+
+offsetY: { number }
+设置文本垂直方向上的绝对偏移量,不受坐标系类型影响。 默认为`0`。
 
 textStyle
 
