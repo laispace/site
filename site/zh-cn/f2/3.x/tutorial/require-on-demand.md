@@ -183,7 +183,7 @@ require('@antv/f2/lib/interaction/pinch'); // 引入 pinch 图表缩放交互
 
 ```javascript
 // 第一步：加载插件 ScrollBar
-const ScrollBar = require('@sntv/f2/lib/plugin/scroll-bar');
+const ScrollBar = require('@antv/f2/lib/plugin/scroll-bar');
 // 第二步：注册插件 ScrollBar
 F2.Chart.plugins.register(ScrollBar); // 这里进行全局注册，也可以给 chart 的实例注册
 ```
