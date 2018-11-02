@@ -8,6 +8,9 @@ plotDescription: 地图或其他多边形图的 label 布局。
 plotUsage: 地图的 label 将会初始定位到地图板块的可视中心，为了防止 label 之间相互覆盖布局，尝试向四周偏移，会剔除放不下的 label。
 relativePlots:
   - ${plotByName.map}
+filter: 标签,标签位置
+tags: 标签位置
+subCat: 组件
 -->
 <script>
   $.getJSON('/assets/data/world.geo.json', function (mapData) {
