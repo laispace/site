@@ -247,6 +247,7 @@ $('#btn-fullscreen').click(function() {
 
 const slider = $('#slider').lightSlider({
   item: 7,
+  slideMove: 7,
   autoWidth: false,
   slideMargin: 20,
   controls: false,
@@ -254,6 +255,13 @@ const slider = $('#slider').lightSlider({
     $('.lSPager.lSpg').remove();
   }
 });
+
+$('#slider').find('img').each(function(i) {
+  if ($(this).hasClass('active')) {
+    slider.goToSlide(parseInt(i / 7) * 7);
+  }
+});
+
 
 $('#slider-prev').click(function() {
   slider.goToPrevSlide();
