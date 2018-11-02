@@ -30,7 +30,7 @@ const data = [
 
 ```js
 const chart = new G2.Chart({
-  id: 'mountNode',
+  container: 'mountNode',
   width: 400,
   height: 200
 });

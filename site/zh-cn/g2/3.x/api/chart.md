@@ -1149,9 +1149,8 @@ tooltip 每项记录的默认模板，默认值如下：
 
 ```js
 itemTpl: '<li data-index={index}>'
-  + '<span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>'
-  + '{name}: {value}'
-  + '</li>'
+  + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
+  + '{name}<span class="g2-tooltip-value">{value}</span></li>'
 ```
 
 如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。

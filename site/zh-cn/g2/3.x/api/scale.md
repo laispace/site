@@ -190,7 +190,7 @@ const defs = {
 };
 
 const chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   width: 400,
   height: 250
 });

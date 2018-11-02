@@ -110,9 +110,9 @@ chart.axis('xField', {
       fill: '#404040', // 文本的颜色
       fontSize: '12', // 文本大小
       fontWeight: 'bold', // 文本粗细
-      rotate: 30, 
+      rotate: 30,
       textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
-    } || {function}, // 文本样式，支持回调 
+    } || {function}, // 文本样式，支持回调
     autoRotate: {boolean} // 是否需要自动旋转，默认为 true
   }
 });
@@ -278,7 +278,7 @@ chart.render();
 
 [在线 demo](/zh-cn/g2/3.x/demo/other/bubble-text.html)
 
-(4) 使用 html 自定义 label 
+(4) 使用 html 自定义 label
 
 在一些比较个性化的可视化需求里，通常会使用可视化隐喻，比如会使用人物照片来代替人物名字，使得可视化更直观，如下图所示：
 
@@ -366,7 +366,7 @@ chart.axis('genre', {
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/OxLjLzCOhdDuVHpsllEz.png" width="50%">
 
-* alignWithLabel 设置为负值，且数据类型为category时，tickLine的样式变为category数据专有样式。
+* alignWithLabel 设置为false，且数据类型为category时，tickLine的样式变为category数据专有样式。
 
 ```js
 chart.axis('genre', {
@@ -395,7 +395,7 @@ chart.axis('xField', {
     stroke: '#000'
   }
 });
-``` 
+```
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/wllfpZJfXuObqshQUKqg.png" width="50%">
 
@@ -433,11 +433,11 @@ chart.source(data, {
     min: 0,
     max: 1000
   }
-}); 
+});
 // 方式 2
 chart.scale('xField', {
   type: 'linear',
-  min: 0, 
+  min: 0,
   max: 1000
 });
 ```
@@ -452,7 +452,7 @@ chart.source(data, {
     type: 'timeCat', // 声明该数据的类型
     tickCount: 9
   }
-}); 
+});
 ```
 
 ### 设置坐标轴刻度线间距
@@ -465,7 +465,7 @@ chart.source(data, {
     type: 'linear',
     tickInterval: 1000
   }
-}); 
+});
 ```
 
 ### 坐标系两端保留一定的空白
@@ -482,7 +482,7 @@ chart.source(data, {
     type: 'cat',
     range: [ 0, 1 ]
   }
-}); 
+});
 ```
 
 ### 坐标轴在其他坐标系下的显示

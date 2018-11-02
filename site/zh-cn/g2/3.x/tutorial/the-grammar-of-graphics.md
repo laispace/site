@@ -84,8 +84,8 @@ G2 的强大是由其背后的一套图形语法所支撑的，它基于[《The 
       .opacity(0.65)
       .tooltip('height*weight');
     chart.guide().line({
-      start: [hAvg, 'min'], 
-      end: [hAvg, 'max'], 
+      start: [hAvg, 'min'],
+      end: [hAvg, 'max'],
       text: {
         autoRotate: false,
         content: '身高平均值: ' + hAvg.toFixed(2),
@@ -99,8 +99,8 @@ G2 的强大是由其背后的一套图形语法所支撑的，它基于[《The 
       }
     });
     chart.guide().line({
-      start: ['min', wAvg], 
-      end: ['max', wAvg], 
+      start: ['min', wAvg],
+      end: ['max', wAvg],
       text: {
         content: '体重平均值: ' + wAvg.toFixed(2),
         position: 'end',
@@ -200,7 +200,7 @@ chart.<[geom](./geom.html)>().<[attr](./attr.html)>(fields[, cfg]):
 ```js-
   $.getJSON('/assets/data/scatter.json',function(data){
     var chart = new G2.Chart({
-      id: 'c2',
+      container: 'c2',
       forceFit: true, // 自适应宽度
       height : 300,
       padding: [80, 100, 40]
@@ -225,7 +225,7 @@ chart.<[geom](./geom.html)>().<[attr](./attr.html)>(fields[, cfg]):
     chart.facet('list', {
       fields: [ 'gender' ],
       eachView(view) {
-        view.point().position('height*weight').color('gender').tooltip('height*weight');  
+        view.point().position('height*weight').color('gender').tooltip('height*weight');
       }
     });
     chart.render();

@@ -45,7 +45,7 @@ const view = chart.view({
 
 ## 属性
 
-### `start` 
+### `start`
 
 绘制区域的起始坐标，结构如下：
 
@@ -93,7 +93,7 @@ const data = [
 ];
 
 const chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   forceFit: true,
   height: 400,
   padding: [ 40, 80, 100, 80 ]

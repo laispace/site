@@ -13,12 +13,12 @@ date: "2018-03-21"
         {name: '类别三', value: 170, error: 5},
         {name: '类别四', value: 170, error: 5}
     ];
-    
+
     data.forEach(function(obj) {
         obj.range = [obj.value - obj.error, obj.value + obj.error];
     });
     const chart = new G2.Chart({
-        id: 'mountNode',
+        container: 'mountNode',
         forceFit: true,
         height: window.innerHeight
     });
