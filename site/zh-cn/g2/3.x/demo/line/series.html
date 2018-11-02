@@ -1,6 +1,6 @@
 <!--
 index: 1
-title: 多条折线图
+title: 双折线图
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -9,7 +9,9 @@ plotUsage: 用于比对不同类型数据的趋势。
 relativePlots:
   - ${plotByName.point}
   - ${plotByName.area}
+subCat: 双折线
 -->
+
 <script>
   const data = [{
     "month": "Jan",
@@ -108,7 +110,7 @@ relativePlots:
     "city": "London",
     "temperature": 4.8
   }];
-  
+
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
