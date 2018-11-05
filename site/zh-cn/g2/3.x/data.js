@@ -1,6 +1,7 @@
 const plotByName = {
     area:        { icon: 'icon-area', index: 4,  url: '${base}zh-cn/g2/3.x/demo/area/basic.html', name: '面积图', },
-    bar:         { icon: 'icon-bar', index: 1,  url: '${base}zh-cn/g2/3.x/demo/bar/basic.html', name: '柱状图', },
+    column:      { icon: 'icon-bar', index: 1,  url: '${base}zh-cn/g2/3.x/demo/column/basic.html', name: '柱状图', },
+    bar:         { icon: 'icon-bar', index: 1,  url: '${base}zh-cn/g2/3.x/demo/bar/basic.html', name: '条形图', },
     box:         { icon: 'icon-box', index: 5,  url: '${base}zh-cn/g2/3.x/demo/box/basic.html', name: '箱形图', },
     component:   { icon: 'icon-component', index: 0,  url: '${base}zh-cn/g2/3.x/demo/component/legend-position.html', name: '组件使用', },
     candlestick: { icon: 'icon-candlestick', index: 6,  url: '${base}zh-cn/g2/3.x/demo/candlestick/basic.html', name: '烛形图', },
@@ -21,8 +22,7 @@ const plotByName = {
     sunburst:    { icon: 'icon-sunburst', index: 17, url: '${base}zh-cn/g2/3.x/demo/relation/sunburst.html', name: '旭日图', },
     voronoi:     { icon: 'icon-voronoi', index: 18, url: '${base}zh-cn/g2/3.x/demo/relation/voronoi.html', name: 'voronoi图', },
     sankey:      { icon: 'icon-sankey', index: 19, url: '${base}zh-cn/g2/3.x/demo/relation/sankey.html', name: '桑基图', },
-    arc:         { icon: 'icon-arc', index: 20, url: '${base}zh-cn/g2/3.x/demo/relation/arc.html', name: '弧长链接图', },
-    gallery:   { icon: 'icon-gallery', index: 0,  url: '${base}zh-cn/g2/3.x/demo/selection/line1.html', name: '精选案例', },
+    arc:         { icon: 'icon-arc', index: 20, url: '${base}zh-cn/g2/3.x/demo/relation/arc.html', name: '弧长链接图', }
 };
 module.exports = {
     plotByName,

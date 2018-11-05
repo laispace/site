@@ -72,6 +72,7 @@ const data = {
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
             chartDetail: '了解更多',
+            fullScreen: '全屏',
             copy: '复制',
             copyFail: '复制失败',
             copySuccess: '复制成功',
