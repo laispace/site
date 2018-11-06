@@ -64,7 +64,7 @@ subCat: 关系图
                 labelEmit: true,
                 textStyle: (text, item) => {
                     let textAlign = item.textAlign;
-                    if (item.point.hasChildren) {
+                    if (item.hasChildren) {
                         textAlign = textAlign === 'left' ? 'right' : 'left';
                     }
                     return {

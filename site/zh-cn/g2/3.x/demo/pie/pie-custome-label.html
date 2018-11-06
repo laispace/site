@@ -91,7 +91,7 @@ subCat: 基础饼图
     .label('sold', {
       useHtml: true,
       htmlTemplate: (text, item) => {
-        const isFemale = item.point.sex === '女';
+        const isFemale = item.sex === '女';
         const src = isFemale ? 'https://gw.alipayobjects.com/zos/rmsportal/mweUsJpBWucJRixSfWVP.png'
           : 'https://gw.alipayobjects.com/zos/rmsportal/oeCxrAewtedMBYOETCln.png';
         const color = isFemale ? COLORS[1] : COLORS[0];

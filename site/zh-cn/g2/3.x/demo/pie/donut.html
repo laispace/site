@@ -55,7 +55,7 @@ subCat: 环图
     .color('item')
     .label('percent', {
       formatter: (val, item) => {
-        return item.point.item + ': ' + val;
+        return item.item + ': ' + val;
       }
     })
     .tooltip('item*percent', (item, percent) => {
