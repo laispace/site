@@ -76,7 +76,7 @@ function resizePreview() {
 function resizeG2() {
   if($iframeContainer.hasClass('g2')) {
     var height = window.innerHeight - 287;
-    $('#demo-preview').height(height - 50);
+    $demoPreview.height(height - 50);
     $('#preview').height(height - 120);
     $('#resize-handler').height(height);
     $('.code-panel').height(height);
@@ -234,13 +234,21 @@ $('#btn-fullscreen').click(function() {
       zIndex: 10,
     });
     const height = window.innerHeight;
-    $('#demo-preview').height(height);
+    $demoPreview.css({
+      height: height,
+      marginLeft: 0
+    });
     $('#preview').height(height - 60);
     $('#resize-handler').height(height);
-    $('.code-panel').height(height);
+    $('.code-panel').css({
+      height: height,
+      paddingRight: 0,
+    });
   } else {
     $(this).html('<span class="iconfont icon-fullscreen"></span> 全屏');
     $('#code-container').css({ position: 'relative' });
+    $demoPreview.css({ marginLeft: 48 });
+    $('.code-panel').css({ paddingRight: 48 });
     resizeG2();
   }
   syncCode();

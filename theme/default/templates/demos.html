@@ -52,14 +52,13 @@
                                     data-recommend="{{demo.recommend}}"
                                 />
                             </a>
-                            <div class="card-body">
                             {% if demo.tags %}
+                            <div class="card-body">
                                 {% for tag in demo.tags %}
                                 <span class="card-tag">{{tag}}</span>
                                 {% endfor %}
-
-                            {% endif %}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
