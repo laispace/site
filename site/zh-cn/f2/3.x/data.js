@@ -7,8 +7,9 @@ const plotByName = {
     pie:    { index: 5,  icon: 'icon-pie', url: '${base}zh-cn/f2/3.x/demo/index.html#_饼图', name: '饼图', },
     radar:  { index: 6, icon: 'icon-radar', url: '${base}zh-cn/f2/3.x/demo/index.html#_雷达图', name: '雷达图', },
     point:  { index: 7,  icon: 'icon-point', url: '${base}zh-cn/f2/3.x/demo/index.html#_点图', name: '点图', },
-    component:  { index: 8,  icon: 'icon-component', url: '${base}zh-cn/f2/3.x/demo/index.html#_功能组件', name: '功能组件', },
-    other:  { index: 9, icon: 'icon-other', url: '${base}zh-cn/f2/3.x/demo/index.html#_其他图表', name: '其他图表', },
+    k: { index: 8, icon: 'icon-candlestick', url: '${base}zh-cn/f2/3.x/demo/index.html#_股票图', name: '股票图', },
+    component:  { index: 9,  icon: 'icon-component', url: '${base}zh-cn/f2/3.x/demo/index.html#_功能组件', name: '功能组件', },
+    other:  { index: 10, icon: 'icon-other', url: '${base}zh-cn/f2/3.x/demo/index.html#_其他图表', name: '其他图表', },
 };
 module.exports = {
     plotByName,
