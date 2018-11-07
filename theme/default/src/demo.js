@@ -82,6 +82,7 @@ function resizeG2() {
     $('.code-panel').height(height);
     $('.demo-container .border-secondary').height('auto');
   }
+  syncCode();
 }
 
 resizePreview();
