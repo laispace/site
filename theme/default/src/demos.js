@@ -137,6 +137,8 @@ tocbot.init({
   collapseDepth: 4
 });
 
+$('.demos').css({ minHeight: window.innerHeight - 128 });
+
 const $tocContainer = $('.toc-container');
 $('header').headroom({
   offset: 0,

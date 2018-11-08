@@ -74,18 +74,18 @@
             {% if sub === currentDemo.subCat%}
             <div style="margin: 20px 48px 12px 48px;font-size: 18px; font-weight: bold;">{{ sub }}</div>
             <div style="padding: 0 48px 18px 48px; position: relative;">
-                <img id="slider-prev" src="{{ assets }}/image/slider-prev.png" alt="上一张" />
+                <img id="slider-prev" src="{{ assets }}/image/slider-prev.png" alt="上一张" style="display: none" />
 
                 <ul id="slider" style="height: 100px" class="lightSlider cs-hidden">
                         {% for demo in demos %}
                         <li style="width: 144px; height: 100px; position: relative;">
                             <a href="{{demo.href}}" >
-                            <img class="slider-img" src="{{ demo.screenshot }}" {% if demo.title === currentDemo.title %} class="active"{% endif %}/>
+                            <img class="slider-img" src="{{ demo.screenshot }}"/>
                             {% if demo.recommend %}
                             <img src="{{ assets }}/image/recommend.png" class="recommend-flag" />
                             {% endif %}
                             {% if demo.title === currentDemo.title %}
-                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(24,144,255,0.25)"></div>
+                                <div class="slider-overlay"></div>
                             {% endif %}
                             </a>
                         </li>
@@ -94,7 +94,7 @@
                         {% endfor %}
                 </ul>
 
-                <img id="slider-next" src="{{ assets }}/image/slider-next.png" alt="下一张" />
+                <img id="slider-next" src="{{ assets }}/image/slider-next.png" alt="下一张" style="display: none"/>
             </div>
             {% endif %}
             <div class="row d-flex flex-row border-secondary" id="code-container">

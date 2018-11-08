@@ -30,6 +30,19 @@ if (isDark) {
 } else {
     $code.val($codeDefault.val());
 }
+
+const slider = $('#slider').lightSlider({
+  item: 7,
+  slideMove: 7,
+  autoWidth: false,
+  slideMargin: 20,
+  controls: false,
+  onSliderLoad: function() {
+    $('.lSPager.lSpg').remove();
+  }
+});
+slider.goToSlide(currentSlider);
+displaySliderNav();
 $('.theme-switching .btn').each(function () {
     const $btn = $(this);
     if (isDark) {
@@ -266,20 +279,6 @@ $('#btn-fullscreen').click(function() {
   syncCode();
 });
 
-const slider = $('#slider').lightSlider({
-  item: 7,
-  slideMove: 7,
-  autoWidth: false,
-  slideMargin: 20,
-  controls: false,
-  onSliderLoad: function() {
-    $('.lSPager.lSpg').remove();
-  }
-});
-
-slider.goToSlide(currentSlider);
-displaySliderNav();
-
 function displaySliderNav() {
   if (currentSlider < 7) {
     $prevSlider.hide();
@@ -291,10 +290,10 @@ function displaySliderNav() {
   }
 }
 
-if (sliderCount <= 7) {
-  $prevSlider.hide();
-  $nextSlider.hide();
-} else {
+if (sliderCount > 7) {
+  $prevSlider.show();
+  $nextSlider.show();
+  displaySliderNav()
   $prevSlider.click(function() {
     slider.goToPrevSlide();
     currentSlider -= 7;
@@ -306,6 +305,5 @@ if (sliderCount <= 7) {
     currentSlider += 7;
     displaySliderNav();
   });
-
 }
 
