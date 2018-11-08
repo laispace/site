@@ -80,7 +80,7 @@
                         {% for demo in demos %}
                         <li style="width: 144px; height: 100px; position: relative;">
                             <a href="{{demo.href}}" >
-                            <img width="144" height="100" src="{{ demo.screenshot }}" {% if demo.title === currentDemo.title %} class="active"{% endif %}/>
+                            <img class="slider-img" src="{{ demo.screenshot }}" {% if demo.title === currentDemo.title %} class="active"{% endif %}/>
                             {% if demo.recommend %}
                             <img src="{{ assets }}/image/recommend.png" class="recommend-flag" />
                             {% endif %}

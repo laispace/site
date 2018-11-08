@@ -13,6 +13,18 @@ const $demoPreview = $('#demo-preview');
 const theme = getQueryVariable('theme');
 const isDark = theme === 'dark';
 
+// 顶部走马灯相关
+const $prevSlider = $('#slider-prev');
+const $nextSlider = $('#slider-next');
+const sliderCount = $('#slider .slider-img').length;
+let currentSlider  = 0;
+
+$('#slider .slider-img').each(function(index) {
+  if ($(this).hasClass('active')) {
+   currentSlider = parseInt(index / 7) * 7;
+  }
+});
+
 if (isDark) {
     $code.val($codeDark.val());
 } else {
@@ -265,17 +277,35 @@ const slider = $('#slider').lightSlider({
   }
 });
 
-$('#slider').find('img').each(function(i) {
-  if ($(this).hasClass('active')) {
-    slider.goToSlide(parseInt(i / 7) * 7);
+slider.goToSlide(currentSlider);
+displaySliderNav();
+
+function displaySliderNav() {
+  if (currentSlider < 7) {
+    $prevSlider.hide();
+  } else if (currentSlider + 7 > sliderCount) {
+    $nextSlider.hide();
+  } else {
+    $prevSlider.show();
+    $nextSlider.show();
   }
-});
+}
 
+if (sliderCount <= 7) {
+  $prevSlider.hide();
+  $nextSlider.hide();
+} else {
+  $prevSlider.click(function() {
+    slider.goToPrevSlide();
+    currentSlider -= 7;
+    displaySliderNav();
+  });
 
-$('#slider-prev').click(function() {
-  slider.goToPrevSlide();
-});
+  $nextSlider.click(function() {
+    slider.goToNextSlide(true);
+    currentSlider += 7;
+    displaySliderNav();
+  });
 
-$('#slider-next').click(function() {
-  slider.goToNextSlide();
-});
+}
+
