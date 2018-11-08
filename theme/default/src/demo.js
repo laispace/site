@@ -100,7 +100,7 @@ function resizePreview() {
 
 function resizeG2() {
   if($iframeContainer.hasClass('g2')) {
-    var height = window.innerHeight - 287;
+    var height = window.innerHeight - 310;
     $demoPreview.height(height - 50);
     $('#preview').height(height - 120);
     $('#resize-handler').height(height);
