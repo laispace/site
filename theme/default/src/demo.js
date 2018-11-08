@@ -293,7 +293,7 @@ function displaySliderNav() {
 if (sliderCount > 7) {
   $prevSlider.show();
   $nextSlider.show();
-  displaySliderNav()
+  displaySliderNav();
   $prevSlider.click(function() {
     slider.goToPrevSlide();
     currentSlider -= 7;
