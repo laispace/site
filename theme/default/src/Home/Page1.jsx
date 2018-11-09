@@ -9,7 +9,7 @@ export default function Page1() {
       <a className="card" href={card.href}>
         <h3>{card.title}</h3>
         <img src={card.img} alt="" className="card-img-top" />
-        <div className="card-body">
+        <div className="card-body" style={{ marginBottom: 50 }}>
           <span className="title">{card.title}</span>
           <span className="description text-secondary">{card.description}</span>
         </div>
@@ -22,7 +22,7 @@ export default function Page1() {
     </Col>
   ));
 
-  return (<section className="page-wrapper page1">
+  return (<section className="page-wrapper page1" style={{ height: window.innerHeight }}>
     <a id="__products"></a>
     <QueueAnim
       component={Row}
@@ -30,6 +30,7 @@ export default function Page1() {
       className="page row text-center"
       delay={500}
     >
+      <div className="page1-title">我们的产品</div>
       {children}
     </QueueAnim>
   </section>);

@@ -1,7 +1,7 @@
 @import "~antd/lib/style/themes/default.less";
 
 html, body {
-  color: rgba(0,0,0,.85);
+  color: rgba(0, 0, 0, .85);
 }
 
 body {
@@ -12,10 +12,10 @@ body {
 #reat-content {
 }
 
-.intro .header{
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
+.intro .header {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h2, h3, h4, h5, h6 {
@@ -41,7 +41,7 @@ h2, h3, h4, h5, h6 {
 .card {
   text-decoration: none;
   .title, .description {
-    color: rgba(0, 0, 0, 0.65)!important;
+    color: rgba(0, 0, 0, 0.65) !important;
     font-size: 14px;
     font-weight: 300;
   }
@@ -49,7 +49,7 @@ h2, h3, h4, h5, h6 {
 
 .card:hover {
   .title {
-    color: rgba(0, 0, 0, 0.65)!important;
+    color: rgba(0, 0, 0, 0.65) !important;
   }
 }
 
@@ -94,7 +94,7 @@ h2, h3, h4, h5, h6 {
     height: auto;
     overflow: hidden;
   }
-  >div {
+  > div {
     display: inline-block;
   }
   &-img-wrapper {
@@ -122,6 +122,88 @@ h2, h3, h4, h5, h6 {
   }
 }
 
+.homepage {
+  color: #fff;
+  z-index: 1;
+  background-color: transparent !important;
+
+  #sub-site-nav .nav-link {
+    color: #fff;
+  }
+
+  #navbarHeader .nav-separator {
+    border-left: none;
+  }
+
+  #btn-search .iconfont {
+    color: #fff !important;
+  }
+
+  #navbarHeader .navbar-nav .nav-link, #sub-site-nav .navbar-nav .nav-link {
+    color: #fff;
+  }
+  #query:-moz-placeholder {
+    color: rgba(255,255,255,0.65);
+  }
+  #query::-moz-placeholder {
+    color: rgba(255,255,255,0.65);
+  }
+  #query:-ms-input-placeholder {
+    color: rgba(255,255,255,0.65);
+  }
+  #query::-ms-input-placeholder {
+    color: rgba(255,255,255,0.65);
+  }
+  #query::-webkit-input-placeholder {
+     color: rgba(255,255,255,0.65);
+  }
+}
+
+#video-container {
+  margin-top: -64px;
+  width: 100%;
+  z-index: 0;
+  position: relative;
+  color: #fff;
+  text-align: center;
+
+  .homepage-title {
+    position: absolute;
+    top: 50%;
+    margin-top: -70px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .homepage-logo {
+    position: absolute;
+    bottom: -90px;
+    left: 50%;
+    margin-left: -63px;
+    width: 126px;
+    height: 126px;
+    padding-top: 36px;
+    border-radius: 63px;
+    background-color: #fff;
+  }
+
+  .btn-more {
+    border: none;
+    color: #fff;
+    padding: 8px 26px;
+    font-size: 16px;
+    background: linear-gradient(-135deg, #935EFF, #625EFF);
+    border-radius: 20px;
+    margin-top: 56px;
+  }
+}
+
+.page1-title {
+  font-size: 30px;
+  color: #000;
+  margin: 103px 0;
+}
+
 .page1 {
   background: #f8fafe;
   padding-bottom: 60px;
@@ -133,10 +215,10 @@ h2, h3, h4, h5, h6 {
       //margin-bottom: 40px;
     }
     .card-footer {
-      border-top: 1px solid rgba(0,0,0,.025);
+      border-top: 1px solid rgba(0, 0, 0, .025);
       .btn-light {
         width: 49%;
-        color:  rgba(0,0,0,.65);
+        color: rgba(0, 0, 0, .65);
         border: none;
       }
       .btn-separator {
@@ -184,18 +266,18 @@ h2, h3, h4, h5, h6 {
       position: relative;
       color: #545454;
       font-weight: 300;
-      >img {
+      > img {
         position: absolute;
         left: -40px;
         top: -15px;
       }
     }
-    >h4 {
+    > h4 {
       font-size: 30px;
       line-height: 38px;
       font-weight: normal;
     }
-    >p {
+    > p {
       margin-top: 16px;
       font-size: 14px;
       color: #888888;
@@ -235,10 +317,10 @@ h2, h3, h4, h5, h6 {
   h2 {
     margin: 120px auto 25px;
   }
-  >span {
+  > span {
     margin-bottom: 72px;
   }
-  .ant-row>div {
+  .ant-row > div {
     margin-bottom: 20px;
   }
 }
@@ -278,14 +360,17 @@ h2, h3, h4, h5, h6 {
       }
     }
   }
+
   .main-info {
     font-size: 16px;
     line-height: 2em;
   }
+
   .page4 .slick-slide .comment {
     font-size: 16px;
   }
-  .page4 .slick-slide>p {
+
+  .page4 .slick-slide > p {
     font-size: 12px;
   }
 }
@@ -296,6 +381,7 @@ h2, h3, h4, h5, h6 {
       margin-top: 0;
     }
   }
+
   .banner-text-wrapper {
     h1 {
       font-size: 32px;
@@ -305,9 +391,11 @@ h2, h3, h4, h5, h6 {
       line-height: 1.5em;
     }
   }
+
   .main-info {
     font-size: 14px;
   }
+
   .page2 {
     min-height: 513px;
   }
@@ -317,9 +405,11 @@ h2, h3, h4, h5, h6 {
   .banner-text-wrapper {
     height: auto;
   }
+
   .feature {
     margin: 24px auto;
   }
+
   .page4 .slick-slide {
     height: 540px;
   }
