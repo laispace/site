@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Banner extends React.PureComponent {
+class Banner extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     isMobile: PropTypes.bool,
@@ -10,9 +10,27 @@ class Banner extends React.PureComponent {
     className: 'banner',
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {height: window.innerHeight};
+    this.onWindowResize = this.onWindowResize.bind(this);
+  }
+
+  onWindowResize() {
+    this.setState({ height: window.innerHeight });
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
   render() {
     return (
-      <section id="video-container" style={{ height: window.innerHeight }}>
+      <section id="video-container" style={{ height: this.state.height }}>
         <video
           autoplay="autoplay"
           loop="loop"
@@ -29,6 +47,7 @@ class Banner extends React.PureComponent {
             <button className="btn-more">继续了解</button>
           </a>
         </div>
+        <img id="arrow" src="https://gw.alipayobjects.com/zos/rmsportal/cfUeahyjXCvoeUHrZDcE.svg" width="64" height="64" />
       </section>
     );
   }
