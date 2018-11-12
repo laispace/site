@@ -8,131 +8,134 @@ plotUsage: 数据来源：demo数据
 filter: 辅助标注,辅助标记
 tags: 辅助标记
 recommend: true
-subCat: 基础面积图
+subCat: 仪表盘
 -->
+<style>
+    .g2-guide-html {
+        width: 80px;
+        height: 80px;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 0.6
+    }
+
+    .g2-guide-html .title {
+        font-size: 14px;
+        color: #8c8c8c;
+        font-weight: 300;
+    }
+
+    .g2-guide-html .value {
+        font-size: 24px;
+        color: #000;
+        font-weight: bold;
+    }
+</style>
 <script>
-        $.getJSON('/assets/data/recession.json', function (data) {
-            const chart = new G2.Chart({
-                container: 'mountNode',
-                forceFit: true,
-                height: window.innerHeight,
-                padding: 'auto'
-            });
-            chart.source(data, {
-                value: {
-                    formatter: function formatter(value) {
-                        return parseInt(value / 1000000) + 'm';
+ const Shape = G2.Shape;
+        Shape.registerShape('point', 'pointer', {
+            drawShape: function drawShape(cfg, group) {
+                const point = cfg.points[0];
+                const center = this.parsePoint({
+                    x: 0,
+                    y: 0
+                });
+                const target = this.parsePoint({
+                    x: point.x,
+                    y: 0.9
+                });
+                let dir_vec = { x: center.x - target.x, y: center.y - target.y };
+                //normalize
+                const length = Math.sqrt(dir_vec.x * dir_vec.x + dir_vec.y * dir_vec.y);
+                dir_vec.x *= (1 / length);
+                dir_vec.y *= (1 / length);
+                //rotate dir_vector by -90 and scale
+                const angle1 = -Math.PI / 2;
+                let x_1 = Math.cos(angle1) * dir_vec.x - Math.sin(angle1) * dir_vec.y;
+                let y_1 = Math.sin(angle1) * dir_vec.x + Math.cos(angle1) * dir_vec.y;
+                //rotate dir_vector by 90 and scale
+                const angle2 = Math.PI / 2;
+                let x_2 = Math.cos(angle2) * dir_vec.x - Math.sin(angle2) * dir_vec.y;
+                let y_2 = Math.sin(angle2) * dir_vec.x + Math.cos(angle2) * dir_vec.y;
+                //polygon vertex
+                const path = [
+                    ['M', target.x + x_1 * 1, target.y + y_1 * 1],
+                    ['L', center.x + x_1 * 3, center.y + y_1 * 3],
+                    ['L', center.x + x_2 * 3, center.y + y_2 * 3],
+                    ['L', target.x + x_2 * 1, target.y + y_2 * 1],
+                    ['Z']
+                ];
+                const tick = group.addShape('path', {
+                    attrs: {
+                        path,
+                        fill: cfg.color
                     }
-                }
-            });
-            chart.scale('date', {
-                range: [0, 1],
-                tickCount: 10,
-                type: 'timeCat'
-            });
-            chart.axis('date', {
-                label: {
-                    textStyle: {
-                        fill: '#aaaaaa'
-                    },
-                    formatter:function(text){
-                        const text_splited = text.split('-');
-                        return text_splited[0]+'-'+text_splited[1];
-                    }
-                },
-                tickLine: {
-                    alignWithLabel: false,
-                    length: 0
-                },
-                line: {
-                    lineWidth: 0
-                }
-            });
-    
-            chart.axis('value', {
-                label: {
-                    textStyle: {
-                        fill: '#aaaaaa'
-                    }
-                },
-                grid: {
-                    lineStyle: {
-                        lineDash: [0, 0]
-                    }
-                }
-            });
-    
-            chart.area().position('date*value').color('white').opacity(0.3);
-            chart.line().position('date*value').color('white').size(2);
-    
-            //分段颜色
-            chart.guide().regionFilter({
-                top: true,
-                start: ['min', 'max'],
-                end: ['max', 0],
-                color: '#f5222d'
-            });
-    
-            chart.guide().regionFilter({
-                top: true,
-                start: ['min', 0],
-                end: ['max', 'min'],
-                color: '#2fc25b'
-            });
-    
-            //区间标注
-            chart.guide().region({
-                start: ['July 1, 1990', 'min'],
-                end: ['June 1, 1991', 'max']
-            });
-    
-            chart.guide().region({
-                start: ['July 1, 2001', 'min'],
-                end: ['December 1, 2001', 'max']
-            });
-    
-            chart.guide().region({
-                start: ['December 1, 2007', 'min'],
-                end: ['July 1, 2009', 'max']
-            });
-    
-            //文字标注
-            chart.guide().text({
-                top: true,
-                position: ['October 1, 1991', -3000000],
-                content: '1990-1991\nReccesion',
-                style: {
-                    fill: '#595959',
-                    fontSize: 16,
-                    fontWeight: 300,
-                    textAlign: 'start'
-                }
-            });
-    
-            chart.guide().text({
-                top: true,
-                position: ['July 1, 2002', -3000000],
-                content: '2001\nReccesion',
-                style: {
-                    fill: '#595959',
-                    fontSize: 16,
-                    fontWeight: 300,
-                    textAlign: 'start'
-                }
-            });
-    
-            chart.guide().text({
-                top: true,
-                position: ['January 1, 2011', -3000000],
-                content: '2008-2009\nReccesion',
-                style: {
-                    fill: '#595959',
-                    fontSize: 16,
-                    fontWeight: 300,
-                    textAlign: 'start'
-                }
-            });
-    
-            chart.render();
+                });
+                return tick;
+            }
         });
-    </script>
+
+
+        const data = [
+            { type: '新注册', value: 0.42 },
+            { type: '老用户', value: 0.68 },
+            { type: '新订单用户', value: 0.21 }
+        ];
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: 'auto'
+        });
+        chart.source(data);
+        chart.coord('polar', {
+            startAngle: -9 / 8 * Math.PI,
+            endAngle: 1 / 8 * Math.PI,
+            radius: 0.75
+        });
+        chart.scale('value', {
+            min: 0,
+            max: 1,
+            tickInterval: 1,
+            nice: false
+        });
+        chart.axis(false);
+        chart.facet('rect', {
+            fields: ['type'],
+            showTitle: false,
+            eachView: function eachView(view, facet) {
+                const data = facet.data[0];
+                //指针
+                view.point().position('value*1').shape('pointer').color('#d8d8d8').active(false);
+                //仪表盘背景
+                view.guide().arc({
+                    zIndex: 0,
+                    top: false,
+                    start: [0, 1],
+                    end: [1, 1],
+                    style: {
+                        stroke: '#ebedf0',
+                        lineWidth: 10
+                    }
+                });
+                //仪表盘前景
+                view.guide().arc({
+                    zIndex: 1,
+                    start: [0, 1],
+                    end: [data.value, 1],
+                    style: {
+                        stroke: '#1890ff',
+                        lineWidth: 10
+                    }
+                });
+                //仪表盘信息
+                const percent = parseInt(data.value*100);
+                view.guide().html({
+                    position: ['50%', '75%'],
+                    html: '<div class="g2-guide-html"><p class="title">'+data.type+'</p><p class="value">'+percent+'%</p></div>'
+                });
+            }
+        });
+        chart.render();
+
+</script>
