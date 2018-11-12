@@ -182,6 +182,15 @@ h2, h3, h4, h5, h6 {
   color: #fff;
   text-align: center;
 
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(45,57,103,.5);
+  }
   .homepage-title {
     position: absolute;
     top: 50%;
@@ -220,7 +229,7 @@ h2, h3, h4, h5, h6 {
     bottom: 18px;
     left: 50%;
     margin-left: -10px;
-    animation: updown 1.2s infinite;
+    animation: updown 1s infinite;
   }
 }
 
