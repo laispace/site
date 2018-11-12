@@ -23,14 +23,11 @@ class Banner extends React.PureComponent {
         <div className="homepage-title">
           <div style={{fontSize: 52, fontWeight: 'bolder'}}>让数据栩栩如生</div>
           <p style={{marginTop: 20, color: 'rgba(255,255,255,.85)'}}>
-            AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套<br />简单方便、专业可靠、无限可能的数据可视化最佳实践。
+            AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单<br />方便、专业可靠、无限可能的数据可视化最佳实践。
           </p>
           <a href="#__products">
             <button className="btn-more">继续了解</button>
           </a>
-        </div>
-        <div className="homepage-logo">
-          <img src="https://gw.alipayobjects.com/zos/rmsportal/GHYZjlkReuKOYLujxDYa.svg" width="64" height="64" />
         </div>
       </section>
     );
