@@ -1,0 +1,96 @@
+<!--
+title: 某产品行业销量分布 Top10
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：demo数据
+filter: 轴,数据,轴样式,数据处理
+tags: 轴样式,数据处理
+recommend: true
+subCat: 基础条形图
+-->
+<style>
+.bottom-tool-box{position: absolute; bottom:0px; left: 0px; width: 100%; height:40px; z-index:1000}
+.bottom-tool-box .sort-button {width: auto; height:70%; position: absolute; top:30%; left:70%}
+</style>
+<div class = 'bottom-tool-box'><img class = 'sort-button' src = '/assets/image/g2/demo/sortbar.png'/></div>
+<script>
+    let sortType = 'positive';
+    const data = [
+        { type: '汽车', value: 34 },
+        { type: '建材家居', value: 85 },
+        { type: '住宿旅游', value: 103 },
+        { type: '交通运输与仓储邮政', value: 142 },
+        { type: '建筑房地产', value: 251 },
+        { type: '教育', value: 367 },
+        { type: 'IT 通讯电子', value: 491 },
+        { type: '社会公共管理', value: 672 },
+        { type: '医疗卫生', value: 868 },
+        { type: '金融保险', value: 1234 }
+    ];
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: 'auto'
+    });
+    chart.source(data, {
+        value: {
+            max: 1300,
+            min: 0,
+            nice: false,
+            alias: '销量（百万）'
+        }
+    });
+    chart.axis('type', {
+        label: {
+            textStyle: {
+                fill: '#595959',
+                fontSize: 14
+            }
+        },
+        tickLine: {
+            alignWithLabel: false,
+            length: 0
+        },
+        line: {
+            lineWidth: 0
+        }
+    });
+    chart.axis('value', {
+        label: null,
+        title: {
+            offset: 30,
+            textStyle: {
+                fontSize: 14,
+                fontWeight: 300
+            }
+        }
+    });
+    chart.legend(false);
+    chart.coord().transpose();
+    chart.interval().position('type*value').size(26).opacity(1).label('value', {
+        textStyle: {
+            fill: '#595959'
+        },
+        offset: 10
+    });
+    chart.render();
+    $('.sort-button').click(function () {
+        sortType = (sortType === 'positive') ? 'negative' : 'positive';
+        sortData(sortType);
+        chart.repaint();
+    });
+    function sortData(sortType) {
+        if (sortType === 'positive') {
+            data.sort(function (a, b) {
+                return b.value - a.value;
+            });
+        } else {
+            data.sort(function (a, b) {
+                return a.value - b.value;
+            });
+        }
+    }
+</script>
