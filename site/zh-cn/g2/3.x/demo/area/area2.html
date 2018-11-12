@@ -1,0 +1,140 @@
+<!--
+title: 大萧条的周期性
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+    - ${url['g2-plugin-slider']}
+plotDescription: 美国月间就业率的变化与几次重创经济的大萧条周期一致，说明就业是经济的灵敏反应器。
+plotUsage: 数据来源： Bureau of Labor Statistics
+filter: 辅助标注,辅助标记,分段颜色
+tags: 辅助标记,分段颜色
+recommend: true
+subCat: 基础面积图
+-->
+<script>
+    $.getJSON('/assets/data/recession.json', function (data) {
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: 'auto'
+        });
+        chart.source(data, {
+            value: {
+                formatter: function formatter(value) {
+                    return parseInt(value / 1000000) + 'm';
+                }
+            }
+        });
+        chart.scale('date', {
+            range: [0, 1],
+            tickCount: 10,
+            type: 'timeCat'
+        });
+        chart.axis('date', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    const text_splited = text.split('-');
+                    return text_splited[0]+'-'+text_splited[1];
+                }
+            },
+            tickLine: {
+                alignWithLabel: false,
+                length: 0
+            },
+            line: {
+                lineWidth: 0
+            }
+        });
+
+        chart.axis('value', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            },
+            grid: {
+                lineStyle: {
+                    lineDash: [0, 0]
+                }
+            }
+        });
+
+        chart.area().position('date*value').color('white').opacity(0.3);
+        chart.line().position('date*value').color('white').size(2);
+
+        //分段颜色
+        chart.guide().regionFilter({
+            top: true,
+            start: ['min', 'max'],
+            end: ['max', 0],
+            color: '#f5222d'
+        });
+
+        chart.guide().regionFilter({
+            top: true,
+            start: ['min', 0],
+            end: ['max', 'min'],
+            color: '#2fc25b'
+        });
+
+        //区间标注
+        chart.guide().region({
+            start: ['July 1, 1990', 'min'],
+            end: ['June 1, 1991', 'max']
+        });
+
+        chart.guide().region({
+            start: ['July 1, 2001', 'min'],
+            end: ['December 1, 2001', 'max']
+        });
+
+        chart.guide().region({
+            start: ['December 1, 2007', 'min'],
+            end: ['July 1, 2009', 'max']
+        });
+
+        //文字标注
+        chart.guide().text({
+            top: true,
+            position: ['October 1, 1991', -3000000],
+            content: '1990-1991\nReccesion',
+            style: {
+                fill: '#595959',
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'start'
+            }
+        });
+
+        chart.guide().text({
+            top: true,
+            position: ['July 1, 2002', -3000000],
+            content: '2001\nReccesion',
+            style: {
+                fill: '#595959',
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'start'
+            }
+        });
+
+        chart.guide().text({
+            top: true,
+            position: ['January 1, 2011', -3000000],
+            content: '2008-2009\nReccesion',
+            style: {
+                fill: '#595959',
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'start'
+            }
+        });
+
+        chart.render();
+    });
+</script>
