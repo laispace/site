@@ -212,6 +212,21 @@ h2, h3, h4, h5, h6 {
     border-radius: 20px;
     margin-top: 56px;
   }
+
+  #arrow {
+    width: 20px;
+    height: 18px;
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    margin-left: -10px;
+    animation: updown 1.2s infinite;
+  }
+}
+
+@keyframes updown {
+  from { bottom: 18px; }
+  to { bottom: 28px; }
 }
 
 .page1-title {
