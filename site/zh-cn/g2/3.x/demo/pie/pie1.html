@@ -1,0 +1,70 @@
+<!--
+title: 某网站来访用户学历分布
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 来访用户学历均偏高，本硕博共占 77%，其中占比最大的为硕士学历，达40%，低学历占比较小。
+plotUsage: 数据来源：demo数据
+filter: 标签,label样式
+tags: label样式
+recommend: true
+subCat: 基础饼图
+-->
+<style>
+    .g2-label-item-inner {
+        font-size: 12px;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px #595959;
+    }
+
+    .g2-label-item-outer {
+        font-size: 12px;
+        color: #595959;
+    }
+</style>
+<script>
+    const data = [
+        { type: '硕士', value: 0.4 },
+        { type: '本科', value: 0.21 },
+        { type: '博士', value: 0.17 },
+        { type: '初中', value: 0.009 },
+        { type: '专科', value: 0.013 },
+        { type: '未知', value: 0.08 },
+    ];
+
+    const ds = new DataSet();
+    const dv = ds.createView().source(data);
+    dv.transform({
+        type: 'percent',
+        field: 'value',
+        dimension: 'type',
+        as: 'percent'
+    });
+
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: 14
+    });
+    chart.source(dv);
+    chart.legend(false);
+    chart.coord('theta', {
+        radius: 0.75
+    });
+    chart.intervalStack().position('value').color('type', ['#2593fc', '#38c060', '#27c1c1', '#705dc8', '#3b4771', '#f9cb34']).opacity(1).label('value', function (val) {
+        const offset = (val > 0.02) ? -50 : 60;
+        const label_class = (val > 0.02) ? "g2-label-item-inner" : "g2-label-item-outer";
+        return {
+            offset,
+            useHtml: true,
+            htmlTemplate: (text, item) => {
+                const d = item.point;
+                const percent = String(parseInt(d.percent * 100)) + "%";
+                return '<span class=' + label_class + '>' + d.type + '<br/>' + percent + '</span>';
+            }
+        };
+    });
+    chart.render();
+</script>

@@ -1,0 +1,56 @@
+<!--
+title: 2018年第一季度不同等级城市的用户购买手机占比
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 当前购机主力用户主要分布在三四线及以下城市。主要原因是一二线城市对新机需求逐渐消退，而三四线城市随着城镇化的推进与意识形态的崛起，对新机需求旺盛，在2018年第一季度合计占比达到60%。
+plotUsage: 数据来源：demo数据
+filter: 标签,label样式
+tags: label样式
+recommend: true
+subCat: 基础饼图
+-->
+<script>
+    const data = [
+        { type: '一线城市', value: 0.19 },
+        { type: '二线城市', value: 0.21 },
+        { type: '三线城市', value: 0.27 },
+        { type: '四线及以下', value: 0.33 }
+    ];
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: 'auto'
+    });
+    chart.source(data);
+    chart.legend(false);
+    chart.coord('theta', {
+        radius: 0.75
+    });
+    chart.intervalStack().position('value').color('type', ['#063d8a', '#1770d6', '#47abfc', '#38c060'])
+        .active(true, {
+            style: {
+                stroke: 'black',
+                lineWidth: 2,
+                opacity: 1
+            }
+        })
+        .label('type', function (val) {
+            const opacity = (val === '四线及以下') ? 1 : 0.5;
+            return {
+                offset: -30,
+                textStyle: {
+                    opacity,
+                    fill: 'white',
+                    fontSize: 12
+                },
+                formatter: (text, item) => {
+                    const d = item.point;
+                    return d.type + '\n' + d.value + '%';
+                }
+            };
+        });
+    chart.render();
+</script>
