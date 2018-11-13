@@ -1,0 +1,182 @@
+<!--
+title: 世界各地对足球和篮球的关注度对比
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：demo数据
+recommend: true
+subCat: 迷你图
+-->
+<style>
+        /* table sty;e */
+        .g2-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border-radius: 4px 4px 0 0;
+            table-layout: fixed;
+        }
+        .g2-thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-bottom-color: #e8e8e8;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            background-color: #fafafa
+        }
+        .th-index {
+            width: 30px;
+        }
+        .g2-thead th {
+            text-align: center;
+            height: 30px;
+            font-size: 12px;
+        }
+        .th-index {
+            width: 10%;
+        }
+        .th-country {
+            width: 20%;
+        }
+        .g2-table-row {
+            height: 30px;
+            vertical-align: middle;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #e8e8e8;
+        }
+        .g2-table-column {
+            font-size: 12px;
+            color: #8c8c8c;
+            padding: 15px;
+            text-align: center
+        }
+        /*tooltip style*/
+        .g2-tooltip {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 1.0);
+            border-radius: 3px;
+            color: rgb(87, 87, 87);
+            font-size: 12px;
+            line-height: 20px;
+            padding: 10px 10px 6px 10px;
+            box-shadow: 0px 0px 10px #aeaeae;
+            pointer-events: none;
+            text-align: left;
+            z-index: 1000;
+        }
+        .g2-tooltip-list {
+            margin: 0;
+            padding: 0px 60px 0px 0px;
+            list-style-type: none;
+        }
+        .g2-tooltip-value {
+            margin-left: 30px;
+            display: inline;
+            float: right;
+        }
+        .tooltip-pie {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -20px;
+            z-index: 1000;
+        }
+</style>
+<!-- table -->
+<table class='g2-table'>
+    <!--head-->
+    <thead class='g2-thead'>
+        <tr>
+            <th class='th-index'>排序</th>
+            <th class='th-id'>国家</th>
+            <th class='th-time'>关注占比</th>
+        </tr>
+    </thead>
+    <!--body-->
+    <tbody>
+    </tbody>
+</table>
+<script>
+    const data = [
+        { index: 1, country: '奥地利', percentage: [{ type: '世界杯', value: 0.8, adjust: 'a', country: '奥地利' }, { type: 'NBA', value: 0.2, adjust: 'a', country: '奥地利' }] },
+        { index: 2, country: '越南', percentage: [{ type: '世界杯', value: 0.7, adjust: 'a', country: '越南' }, { type: 'NBA', value: 0.3, adjust: 'a', country: '越南' }] },
+        { index: 3, country: '波兰', percentage: [{ type: '世界杯', value: 0.6, adjust: 'a', country: '波兰' }, { type: 'NBA', value: 0.4, adjust: 'a', country: '波兰' }] },
+        { index: 4, country: '印度尼西亚', percentage: [{ type: '世界杯', value: 0.4, adjust: 'a', country: '印度尼西亚' }, { type: 'NBA', value: 0.6, adjust: 'a', country: '印度尼西亚' }] },
+        { index: 5, country: '俄罗斯', percentage: [{ type: '世界杯', value: 0.3, adjust: 'a', country: '俄罗斯' }, { type: 'NBA', value: 0.7, adjust: 'a', country: '俄罗斯' }] },
+    ];
+    //append data
+    const $tbody = $('.g2-table').children('tbody');
+    data.forEach(function (d, index) {
+        //create container
+        const $tr = $('<tr class="g2-table-row"></tr>');
+        $tbody.append($tr);
+        //index
+        const $index = $('<td class="g2-table-column g2-table-column-index">' + d.index + '</td>');
+        $tr.append($index);
+        //country
+        const $country = $('<td class="g2-table-column">' + d.country + '</td>');
+        $tr.append($country);
+        //time
+        const percentID = 'bar-chart-' + index;
+        const $percent = $('<td class="g2-table-column g2-table-percentage"><div class="chartContainer" id="' + percentID + '"></div></td>');
+        $tr.append($percent);
+        createStackBarChart(percentID, d.percentage, index);
+    });
+    function createStackBarChart(containerId, data, index) {
+        const chart = new G2.Chart({
+            container: containerId,
+            forceFit: true,
+            height: 30,
+            padding: [0, 50, 0, 50]
+        });
+        chart.source(data);
+        chart.legend(false);
+        chart.tooltip({
+            htmlContent: function (title, items) {
+                const pieData = [];
+                const container = '<div class="g2-tooltip">';
+                const titleDom = '<div class="g2-tooltip-title" style="margin-bottom: 4px;">' + items[0].point._origin.country + '</div>';
+                let listDom = '<ul class="g2-tooltip-list">';
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    const itemDom = '<li data-index={index}>' + '<span style="background-color:' + item.color + ';width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>' + item.name + '<span class="g2-tooltip-value">' + item.value + '</span>' + '</li>';
+                    listDom += itemDom;
+                    pieData.push(item.point._origin);
+                }
+                listDom += '</ul>';
+                const chartDom = '<div id="g2-tooltip-pie' + index + '" class="tooltip-pie"></div>';
+                setTimeout(function () {
+                    drawTooltipPieChart('g2-tooltip-pie' + index, pieData);
+                }, 10);
+                return container + titleDom + listDom + chartDom + '</div>';
+            }
+        });
+        chart.axis(false);
+        chart.coord().transpose();
+        chart.intervalStack().position('adjust*value').color('type').size(30).opacity(1);
+        chart.render();
+    }
+    function drawTooltipPieChart(container, data) {
+        const chart = new G2.Chart({
+            container: container,
+            width: 40,
+            height: 40,
+            padding: 0,
+            animate: false
+        });
+        chart.source(data);
+        chart.legend(false);
+        chart.axis(false);
+        chart.tooltip(false);
+        chart.coord('theta', {
+            radius: 0.75,
+            innerRadius: 0.5
+        });
+        chart.intervalStack().position('value').color('type', ['#2194ff', '#37c461']).opacity(1);
+        chart.render();
+    }
+</script>
