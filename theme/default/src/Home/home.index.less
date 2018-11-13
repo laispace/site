@@ -218,7 +218,7 @@ h2, h3, h4, h5, h6 {
     padding: 8px 26px;
     font-size: 16px;
     background: linear-gradient(-135deg, #935EFF, #625EFF);
-    border-radius: 20px;
+    border-radius: 4px;
     margin-top: 56px;
   }
 
@@ -229,7 +229,8 @@ h2, h3, h4, h5, h6 {
     bottom: 18px;
     left: 50%;
     margin-left: -10px;
-    animation: updown 1s infinite;
+    animation: updown 2s infinite;
+    animation-timing-function: cubic-bezier(0.16, 0.37, 0.29, 0.82);
   }
 }
 
@@ -241,7 +242,8 @@ h2, h3, h4, h5, h6 {
 .page1-title {
   font-size: 30px;
   color: #000;
-  margin: 103px 0;
+  padding: 103px 0;
+  text-align: center;
 }
 
 .page1 {
@@ -251,6 +253,7 @@ h2, h3, h4, h5, h6 {
   min-height: 372px;
   .card {
     transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+    margin: 0 12px;
     &-wrapper {
       //margin-bottom: 40px;
     }
