@@ -9,13 +9,13 @@ const g6Version = '2.1.2';
 const g6EditorVersion = '1.0.7';
 module.exports = {
     url: {
-        g2: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.3.1/dist/g2.min.js',
+        g2: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.3.2/dist/g2.min.js',
         'g2-brush': 'https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js',
         'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-plugin-slider-2.1.0/dist/g2-plugin-slider.min.js',
         d3: 'https://gw.alipayobjects.com/os/antv/assets/lib/d3-4.13.0.min.js',
         dataSet: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.9.6/dist/data-set.min.js',
-        f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.2.3/f2.min.js',
-        'f2-all': 'https://gw.alipayobjects.com/os/antv/assets/f2/3.2.3/f2-all.min.js',
+        f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0-beta.1/f2.min.js',
+        'f2-all': 'https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0-beta.1/f2-all.min.js',
         g6: g6Url + g6Version + '/build/g6.js',
         'g6-plugins': g6Url + g6Version + '/build/plugins.js',
         'g6-editor-base': g6EditorUrl + g6EditorVersion+'/build/base.js',

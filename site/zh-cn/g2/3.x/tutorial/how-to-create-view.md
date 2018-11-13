@@ -23,7 +23,7 @@ Chart 是一种特殊的View，两者之间也有一定的差异：
 ```javascript
 // step 1: 需要创建 chart 对象
 const chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   width: 1000,
   height: 500,
   padding: [ 20, 200 ]
@@ -95,7 +95,7 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
   chart.legend('trend', {
     position: 'left'
   });
-  
+
   // 绘制世界地图背景
   const ds = new DataSet();
   const worldMap = ds.createView('back')
@@ -110,7 +110,7 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
     stroke: '#ccc',
     lineWidth: 1
   });
-  
+
   // 可视化用户数据
   const userData = [
     { name: 'Russia', value: 86.8 },

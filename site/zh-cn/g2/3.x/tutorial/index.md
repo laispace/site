@@ -173,7 +173,7 @@ chart.render();
 
 此外，Viser 并不是针对 React 做的适配，它是对 G2 3.0 通用的抽象。通过基于 Viser 封装，现在已经支持对 React、 Angular 和 Vue 三个常用框架的深度整合，对应的是 viser-react、viser-ng 和 viser-vue。对，你都有机会用到一样的使用体验。当然，你甚至可以自己动手来封装针对任何库的版本，如果需要的话。Viser 提供了这种自定义的扩展能力，而且成本非常低。
 
-[BizCharts](https://alibaba.github.io/BizCharts/) 地址：https://alibaba.github.io/BizCharts/
+[BizCharts](http://bizcharts.net/products/bizCharts) 地址：http://bizcharts.net/products/bizCharts
 [Viser](https://viserjs.github.io/) 地址：https://viserjs.github.io/
 
 

@@ -45,7 +45,7 @@ $.getJSON('/assets/data/world.geo.json', data => {
         as: [ 'longitude', 'latitude' ]
       });
     const chart = new G2.Chart({
-      id: 'mountNode',
+      container: 'mountNode',
       forceFit: true,
       height: window.innerHeight,
       padding: 'auto'

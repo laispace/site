@@ -91,7 +91,7 @@ geom.select([true,] {
       type: 'geo.region',
       field: 'name',
       geoDataView: geoDataView,
-      as: ['longitude', 'lantitude'],
+      as: ['longitude', 'latitude'],
     });
 
     return dvData;
@@ -108,7 +108,7 @@ geom.select([true,] {
 
     // start: 计算地图的最佳宽高
     const longitudeRange = dv.range('longitude');
-    const lantitudeRange = dv.range('lantitude');
+    const lantitudeRange = dv.range('latitude');
     const ratio = (longitudeRange[1] - longitudeRange[0]) / (lantitudeRange[1] - lantitudeRange[0]);
     let width;
     let height;
@@ -134,7 +134,7 @@ geom.select([true,] {
     });
     provinceChart
       .polygon()
-      .position('longitude*lantitude')
+      .position('longitude*latitude')
       .label('name', {
         textStyle: {
           fill: '#fff',
@@ -154,7 +154,7 @@ geom.select([true,] {
   const mapData = ChinaGeoJSON['China'];
   const chinaDv = processData(mapData);
   const longitudeRange = chinaDv.range('longitude');
-  const lantitudeRange = chinaDv.range('lantitude');
+  const lantitudeRange = chinaDv.range('latitude');
   const ratio = (longitudeRange[1] - longitudeRange[0]) / (lantitudeRange[1] - lantitudeRange[0]);
 
   const chart = new G2.Chart({
@@ -172,7 +172,7 @@ geom.select([true,] {
   chart.axis(false);
   chart
     .polygon()
-    .position('longitude*lantitude')
+    .position('longitude*latitude')
     .tooltip('name')
     .style({
       stroke: '#bfbfbf',
