@@ -1,0 +1,75 @@
+<!--
+title: 生鲜销售趋势
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 生鲜销售每日在午餐前 10：00-11：00 销售额最高，预测在午饭后销售额又将迎来一个小高峰。
+plotUsage: 数据来源：demo数据
+filter: 图形,图形样式
+tags: 图形样式
+recommend: true
+subCat: 基础柱状图
+-->
+<script>
+    const data = [
+        { time: '9:00-10:00', value: 30 },
+        { time: '10:00-11:00', value: 90 },
+        { time: '11:00-12:00', value: 50 },
+        { time: '12:00-13:00', value: 30 },
+        { time: '13:00-14:00', value: 70 }
+    ];
+
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: [20, 20, 50, 25]
+    });
+    chart.source(data);
+    chart.scale('value', {
+        alias: '销售额(万)'
+    });
+    chart.axis('time', {
+        label: {
+            textStyle: {
+                fill: '#aaaaaa'
+            }
+        },
+        tickLine: {
+            alignWithLabel: false,
+            length: 0
+        }
+    });
+
+    chart.axis('value', {
+        label: {
+            textStyle: {
+                fill: '#aaaaaa'
+            }
+        }
+    });
+
+    chart.tooltip({
+        share: true
+    });
+    chart.interval().position('time*value').opacity(1)
+        .style('time', {
+
+            lineWidth: (val) => {
+                if (val === '13:00-14:00') {
+                    return 1;
+                }
+                return 0;
+            },
+            opacity: (val) => {
+                if (val === '13:00-14:00') {
+                    return 0.4;
+                }
+                return 1;
+            },
+            stroke: '#636363',
+            lineDash: [3, 2]
+        });
+    chart.render();
+</script>
