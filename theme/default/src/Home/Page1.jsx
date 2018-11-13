@@ -5,7 +5,7 @@ import { page1 } from './data';
 
 export default function Page1() {
   const children = page1.map((card, i) => (
-    <Col className="card-wrapper" key={i} md={8} xs={24}>
+    <Col className="card-wrapper" key={i} md={6} xs={24}>
       <a className="card" href={card.href}>
         <h3>{card.title}</h3>
         <img src={card.img} alt="" className="card-img-top" />
@@ -22,15 +22,15 @@ export default function Page1() {
     </Col>
   ));
 
-  return (<section className="page-wrapper page1" style={{ height: window.innerHeight }}>
+  return (<section className="page-wrapper page1">
     <a id="__products"></a>
+    <div className="page1-title">我们的产品</div>
     <QueueAnim
       component={Row}
       type="bottom"
       className="page row text-center"
       delay={500}
     >
-      <div className="page1-title">我们的产品</div>
       {children}
     </QueueAnim>
   </section>);
