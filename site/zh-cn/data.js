@@ -35,12 +35,13 @@ const data = {
             href: '${base}zh-cn/f2/3.x/index.html',
             icon: '${assets}/image/icon/f2.svg',
             qrCode: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' },
+            getStarted: { text: '${resource.translate.getStarted}', href: 'https://www.yuque.com/antv/f2/getting-started' },
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/3.x/tutorial/index.html' },
-                English: { text: 'English', href: 'https://antv.gitbook.io/f2' },
-                history: { text: '${resource.translate.history}', href: '${base}zh-cn/f2/3.x/tutorial/history.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/f2/api-index' },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/f2/grammar' },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/f2-en' },
+                history: { text: '${resource.translate.history}', href: 'https://www.yuque.com/antv/f2/changelog' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },
