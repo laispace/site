@@ -1,12 +1,11 @@
 <!--
-title: g2-brush 高亮图形
+title: brush interaction 高亮图形
 resource:
   jsFiles:
     - ${url.jquery}
     - ${url.dataSet}
-    - ${url['g2-brush']}
-plotDescription: g2-brush 高亮图形
-plotUsage: g2-brush 框选高亮图形
+plotDescription: brush interaction 高亮图形
+plotUsage: brush interaction 框选高亮图形
 date: "2018-03-24"
 subCat: 其他
 -->
@@ -16,7 +15,6 @@ subCat: 其他
   <button id="X">横向选择</button>
   <button id="Y">纵向选择</button>
   <button id="POLYGON">圈选</button>
-  <button id="clear">清除选择</button>
 </div>
 <div id="canvas"></div>`);
     const Util = G2.Util;
@@ -107,94 +105,81 @@ subCat: 其他
         });
         chart.render();
 
-        let brush;
-
         function setBrushType(type) {
-            if (!brush) {
-                brush = new Brush({
-                    canvas: chart.get('canvas'),
-                    dragable: true,
-                    type,
-                    onBrushstart(ev) {
-                        chart.hideTooltip();
-                        const {x, y} = ev;
-                        const views = chart.getViewsByPoint({x, y});
-                        if (views.length > 1) {
-                            this.chart = views[1];
-                            const coord = views[1].get('coord');
-                            this.plot = {
-                                start: coord.start,
-                                end: coord.end
-                            };
-                            this.xScale = views[1].getXScale();
-                            this.yScale = views[1].getYScales()[0];
-                        }
-                    },
-                    onBrushmove(ev) {
-                        chart.hideTooltip();
-
-                        const {data} = ev;
-                        chart.eachShape((record, shape) => {
-                            if (!shape.get('_originAttrs')) {
-                                shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
-                            }
-                            if (data.indexOf(record) === -1) {
-                                shape.attr('fill', '#ccc');
-                            } else {
-                                const originAttrs = shape.get('_originAttrs');
-                                shape.__attrs = Util.cloneDeep(originAttrs);
-                            }
-                        });
-                    },
-                    onDragmove(ev) {
-                        chart.hideTooltip();
-
-                        const {data} = ev;
-                        chart.eachShape((record, shape) => {
-                            if (!shape.get('_originAttrs')) {
-                                shape.set('_originAttrs', Util.cloneDeep(shape.__attrs)); // 缓存原来的属性
-                            }
-                            if (data.indexOf(record) === -1) {
-                                shape.attr('fill', '#ccc');
-                            } else {
-                                const originAttrs = shape.get('_originAttrs');
-                                shape.__attrs = Util.cloneDeep(originAttrs);
-                            }
-                        });
+            chart.clearInteraction('brush');
+            chart.interact('brush', {
+                draggable: true,
+                type,
+                inPlot: false,
+                onBrushstart(ev) {
+                    chart.hideTooltip();
+                    const { x, y } = ev;
+                    const views = chart.getViewsByPoint({ x, y });
+                    if (views.length > 1) {
+                        this.chart = views[1];
+                        const coord = views[1].get('coord');
+                        this.plot = {
+                            start: coord.start,
+                            end: coord.end
+                        };
+                        this.xScale = views[1].getXScale();
+                        this.yScale = views[1].getYScales()[0];
                     }
-                });
-            } else {
-                if (type === 'clear') {
-                    brush.container.clear();
-                    // brush.canvas.draw();
-                } else {
-                    brush.setType(type);
+                },
+                onBrushmove(ev) {
+                    chart.hideTooltip();
 
+                    const { data } = ev;
+                    chart.eachShape((record, shape) => {
+                        if (!shape.get('_originAttrs')) {
+                            shape.set('_originAttrs', Util.cloneDeep(shape._attrs)); // 缓存原来的属性
+                        }
+                        if (data.indexOf(record) === -1) {
+                            shape.attr('fill', '#ccc');
+                        } else {
+                            const originAttrs = shape.get('_originAttrs');
+                            shape._attrs = Util.cloneDeep(originAttrs);
+                        }
+                    });
+                },
+                onDragmove(ev) {
+                    chart.hideTooltip();
+
+                    const { data } = ev;
+                    chart.eachShape((record, shape) => {
+                        if (!shape.get('_originAttrs')) {
+                            shape.set('_originAttrs', Util.cloneDeep(shape._attrs)); // 缓存原来的属性
+                        }
+                        if (data.indexOf(record) === -1) {
+                            shape.attr('fill', '#ccc');
+                        } else {
+                            const originAttrs = shape.get('_originAttrs');
+                            shape._attrs = Util.cloneDeep(originAttrs);
+                        }
+                    });
+                },
+                onReset() {
+                    chart.eachShape((record, shape) => {
+                        if (shape.get('_originAttrs')) {
+                            shape._attrs = Util.cloneDeep(shape.get('_originAttrs'));
+                        }
+                    });
+                    chart.repaint();
                 }
-            }
+            });
         }
 
         $('#XY').click(() => {
             setBrushType('XY');
         });
-        $('#Y').click(() => {
-            setBrushType('Y');
-        });
         $('#X').click(() => {
             setBrushType('X');
         });
+        $('#Y').click(() => {
+            setBrushType('Y');
+        });
         $('#POLYGON').click(() => {
             setBrushType('POLYGON');
-        });
-        $('#clear').click(() => {
-            setBrushType('clear');
-
-            chart.eachShape((record, shape) => {
-                if (shape.get('_originAttrs')) {
-                    const originAttrs = shape.get('_originAttrs');
-                    shape.__attrs = Util.cloneDeep(originAttrs);
-                }
-            });
         });
     });
 </script>

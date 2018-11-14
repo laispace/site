@@ -1,11 +1,10 @@
 <!--
-title: g2-brush 结合 DataSet
+title: brush interaction 结合 DataSet
 resource:
   jsFiles:
     - ${url.jquery}
     - ${url.dataSet}
-    - ${url['g2-brush']}
-plotDescription: g2-brush 结合 DataSet
+plotDescription: brush interaction
 plotUsage: g2-brush 结合 DataSet 实现多图表交互
 date: "2018-03-24"
 subCat: 其他
@@ -70,17 +69,16 @@ subCat: 其他
         chart2.area().position('date*price').active(false).shape('smooth').opacity(0.85);
         chart2.render();
 
-        new Brush({
-            canvas: chart2.get('canvas'),
-            chart: chart2,
+        chart2.interact('brush', {
             type: 'X',
-            dragable: true,
+            draggable: true,
+            inPlot: false,
             onBrushmove(ev) {
-                const {date} = ev;
+                const { date } = ev;
                 ds.setState('dates', date);
             },
             onDragmove(ev) {
-                const {date} = ev;
+                const { date } = ev;
                 ds.setState('dates', date);
             }
         });

@@ -1,12 +1,11 @@
 <!--
-title: g2-brush 过滤图形
+title: brush interaction 过滤图形
 resource:
   jsFiles:
     - ${url.jquery}
     - ${url.dataSet}
-    - ${url['g2-brush']}
-plotDescription: g2-brush 过滤图形
-plotUsage: g2-brush 框选过滤图形
+plotDescription: brush interaction 过滤图形
+plotUsage: brush interaction 框选过滤图形
 date: "2018-03-24"
 subCat: 其他
 -->
@@ -40,9 +39,9 @@ subCat: 其他
 
         chart.render();
 
-        new Brush({
-            canvas: chart.get('canvas'),
-            dragable: true,
+        chart.interact('brush', {
+            draggable: true,
+            inPlot: false,
             onBrushstart(ev) {
                 const {x, y} = ev;
                 const views = chart.getViewsByPoint({x, y});
