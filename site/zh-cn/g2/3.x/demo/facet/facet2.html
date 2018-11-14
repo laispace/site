@@ -47,8 +47,14 @@ subCat: 分面
             grid: null,
             label: {
                 textStyle: {
-                    fontSize: 12,
+                    fontSize: 10,
                     fill: '#aaaaaa'
+                },
+                formatter: function (text) {
+                    if (window.innerHeight > 600) {
+
+                        return text;
+                    }
                 }
             }
         });
@@ -56,6 +62,11 @@ subCat: 分面
         chart.axis('year', {
             tickLine: {
                 length: 0
+            },
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
             }
         });
 
@@ -63,10 +74,11 @@ subCat: 分面
             rowTitle: {
                 offsetX: (window.innerWidth - 100) * -1,
                 style: {
-                    fontSize: 14,
+                    fontSize: 12,
                     textAlign: 'end',
                     rotate: 0,
-                    fill: '#444'
+                    fontWeight:300,
+                    fill: '#8d8d8d'
                 }
             },
             fields: [null, 'country'],
