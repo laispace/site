@@ -41,7 +41,7 @@ subCat: 基础条形图
     chart.axis('type', {
         label: {
             textStyle: {
-                fill: '#595959',
+                fill: '#8d8d8d',
                 fontSize: 12
             }
         },
@@ -72,9 +72,12 @@ subCat: 基础条形图
     chart.coord().transpose();
     chart.interval().position('type*value').color('cat', ['#face1d', '#37c461', '#2194ff']).size(26).opacity(1).label('value', {
         textStyle: {
-            fill: '#595959'
+            fill: '#8d8d8d'
         },
-        offset: 10
+        offset: 10,
+        formatter:function(text){
+            return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
+        }
     });
     //guide
     chart.guide().text({
