@@ -91,12 +91,12 @@ subCat: 区间面积图
     //view1
     const view1 = chart.view();
     view1.source(dv2);
-    view1.area().position('Date*range').color('#fedba9').opacity(0.1).tooltip(false);
+    view1.area().position('Date*range').color('#8d8d8d').opacity(0.1).tooltip(false);
     //view1
     const view2 = chart.view();
     view2.source(dv);
-    view2.line().position('Date*value').color('type', ['#b5392b', '#000000']).opacity(1);
-    view2.point().position('Date*value').color('type', ['#b5392b', '#000000']).opacity(1).shape('circle');
+    view2.line().position('Date*value').color('type').opacity(1);
+    view2.point().position('Date*value').color('type').opacity(1).shape('circle');
 
     chart.render();
 </script>
