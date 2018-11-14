@@ -44,7 +44,9 @@ subCat: 基础饼图
                 textStyle: {
                     opacity,
                     fill: 'white',
-                    fontSize: 12
+                    fontSize: 12,
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(0, 0, 0, .45)'
                 },
                 formatter: (text, item) => {
                     const d = item.point;
