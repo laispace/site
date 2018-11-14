@@ -59,10 +59,15 @@ subCat: 基础柱状图
             }
             return '#2194ff';
         })
-        .label('value', (val) => {
-            if (val < 0.05) {
-                return String(parseInt(val * 100)) + '%';
-            }
+        .label('value',{
+            formatter:function(text){
+                const val = parseFloat(text);
+                if(val<0.05){
+                   return (val * 100).toFixed(1)+'%'; 
+                }
+            },
+            offset:10
         });
+        
     chart.render();
 </script>

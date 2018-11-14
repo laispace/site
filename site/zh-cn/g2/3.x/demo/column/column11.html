@@ -68,13 +68,7 @@ subCat: 堆叠柱状图
             }
         });
 
-        chart.axis('value', {
-            label: {
-                textStyle: {
-                    fill: '#aaaaaa'
-                }
-            }
-        });
+        chart.axis('value',false);
         chart.legend({
             position: 'right-center'
         });
@@ -86,7 +80,11 @@ subCat: 堆叠柱状图
                 position: 'middle',
                 offset: 0,
                 textStyle: {
-                    fill: '#fff'
+                    fill: '#fff',
+                    fontSize:12
+                },
+                formatter:function(text){
+                    return text+'%';
                 }
             };
         });

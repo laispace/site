@@ -12,6 +12,13 @@ const $demoPreview = $('#demo-preview');
 
 const theme = getQueryVariable('theme');
 const isDark = theme === 'dark';
+const $iframeContainer = $('#preview');
+
+if (isDark) {
+  $code.val($codeDark.val());
+} else {
+  $code.val($codeDefault.val());
+}
 
 // 顶部走马灯相关
 const $prevSlider = $('#slider-prev');
@@ -19,30 +26,53 @@ const $nextSlider = $('#slider-next');
 const sliderCount = $('#slider .slider-img').length;
 let currentSlider  = 0;
 
-$('#slider .slider-img').each(function(index) {
-  if ($(this).hasClass('active')) {
-   currentSlider = parseInt(index / 7) * 7;
+function displaySliderNav() {
+  if (currentSlider < 7) {
+    $prevSlider.hide();
+  } else if (currentSlider + 7 > sliderCount) {
+    $nextSlider.hide();
+  } else {
+    $prevSlider.show();
+    $nextSlider.show();
   }
-});
-
-if (isDark) {
-    $code.val($codeDark.val());
-} else {
-    $code.val($codeDefault.val());
 }
 
-const slider = $('#slider').lightSlider({
-  item: 7,
-  slideMove: 7,
-  autoWidth: false,
-  slideMargin: 20,
-  controls: false,
-  onSliderLoad: function() {
-    $('.lSPager.lSpg').remove();
+if ($iframeContainer.hasClass('g2')) {
+  $('#slider .slider-img').each(function(index) {
+    if ($(this).hasClass('active')) {
+      currentSlider = parseInt(index / 7) * 7;
+    }
+  });
+  const slider = $('#slider').lightSlider({
+    item: 7,
+    slideMove: 7,
+    autoWidth: false,
+    slideMargin: 20,
+    controls: false,
+    onSliderLoad: function() {
+      $('.lSPager.lSpg').remove();
+    }
+  });
+  slider.goToSlide(currentSlider);
+  displaySliderNav();
+  if (sliderCount > 7) {
+    $prevSlider.show();
+    $nextSlider.show();
+    displaySliderNav();
+    $prevSlider.click(function() {
+      slider.goToPrevSlide();
+      currentSlider -= 7;
+      displaySliderNav();
+    });
+
+    $nextSlider.click(function() {
+      slider.goToNextSlide(true);
+      currentSlider += 7;
+      displaySliderNav();
+    });
   }
-});
-slider.goToSlide(currentSlider);
-displaySliderNav();
+}
+
 $('.theme-switching .btn').each(function () {
     const $btn = $(this);
     if (isDark) {
@@ -69,8 +99,6 @@ const htmlEditor = CodeMirror.fromTextArea($code[0], {
     lineNumbers: true,
     lineWrapping: false
 });
-
-const $iframeContainer = $('#preview');
 
 function syncCode() {
     $iframeContainer.html('<iframe></iframe>');
@@ -279,31 +307,5 @@ $('#btn-fullscreen').click(function() {
   syncCode();
 });
 
-function displaySliderNav() {
-  if (currentSlider < 7) {
-    $prevSlider.hide();
-  } else if (currentSlider + 7 > sliderCount) {
-    $nextSlider.hide();
-  } else {
-    $prevSlider.show();
-    $nextSlider.show();
-  }
-}
 
-if (sliderCount > 7) {
-  $prevSlider.show();
-  $nextSlider.show();
-  displaySliderNav();
-  $prevSlider.click(function() {
-    slider.goToPrevSlide();
-    currentSlider -= 7;
-    displaySliderNav();
-  });
-
-  $nextSlider.click(function() {
-    slider.goToNextSlide(true);
-    currentSlider += 7;
-    displaySliderNav();
-  });
-}
 

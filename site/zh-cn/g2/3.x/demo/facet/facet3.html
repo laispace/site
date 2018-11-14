@@ -87,13 +87,22 @@ subCat: 分面
     chart.legend(false);
     chart.facet('rect', {
         fields: ['class'],
+        colTitle: {
+            offsetY:-15,
+            style: {
+                fontSize: 14,
+                textAlign: 'center',
+                fontWeight:300,
+                fill: '#8d8d8d'
+            }
+        },
         eachView: function eachView(view, facet) {
             if (facet.colIndex === 0) {
                 view.axis('country', {
                     label: {
                         textStyle: {
-                            fill: '#595959',
-                            fontSize: 14
+                            fill: '#8d8d8d',
+                            fontSize: 12
                         }
                     },
                     tickLine: {
@@ -124,6 +133,7 @@ subCat: 分面
                             fill,
                             fontSize: 12,
                             textAlign,
+                            fontWeight: 300,
                             shadowBlur: 2,
                             shadowColor: 'rgba(0, 0, 0, .45)'
                         }

@@ -29,8 +29,9 @@ subCat: 基础饼图
     chart.coord('theta', {
         radius: 0.75
     });
-    chart.intervalStack().position('value').color('type', ['#063d8a', '#1770d6', '#47abfc', '#38c060'])
-        .active(true, {
+    const pie = chart.intervalStack().position('value').color('type', ['#063d8a', '#1770d6', '#47abfc', '#38c060'])
+        .style({ opacity: 0.4 })
+        .select(true, {
             style: {
                 stroke: 'black',
                 lineWidth: 2,
@@ -44,7 +45,9 @@ subCat: 基础饼图
                 textStyle: {
                     opacity,
                     fill: 'white',
-                    fontSize: 12
+                    fontSize: 12,
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(0, 0, 0, .45)'
                 },
                 formatter: (text, item) => {
                     const d = item.point;
@@ -53,4 +56,8 @@ subCat: 基础饼图
             };
         });
     chart.render();
+    pie.setSelected(data[0]);
+    chart.on('afterpaint',function(){
+        pie.setSelected(data[0]);
+    });
 </script>

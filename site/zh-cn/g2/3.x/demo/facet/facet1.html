@@ -34,6 +34,13 @@ subCat: 分面
             range: [0, 1],
             tickCount: 2
         });
+        chart.axis('value', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            }
+        });
         chart.axis('year', {
             grid: {
                 lineStyle: {
@@ -63,6 +70,15 @@ subCat: 分面
 
         chart.facet('rect', {
             fields: ['country'],
+            colTitle: {
+                offsetY: -15,
+                style: {
+                    fontSize: 12,
+                    textAlign: 'center',
+                    fontWeight: 300,
+                    fill: '#8d8d8d'
+                }
+            },
             padding: 5,
             eachView: function eachView(view) {
                 view.line().position('year*value').shape('smooth').opacity(0.8);
