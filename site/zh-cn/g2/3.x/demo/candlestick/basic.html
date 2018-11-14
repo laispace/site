@@ -5,7 +5,6 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - ${url['g2-plugin-slider']}
 plotDescription: K 线图，原名蜡烛图，又称阴阳图、棒线、红黑线或蜡烛线，常用于展示股票交易数据。
 plotUsage: K 线图主要用于金融领域里展示股票，期货等交易数据，按照时间维度分为日 K 线、周 K 线、月 K 线。展示的数据需要满足 K 线构成的四要素：即开盘价、收盘价、最高价、最低价。
 relativePlots:
@@ -44,7 +43,7 @@ subCat: 烛形图
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: window.innerHeight - 50,
+      height: window.innerHeight - 60,
       animate: false,
       padding: [ 10, 40, 40, 40 ],
     });
@@ -145,12 +144,8 @@ subCat: 烛形图
 
     chart.render();
 
-    // 生成 slider
-    const slider = new Slider({
+    chart.interact('slider', {
       container: 'slider', // DOM id
-      width: 'auto',
-      height: 26,
-      padding: [ 20, 40, 20, 40 ],
       start: ds.state.start, // 和状态量对应
       end: ds.state.end,
       data, // 源数据
@@ -165,8 +160,10 @@ subCat: 烛形图
       onChange: ({startText, endText}) => {
         ds.setState('start', startText);
         ds.setState('end', endText);
+        setTimeout(() => {
+          chart.render();
+        }, 32);
       }
     });
-    slider.render();
   });
 </script>
