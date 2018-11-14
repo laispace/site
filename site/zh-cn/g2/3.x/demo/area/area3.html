@@ -159,8 +159,8 @@ subCat: 堆叠面积图
                     }
                 }
             });
-            chart.lineStack().position('date*value').color('country', ['#3ca1ff', '#2fc15b', '#facc14', '#273673', '#00c2c3', '#3436c7', '#f04864']);
-            chart.areaStack().position('date*value').color('country', ['#3ca1ff', '#2fc15b', '#facc14', '#273673', '#00c2c3', '#3436c7', '#f04864']).opacity(0.7);
+            chart.lineStack().position('date*value').color('country');
+            chart.areaStack().position('date*value').color('country').opacity(0.7);
         }
         function chartType2() {
             chart.axis('date', {
@@ -177,8 +177,8 @@ subCat: 堆叠面积图
                     }
                 }
             });
-            chart.lineStack().position('date*percent').color('country', ['#3ca1ff', '#2fc15b', '#facc14', '#273673', '#00c2c3', '#3436c7', '#f04864']);
-            chart.areaStack().position('date*percent').color('country', ['#3ca1ff', '#2fc15b', '#facc14', '#273673', '#00c2c3', '#3436c7', '#f04864']).opacity(0.7);
+            chart.lineStack().position('date*percent').color('country');
+            chart.areaStack().position('date*percent').color('country').opacity(0.7);
         }
     });
 </script>
