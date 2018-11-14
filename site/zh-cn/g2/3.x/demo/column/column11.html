@@ -1,0 +1,92 @@
+<!--
+title: 中国移动互联网细分结构占比
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 整体来看，行业细分市场格局趋于稳定，17 年 Q2 移动购物仍占比超六成，稳居第二，比去年略有下降。近两年移动游戏维持在11%左右。而 16 年 Q4 爆发的共享单车成倍增长，从 0.1% 增至 17年 Q2 的1.2%。
+plotUsage: 数据来源：demo数据
+recommend: true
+subCat: 堆叠柱状图
+-->
+<script>
+    const data = [
+            { time: '16 Q1', type: '移动游戏', value: 0 },
+            { time: '16 Q1', type: '移动购物', value: 17.8 },
+            { time: '16 Q1', type: '移动营销', value: 69.4 },
+            { time: '16 Q1', type: '共享单车', value: 12.8 },
+
+            { time: '16 Q2', type: '移动游戏', value: 0 },
+            { time: '16 Q2', type: '移动购物', value: 18.1 },
+            { time: '16 Q2', type: '移动营销', value: 70.7 },
+            { time: '16 Q2', type: '共享单车', value: 11.2 },
+
+            { time: '16 Q3', type: '移动游戏', value: 0 },
+            { time: '16 Q3', type: '移动购物', value: 20.8 },
+            { time: '16 Q3', type: '移动营销', value: 67.4 },
+            { time: '16 Q3', type: '共享单车', value: 11.8 },
+
+            { time: '16 Q4', type: '移动游戏', value: 0.1 },
+            { time: '16 Q4', type: '移动购物', value: 20.3 },
+            { time: '16 Q4', type: '移动营销', value: 69.2 },
+            { time: '16 Q4', type: '共享单车', value: 10.4 },
+
+            { time: '17 Q1', type: '移动游戏', value: 0.4 },
+            { time: '17 Q1', type: '移动购物', value: 17.3 },
+            { time: '17 Q1', type: '移动营销', value: 68.3 },
+            { time: '17 Q1', type: '共享单车', value: 14 },
+
+            { time: '17 Q2', type: '移动游戏', value: 1.2 },
+            { time: '17 Q2', type: '移动购物', value: 18.3 },
+            { time: '17 Q2', type: '移动营销', value: 68.6 },
+            { time: '17 Q2', type: '共享单车', value: 11.9 }
+
+        ];
+
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: 'auto'
+        });
+        chart.source(data, {
+            value: {
+                max: 100,
+                min: 0,
+                nice: true
+            }
+        });
+        chart.axis('time', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            },
+            tickLine: {
+                alignWithLabel: false,
+                length: 0
+            }
+        });
+
+        chart.axis('value',false);
+        chart.legend({
+            position: 'right-center'
+        });
+        chart.intervalStack().position('time*value').color('type', ['#40a9ff', '#1890ff', '#096dd9', '#0050b3']).opacity(1).label('value', function (val) {
+            if(val<10){
+               return false;
+            }
+            return {
+                position: 'middle',
+                offset: 0,
+                textStyle: {
+                    fill: '#fff',
+                    fontSize:12
+                },
+                formatter:function(text){
+                    return text+'%';
+                }
+            };
+        });
+        chart.render();
+</script>

@@ -1,0 +1,206 @@
+<!--
+title: 某中台产品服务器概况一览
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：demo数据
+recommend: true
+subCat: 迷你图
+-->
+<style>
+ .g2-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border-radius: 4px 4px 0 0;
+            table-layout: fixed;
+        }
+        .g2-thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-bottom-color: #e8e8e8;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            background-color: #fafafa
+        }
+        .th-index {
+            width: 30px;
+        }
+        .g2-thead th {
+            text-align: center;
+            height: 30px;
+            font-size: 12px;
+        }
+        .th-index {
+            width: 10%;
+        }
+        .th-id {
+            width: 20%;
+        }
+
+        .th-time {
+            width: 30%;
+        }
+        .g2-table-row {
+            height: 60px;
+            vertical-align: middle;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #e8e8e8;
+        }
+        .g2-table-column {
+            font-size: 12px;
+            color: #8c8c8c;
+            /*padding: 15px;*/
+            text-align: center;
+            border-spacing: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        .g2-guide-html {
+            width: 50px;
+            height: 40px;
+            vertical-align: middle;
+            line-height: 1.2
+        }
+        .g2-guide-html .title {
+            font-size: 12px;
+            color: #8c8c8c;
+            font-weight: 300;
+        }
+        .g2-guide-html .value {
+            font-size: 14px;
+            color: #000;
+            font-weight: bold;
+        }
+        canvas {
+            position: relative;
+            float: left;
+        }
+</style>
+<!-- table -->
+<table class='g2-table'>
+        <!--head-->
+        <thead class='g2-thead'>
+            <tr>
+                <th class='th-index'>序号</th>
+                <th class='th-id'>服务器 ID</th>
+                <th class='th-time'>服务调用次数</th>
+                <th>数据有负值</th>
+            </tr>
+        </thead>
+        <!--body-->
+        <tbody>
+        </tbody>
+    </table>
+<script>
+const data = [
+            { index: 1, id: 723826463, times: 500, value: 150 },
+            { index: 2, id: 90318249, times: 250, value: 50 },
+            { index: 3, id: 983927827, times: 100, value: 10 },
+            { index: 4, id: 7362764734, times: 750, value: -65 },
+            { index: 5, id: 7362764734, times: 100, value: -150 }
+        ];
+        //append data
+        const $tbody = $('.g2-table').children('tbody');
+        data.forEach(function (d, index) {
+            //create container
+            const $tr = $('<tr class="g2-table-row"></tr>');
+            $tbody.append($tr);
+            //index
+            const $index = $('<td class="g2-table-column g2-table-column-index">' + d.index + '</td>');
+            $tr.append($index);
+            //id
+            const $id = $('<td class="g2-table-column">' + d.id + '</td>');
+            $tr.append($id);
+            //time
+            const timeID = 'bar-chart-' + index;
+            const $time = $('<td class="g2-table-column"><div class="chartContainer" id="' + timeID + '"></div></td>');
+            $tr.append($time);
+            createSingleBarChart(timeID, [{ value: d.times }]);
+            //value
+            const valueID = 'bar-chart2-' + index;
+            const $value = $('<td class="g2-table-column"><div class="chartContainer" id="' + valueID + '"></div></td>');
+            $tr.append($value);
+            createSingleBarChart2(valueID, [{ value: d.value }]);
+        });
+        function createSingleBarChart(containerId, data) {
+            const chart = new G2.Chart({
+                container: containerId,
+                forceFit: true,
+                height: 60,
+                padding: [10, 50, 10, 30]
+            });
+            chart.source(data, {
+                value: {
+                    max: 1000,
+                    min: 0
+                }
+            });
+            chart.legend(false);
+            chart.axis(false);
+            chart.tooltip({
+                type: 'mini'
+            });
+            chart.coord().transpose();
+            chart.interval().position('1*value').color('#40a9ff').opacity(1).size(30)
+                .label('value', {
+                    offset: 10,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#595959'
+                    }
+                });
+            chart.render();
+        }
+        function createSingleBarChart2(containerId, data) {
+            const chart = new G2.Chart({
+                container: containerId,
+                forceFit: true,
+                height: 60,
+                padding: 0
+            });
+            chart.source(data, {
+                value: {
+                    max: 200,
+                    min: -200
+                }
+            });
+            chart.legend(false);
+            chart.axis(false);
+            chart.tooltip({
+                type: 'mini'
+            });
+            chart.coord().transpose();
+            chart.interval().position('1*value').size(30).opacity(1)
+                .color('value', function (val) {
+                    if (val < 0) {
+                        return '#ff4d4f';
+                    }
+                    return '#40a9ff';
+                })
+                .label('value', function (val) {
+                    const offset = (val > 0) ? 10 : -10;
+                    const textAlign = (val > 0) ? 'start' : 'end';
+                    return {
+                        offset,
+                        textStyle: {
+                            fontSize: 12,
+                            color: '#595959',
+                            textAlign
+                        }
+                    };
+                });
+            chart.guide().line({
+                start: ['50%', '0%'],
+                end: ['50%', '100%'],
+                lineStyle: {
+                    stroke: '#e8e8e8',
+                    lineDash: [0, 0]
+                }
+            });
+            chart.render();
+        }
+</script>

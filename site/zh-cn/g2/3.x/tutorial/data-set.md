@@ -190,7 +190,7 @@ dvForAll.transform({
 const dvForOneState = ds
   .createView('populationOfOneState')
   .source(dvForAll); // 从全量数据继承，写法也可以是 .source('populationByAge')
-    
+
 dvForOneState
   .transform({ // 过滤数据
     type: 'filter',
@@ -210,7 +210,7 @@ dvForOneState
 
 ```js
 const c1 = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   forceFit: true,
   height: 400,
 });
@@ -243,7 +243,7 @@ c1.on('tooltip:change', function(evt) {
 });
 
 const c2 = new G2.Chart({
-  id: 'c2',
+  container: 'c2',
   forceFit: true,
   height: 300,
   padding: 0,
@@ -311,11 +311,11 @@ $.getJSON('/assets/data/population-by-age.json', function(data) {
             dimension: 'age',
             as: 'percent'
         });
-        
+
     G2.Global.widthRatio.column = .95;
-    
+
     var c1 = new G2.Chart({
-        id: 'c1',
+        container: 'c1',
         forceFit: true,
         height: 400,
         padding: [40, 'auto', 'auto', 'auto']
@@ -347,9 +347,9 @@ $.getJSON('/assets/data/population-by-age.json', function(data) {
             ds.setState('currentState', items[0].title);
         }
     });
-    
+
     var c2 = new G2.Chart({
-        id: 'c2',
+        container: 'c2',
         forceFit: true,
         height: 300,
         padding: 0,
@@ -366,7 +366,7 @@ $.getJSON('/assets/data/population-by-age.json', function(data) {
             percent = (percent * 100).toFixed(2) + '%';
             return age + ' ' + percent;
         });
-   
+
     c1.render();
     c2.render();
 });

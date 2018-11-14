@@ -23,10 +23,11 @@ subCat: 漏斗图
   ];
   const dv = new DataView().source(data);
   dv.transform({
-    type: 'percent',
-    field: 'pv',
-    dimension: 'action',
-    as: 'percent'
+    type:'map',
+    callback(row){
+      row.percent = row.pv / 50000;
+      return row;
+    }
   });
   data = dv.rows;
   const chart = new G2.Chart({

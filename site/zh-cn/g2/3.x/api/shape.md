@@ -19,7 +19,7 @@ resource:
 
 ```js
 const Shape = G2.Shape;
-const shapeObj = Shape.registerShape('geomType', 'shapeName', { 
+const shapeObj = Shape.registerShape('geomType', 'shapeName', {
   getPoints(pointInfo) {
     // 获取每种 shape 绘制的关键点
   },
@@ -192,7 +192,7 @@ const data = [
 ];
 
 const chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   height : 300,
   forceFit: true,
 });

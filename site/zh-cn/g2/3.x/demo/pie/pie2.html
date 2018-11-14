@@ -15,6 +15,7 @@ subCat: 基础饼图
     .g2-label-item {
         font-size: 12px;
         color: #ffffff;
+        text-shadow: 0px 0px 2px #595959;
     }
 </style>
 <script>
@@ -38,7 +39,7 @@ subCat: 基础饼图
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight,
-        padding: [0,20,0,0]
+        padding: [0, 20, 0, 0]
     });
     chart.legend(false);
     const view1 = chart.view({
@@ -96,46 +97,53 @@ subCat: 基础饼图
             }
         });
     chart.render();
+    drawLinkArea();
+    chart.on('afterpaint', function () {
+        drawLinkArea();
+    });
 
     /*---------绘制连接区间-----------*/
-    const canvas = chart.get('canvas');
-    const container = chart.get('backPlot');
-    const view1_coord = view1.get('coord');
-    const center = view1_coord.center;
-    const radius = view1_coord.radius;
-    const interval_geom = chart.getAllGeoms()[1];
-    const interval_container = interval_geom.get('shapeContainer');
-    const interval_bbox = interval_container.getBBox();
-    const view2_coord = view2.get('coord');
-    //area points
-    const pie_start1 = {
-        x: center.x + Math.cos(Math.PI * 2 - otherOffsetAngle) * radius,
-        y: center.y + Math.sin(Math.PI * 2 - otherOffsetAngle) * radius,
-    };
-    const pie_start2 = {
-        x: center.x + Math.cos(otherOffsetAngle) * radius,
-        y: center.y + Math.sin(otherOffsetAngle) * radius
-    };
-    const interval_end1 = {
-        x: interval_bbox.minX,
-        y: view2_coord.end.y
-    };
-    const interval_end2 = {
-        x: interval_bbox.minX,
-        y: view2_coord.start.y
-    };
-    const path = [
-        ['M', pie_start1.x, pie_start1.y],
-        ['L', pie_start2.x, pie_start2.y],
-        ['L', interval_end2.x, interval_end2.y],
-        ['L', interval_end1.x, interval_end1.y],
-        ['Z']
-    ];
-    container.addShape('path', {
-        attrs: {
-            path,
-            fill: '#e9f4fe'
-        }
-    });
-    canvas.draw();
+    function drawLinkArea() {
+        const canvas = chart.get('canvas');
+        const container = chart.get('backPlot');
+        const view1_coord = view1.get('coord');
+        const center = view1_coord.center;
+        const radius = view1_coord.radius;
+        const interval_geom = chart.getAllGeoms()[1];
+        const interval_container = interval_geom.get('shapeContainer');
+        const interval_bbox = interval_container.getBBox();
+        const view2_coord = view2.get('coord');
+        //area points
+        const pie_start1 = {
+            x: center.x + Math.cos(Math.PI * 2 - otherOffsetAngle) * radius,
+            y: center.y + Math.sin(Math.PI * 2 - otherOffsetAngle) * radius,
+        };
+        const pie_start2 = {
+            x: center.x + Math.cos(otherOffsetAngle) * radius,
+            y: center.y + Math.sin(otherOffsetAngle) * radius
+        };
+        const interval_end1 = {
+            x: interval_bbox.minX,
+            y: view2_coord.end.y
+        };
+        const interval_end2 = {
+            x: interval_bbox.minX,
+            y: view2_coord.start.y
+        };
+        const path = [
+            ['M', pie_start1.x, pie_start1.y],
+            ['L', pie_start2.x, pie_start2.y],
+            ['L', interval_end2.x, interval_end2.y],
+            ['L', interval_end1.x, interval_end1.y],
+            ['Z']
+        ];
+        container.addShape('path', {
+            attrs: {
+                path,
+                fill: '#e9f4fe'
+            }
+        });
+        canvas.draw();
+    }
+
 </script>

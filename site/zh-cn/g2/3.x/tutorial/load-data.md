@@ -17,7 +17,7 @@ chart 对象支持两种数据载入的方式：
 
 ```js
 const chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   width: 600,
   height: 300,
   data: [

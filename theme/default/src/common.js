@@ -228,7 +228,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
 // FIXME doc filtering is in ./common.js
 // FIXME promote banner(AD)
 const localStorage = window.localStorage;
-const promoteStatusKey = 'hide-yuque-20181018';
+const promoteStatusKey = 'hide-yuque-20181023';
 const promoteStatus = localStorage.getItem(promoteStatusKey);
 if (localStorage && (!promoteStatus || promoteStatus !== 'true')) {
     $('.promote-banner a .cross').click(e => {

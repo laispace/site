@@ -1,0 +1,164 @@
+<!--
+title: 某产品在各设备上的用户来源
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：demo数据
+recommend: true
+subCat: 迷你图
+-->
+<style>
+.g2-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border-radius: 4px 4px 0 0;
+            table-layout: fixed;
+        }
+        .g2-thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-bottom-color: #e8e8e8;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            background-color: #fafafa;
+        }
+        .th-index {
+            width: 30px;
+        }
+        .g2-thead th {
+            text-align: center;
+            height: 50px;
+            font-size: 12px;
+        }
+        .th-index {
+            width: 50px;
+        }
+        .th-id {
+            width: 20%;
+        }
+        .g2-table-row {
+            height: 60px;
+            vertical-align: middle;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #e8e8e8;
+        }
+        .g2-table-column {
+            font-size: 12px;
+            color: #8c8c8c;
+            text-align: center;
+        }
+        canvas {
+            position: relative;
+            float: left;
+        }
+        .top-class {
+            width: 20px;
+            height: 20px;
+            border-radius: 100px;
+            background-color: #314659;
+            text-align: center;
+            vertical-align: middle;
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+        }
+        .top-class:after {
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+            content: '';
+        }
+        .normal-class {
+            width: 20px;
+            height: 20px;
+            border-radius: 100px;
+            background-color: #f0f2f5;
+            text-align: center;
+            vertical-align: middle;
+            margin-left: 15px;
+            color: #717274;
+            font-weight: bold;
+        }
+        .normal-class:after {
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+            content: '';
+        }
+</style>
+<!-- table -->
+<table class='g2-table'>
+        <!--head-->
+        <thead class='g2-thead'>
+            <tr>
+                <th class='th-index'>排序</th>
+                <th class='th-id'>来源</th>
+                <th>用户数（万）</th>
+            </tr>
+        </thead>
+        <!--body-->
+        <tbody>
+        </tbody>
+    </table>
+<script>
+const data = [
+            { index: 1, source: 'Iphone', data: [{ 'value': 25 }] },
+            { index: 2, source: 'Galxy S5', data: [{ 'value': 18 }] },
+            { index: 3, source: 'Sony', data: [{ 'value': 6 }] },
+            { index: 4, source: 'Mac OS', data: [{ 'value': 3 }] },
+            { index: 5, source: 'HUAWEI', data: [{ 'value': 2 }] }
+        ];
+        //append data
+        const $tbody = $('.g2-table').children('tbody');
+        data.forEach(function (d, index) {
+            //create container
+            const $tr = $('<tr class="g2-table-row"></tr>');
+            $tbody.append($tr);
+            //index
+            const indexClass = (index < 3) ? 'top-class' : 'normal-class';
+            const $index = $('<td class="g2-table-column g2-table-column-index"><div class="' + indexClass + '">' + d.index + '</div></td>');
+            $tr.append($index);
+            //source
+            const $source = $('<td class="g2-table-column">' + d.source + '</td>');
+            $tr.append($source);
+            //data
+            const dataID = 'bar-chart-' + index;
+            const $data = $('<td class="g2-table-column"><div class="chartContainer" id="' + dataID + '"></div></td>');
+            $tr.append($data);
+            createSingleBarChart(dataID, d.data);
+        });
+        function createSingleBarChart(containerId, data) {
+            const chart = new G2.Chart({
+                container: containerId,
+                forceFit: true,
+                height: 60,
+                padding: 0
+            });
+            chart.source(data, {
+                value: {
+                    max: 30,
+                    min: 0
+                }
+            });
+            chart.legend(false);
+            chart.axis(false);
+            chart.tooltip({
+                type: 'mini'
+            });
+            chart.coord().transpose();
+            chart.interval().position('1*value').opacity(1).size(120)
+                .label('value', {
+                    offset: 10,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#595959'
+                    }
+                });
+            chart.render();
+        }
+</script>

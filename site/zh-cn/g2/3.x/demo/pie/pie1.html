@@ -13,12 +13,14 @@ subCat: 基础饼图
 -->
 <style>
     .g2-label-item-inner {
+        width: auto;
         font-size: 12px;
         color: #ffffff;
-        text-shadow: 1px 1px 2px #595959;
+        text-shadow: 0px 0px 2px #595959;
     }
 
     .g2-label-item-outer {
+        width: auto;
         font-size: 12px;
         color: #595959;
     }
@@ -62,7 +64,7 @@ subCat: 基础饼图
             htmlTemplate: (text, item) => {
                 const d = item.point;
                 const percent = String(parseInt(d.percent * 100)) + "%";
-                return '<span class=' + label_class + '>' + d.type + '<br/>' + percent + '</span>';
+                return '<div class=' + label_class + '>' + d.type + percent + '</div>';
             }
         };
     });

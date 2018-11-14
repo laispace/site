@@ -88,6 +88,9 @@ subCat: 基础柱状图
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
                 }
             }
         });
