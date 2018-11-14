@@ -61,7 +61,7 @@ subCat: 基础饼图
     view1.intervalStack().position('value').color('type', ['#38c060', '#2593fc']).opacity(1)
         .label('value', function () {
             return {
-                offset: -40,
+                offset: -10,
                 useHtml: true,
                 htmlTemplate: (text, item) => {
                     const d = item.point;
@@ -90,7 +90,8 @@ subCat: 基础饼图
     view2.intervalStack().position('1*value').color('type', ['#063d8a', '#0b53b0', '#1770d6', '#2593fc', '#47abfc', '#6dc1fc', '#94d6fd', '#bbe7fe'])
         .label('value', {
             position: 'right',
-            offset: [-20, 0],
+            offsetX:5,
+            offsetY:10,
             formatter: (text, item) => {
                 const d = item.point;
                 return d.type + ' ' + d.value + '%';
