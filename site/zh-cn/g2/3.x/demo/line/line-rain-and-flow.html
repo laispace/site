@@ -4,7 +4,6 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - ${url['g2-plugin-slider']}
 plotDescription: 在折线图的基础上，使用镜像分面，对某城市某时间段雨量流量关系进行可视化。
 plotUsage: 用于对比。
 chartDetail: ${base}zh-cn/vis/chart/line.html
@@ -52,7 +51,7 @@ subCat: 双折线图
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: window.innerHeight - 40,
+      height: window.innerHeight - 60,
       padding: [ 20, 20, 0, 80],
       animate: false
     });
@@ -100,30 +99,21 @@ subCat: 双折线图
     chart.render();
 
     // 创建 Slider
-    const slider = new Slider({
+    chart.interact('slider', {
       container: 'slider',
-      width: 'auto',
-      height: 26,
       start: ds.state.start, // 和状态量对应
       end: ds.state.end,
       xAxis: 'time',
       yAxis: 'value',
-      scales: {
-        time: {
-          type: 'time',
-          tickCount: 10,
-          mask: 'M/DD H:mm'
-        }
-      },
       data: originDv,
       backgroundChart: {
-        type: 'line'
+        type: 'line',
+        color: 'grey'
       },
       onChange({startValue, endValue}) {
         ds.setState('start', startValue);
         ds.setState('end', endValue);
       }
     });
-    slider.render();
   });
 </script>

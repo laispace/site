@@ -1,0 +1,49 @@
+<!--
+title: zoom - 散点图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 散点图的缩放交互
+plotUsage: 散点图的缩放交互
+relativePlots:
+  - ${plotByName.point}
+subCat: 其他
+-->
+<script>
+    $.getJSON('/assets/data/scatter.json', function (data) {
+      const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: 'auto',
+        limitInPlot: true,
+      });
+      chart.source(data);
+      chart.tooltip({
+        type: 'mini'
+      });
+      chart.point()
+        .position('height*weight')
+        .size(4)
+        .shape('circle')
+        .opacity(0.65)
+        .label('weight', {
+          offset: 0,
+          textStyle: {
+            fill: 'rgba(0, 0, 0, 0.65)',
+            stroke: '#fff',
+            lineWidth:2
+          }
+        });
+      chart.render();
+      chart
+        .interact('drag', {
+          type: 'XY'
+        })
+        .interact('zoom', {
+          type: 'XY'
+        });
+    });
+  </script>
+  

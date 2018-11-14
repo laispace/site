@@ -1,10 +1,9 @@
 <!--
-title: g2-brush 多边形
+title: brush interaction 多边形
 resource:
   jsFiles:
     - ${url.dataSet}
-    - ${url['g2-brush']}
-plotDescription: g2-brush 多边形
+plotDescription: brush interaction 多边形
 date: "2018-03-24"
 subCat: 其他
 -->
@@ -75,10 +74,7 @@ subCat: 其他
             stroke: '#fff'
         });
     chart.render();
-
-    new Brush({
-        chart,
-        canvas: chart.get('canvas'),
+    chart.interact('brush', {
         style: {
             lineWidth: 1,
             stroke: '#999',
@@ -88,9 +84,5 @@ subCat: 其他
         onBrushmove() {
             chart.hideTooltip();
         }
-    });
-    chart.on('plotdblclick', () => {
-        chart.get('options').filters = {};
-        chart.repaint();
     });
 </script>

@@ -1,0 +1,110 @@
+<!--
+title: 超市品类销售数据
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源： demo 数据
+filter: 交互
+tags: 交互
+subCat: 其他
+-->
+<style>
+  .left-tool-box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 100%;
+  }
+  .left-tool-box .sort-button {
+    width: 70%;
+    height: auto;
+    position: absolute;
+    left: 25%;
+    top: 30%;
+  }
+</style>
+<div class='left-tool-box'><img class='sort-button' src='/assets/image/g2/demo/sortbar.png' /></div>
+<script>
+  let sortType = 'positive';
+  function formatter(value) {
+    if (value.length < 6) {
+      return value;
+    }
+    return value.substring(0, 6) + '...';
+  }
+  $.getJSON('/assets/data/company_sales.json', function (filedata) {
+    const data = filedata['家具产品'].children['书架'].children.map(row => {
+      row.name = row.name + row.date;
+      return row;
+    });
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [20, 20, 80, 100],
+      animate: false
+    });
+    chart.source(data, {
+      name: {
+        formatter,
+        values: data.slice(0, 20).map(row => row.name)
+      },
+      value: {
+        tickCount: 5
+      }
+    });
+    chart.axis('name', {
+      tickLine: {
+        alignWithLabel: false,
+        length: 0,
+      }
+    });
+    chart.axis('value', {
+      label: {
+        textStyle: {
+          fill: '#aaaaaa'
+        }
+      }
+    });
+    chart.interval().position('name*value').opacity(1);
+    chart.render();
+    chart
+      .interact('drag', {
+        type: 'X'
+      })
+      .interact('scroll-bar', {
+        type: 'X'
+      });
+    $('.sort-button').click(function () {
+      const data = chart.get('data');
+      sortType = (sortType === 'positive') ? 'negative' : 'positive';
+      sortData(data, sortType);
+      chart.scale('name', {
+        formatter,
+        values: data.slice(0, 20).map(row => row.name)
+      });
+      chart.clearInteraction();
+      chart.repaint();
+      chart
+        .interact('drag', {
+          type: 'X'
+        })
+        .interact('scroll-bar', {
+          type: 'X'
+        });
+    });
+  });
+  function sortData(data, sortType) {
+    if (sortType === 'positive') {
+      data.sort(function (a, b) {
+        return b.value - a.value;
+      });
+    } else {
+      data.sort(function (a, b) {
+        return a.value - b.value;
+      });
+    }
+  }
+</script>
