@@ -19,7 +19,7 @@ date: "2018-03-07"
     };
     var Shape = G2.Shape;
     Shape.registerShape('interval', 'textInterval', {
-        drawShape(cfg, group) {
+        draw(cfg, group) {
             var points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
             var value = cfg.origin._origin.value;
             group.addShape('text', {
@@ -43,13 +43,13 @@ date: "2018-03-07"
         },
     });
     Shape.registerShape('interval', 'fallFlag', {
-        getShapePoints({x, y, y0, size}) {
+        getPoints({x, y, y0, size}) {
             return [
                 {x: x + size, y: y0 + size},
                 {x, y},
             ];
         },
-        drawShape(cfg, group) {
+        draw(cfg, group) {
             if (cfg.origin._origin === data[data.length - 1]) {
                 return;
             }
