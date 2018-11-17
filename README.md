@@ -1,6 +1,6 @@
 # site
 
-The new homepage of AntV  https://antv.alipay.com/
+The new homepage of AntV  https://antv.antfin.com/
 
 ## development
 
@@ -19,5 +19,5 @@ $ npm run screenshot
 > start developing
 
 ```bash
-npm run dev -- -- --open
+npm start
 ```

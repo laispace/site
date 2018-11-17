@@ -8,20 +8,37 @@ keywords:
 description: G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
-    title: 简单方便
-    description: 从数据出发，仅需几行代码就可以轻松获得想要的图表展示效果。
+    title: 千变万化，自由组合
+    description: 从数据出发，仅需几行代码就可以轻松获得想要的图表展示效果
   - img: ${assets}/image/home/features-professional.svg
-    title: 完备的编码
-    description: 以数据驱动，提供了从数据到图形的完整映射。
+    title: 生动、易实现
+    description: 大量产品实践之上，提供绘图引擎、完备图形语法、专业设计规范
   - img: ${assets}/image/home/features-powerful.svg
-    title: 强大扩展能力
-    description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。
+    title: 强大的交互语法
+    description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意
+usecases:
+  - img: ${assets}/image/home/g2-usecase1.png
+    title: 设计故事
+    description: 一个个接近真实的数据可视化案例，我们将它们归纳为一个个故事性的设计模板，让用户达到开箱即用的效果。
+    relate: true
+    name: G2 设计故事精品案例
+    link: https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html
+clients:
+  - img: ${assets}/image/home/aliyun.png
+  - img: ${assets}/image/home/alipay.png
+  - img: ${assets}/image/home/tmall.png
+  - img: ${assets}/image/home/taobao.png
+  - img: ${assets}/image/home/mybank.png
+  - img: ${assets}/image/home/jd.png
+  - img: ${assets}/image/home/yunos.png
+  - img: ${assets}/image/home/cainiao.png
 resource:
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
 -->
 
+<!-- 第一屏，产品简介 -->
 <section class="intro">
     <div class="container">
         <div class="header row">
@@ -45,6 +62,7 @@ resource:
     </div>
 </section>
 
+<!-- 第二屏：产品特性 -->
 <section class="features text-center">
     <div class="container">
         <div class="row">
@@ -59,28 +77,53 @@ resource:
     </div>
 </section>
 
-<section class="get-started text-center">
-<div class="container">
-    <h2>快速接入</h2>
-    <span class="separator"></span>
-    <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
+<!-- 第三屏：使用案例 -->
+<section class="use-cases">
+  <div class="container">
+    {% for card in usecases %}
+    <div class="row test">
+      <div class="col-md-7">
+        <img class="case-image" src="{{ card.img }}" />
+      </div>
+      <div class="col-md-5 case-content">
+        <div class="logo">
+          <img src="{{ card.icon }}" />
+        </div>
+        <div class="title">{{ card.title }}</div>
+        <div class="description">{{ card.description }}</div>
+        {% if card.relate %}
+        <div class="relate">
+          <div class="flex">
+            <div class="item name">{{ card.name }}</div>
+            <div class="item link">
+              <a href="{{ card.link }}" target="_blank">查看详情></a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 
-```html
-<script src="{{ url.g2 }}"></script>
-```
+<!-- 第四屏 更多特性 -->
 
-<p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
-
-```js
-npm install @antv/g2 --save
-```
-
-</div>
-<a href="{{ products.g2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
+<!-- 第五屏 客户 -->
+<section class="clients-container">
+  <div class="container">
+    <div class="title text-center">感谢一路合作的伙伴</div>
+    <div class="row">
+      {% for card in clients %}
+      <div class="col-md-3">
+        <img class="client-icon" src="{{ card.img }}" />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 
 <!-- chart1 -->
-
 ```js-
 var padding = [40, 40, 90, 60];
   var data = [
