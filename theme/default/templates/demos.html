@@ -13,7 +13,7 @@
     <div class="row flex-xl-nowrap">
         <div class="col-12 col-md-12 col-xl-12">
             <h5>全部图表<i class="iconfont show-search"></i><span id="toggleSearch" class="iconfont">展开筛选</span></h5>
-                <div class="search-container mini" id="searchContainer">
+                <div class="search-container mini" id="search-container">
                     {% for type in keywords %}
                     <div>
                         <span data-text="{{type.root}}" class="tag root-tag" style="display: inline">{{type.root}}<span aria-hidden="true">&times;</span></span>
@@ -37,7 +37,7 @@
                 <h5 data-icon="{{cat.plot.icon}}">{{ cat.title }}</h5>
                 <div class="row">
                     {% for demo in cat.demos %}
-                    <div class="col-md-4 col-sm-6 col-xs-12 text-center card-container" data-tags="{{demo.tag}}" data-recommend="{{demo.recommend}}">
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center card-container" data-tags="{{demo.tags}}" data-recommend="{{demo.recommend}}">
                         <div class="card">
                             {% if demo.recommend %}
                                 <img src="{{ assets }}/image/recommend.png" class="recommend-flag" />
