@@ -58,6 +58,7 @@ subCat: 多折线图
     }
 </style>
 <script>
+    const Util = G2.Util;
     let KEY_DOWN = false;
     $.getJSON('/assets/data/fertility.json', function (data) {
         const ds = new DataSet();
@@ -119,7 +120,39 @@ subCat: 多折线图
             }
         });
         chart.legend({
-            position: 'bottom-center'
+            position: 'bottom-center',
+            onHover: Util.debounce(ev => {
+                const { item } = ev;
+                const country = item.dataValue;
+                chart.get('geoms').forEach(geom => {
+                    geom.getShapes().forEach(shape => {
+                        let origin = shape.get('origin');
+                        if (Util.isArray(origin)) {
+                            origin = origin[0];
+                        }
+                        if (!shape.get('_originAttrs')) {
+                            shape.set('_originAttrs', Util.cloneDeep(shape._attrs)); // 缓存原来的属性
+                        }
+                        if (origin._origin.country === country) {
+                            const originAttrs = shape.get('_originAttrs');
+                            shape._attrs = Util.cloneDeep(originAttrs);
+                        } else {
+                            shape.attr('stroke', '#ccc');
+                        }
+                    });
+                });
+            }),
+            onUnhover: Util.debounce(() => {
+                chart.get('geoms').forEach(geom => {
+                    geom.getShapes().forEach(shape => {
+                        if (shape.get('_originAttrs')) {
+                            const originAttrs = shape.get('_originAttrs');
+                            shape._attrs = Util.cloneDeep(originAttrs);
+                        }
+                    });
+                });
+                chart.get('canvas').draw();
+            })
         });
         chart.line().position('year*value').color('country').size('country', val => {
             if (val === 'China') {
