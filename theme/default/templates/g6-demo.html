@@ -1,3 +1,10 @@
-{% extends "demo.html" %}
-{% import "macro/demo.html" as demo %}
-{% set renderedContent = demo.g6demo(title, content=content, resource=resource, dist=dist, url=url) %}
+
+{% if demoByHref[__href].category === 'editor' %}
+  {% import "macro/demo.html" as demo %}
+  {{ demo.g6demo(title, content=content, resource=resource, dist=dist, url=url) | safe }}
+{% else %}
+  {% extends "demo.html" %}
+  {% import "macro/demo.html" as demo %}
+  {% set renderedContent = demo.g6demo(title, content=content, resource=resource, dist=dist, url=url) %}
+{% endif %}
+

@@ -1,0 +1,50 @@
+<!--
+index: 1
+title: Newick
+screenshot: https://cdn.nlark.com/yuque/0/2018/png/93506/1535982139182-c744350a-87b7-4fe4-a2f5-478a72f2efd7.png
+resource:
+  jsFiles:
+plotDescription: 详见：https://en.wikipedia.org/wiki/Newick_format
+-->
+<script>
+  const getTreeData = (x1, y1, angle, depth, nodes = [], edges = []) => {
+    const deg_to_rad = Math.PI / 180;
+    if (depth !== 0){
+      const x2 = x1 + (Math.cos(angle * deg_to_rad) * depth * 10.0);
+      const y2 = y1 + (Math.sin(angle * deg_to_rad) * depth * 10.0);
+      const id1 = G6.Util.guid();
+      const id2 = G6.Util.guid();
+      nodes.push({
+        id: id1,
+        x: x1,
+        y: y1
+      });
+      nodes.push({
+        id: id2,
+        x: x2,
+        y: y2
+      });
+      edges.push({
+        source: id1,
+        target: id2
+      });
+      getTreeData(x2, y2, angle - 30, depth - 1, nodes, edges);
+      getTreeData(x2, y2, angle + 30, depth - 1, nodes, edges);
+    }
+    return {
+      nodes,
+      edges,
+    }
+  };
+  const data = getTreeData(0, 0, -90, 9);
+  const graph = new G6.Graph({
+    container: 'mountNode',
+    fitView: 'autoZoom',
+    height: window.innerHeight
+  });
+  graph.node({
+    size: 2
+  });
+  graph.read(data);
+  </script>
+  
