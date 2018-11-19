@@ -180,10 +180,12 @@
                 </div>
             </div>
         <div class="card-extra">
+            {% if story %}
             <div class="design-container">
                 <a>设计指引</a>
-                <a>设计故事</a>
+                <a href="{{ story }}" target="_blank">设计故事</a>
             </div>
+            {% endif %}
             {% if plotDescription %}
             <section class="description">
                 <h4>{{ resource.translate.plotDescription }}</h4>
