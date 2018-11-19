@@ -48,6 +48,21 @@ const data = {
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },
+        L7: {
+            version: '1.0.0-beta',
+            name: 'L7',
+            href: '${base}zh-cn/l7/1.x/index.html',
+            icon: '${assets}/image/icon/l7.svg',
+            links: {
+                about: { text: '${resource.translate.about} l7', href: '${base}zh-cn/l7/1.x/index.html'},
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/l7/1.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/l7/1.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/l7/1.x/tutorial/index.html' },
+                // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/1.x/tutorial/history.html' },
+                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
+                // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/1.x/tutorial/changelog.html' },
+            }
+        },
         // gallery: {
         //     name: '${resource.translate.gallery}',
         //     href: '${base}zh-cn/gallery/index.html',
