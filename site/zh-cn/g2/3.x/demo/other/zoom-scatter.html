@@ -16,7 +16,7 @@ subCat: 其他
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight,
-        padding: 'auto',
+        padding: 50,
         limitInPlot: true,
       });
       chart.source(data);
@@ -27,15 +27,7 @@ subCat: 其他
         .position('height*weight')
         .size(4)
         .shape('circle')
-        .opacity(0.65)
-        .label('weight', {
-          offset: 0,
-          textStyle: {
-            fill: 'rgba(0, 0, 0, 0.65)',
-            stroke: '#fff',
-            lineWidth:2
-          }
-        });
+        .opacity(0.65);
       chart.render();
       chart
         .interact('drag', {

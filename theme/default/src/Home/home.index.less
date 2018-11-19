@@ -230,13 +230,14 @@ h2, h3, h4, h5, h6 {
     left: 50%;
     margin-left: -10px;
     animation: updown 2s infinite;
-    animation-timing-function: cubic-bezier(0.16, 0.37, 0.29, 0.82);
+    animation-timing-function: cubic-bezier(0.36, 0.72, 0.35, 0.92);
   }
 }
 
 @keyframes updown {
-  from { bottom: 18px; }
-  to { bottom: 28px; }
+  0% { bottom: 18px; }
+  50% { bottom: 28px; }
+  100% { bottom: 18px; }
 }
 
 .page1-title {

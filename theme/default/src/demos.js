@@ -9,6 +9,8 @@ const RECOMMEND = '仅看推荐';
 const SHOW_SEARCH = '展开筛选';
 const HIDE_SEARCH = '收起筛选';
 const selectedTags = {};
+const $search = $('#search-container');
+const tags = {};
 let expansion = false;
 let recommendOnly = false;
 
@@ -160,6 +162,22 @@ $('header').headroom({
   }
 });
 
+// 获取
+if ($search) {
+  let currentTag = '';
+  $('#search-container>div').each(function() {
+    $(this).find('.tag').each(function() {
+      const $tag = $(this);
+      if ($tag.hasClass('root-tag')) {
+        currentTag = $tag.attr('data-text');
+        tags[currentTag] = [currentTag];
+      } else {
+        tags[currentTag].push($tag.attr('data-text'));
+      }
+    });
+  });
+}
+
 $('.tag').on('click', function (e) {
   var ele = e.target;
   if (ele.classList.value.indexOf('tag') < 0) {
@@ -175,10 +193,20 @@ $('.tag').on('click', function (e) {
     if (data !== RECOMMEND) {
       delete selectedTags[data];
     }
+    if (tag.hasClass('root-tag')) {
+      tags[tag.attr('data-text')].forEach(function(item) {
+        delete selectedTags[item];
+      });
+    }
   } else {
     tag.addClass('selected');
     if (data !== RECOMMEND) {
       selectedTags[data] = true;
+    }
+    if (tag.hasClass('root-tag')) {
+      tags[tag.attr('data-text')].forEach(function(item) {
+        selectedTags[item] = true;
+      });
     }
   }
   filterDemos(Object.keys(selectedTags));
@@ -186,11 +214,11 @@ $('.tag').on('click', function (e) {
 
 $('#toggleSearch').click(function () {
   if (expansion) {
-    $('#searchContainer').addClass('mini');
+    $search.addClass('mini');
     $('#toggleSearch').text(SHOW_SEARCH);
     $('.hide-search').removeClass('hide-search').addClass('show-search');
   } else {
-    $('#searchContainer').removeClass('mini');
+    $search.removeClass('mini');
     $('#toggleSearch').text(HIDE_SEARCH);
     $('.show-search').removeClass('show-search').addClass('hide-search');
   }

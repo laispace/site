@@ -19,16 +19,16 @@ const data = {
         g6: {
             version: '1.0.0',
             name: 'G6',
-            href: '${base}zh-cn/g6/1.x/index.html',
+            href: '${base}zh-cn/g6/2.x/index.html',
             icon: '${assets}/image/icon/g6.svg',
             links: {
-                about: { text: '${resource.translate.about} G6', href: '${base}zh-cn/g6/1.x/index.html'},
-                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/1.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/1.x/tutorial/index.html' },
-                // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/1.x/tutorial/history.html' },
-                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
-                // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/1.x/tutorial/changelog.html' },
+                about: { text: '${resource.translate.about} G6', href: '${base}zh-cn/g6/2.x/index.html'},
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/2.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/2.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/2.x/tutorial/index.html' },
+                // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/2.x/tutorial/history.html' },
+                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/2.x/toolbox.html' },
+                // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/2.x/tutorial/changelog.html' },
             }
         },
         f2: {
