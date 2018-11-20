@@ -23,24 +23,15 @@ featuresCards:
 usecases:
   - img: https://gw.alipayobjects.com/zos/rmsportal/gSmSUjduLxtpiQQKowho.png
     title: 精彩案例
-    description: 一个个接近真实的数据可视化案例，我们将它们归纳为一个个故事性的设计模板，让用户达到开箱即用的效果。
+    description: 一个个真实的数据可视化案例，复杂的地理数据让用户达到开箱即用的效果。
     relate: true
-    name: L7 示例
     link: https://antv.alipay.com/zh-cn/l7/1.x/demo/index.html
-clients:
-  - img: ${assets}/image/home/f2/mayicaifu.png
-  - img: ${assets}/image/home/f2/taopiaopiao.png
-  - img: ${assets}/image/home/f2/dingding.png
-  - img: ${assets}/image/home/f2/zhangshangyunwei.png
-  - img: ${assets}/image/home/f2/alipay.png
-  - img: ${assets}/image/home/f2/xiaohongshu.png
-  - img: ${assets}/image/home/f2/hema.png
-  - img: ${assets}/image/home/f2/koubei.png
 -->
 
 <!-- 第一屏，产品简介 -->
 <section class="intro">
   <div class="container">
+    <!-- <video autoplay="autoplay" loop="" src="https://gw.alipayobjects.com/os/rmsportal/wcycTgNRDuUrQLHzVhzX.mp4" style="width: 100%; height: 100%; object-fit: fill;"></video> -->
     <div class="header row">
       <div class="col-md-5">
         <h1> L7 地理空间数据可视化</h1>
@@ -48,30 +39,7 @@ clients:
         <a href="{{ products.l7.getStarted.href }}" class="btn btn-primary btn-lg btn-round-link">{{ products.f2.getStarted.text }}</a>
       </div>
       <div class="col-md-7">
-        <div class="demo-container">
-        <div class="f2-chart-wrapper">
-          <div class="chart-header">
-          <div id="chartTitle">商品价格 7 年走势对比</div>
-          </div>
-          <div class="chart-content">
-          <div class="contianer slick">
-            <div id="commentsCarousel" class="carousel">
-            <div class="carousel-inner slick">
-              <div class="carousel-item active">
-              <canvas id="c1"></canvas>
-              </div>
-              <div class="carousel-item">
-              <canvas id="c2"></canvas>
-              </div>
-              <div class="carousel-item">
-              <canvas id="c3"></canvas>
-              </div>
-            </div>
-            </div>
-          </div>
-          </div>
-        </div>
-        </div>
+        <div class="l7-demo-container">
       </div>
     </div>
   </div>
@@ -83,7 +51,7 @@ clients:
     <div class="row">
     {% for card in featuresCards %}
       <div class="feature col-md-4 text-center">
-        <img src="{{ card.img }}" alt="" width="120" height="120">
+        <img src="{{ card.img }}" alt="">
         <h5>{{ card.title }}</h5>
         <div class="detail">{{ card.description }}</div>
       </div>
