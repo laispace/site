@@ -2,8 +2,9 @@ import './copy-code';
 import './home.less';
 
 // 实际案例滚动屏
+const sliderLength = $(".use-cases .slider").children('.row').length;
 $(".use-cases .slider").slick({
-  dots: true,
+  dots: sliderLength > 1 ? true : false,
   infinite: true,
   slidesToShow: 1,
   adaptiveHeight: true,

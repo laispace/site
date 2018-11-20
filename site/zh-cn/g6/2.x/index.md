@@ -25,7 +25,7 @@ usecases:
     title: G6-Editor
     description: G6-Editor 是 G6 的上层建筑，是一款具备极致体验的图编辑器。开发者基于它可轻松搭建流程建模、拓扑建模、脑图建模等编辑器。
     relate: true
-    name: 文档仓库 
+    name: 文档仓库
     link: https://www.yuque.com/antv/g6-editor
 clients:
   - img: ${assets}/image/home/g6/alipay.png
@@ -120,21 +120,9 @@ resource:
   </div>
 </section>
 
-<!-- F2 二维码展示容器 -->
-<div style="position: absolute;">
-  <div class="scancode-wrapper">
-    <div class="scancode-content">
-      <div class="scancode-arrow"></div>
-      <div class="scancode-inner">
-        <div id="scanCode" data-url={{ products.f2.qrCode.href }} ></div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 ```js-
-console.log(33)
 $.getJSON('/assets/data/g6-index.json', data => {
     const { forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide } = d3;
       const Template = G6.Plugins['template.maxSpanningForest'];
