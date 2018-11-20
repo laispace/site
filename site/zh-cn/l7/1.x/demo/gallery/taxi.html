@@ -1,0 +1,46 @@
+<!--
+index: 1
+title: 点亮城市
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/zSpNFivwgBvhsaXXKpVF.png
+-->
+<script>
+const scene = new L7.Scene({
+  id: 'map',
+  mapStyle: 'dark', // 样式URL
+  center: [ 121.507674, 31.223043 ],
+  pitch: 65.59312320916906,
+  zoom: 16.4,
+  minZoom: 15,
+  maxZoom: 18
+});
+scene.on('loaded', () => {
+  $.get('https://gw.alipayobjects.com/os/rmsportal/kNDVHmyUWAKhWmWXmjxM.json', data => {
+    scene.LineLayer({
+      zIndex: 2
+    })
+    .source(data)
+    .color('#F08D41')
+    .animate({enable:true})
+    .render();
+  });
+   $.get('https://gw.alipayobjects.com/os/rmsportal/vmvAxgsEwbpoSWbSYvix.json', data => {
+   buildLayer =  scene.PolygonLayer({
+      zIndex: 2
+    })
+    .source(data)
+    .shape('extrude')
+    .size('floor',[0,2000])
+    .color('rgba(242,246,250,1.0)')
+     .animate({enable:true})
+     .style({
+       opacity:1.0,
+       baseColor:'rgb(16,16,16)',
+       windowColor:'rgb(30,60,89)',
+       brightColor:'rgb(155,217,255)',
+
+     })
+    .render();
+   })
+})
+
+</script>

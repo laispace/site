@@ -1,0 +1,66 @@
+<!--
+index: 1
+title: 城市渲染
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/ZopDBFABdnAJvdJRonYp.png
+-->
+ <style>
+	#map { position:absolute; top:0; bottom:0; width:100%; }
+ </style>
+<script>
+const scene = new L7.Scene({
+  id: 'map',
+  mapStyle: 'light', // 样式URL
+  center: [120.173104,  30.244072],
+  pitch: 66.50572,
+  zoom: 15.79,
+  minZoom:10
+});
+window.scene = scene;
+scene.on('loaded', () => {
+  $.get('https://gw.alipayobjects.com/os/rmsportal/XHMbjQwrSrajvLLvMPbK.json', data => {
+    scene.PolygonLayer({
+      zIndex: 0
+    })
+    .source(data)
+    .shape('fill')
+    .color('rgb(79,174,234)')
+    .render();
+  });
+  $.get('https://gw.alipayobjects.com/os/rmsportal/VifgwJEyBIXnDrjCwWdK.json', data => {
+    scene.PolygonLayer({
+      zIndex: 0
+    })
+    .source(data)
+    .shape('fill')
+    .color('rgb(156,194,116)')
+    .render();
+  });
+   $.get('https://gw.alipayobjects.com/os/rmsportal/ZseLNWMOPGrgqQYfvtli.json', data => {
+    scene.LineLayer({
+      zIndex: 2
+    })
+    .source(data)
+    .shape('line')
+    .size([3,0])
+    .color('rgb(79,174,234)')
+    .render();
+  });
+  
+   $.get('https://gw.alipayobjects.com/os/rmsportal/ggFwDClGjjvpSMBIrcEx.json', data => {
+    citylayer = scene.PolygonLayer({
+      zIndex: 2
+    })
+    .source(data)
+    .shape('extrude')
+    .active({fill:'red'})
+    .size('floor',[10,2000])
+    .color('rgba(242,246,250,0.96)')
+    .render();
+    citylayer.on('click',(e)=>{
+      $("#info").css({'left': e.pixel.x,'top':e.pixel.y, display:'block'});
+      $("#info").html(`<p>楼高<span">${e.feature.properties.floor || 0}</span></p>`);
+    })
+  });
+});
+
+</script>

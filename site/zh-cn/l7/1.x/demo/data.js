@@ -36,6 +36,7 @@ var getFiles = function getFiles(source) {
 var demosByCategory = {};
 var demoDirs = getDirectories(__dirname);
 var demoByHref = {};
+
 demoDirs.forEach(function (dir) {
     var category = basename(dir);
     var files = getFiles(dir).filter(function (file) {
@@ -98,4 +99,3 @@ module.exports = {
     demoByHref: demoByHref,
     showFooter: false
 };
-

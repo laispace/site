@@ -55,11 +55,12 @@ const data = {
             name: 'L7',
             href: '${base}zh-cn/l7/1.x/index.html',
             icon: '${assets}/image/icon/l7.svg',
+            getStarted: { text: '${resource.translate.getStarted}', href: 'https://www.yuque.com/antv/l7/wyb66y' },
             links: {
                 about: { text: '${resource.translate.about} L7', href: '${base}zh-cn/l7/1.x/index.html'},
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/l7/1.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/l7/1.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/l7/1.x/tutorial/index.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/l7/vgo25g' },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/l7/wyb66y' },
     
             }
         },

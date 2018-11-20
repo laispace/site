@@ -1,0 +1,59 @@
+<!--
+index: 1
+title: 栅格数据
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/jLfnIwuPNLInBuHGnaaG.png
+resource:
+  jsFiles:
+    - ${url['l7-tiff']}
+-->
+ <style>
+	#map { position:absolute; top:0; bottom:0; width:100%; }
+ </style>
+<script>
+const scene = new L7.Scene({
+  id: 'map',
+  viewMode: '3D',
+  mapStyle: 'amap://styles/ba3e9759545cd618392ef073c0dfda8c?isPublic=true', // 样式URL
+  center: [ 110.770672, 34.159869 ],
+  pitch: 0,
+  zoom: 4
+});
+
+scene.on('loaded', () => {
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', ' https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat', true);
+  xhr.responseType = 'arraybuffer';
+  xhr.onload = function(e) {
+    if (this.status === 200) {
+    // get binary data as a response
+      const blob = this.response;
+      const tiff = GeoTIFF.parse(blob);
+      const image = tiff.getImage();
+      const values = image.readRasters()[0];
+      const m = image.getHeight();
+      const n = image.getWidth();
+
+      const layer = scene.RasterLayer({ zIndex: 2 }).
+      source(values, {
+        type: 'raster',
+        width: n,
+        height: m,
+        min: 0,
+        max: 8000,
+        extent: [ 73.482190241, 3.82501784112, 135.106618732, 57.6300459963 ]
+
+      })
+       .style({
+         rampColors: {
+           colors: [ '#002466', '#0D408C', '#105CB3', '#1A76C7', '#2894E0', '#3CB4F0', '#65CEF7', '#98E3FA', '#CFF6FF', '#E8FCFF' ],
+           positions: [ 0, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.6, 0.8, 1.0 ]
+         }
+       })
+      .render();
+    }
+  };
+  xhr.send();
+});
+
+</script>
