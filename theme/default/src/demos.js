@@ -163,7 +163,7 @@ $('header').headroom({
 });
 
 // 获取
-if ($search) {
+if ($search.length) {
   $('header').css({ position: 'fixed', width: '100%' });
   let currentTag = '';
   $('#search-container>div').each(function() {
