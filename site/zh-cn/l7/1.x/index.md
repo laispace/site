@@ -21,21 +21,12 @@ featuresCards:
     title: 可视化上酷炫，动感
     description: 插件机制，图形、动画、交互均可灵活扩展，使用更自由
 usecases:
-  - img: ${assets}/image/home/f2/usecase-caifu.png
-    icon: ${assets}/image/home/f2/caifu-logo.png
-    title: 蚂蚁财富
-    description: 已广泛应用于基金、定期、黄金、股票等各个金融业务场景中，支撑着蚂蚁财富 app 上众多可视化场景。同时通过深入剖析用户的可视化诉求，沉淀出多套面向金融的可视化方案。
+  - img: https://gw.alipayobjects.com/zos/rmsportal/gSmSUjduLxtpiQQKowho.png
+    title: 设计故事
+    description: 一个个接近真实的数据可视化案例，我们将它们归纳为一个个故事性的设计模板，让用户达到开箱即用的效果。
     relate: true
-    name: 基金可视化设计方案
-    link: https://www.yuque.com/mo-college/f2-fund-course
-  - img: ${assets}/image/home/f2/usecase-alipay.png
-    icon: ${assets}/image/home/f2/alipay-logo.png
-    title: 支付宝
-    description: 覆盖蚂蚁会员、支付宝月账单、个人总资产等业务场景，通过可视化的形式帮助您更快更好得了解您的消费数据。
-  - img: ${assets}/image/home/f2/usecase-tpp.png
-    icon: ${assets}/image/home/f2/tpp-logo.png
-    title: 淘票票专业版
-    description: 助力票房数据、受众画像、播放量等可视分析场景，帮助用户更好地洞察数据背后的信息以做出更好的决策。
+    name: G2 设计故事精品案例
+    link: https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html
 clients:
   - img: ${assets}/image/home/f2/mayicaifu.png
   - img: ${assets}/image/home/f2/taopiaopiao.png
@@ -57,7 +48,7 @@ resource:
       <div class="col-md-5">
         <h1> L7 地理空间数据可视化</h1>
         <p class="main-info">L7 中的 L 代表 Location，7 代表世界七大洲，寓意能为全球位置数据提供可视化能力。L7 的目标是提供一套地理空间数据可视化框架，易用易扩展，支持海量数据的高性能和 3D 高质量渲染，安全可靠（无地图法务风险）的地理空间数据可视化解决方案。</p>
-        <a href="{{ products.f2.getStarted.href }}" class="btn btn-primary btn-lg btn-round-link">{{ products.f2.getStarted.text }}</a>
+        <a href="{{ products.l7.getStarted.href }}" class="btn btn-primary btn-lg btn-round-link">{{ products.f2.getStarted.text }}</a>
         <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=f2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
       </div>
       <div class="col-md-7">

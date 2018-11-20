@@ -1,19 +1,11 @@
 <!--
 index: 1
 title: 气泡图
-resource:
-  jsFiles:
-    - ${url.jquery}
-    - ${url.l7-map}
-plotDescription: '用圆形的大小表示数据的权重'
-plotUsage: ''
-relativePlots:
-  - ${plotByName.line}
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/zSpNFivwgBvhsaXXKpVF.png
 -->
  <style>
 	#map { position:absolute; top:0; bottom:0; width:100%; }
-  </style>
-
+ </style>
 <script>
 const scene = new L7.Scene({
   id: 'map',
@@ -42,7 +34,7 @@ scene.on('loaded', () => {
      .filter('value', field_8 => {
       return field_8 * 1 > 500;
      })
-    .color('type', colorObj.red)
+    .color('type', ["#FFF4F2", "#FFDFDB", "#FAADAA", "#F77472", "#F04850", "#D63147", "#BD223E", "#A81642", "#820C37", "#5C0023"].reverse())
     .style({
       stroke: 'rgb(255,255,255)',
       strokeWidth: 1,
