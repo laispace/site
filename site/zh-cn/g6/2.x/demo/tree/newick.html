@@ -7,44 +7,133 @@ resource:
 plotDescription: 详见：https://en.wikipedia.org/wiki/Newick_format
 -->
 <script>
-  const getTreeData = (x1, y1, angle, depth, nodes = [], edges = []) => {
-    const deg_to_rad = Math.PI / 180;
-    if (depth !== 0){
-      const x2 = x1 + (Math.cos(angle * deg_to_rad) * depth * 10.0);
-      const y2 = y1 + (Math.sin(angle * deg_to_rad) * depth * 10.0);
-      const id1 = G6.Util.guid();
-      const id2 = G6.Util.guid();
-      nodes.push({
-        id: id1,
-        x: x1,
-        y: y1
-      });
-      nodes.push({
-        id: id2,
-        x: x2,
-        y: y2
-      });
-      edges.push({
-        source: id1,
-        target: id2
-      });
-      getTreeData(x2, y2, angle - 30, depth - 1, nodes, edges);
-      getTreeData(x2, y2, angle + 30, depth - 1, nodes, edges);
-    }
-    return {
-      nodes,
-      edges,
-    }
+  /*
+   * Tamplate has default install the newest G6 && G6Plugins as
+   * https://unpkg.com/@antv/g6/build/g6.js
+   * https://unpkg.com/@antv/g6/build/plugins.js
+   * if you can not access this url above you can install By you own
+   */
+
+  /*
+   * 模版已经默认按以下链接安装了最新版 G6 和 G6Plugins
+   * https://unpkg.com/@antv/g6/build/g6.js
+   * https://unpkg.com/@antv/g6/build/plugins.js
+   * 如果你无法访问上述链接，你需要自己手动安装能访问的链接安装 G6 
+   */
+  const { Util } = G6;
+  const data = {
+    "name": "F",
+    "weight": 0,
+    "children": [
+      {
+        "name": "A",
+        "weight": 0.1
+      },
+      {
+        "name": "B",
+        "weight": 0.2
+      },
+      {
+        "name": "E",
+        "weight": 0.5,
+        "children": [
+          {
+            "name": "C",
+            "weight": 0.3,
+          },
+          {
+            "name": "D",
+            "weight": 0.4
+          },
+        ]
+      }
+    ]
   };
-  const data = getTreeData(0, 0, -90, 9);
-  const graph = new G6.Graph({
-    container: 'mountNode',
-    fitView: 'autoZoom',
-    height: window.innerHeight
+
+  function calculateHGap(data) {
+    data.HGap = 0;
+    Util.traverseTree(data, (child, parent) => {
+      child.HGap = (child.weight - parent.weight) * 400;
+    }, child => {
+      return child.children;
+    });
+  }
+
+  calculateHGap(data);
+  G6.registerEdge('HV', {
+    getPath(item) {
+      const group = item.getGraphicGroup();
+      const source = item.getSource();
+      const target = item.getTarget();
+      const sourceModel = source.getModel();
+      const targetModel = target.getModel();
+      return [
+        ['M', sourceModel.x, sourceModel.y],
+        ['L', sourceModel.x, targetModel.y],
+        ['L', targetModel.x, targetModel.y]
+      ];
+    }
   });
-  graph.node({
-    size: 2
+  const layout = new G6.Layouts.CompactBoxTree({
+    // direction: 'LR', // 方向（LR/RL/H/TB/BT/V）
+    getHGap(model) /* d */ {
+      return model.HGap;
+    },
+    getVGap() /* d */ {
+      // 竖向间距
+      return 16;
+    }
+  })
+  const tree = new G6.Tree({
+    id: 'mountNode', // 容器ID
+    height: window.innerHeight, // 画布高
+    layout,
+    fitView: 'cc' // 自动缩放
   });
-  graph.read(data);
-  </script>
+  tree.node({
+    shape: 'treeNode',
+    size: 8,
+    label(model) {
+      const label = {
+        text: model.name,
+        fontSize: 18
+      };
+      if (model.children && model.children.length > 0) {
+        label.textAlign = 'right'
+      } else {
+        label.textAlign = 'left'
+      }
+      return label;
+    },
+    labelOffsetX(model) {
+      if (model.children && model.children.length > 0) {
+        return -10;
+      }
+      return 10;
+    },
+    labelOffsetY(model) {
+      if (model.children && model.children.length > 0) {
+        return -10;
+      }
+      return 0;
+    },
+    style: {
+      fill: 'black',
+      stroke: 'black'
+    },
+  });
+  tree.edge({
+    shape: 'HV',
+    style: {
+      stroke: 'black'
+    },
+    label(model) {
+      const target = tree.find(model.target);
+      const targetModel = target.getModel();
+      return targetModel.weight;
+    },
+    labelOffsetY: -12
+  });
+  tree.read({ roots: [data] });
+</script>
   
