@@ -57,10 +57,10 @@ const data = {
             icon: '${assets}/image/icon/l7.svg',
             getStarted: { text: '${resource.translate.getStarted}', href: 'https://www.yuque.com/antv/l7/wyb66y' },
             links: {
-                about: { text: '${resource.translate.about} L7', href: '${base}zh-cn/l7/1.x/index.html'},
+                about: { text: '${resource.translate.about} L7', href: '${base}zh-cn/l7/1.x/index.html' },
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/l7/1.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/l7/vgo25g' },
-                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/l7/wyb66y' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/l7/vgo25g', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/l7/wyb66y', newTab: true },
     
             }
         },
