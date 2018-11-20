@@ -15,7 +15,7 @@ module.exports = {
         d3: 'https://gw.alipayobjects.com/os/antv/assets/lib/d3-4.13.0.min.js',
         dataSet: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js',
         f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0-beta.1/f2.min.js',
-        l7:'https://gw.alipayobjects.com/os/rmsportal/bRyliqDCzaFttnjdssKb.js',
+        l7:'https://gw.alipayobjects.com/os/antv/pkg/_antv.l7-1.0.0/dist/l7.min.js',
         'l7-map':'https://webapi.amap.com/maps?v=1.4.8&key=15cd8a57710d40c9b7c0e3cc120f1200&plugin=Map3D',
         'l7-css':'https://gw.alipayobjects.com/os/rmsportal/PqLCOJpqoOUfuPRacUzE.css',
         'turf':'https://npmcdn.com/@turf/turf/turf.min.js',
