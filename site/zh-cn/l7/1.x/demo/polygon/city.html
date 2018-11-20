@@ -59,7 +59,7 @@ scene.on('loaded', () => {
     citylayer.on('click',(e)=>{
       $("#info").css({'left': e.pixel.x,'top':e.pixel.y, display:'block'});
       $("#info").html(`<p>楼高<span">${e.feature.properties.floor || 0}</span></p>`);
-    })
+    });
   });
 });
 
