@@ -9,11 +9,6 @@ resource:
 screenshot: https://cdn.nlark.com/yuque/0/2018/gif/93506/1536124743866-7ef8e27b-0d66-4b0d-8df6-a989fede2951.gif
 plotDescription: 展示 2018-06-06 ～ 2018-09-06 G6 活跃系统数的增长
 -->
-<style>
-  .label {
-    fill: white;
-  }
-</style>
 <script>
   $.getJSON('/assets/data/system-growth.json', data => {
     const { forceSimulation, forceLink, forceManyBody, forceX, forceY, forceCollide } = d3;
