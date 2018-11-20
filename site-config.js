@@ -5,8 +5,8 @@ var resolve = path.resolve;
 var pkg = require('./package.json');
 const g6Url = 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-';
 const g6EditorUrl = 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-editor-';
-const g6Version = '2.2.0-beta.14';
-const g6EditorVersion = '1.2.0-beta.1';
+const g6Version = '2.2.0';
+const g6EditorVersion = '1.2.0';
 module.exports = {
     url: {
         g2: 'https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.4.0-beta.11/dist/g2.min.js',
