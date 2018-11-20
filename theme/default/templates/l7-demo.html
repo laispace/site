@@ -1,0 +1,4 @@
+{% extends "demo.html" %}
+{% import "macro/demo.html" as demo %}
+{% set renderedContent = demo.l7demo(title, content=content, resource=resource, dist=dist, url=url) %}
+{% set renderedContentDark = demo.l7demo(title, content=content, resource=resource, dist=dist, url=url, demoTheme='dark') %}

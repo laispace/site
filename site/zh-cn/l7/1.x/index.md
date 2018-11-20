@@ -9,7 +9,7 @@ keywords:
   - 地图
   - 3d
   - GIS Mapbox deckgl
-description: F2 是一个专注于移动，开箱即用的可视化解决方案，完美支持 H5 环境同时兼容多种环境（node, 小程序，weex），完备的图形语法理论，满足你的各种可视化需求，专业的移动设计指引为你带来最佳的移动端图表体验。
+description: L7 中的 L 代表 Location，7 代表世界七大洲，寓意能为全球位置数据提供可视化能力。L7 的目标是提供一套地理空间数据可视化框架，易用易扩展，支持海量数据的高性能和 3D 高质量渲染，安全可靠（无地图法务风险）的地理空间数据可视化解决方案。
 featuresCards:
   - img: ${assets}/image/home/features-professional.svg
     title: 架构上灵活可扩展

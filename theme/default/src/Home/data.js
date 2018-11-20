@@ -37,8 +37,8 @@ export const page1 = [
     href: `${base}zh-cn/f2/3.x/index.html`,
     description: ' 是一套高性能，高渲染质量的地理空间数据可视化框架。',
     links: [
-      { text: '图表示例', href: '/zh-cn/l7/0.x/demo/index.html' },
-      { text: 'API 文档', href: '/zh-cn/l7/0.x/api/index.html' },
+      { text: '图表示例', href: '/zh-cn/l7/1.x/demo/index.html' },
+      { text: 'API 文档', href: '/zh-cn/l7/1.x/api/index.html' },
     ],
   }
 ];
