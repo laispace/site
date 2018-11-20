@@ -139,7 +139,7 @@ tocbot.init({
   collapseDepth: 4
 });
 
-$('.demos').css({ minHeight: window.innerHeight - 128 });
+$('.demos').css({ minHeight: window.innerHeight - 64 });
 
 const $tocContainer = $('.toc-container');
 $('header').headroom({
@@ -205,21 +205,21 @@ $('.tag').on('click', function (e) {
     tag.removeClass('selected');
     if (data !== RECOMMEND) {
       delete selectedTags[data];
-    }
-    if (tag.hasClass('root-tag')) {
-      tags[tag.attr('data-text')].forEach(function(item) {
-        delete selectedTags[item];
-      });
+      if (tag.hasClass('root-tag')) {
+        tags[tag.attr('data-text')].forEach(function(item) {
+          delete selectedTags[item];
+        });
+      }
     }
   } else {
     tag.addClass('selected');
     if (data !== RECOMMEND) {
       selectedTags[data] = true;
-    }
-    if (tag.hasClass('root-tag')) {
-      tags[tag.attr('data-text')].forEach(function(item) {
-        selectedTags[item] = true;
-      });
+      if (tag.hasClass('root-tag')) {
+        tags[tag.attr('data-text')].forEach(function(item) {
+          selectedTags[item] = true;
+        });
+      }
     }
   }
   filterDemos(Object.keys(selectedTags));
