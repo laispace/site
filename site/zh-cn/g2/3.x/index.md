@@ -40,26 +40,37 @@ resource:
 
 <!-- 第一屏，产品简介 -->
 <section class="intro">
-    <div class="container">
-        <div class="header row">
-            <div class="col-md-5">
-                <h1>G2 可视化图形语法</h1>
-                <p class="main-info">G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
-                <a href="{{ products.g2.links.demo.href }}" class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.demo }}</a>
-                <a href="{{base}}zh-cn/g2/3.x/tutorial/index.html#_安装" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
-                <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=g2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-            </div>
-            <div class="col-md-7 slick" data-dots="true">
+  <div class="container">
+    <div class="header row">
+      <div class="col-md-5">
+        <h1>G2 可视化图形语法</h1>
+        <p class="main-info">G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
+        <a href="{{ products.g2.links.demo.href }}" class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.demo }}</a>
+        <a href="{{base}}zh-cn/g2/3.x/tutorial/index.html#_安装" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
+        <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=g2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      </div>
+      <div class="col-md-7">
+        <div class="g2-demo-container">
+          <div class="g2-chart-wrapper">
+            <div class="chart-content">
+              <div class="contianer slick">
                 <div id="commentsCarousel" class="carousel">
-                    <div class="carousel-inner slick">
-                        <div id="c1" class="plot-container carousel-item active"></div>
-                        <div id="c2" class="plot-container carousel-item"></div>
-                        <div id="c3" class="plot-container carousel-item"></div>
+                  <div class="carousel-inner slick">
+                    <div class="carousel-item active" id="c1">
                     </div>
+                    <div class="carousel-item" id="c2">
+                    </div>
+                    <div class="carousel-item" id="c3">
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- 第二屏：产品特性 -->
@@ -123,152 +134,369 @@ resource:
   </div>
 </section>
 
+```js-
+$('.chart-content .slick').each(function () {
+  var $target = $(this);
+  $target.slick({
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    infinite: true,
+    speed: 500,
+    cssEase: 'linear',
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    fade: true,
+  }).on('beforeChange', function () {
+  });
+});
+```
+
 <!-- chart1 -->
 ```js-
-var padding = [40, 40, 90, 60];
-  var data = [
-    { month: 'Jan', Tokyo: 7.0, London: 3.9 },
-    { month: 'Feb', Tokyo: 6.9, London: 4.2 },
-    { month: 'Mar', Tokyo: 9.5, London: 5.7 },
-    { month: 'Apr', Tokyo: 14.5, London: 8.5 },
-    { month: 'May', Tokyo: 18.4, London: 11.9 },
-    { month: 'Jun', Tokyo: 21.5, London: 15.2 },
-    { month: 'Jul', Tokyo: 25.2, London: 17.0 },
-    { month: 'Aug', Tokyo: 26.5, London: 16.6 },
-    { month: 'Sep', Tokyo: 23.3, London: 14.2 },
-    { month: 'Oct', Tokyo: 18.3, London: 10.3 },
-    { month: 'Nov', Tokyo: 13.9, London: 6.6 },
-    { month: 'Dec', Tokyo: 9.6, London: 4.8 }
-  ];
-  var ds = new DataSet();
-  var dv = ds.createView().source(data);
-  dv.transform({
-    type: 'fold',
-    fields: [ 'Tokyo', 'London' ], // 展开字段集
-    key: 'city', // key字段
-    value: 'temperature', // value字段
+const chart = new G2.Chart({
+  container: 'c3',
+  forceFit: true,
+  padding: [ 50, 100 ],
+  height: 300
+});
+chart.legend(false);
+chart.tooltip({
+  showTitle: false
+});
+
+const text = [ 'MIDNIGHT', '3 AM', '6 AM', '9 AM', 'NOON', '3 PM', '6 PM', '9 PM' ];
+const data = [];
+for (let i = 0; i < 24; i++) {
+  const item = {};
+  item.type = i + '';
+  item.value = 10;
+  data.push(item);
+}
+const { DataView } = DataSet;
+const dv = new DataView();
+dv.source(data)
+  .transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'type',
+    as: 'percent'
   });
-  var chart = new G2.Chart({
-    // container: 'c1',
-    container: $('.plot-container')[0],
-    forceFit: true,
-    height: 390,
-    padding: padding
-  });
-  chart.source(dv, {
-    month: {
-      range: [ 0, 1 ]
-    }
-  });
-  chart.tooltip({
-    crosshairs: {
-      type: 'line'
-    }
-  });
-  chart.axis('temperature', {
-    label: {
-      formatter: val => {
-        return val + '°C';
-      }
-    }
-  });
-  chart.line().position('month*temperature').color('city').size(2).shape('smooth');
-  chart.point().position('month*temperature').color('city').size(4).shape('circle').style({
-    stroke: '#fff',
+
+const bgView = chart.view();
+bgView.coord('theta', {
+  innerRadius: 0.9
+});
+bgView.source(dv);
+bgView.intervalStack()
+  .position('percent')
+  .style({
+    stroke: '#444',
     lineWidth: 1
+  })
+  .tooltip(false)
+  .select(false);
+bgView.guide().text({
+  position: [ '50%', '50%' ],
+  content: '24 hours',
+  style: {
+    lineHeight: '240px',
+    fontSize: '30',
+    fill: '#262626',
+    textAlign: 'center'
+  }
+});
+
+const intervalView = chart.view();
+intervalView.source(data);
+intervalView.coord('polar', {
+  innerRadius: 0.9
+});
+intervalView.axis(false);
+intervalView.interval()
+  .position('type*value')
+  .size('type', function(val) {
+    if (val % 3 === 0) {
+      return 4;
+    } else {
+      return 0;
+    }
+  })
+  .color('#444')
+  .tooltip(false)
+  .label('type', function(val) {
+    if (val % 3 === 0) {
+      return text[val / 3];
+    }
+    return '';
+  }, {
+    offset: 15,
+    textStyle: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      fill: '#bfbfbf'
+    }
   });
-  chart.render();
-  chart.showTooltip({
-    x: 250,
-    y: 250
+
+const userData = [
+  { type: '睡眠', value: 70 },
+  { type: '淡茶烟斗和冥想', value: 10 },
+  { type: '写作', value: 10 },
+  { type: '教课', value: 40 },
+  { type: '酒吧吃肉配白酒', value: 40 },
+  { type: '散步', value: 10 },
+  { type: '拜访马大大', value: 30 },
+  { type: '阅读', value: 30 },
+];
+const userDv = new DataView();
+userDv.source(userData)
+  .transform({
+    type: 'percent',
+    field: 'value',
+    dimension: 'type',
+    as: 'percent'
   });
+const pieView = chart.view();
+pieView.source(userDv, {
+  percent: {
+    formatter: val => {
+      return (val * 100).toFixed(2) + '%';
+    }
+  }
+});
+pieView.coord('theta', {
+  innerRadius: 0.75,
+});
+pieView.intervalStack().position('percent')
+  .color('type')
+  .label('type', {
+    offset: 40,
+  })
+  .style({
+    stroke: 'white'
+  })
+  .select(false);
+
+chart.render();
 ```
 
 <!-- chart2 -->
 
 ```js-
-  var padding = [40, 40, 90, 60];
-  const data = [
-    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
-    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
-  ];
-  const ds = new DataSet();
-  const dv = ds.createView().source(data);
-  dv.transform({
-    type: 'fold',
-    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ], // 展开字段集
-    key: '月份', // key字段
-    value: '月均降雨量', // value字段
-  });
+$.getJSON('/assets/data/iris.json', data => {
+    const chart = new G2.Chart({
+        container: 'c2',
+        forceFit: true,
+        height: 300,
+        padding: 'auto',
+        theme: {
+            widthRatio: {
+                column: 0.7 // 小提琴图最宽处占总宽度的比例
+            }
+        }
+    });
+    chart.legend('Species', {
+      offsetY: -12
+    });
+    chart.scale({
+        key: { sync: true }, // key 字段在其中一个 view 映射到 color 了，在其他所以需要同步，否则
+        y: { sync: true }
+    });
+    // chart.coord('polar');
+    chart.axis('key', {
+        grid: {
+            zIndex: -1,
+            align: 'center',
+            alternateColor: '#f5f5f5',
+            type: 'polygon',
+            lineStyle: {
+                stroke: 'white'
+            }
+        },
+        tickLine: {
+            alignWithLabel: false
+        }
+    });
+    chart.axis('y', {
+        line: G2.Global.axis.top.line,
+        tickLine: G2.Global.axis.top.tickLine,
+        grid: null
+    });
 
-  const chart = new G2.Chart({
-    // container: 'c2',
-    container: $('.plot-container')[1],
-    forceFit: true,
-    height: 390,
-    padding: padding
-  });
-  chart.source(dv);
-  chart.interval().position('月份*月均降雨量').color('name').adjust([{
-    type: 'dodge',
-    marginRatio: 1 / 32
-  }]);
-  chart.render();
+    const ds = new DataSet({});
+    const fields = ['PetalWidth', 'PetalLength', 'SepalWidth', 'SepalLength'];
+    // 小提琴图用 KDE transform 提供数据
+    const dv1 = ds.createView().source(data).transform({
+        type: 'kde',
+        extent: [0, 8], // 采样范围
+        fields,
+        as: ['key', 'y', 'size'], // 生成的统计字段：字段名、采样点、采样点对应的概率值
+        groupBy: ['Species'],
+        minSize: 0.01 // 小于这个值的概率将被忽略
+    });
+    // 需要根据分组提供分位值等统计数据，所以提前拍平数据
+    const dv2 = ds.createView().source(data);
+    dv2.transform({
+        type: 'fold',
+        fields
+    });
+    // 计算 95% 分位值，用于画 95% 分位线
+    const dv3 = ds.createView().source(dv2).transform({
+        type: 'bin.quantile',
+        field: 'value',
+        as: 'y',
+        groupBy: ['key', 'Species'],
+        p: [0.025, 0.975]
+    });
+    // 计算 Q1 和 Q3 分位值，用于画分位线
+    const dv4 = ds.createView().source(dv2).transform({
+        type: 'bin.quantile',
+        field: 'value',
+        as: 'y',
+        groupBy: ['key', 'Species'],
+        p: [1 / 4, 3 / 4]
+    });
+    // 计算中位值
+    const dv5 = ds.createView().source(dv2).transform({
+        type: 'aggregate',
+        fields: ['value'],
+        operations: ['median'],
+        as: ['y'],
+        groupBy: ['key', 'Species']
+    });
+
+    const adjustCfg = [{
+        type: 'dodge',
+        marginRatio: 1 / 32
+    }];
+    // violin plot
+    const view1 = chart.view();
+    view1.source(dv1);
+    view1.violin()
+        .position('key*y')
+        .color('Species')
+        .adjust(adjustCfg)
+        // .shape('smooth')
+        // .shape('smoothHollow')
+        .size('size')
+        .style({
+            lineWidth: 1,
+            fillOpacity: 0.3,
+            strokeOpacity: 0.75
+        })
+        .tooltip(false);
+    // 95% confidence interval
+    const view3 = chart.view();
+    view3.source(dv3);
+    view3.interval()
+        .position('key*y')
+        .color('Species')
+        .adjust(adjustCfg)
+        .size(1)
+        .style({
+            fill: 'black',
+            lineWidth: 0
+        })
+        .tooltip(false);
+    // Q1 / Q3
+    const view4 = chart.view();
+    view4.source(dv4);
+    view4.interval()
+        .position('key*y')
+        .color('Species')
+        .adjust(adjustCfg)
+        .size(8)
+        .style({
+            fill: 'black',
+            fillOpacity: 1
+        })
+        .tooltip('y', value => {
+            return {
+                name: 'Q1-Q3',
+                value
+            };
+        });
+    // median
+    const view5 = chart.view();
+    view5.source(dv5);
+    view5.point()
+        .position('key*y')
+        .color('Species')
+        .adjust(adjustCfg)
+        .size(3)
+        .style({
+            fill: 'white',
+            lineWidth: 0
+        })
+        .tooltip('y', value => {
+            return {
+                name: 'Median',
+                value
+            };
+        });
+    chart.render();
+});
 ```
 
 <!-- chart3 -->
 
 ```js-
-  var padding = [40, 40, 90, 60];
-  var data = [
-    {country: 'Asia', year: '1750', value: 502},
-    {country: 'Asia', year: '1800', value: 635},
-    {country: 'Asia', year: '1850', value: 809},
-    {country: 'Asia', year: '1900', value: 5268},
-    {country: 'Asia', year: '1950', value: 4400},
-    {country: 'Asia', year: '1999', value: 3634},
-    {country: 'Asia', year: '2050', value: 947},
-    {country: 'Africa', year: '1750', value: 106},
-    {country: 'Africa', year: '1800', value: 107},
-    {country: 'Africa', year: '1850', value: 111},
-    {country: 'Africa', year: '1900', value: 1766},
-    {country: 'Africa', year: '1950', value: 221},
-    {country: 'Africa', year: '1999', value: 767},
-    {country: 'Africa', year: '2050', value: 133},
-    {country: 'Europe', year: '1750', value: 163},
-    {country: 'Europe', year: '1800', value: 203},
-    {country: 'Europe', year: '1850', value: 276},
-    {country: 'Europe', year: '1900', value: 628},
-    {country: 'Europe', year: '1950', value: 547},
-    {country: 'Europe', year: '1999', value: 729},
-    {country: 'Europe', year: '2050', value: 408},
-    {country: 'Oceania', year: '1750', value: 200},
-    {country: 'Oceania', year: '1800', value: 200},
-    {country: 'Oceania', year: '1850', value: 200},
-    {country: 'Oceania', year: '1900', value: 460},
-    {country: 'Oceania', year: '1950', value: 230},
-    {country: 'Oceania', year: '1999', value: 300},
-    {country: 'Oceania', year: '2050', value: 300},
-  ];
+$.getJSON('/assets/data/tempChange.json', data => {
   const chart = new G2.Chart({
-    // container: 'c3',
-    container: $('.plot-container')[2],
+    container: 'c1',
     forceFit: true,
-    height: 390,
-    padding: padding
+    padding: 'auto',
+    height: 300
   });
   chart.source(data, {
+    change: {
+      tickInterval: 0.25
+    },
     year: {
-      type: 'linear',
-      tickInterval: 50
-    }
-  })
-  chart.tooltip({
-    crosshairs: {
-      type: 'line'
+      range: [0, 1]
     }
   });
-  chart.areaStack().position('year*value').color('country');
-  chart.lineStack().position('year*value').color('country').size(2);
+  chart.area().position('year*change').color('white')
+    .shape('smooth');
+  chart.line().position('year*change').color('white')
+    .shape('smooth');
+  chart.guide().regionFilter({
+    top: true,
+    start: [ 'min', 0 ],
+    end: [ 'max', 'min' ],
+    color: '#18a1cd'
+  });
+  chart.guide().regionFilter({
+    top: true,
+    start: [ 'min', 'max' ],
+    end: [ 'max', 0 ],
+    color: '#FF4D4F'
+  });
+  chart.guide().region({
+    top: false,
+    start: [ 2000, 'max' ],
+    end: [ 2016, 'min' ]
+  });
+  chart.guide().dataMarker({
+    top: true,
+    position: [ 1977, 0.18 ],
+    content: '时间进入1977年后，全球气\n温开始呈现整体升高趋势。',
+    lineLength: 50,
+    style: {
+      text: { textAlign: 'right', fontSize: 13 },
+      point: { stroke: '#FF4D4F' }
+    }
+  });
+  chart.guide().dataMarker({
+    top: true,
+    position: [ 1940, 0.08 ],
+    content: '1940年，气温变化首次出现正值。',
+    lineLength: 50,
+    style: {
+      text: { textAlign: 'right', fontSize: 13 },
+      point: { stroke: '#FF4D4F' }
+    }
+  });
   chart.render();
+});
 ```
