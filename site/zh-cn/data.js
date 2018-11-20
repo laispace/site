@@ -61,10 +61,10 @@ const data = {
             href: '${base}zh-cn/vis/index.html',
             icon: '${assets}/image/icon/vis.svg',
             links: {
-                index: { text: '${resource.translate.index}', href: '${base}zh-cn/vis/blog/index.html' },
-                design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/index.html'  },
-                tutorial: { text: '${resource.translate.visTutorial}', href: '${base}zh-cn/vis/design/index.html' },
-                solution: { text: '${resource.translate.visSolution}', href: '${base}zh-cn/vis/chart/index.html' },
+                index: { text: '${resource.translate.index}', href: 'https://www.yuque.com/mo-college' },
+                design: { text: '${resource.translate.visDesign}', href: 'https://www.yuque.com/mo-college/vis-design'  },
+                tutorial: { text: '${resource.translate.visTutorial}', href: 'https://www.yuque.com/mo-college/beginner-tutorial' },
+                solution: { text: '${resource.translate.visSolution}', href: 'https://www.yuque.com/mo-college/f2-fund-course' },
                 // resource: { text: '${resource.translate.visResource}', href: '${base}zh-cn/vis/resource/index.html' },
                 // publications: { text: '经典文献', href: '' },
             }

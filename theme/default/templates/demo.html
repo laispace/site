@@ -182,7 +182,7 @@
         <div class="card-extra">
             {% if story %}
             <div class="design-container">
-                <a>设计指引</a>
+                <a {% if guide %}  href="{{guide}}" target="_blank" {% else %} href="#" {% endif %}>设计指引</a>
                 <a href="{{ story }}" target="_blank">设计故事</a>
             </div>
             {% endif %}
