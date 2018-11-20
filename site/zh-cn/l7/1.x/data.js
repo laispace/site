@@ -1,4 +1,4 @@
-const layerByName = {
+const plotByName = {
     point:        { icon: 'icon-area', index: 4,  url: '${base}zh-cn/l7/1.x/demo/area/basic.html', name: '点图层', },
     line:      { icon: 'icon-column', index: 1,  url: '${base}zh-cn/l7/1.x/demo/column/basic.html', name: '线图层', },
     polygon:         { icon: 'icon-bar', index: 1,  url: '${base}zh-cn/l7/1.x/demo/bar/basic.html', name: '面图层', },
@@ -7,5 +7,5 @@ const layerByName = {
 
 };
 module.exports = {
-    layerByName,
+    plotByName,
 };
