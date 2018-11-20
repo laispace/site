@@ -176,6 +176,18 @@ if ($search) {
       }
     });
   });
+  $('#toggleSearch').click(function () {
+    if (expansion) {
+      $search.addClass('mini');
+      $('#toggleSearch').text(SHOW_SEARCH);
+      $('.hide-search').removeClass('hide-search').addClass('show-search');
+    } else {
+      $search.removeClass('mini');
+      $('#toggleSearch').text(HIDE_SEARCH);
+      $('.show-search').removeClass('show-search').addClass('hide-search');
+    }
+    expansion = !expansion;
+  });
 }
 
 $('.tag').on('click', function (e) {
@@ -212,18 +224,6 @@ $('.tag').on('click', function (e) {
   filterDemos(Object.keys(selectedTags));
 });
 
-$('#toggleSearch').click(function () {
-  if (expansion) {
-    $search.addClass('mini');
-    $('#toggleSearch').text(SHOW_SEARCH);
-    $('.hide-search').removeClass('hide-search').addClass('show-search');
-  } else {
-    $search.removeClass('mini');
-    $('#toggleSearch').text(HIDE_SEARCH);
-    $('.show-search').removeClass('show-search').addClass('hide-search');
-  }
-  expansion = !expansion;
-});
 
 $('.screenshot').each(function () {
   const $img = $(this);
