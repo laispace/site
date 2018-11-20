@@ -24,7 +24,7 @@ scene.on('loaded', () => {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', ' https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat', true);
   xhr.responseType = 'arraybuffer';
-  xhr.onload = function(e) {
+  xhr.onload = function() {
     if (this.status === 200) {
     // get binary data as a response
       const blob = this.response;
@@ -34,7 +34,7 @@ scene.on('loaded', () => {
       const m = image.getHeight();
       const n = image.getWidth();
 
-      const layer = scene.RasterLayer({ zIndex: 2 }).
+      scene.RasterLayer({ zIndex: 2 }).
       source(values, {
         type: 'raster',
         width: n,

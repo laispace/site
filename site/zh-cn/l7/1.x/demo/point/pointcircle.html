@@ -17,7 +17,7 @@ const scene = new L7.Scene({
 window.scene = scene;
 scene.on('loaded', () => {
   $.get('https://gw.alipayobjects.com/os/rmsportal/epnZEheZeDgsiSjSPcCv.json', data => {
-    const circleLayer = scene.PointLayer({
+    scene.PointLayer({
       zIndex: 2
     })
     .source(data,{
