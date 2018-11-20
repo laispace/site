@@ -1,0 +1,58 @@
+<!--
+index: 1
+title: 气泡图
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url.l7-map}
+plotDescription: '用圆形的大小表示数据的权重'
+plotUsage: ''
+relativePlots:
+  - ${plotByName.line}
+-->
+ <style>
+	#map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+
+<script>
+const scene = new L7.Scene({
+  id: 'map',
+  mapStyle: 'light', // 样式URL
+  center: [ 120.19382669582967, 30.258134 ],
+  pitch: 0,
+  zoom: 12
+});
+window.scene = scene;
+scene.on('loaded', () => {
+  $.get('https://gw.alipayobjects.com/os/rmsportal/epnZEheZeDgsiSjSPcCv.json', data => {
+    const circleLayer = scene.PointLayer({
+      zIndex: 2
+    })
+    .source(data,{
+      scale:{
+        min:0,
+        max:1000,
+        type:'linear'
+      }
+    })
+    .shape('2d:circle')
+     .size('value', [ 2, 80]) // default 1
+     //.size('value', [ 10, 300]) // default 1
+    .active(true)
+     .filter('value', field_8 => {
+      return field_8 * 1 > 500;
+     })
+    .color('type', colorObj.red)
+    .style({
+      stroke: 'rgb(255,255,255)',
+      strokeWidth: 1,
+      opacity: 0.9
+    })
+     .render();
+     
+     
+  });
+    
+});
+
+</script>
