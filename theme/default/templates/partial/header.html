@@ -52,7 +52,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-{{ item.name }}">
                     {% for link, linkItem in item.links %}
-                    <a class="dropdown-item" href="{{ linkItem.href }}">{{ linkItem.text }}</a>
+                    <a class="dropdown-item" href="{{ linkItem.href }}" {% if linkItem.newTab  %} target="_blank"{% endif %}>{{ linkItem.text }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     {% if link.hideFromNav %}
                     {% else %}
                     {% set isCurrentNav = (name === navName) %}
-                    <a class="nav-link{% if isCurrentNav  %} active{% endif %}" href="{{ link.href }}">{{ link.text }}</a>
+                    <a class="nav-link{% if isCurrentNav  %} active{% endif %}" href="{{ link.href }}" {% if link.newTab  %} target="_blank"{% endif %}>{{ link.text }}</a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
