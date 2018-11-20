@@ -139,7 +139,7 @@ tocbot.init({
   collapseDepth: 4
 });
 
-$('.demos').css({ minHeight: window.innerHeight - 128 });
+$('.demos').css({ minHeight: window.innerHeight - 64 });
 
 const $tocContainer = $('.toc-container');
 $('header').headroom({
@@ -164,6 +164,7 @@ $('header').headroom({
 
 // 获取
 if ($search) {
+  $('header').css({ position: 'fixed', width: '100%' });
   let currentTag = '';
   $('#search-container>div').each(function() {
     $(this).find('.tag').each(function() {
@@ -175,6 +176,18 @@ if ($search) {
         tags[currentTag].push($tag.attr('data-text'));
       }
     });
+  });
+  $('#toggleSearch').click(function () {
+    if (expansion) {
+      $search.addClass('mini');
+      $('#toggleSearch').text(SHOW_SEARCH);
+      $('.hide-search').removeClass('hide-search').addClass('show-search');
+    } else {
+      $search.removeClass('mini');
+      $('#toggleSearch').text(HIDE_SEARCH);
+      $('.show-search').removeClass('show-search').addClass('hide-search');
+    }
+    expansion = !expansion;
   });
 }
 
@@ -192,38 +205,26 @@ $('.tag').on('click', function (e) {
     tag.removeClass('selected');
     if (data !== RECOMMEND) {
       delete selectedTags[data];
-    }
-    if (tag.hasClass('root-tag')) {
-      tags[tag.attr('data-text')].forEach(function(item) {
-        delete selectedTags[item];
-      });
+      if (tag.hasClass('root-tag')) {
+        tags[tag.attr('data-text')].forEach(function(item) {
+          delete selectedTags[item];
+        });
+      }
     }
   } else {
     tag.addClass('selected');
     if (data !== RECOMMEND) {
       selectedTags[data] = true;
-    }
-    if (tag.hasClass('root-tag')) {
-      tags[tag.attr('data-text')].forEach(function(item) {
-        selectedTags[item] = true;
-      });
+      if (tag.hasClass('root-tag')) {
+        tags[tag.attr('data-text')].forEach(function(item) {
+          selectedTags[item] = true;
+        });
+      }
     }
   }
   filterDemos(Object.keys(selectedTags));
 });
 
-$('#toggleSearch').click(function () {
-  if (expansion) {
-    $search.addClass('mini');
-    $('#toggleSearch').text(SHOW_SEARCH);
-    $('.hide-search').removeClass('hide-search').addClass('show-search');
-  } else {
-    $search.removeClass('mini');
-    $('#toggleSearch').text(HIDE_SEARCH);
-    $('.show-search').removeClass('show-search').addClass('hide-search');
-  }
-  expansion = !expansion;
-});
 
 $('.screenshot').each(function () {
   const $img = $(this);

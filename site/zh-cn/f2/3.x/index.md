@@ -63,28 +63,28 @@ resource:
       </div>
       <div class="col-md-7">
         <div class="demo-container">
-        <div class="f2-chart-wrapper">
-          <div class="chart-header">
-          <div id="chartTitle">商品价格 7 年走势对比</div>
-          </div>
-          <div class="chart-content">
-          <div class="contianer slick">
-            <div id="commentsCarousel" class="carousel">
-            <div class="carousel-inner slick">
-              <div class="carousel-item active">
-              <canvas id="c1"></canvas>
+          <div class="f2-chart-wrapper">
+            <div class="chart-header">
+            <div id="chartTitle">商品价格 7 年走势对比</div>
+            </div>
+            <div class="chart-content">
+            <div class="contianer slick">
+              <div id="commentsCarousel" class="carousel">
+              <div class="carousel-inner slick">
+                <div class="carousel-item active">
+                <canvas id="c1"></canvas>
+                </div>
+                <div class="carousel-item">
+                <canvas id="c2"></canvas>
+                </div>
+                <div class="carousel-item">
+                <canvas id="c3"></canvas>
+                </div>
               </div>
-              <div class="carousel-item">
-              <canvas id="c2"></canvas>
-              </div>
-              <div class="carousel-item">
-              <canvas id="c3"></canvas>
               </div>
             </div>
             </div>
           </div>
-          </div>
-        </div>
         </div>
       </div>
     </div>

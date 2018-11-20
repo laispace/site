@@ -299,9 +299,11 @@ $('#btn-fullscreen').click(function() {
     });
   } else {
     $(this).html('<span class="iconfont icon-fullscreen"></span> 全屏');
-    $('#code-container').css({ position: 'relative' });
-    $demoPreview.css({ marginLeft: 48 });
-    $('.code-panel').css({ paddingRight: 48 });
+    $('#code-container').css({ position: 'relative', zIndex: 0 });
+    if ($iframeContainer.hasClass('g2')) {
+      $demoPreview.css({ marginLeft: 48 });
+      $('.code-panel').css({ paddingRight: 48 });
+    }
     resizeG2();
   }
   syncCode();
