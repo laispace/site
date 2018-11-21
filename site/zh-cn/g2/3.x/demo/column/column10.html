@@ -51,7 +51,7 @@ const data = [
             container: 'mountNode',
             forceFit: true,
             height: window.innerHeight,
-            padding: 'auto'
+            padding:  [20, 70, 50, 50]
         });
         chart.source(data);
         chart.scale('value',{
@@ -73,6 +73,9 @@ const data = [
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
                 }
             },
             title: {

@@ -11,7 +11,7 @@ subCat: 基础条形图
 -->
 <style>
 .bottom-tool-box{position: absolute; bottom:0px; left: 0px; width: 100%; height:40px; z-index:1000}
-.bottom-tool-box .sort-button {width: auto; height:70%; position: absolute; top:30%; left:70%}
+.bottom-tool-box .sort-button {width: auto; height:40%; position: absolute; top:30%; left:70%}
 </style>
 <div class = 'bottom-tool-box'><img class = 'sort-button' src = '/assets/image/g2/demo/sortbar.png'/></div>
 <script>
@@ -32,7 +32,7 @@ subCat: 基础条形图
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight,
-        padding: 'auto'
+        padding: [20,40,50,124]
     });
     chart.source(data, {
         value: {

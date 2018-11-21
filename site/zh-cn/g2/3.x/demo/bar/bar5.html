@@ -92,20 +92,22 @@ subCat: 分组条形图
             const color = (facetIndex === 0) ? '#1890ff' : '#2fc25b';
             view.interval().position('country*value').color(color).size(30).opacity(1)
                 .label('value', function (val) {
-                    let offset = -10;
+                    let offset = -4;
+                    let shadowBlur = 2;
                     let textAlign = (facetIndex === 1) ? 'end' : 'start';
                     let fill = 'white';
                     if (val < 15) {
-                        offset = 10;
+                        offset = 4;
                         textAlign = (facetIndex === 1) ? 'start' : 'end';
                         fill = '#666666';
+                        shadowBlur = 0;
                     }
                     return {
                         //position: 'middle',
                         offset,
                         textStyle: {
                             fill,
-                            shadowBlur: 2,
+                            shadowBlur,
                             shadowColor: 'rgba(0, 0, 0, .45)',
                             textAlign
                         }
