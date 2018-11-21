@@ -81,7 +81,10 @@ subCat: 区间面积图
         label: {
             textStyle: {
                 fill: '#aaaaaa'
-            }
+            },
+            formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
+                }
         }
     });
     chart.tooltip({
@@ -91,6 +94,7 @@ subCat: 区间面积图
     //view1
     const view1 = chart.view();
     view1.source(dv2);
+    view1.axis(false);
     view1.area().position('Date*range').color('#8d8d8d').opacity(0.1).tooltip(false);
     //view1
     const view2 = chart.view();
