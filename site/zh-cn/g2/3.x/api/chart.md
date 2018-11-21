@@ -340,7 +340,7 @@ chart.coord('polar', {
 上述操作均可支持链式调用，如下：
 
 ```js
-chart.coord().rotate(70).scale(1.5, 1.5).reflect('xy').transpose();
+chart.coord().rotate(70).scale(1.5, 1.5).reflect('x').transpose();
 ```
 
 ### axis
