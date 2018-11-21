@@ -57,13 +57,13 @@ resource:
                 <div id="commentsCarousel" class="carousel">
                   <div class="carousel-inner slick">
                     <div class="carousel-item active" id="c1">
-                      <img src="{{assets}}/image/home/g2/case1.png"/>
+                      <img height="300" src="{{assets}}/image/home/g2/case1.png"/>
                     </div>
                     <div class="carousel-item" id="c2">
-                      <img src="{{assets}}/image/home/g2/case2.png"/>
+                      <img height="300" src="{{assets}}/image/home/g2/case2.png"/>
                     </div>
                     <div class="carousel-item" id="c3">
-                      <img src="{{assets}}/image/home/g2/case3.png"/>
+                      <img height="300" src="{{assets}}/image/home/g2/case3.png"/>
                     </div>
                   </div>
                 </div>
