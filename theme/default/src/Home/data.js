@@ -109,7 +109,7 @@ export const page5 = [
     `${assets}/image/home/tmall.png`,
     `${assets}/image/home/taobao.png`,
     `${assets}/image/home/mybank.png`,
-    `${assets}/image/home/jd.png`,
+    `${assets}/image/home/gi.png`,
     `${assets}/image/home/yunos.png`,
     `${assets}/image/home/cainiao.png`,
 ];

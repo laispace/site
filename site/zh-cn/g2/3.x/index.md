@@ -29,7 +29,7 @@ clients:
   - img: ${assets}/image/home/tmall.png
   - img: ${assets}/image/home/taobao.png
   - img: ${assets}/image/home/mybank.png
-  - img: ${assets}/image/home/jd.png
+  - img: ${assets}/image/home/gi.png
   - img: ${assets}/image/home/yunos.png
   - img: ${assets}/image/home/cainiao.png
 resource:
