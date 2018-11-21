@@ -104,6 +104,32 @@ section {
   }
 }
 
+.l7-features {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#544ff9+0,7351f4+26,874bff+100 */
+  background: #fff; 
+  color: rgba(0,0,0,0.65);
+  padding-top: 90px;
+  padding-bottom: 148px;
+  box-shadow: 0 2px 20px 0 rgba(160,171,194,0.50);
+  h5 {
+    color: rgba(0,0,0,0.85);
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  img {
+    width: 96px;
+    margin: 32px;
+  }
+  .detail {
+    display: inline-block;
+    max-width: 240px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+}
+
 .intro {
   .slick {
     user-select: none;
@@ -475,7 +501,8 @@ section.use-cases {
 
   .case-image {
     height: 512px;
-    // margin-left: 10px;
+    box-shadow: 0 2px 20px 0 rgba(105,123,140,0.10);
+    margin-left: 10px;
   }
 
   .case-content {
@@ -494,6 +521,18 @@ section.use-cases {
     font-size: 28px;
     line-height: 40px;
     color: rgba(0, 0, 0, 0.85);
+
+    // &:after {
+    //   content: " ";
+    //   position: absolute;
+    //   width: 35px;
+    //   height: 5px;
+    //   right: 0;
+    //   bottom: -16px;
+    //   left:0;
+    //   border-radius: 5px;
+    //   background-color: #1890ff;
+    // }
   }
   .case-content .description {
     padding: 10px 0 0 0;
@@ -502,6 +541,8 @@ section.use-cases {
 
   .relate {
     margin-top: 18px;
+    // padding-top: 25px;
+    //border-top: 1px solid rgba(0, 0, 0, 0.04);
   }
 
   .relate .flex {
@@ -524,15 +565,11 @@ section.use-cases {
     bottom: 80px;
     width: auto;
     left: 50%;
-    margin-left: 7.5%;
+    margin-left: 16%;
 
     li {
       margin: 0;
     }
-  }
-
-  .container .slick-dots {
-    margin-left: 16%;
   }
   .slick-dots li.slick-active button:before {
     opacity: 1;
@@ -584,16 +621,6 @@ section.clients-container, section.more-container {
       margin-left: -17.5px;
     }
   }
-}
-
-.gray {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
-  filter: gray;
-  opacity: 0.6;
 }
 
 // 响应式布局
