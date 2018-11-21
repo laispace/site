@@ -11,30 +11,30 @@ keywords:
   - GIS Mapbox deckgl
 description: L7 中的 L 代表 Location，7 代表世界七大洲，寓意能为全球位置数据提供可视化能力。L7 的目标是提供一套地理空间数据可视化框架，易用易扩展，支持海量数据的高性能和 3D 高质量渲染，安全可靠（无地图法务风险）的地理空间数据可视化解决方案。
 featuresCards:
-  - img: ${assets}/image/home/features-professional.svg
+  - img: https://gw.alipayobjects.com/zos/rmsportal/uFbxbootiAahJsKWesMg.svg
     title: 架构上灵活可扩展
     description: 数据为核心，相同的数据不同的展现
-  - img: ${assets}/image/home/features-simple.svg
+  - img: https://gw.alipayobjects.com/zos/rmsportal/vVvdsshfRBIZegjThfzD.svg
     title: 业务上简洁、通用
     description: 基于图形语法，简单，易用
   - img: ${assets}/image/home/features-powerful.svg
     title: 可视化上酷炫，动感
     description: 高性能，高质量实时动态渲染
 usecases:
-  - img: https://gw.alipayobjects.com/zos/rmsportal/sLkxxYItxjlZnvcwXTWJ.png
+  - img: https://gw.alipayobjects.com/zos/rmsportal/mvyerbHlaqhrNlgVwcYg.png
     title: 精彩案例
-    description: 一个个真实的数据可视化案例，复杂的地理数据让用户达到开箱即用的效果。
+    description: 一个个真实的数据可视化案例，复杂的地理数据,简单，易用的API接口,让用户达到开箱即用的效果。
     relate: true
     link: https://antv.alipay.com/zh-cn/l7/1.x/demo/index.html
 -->
 
 <!-- 第一屏，产品简介 -->
 <section class="intro">
-   <div class="video_container" style="width: 100%; height: 600px; top:0px; object-fit: fill; position: absolute;margin-top: 64px; overflow: hidden;">
-     <video autoplay="autoplay" loop style="width: 100%; height: 100%; top:0px; object-fit: fill" src="https://gw.alipayobjects.com/os/rmsportal/wcycTgNRDuUrQLHzVhzX.mp4" ></video>
-     <div style="width: 100%; height: 100%; position: absolute; top:0px; object-fit: fill; opacity:0.7;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/oVTFrcRUOwnEpfLIoNys.png);
-    background-repeat: round;"></div>
-   
+   <div class="video_container" style="width: 100%; height: 664px; top:-64px; object-fit: fill; position: absolute;margin-top: 64px; overflow: hidden;">
+     <video autoplay="autoplay" loop style="width: 100%; height: 100%; top:0px; object-fit: fill" src="https://mdn.alipayobjects.com/afts/file/A*qmPlRYhAlBkAAAAAAAAAAABjAQAAAQ?bz=antv_site" ></video>
+     <div style="width: 100%; height: 100%; position: absolute; top:0px; object-fit: fill;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/oVTFrcRUOwnEpfLIoNys.png);
+    background-repeat: round;opacity: 0.65;" ></div>
+
    </div>
   <div class="container">
     <div class="header row">
@@ -48,7 +48,7 @@ usecases:
 </section>
 
 <!-- 第二屏：产品特性 -->
-<section class="features text-center" style="background-color: #F7F9FF">
+<section class="l7-features text-center">
   <div class="container">
     <div class="row">
     {% for card in featuresCards %}
@@ -63,12 +63,12 @@ usecases:
 </section>
 
 <!-- 第三屏：使用案例 -->
-<section class="use-cases" >
-  <div class="container slider">
+<section class="use-cases">
+  <div class="slider">
     {% for card in usecases %}
     <div class="row test">
-      <div class="col-md-7">
-        <img class="case-image" src="{{ card.img }}" />
+      <div class="col-md-6">
+        <img class="case-image" style="height:420px; margin:6.5%;" src="{{ card.img }}" />
       </div>
       <div class="col-md-5 case-content">
         <div class="logo">
@@ -92,13 +92,27 @@ usecases:
   </div>
 </section>
 <!-- 第四屏 使用 app -->
-<section class="clients-container">
+<section class="clients-container" style="min-height: 410px">
   <div class="container">
-    <div class="title text-center">感谢一路合作的伙伴</div>
-    <div class="row">
-     <span>因为相信，所以看见，L7 涵盖地理、数据、 图形、可视化、图像等多个技术领域，需要支撑各个业务领域的需求，而各个业务领域又会拥有独特的数据逻辑，业务逻辑，L7 建设才刚刚起步，还有很多功能需要持续打磨，还有很多技术难题需要攻克，我们将持续投入争取尽快开源发布正式版，欢迎更多的团队、同学参与进来。
-      </span>
+    <div class="title text-center">L7 地理空间数据可视化解决方案</div>
+    <div class="page text-center"> </div>
+    <div class="info-content" style="opacity: 1; transform: translate(0px, 0px); margin-top:64px ">
+    <p class="main-info loose" style="opacity: 1; transform: translate(0px, 0px); margin:10px; text-align: center;padding-top: 30px;">地理信息将成为未来数字经济的基础设施。地理信息可视化涵盖地理、数据、 图形、可视化、图像等多个技术领。L7建设才刚刚起步，还有很多功能需要持续打磨，还有很多技术难点需要攻克，我们将持续投入争取尽快开源发布正式版。</p>
+    <!-- <p class="main-info loose" style="opacity: 1; transform: translate(0px, 0px);  margin:10px;text-align: center;">地理信息可视化涵盖地理、数据、 图形、可视化、图像等多个技术领。</p>
+     <p class="main-info loose" style="opacity: 1; transform: translate(0px, 0px);  margin:10px;text-align: center;">L7 建设才刚刚起步，还有很多功能需要持续打磨，还有很多技术难点需要攻克，我们将持续投入争取尽快开源发布正式版，欢迎更多的团队、同学参与进来。</p> -->
     </div>
+   
+
+
   </div>
 </section>
-
+<script>
+  document.getElementsByTagName('header')[0].classList.remove("navbar-light");
+  document.getElementsByClassName('navbar-brand')[0].children[0].src ="/assets/image/home/logo-with-text.svg";
+  document.getElementsByTagName('header')[0].classList.remove("navbar-light");
+  document.getElementById('sub-product-navs').children[0].classList.remove('nav-link');
+  var items = document.getElementsByClassName('nav-link');
+  for(var i =0;i<items.length;i++){
+     items[i].style.color='white';
+  }
+</script>

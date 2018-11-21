@@ -90,10 +90,10 @@ resource:
 
 <!-- 第三屏：使用案例 -->
 <section class="use-cases">
-  <div class="container">
+  <div>
     {% for card in usecases %}
     <div class="row test">
-      <div class="col-md-7">
+      <div class="col-md-6">
         <img class="case-image" src="{{ card.img }}" />
       </div>
       <div class="col-md-5 case-content">
