@@ -107,7 +107,7 @@ resource:
 </section>
 
 <!-- 第三屏：使用案例 -->
-<section class="use-cases">
+<section class="use-cases f2">
   <div class="container slider">
     {% for card in usecases %}
     <div class="row test">
@@ -143,7 +143,7 @@ resource:
     <div class="row">
       {% for card in clients %}
       <div class="col-md-3">
-        <img class="client-icon" src="{{ card.img }}" />
+        <img class="client-icon gray" src="{{ card.img }}" />
       </div>
       {% endfor %}
     </div>

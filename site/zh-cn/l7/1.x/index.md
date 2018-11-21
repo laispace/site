@@ -34,7 +34,7 @@ usecases:
      <video autoplay="autoplay" loop style="width: 100%; height: 600px; top:0px; object-fit: fill" src="https://gw.alipayobjects.com/os/rmsportal/wcycTgNRDuUrQLHzVhzX.mp4" ></video>
      <div style="width: 100%; height: 600px; position: absolute; top:0px; object-fit: fill;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/XLzarGnjnuCzqPLHcHtC.png);
     background-repeat: repeat;"></div>
-   
+
    </div>
   <div class="container">
     <div class="header row">
@@ -64,10 +64,10 @@ usecases:
 
 <!-- 第三屏：使用案例 -->
 <section class="use-cases">
-  <div class="container slider">
+  <div class="slider">
     {% for card in usecases %}
     <div class="row test">
-      <div class="col-md-7">
+      <div class="col-md-6">
         <img class="case-image" src="{{ card.img }}" />
       </div>
       <div class="col-md-5 case-content">
