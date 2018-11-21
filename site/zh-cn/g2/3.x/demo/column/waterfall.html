@@ -30,11 +30,11 @@ subCat: 基础柱状图
 
   function getFillAttrs(cfg) {
     const defaultAttrs = Global.shape.interval;
-    const attrs = Util.mix({}, defaultAttrs, {
+    const attrs = Util.mix({}, defaultAttrs, cfg.style, {
       fill: cfg.color,
       stroke: cfg.color,
       fillOpacity: cfg.opacity
-    }, cfg.style);
+    });
     return attrs;
   }
 
