@@ -38,7 +38,7 @@ class Banner extends React.Component {
           muted="muted"
           controls={false}
           style={{ width: '100%', height: '100%', objectFit: 'fill' }}
-          src="https://gw.alipayobjects.com/os/rmsportal/dMEdKQJFpRDASrUYsOHb.mp4">
+          src="https://mdn.alipayobjects.com/afts/file/A*grJPTKqmP9QAAAAAAAAAAABjAQAAAQ?bz=antv_site">
         </video>
         <div className="overlay">
           <div className="homepage-title">
