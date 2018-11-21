@@ -15,8 +15,7 @@ subCat: 环图
         height: 80px;
         vertical-align: middle;
         text-align: center;
-        opacity: 0;
-        line-height: 0.6;
+        line-height: 0.2;
     }
 
     .g2-guide-html .title {
@@ -65,30 +64,33 @@ subCat: 环图
         innerRadius: 0.6
     });
     chart.intervalStack().position('percent').color('type', ['#0a7aca', '#0a9afe', '#4cb9ff', '#8ed1ff']).opacity(1).label('percent', {
-        offset: -10,
+        offset: -18,
         textStyle: {
             fill: 'white',
             fontSize: 12,
             shadowBlur: 2,
-            shadowColor: 'rgba(0, 0, 0, .45)'
+            shadowColor: 'rgba(0, 0, 0, .45)',
         },
+        rotate:0,
+        autoRotate: false,
         formatter: (text, item) => {
             return String(parseInt(item.point.percent * 100)) + '%';
         }
     });
     chart.guide().html({
         position: ['50%', '50%'],
-        html: '<div class="g2-guide-html"><p class="title">项目总计</p><p class="value"></p></div>'
+        html: '<div class="g2-guide-html"><p class="title">项目总计</p><p class="value">500</p></div>'
     });
     chart.on('interval:mouseenter', function (ev) {
         const data = ev.data._origin;
         $(".g2-guide-html").css('opacity', 1);
+        $(".g2-guide-html .title").text(data.type);
         $(".g2-guide-html .value").text(data.value);
     });
 
     chart.on('interval:mouseleave', function () {
-        $(".g2-guide-html").css('opacity', 0);
-        $(".g2-guide-html .value").text('');
+        $(".g2-guide-html .title").text('项目总计');
+        $(".g2-guide-html .value").text(500);
     });
     chart.render();
 </script>
