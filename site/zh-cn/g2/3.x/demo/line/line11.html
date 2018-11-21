@@ -60,7 +60,7 @@ subCat: 多折线图
         min-width:60px;
         height: 100%;
         float: left;
-        margin-left: 20px;
+        margin-left: 8px;
         font-size: 10px;
         color: #595959;
         text-align: left;
@@ -109,13 +109,6 @@ subCat: 多折线图
         vertical-align: middle;
         content: '';
     }
-
-    .legend-item-top {
-        opacity: 1;
-        border-style: solid;
-        border-width: 2px;
-        border-color: #989b9f;
-    }
 </style>
 <script>
     const data = [
@@ -161,9 +154,14 @@ subCat: 多折线图
             container: 'mountNode',
             forceFit: true,
             height: window.innerHeight,
-            padding: [20, 250, 30, 50]
+            padding: [20, 210, 30, 50]
         });
-        chart.source(data);
+        chart.source(data,{
+            year:{
+                type:'timeCat',
+                range:[0,1]
+            }
+        });
         chart.axis('year', {
             label: {
                 textStyle: {
@@ -175,6 +173,9 @@ subCat: 多折线图
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
                 }
             }
         });
@@ -184,14 +185,8 @@ subCat: 多折线图
             reactive: true,
             containerTpl: '<div class="g2-legend">2016 年支出排行<div class="g2-legend-list"></div></div>',
             itemTpl: function (value, color, checked, index) {
-                let markerDom;
-                if(index<3){
-                    markerDom = '<div class="legend-item-marker legend-item-top" style="background-color:' + color +
+                const markerDom = '<div class="legend-item-marker" style="background-color:' + color +
                     '">' + (index+1) + '</div>';
-                }else{
-                    markerDom = '<div class="legend-item-marker" style="background-color:' + color +
-                    '">' + (index+1) + '</div>';
-                }
                 const nameDom = '<div class="legend-item-name">' + value + '</div>';
                 const percentDom = '<div class="legend-item-percent">' + yearPercent[value].percent.toFixed(2) + '</div>';
                 const valueDom = '<div class="legend-item-value">' + yearPercent[value].value + '</div>';

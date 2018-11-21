@@ -36,7 +36,7 @@ subCat: 多折线图
     .g2-tooltip-tail {
         background-color: #f9f9f9;
         color: #909090;
-        font-size: 14px;
+        font-size: 12px;
         padding-bottom: 10px;
         margin-top: 10px;
         list-style-type: none;
@@ -68,7 +68,6 @@ subCat: 多折线图
 </style>
 <div class='breadcrumb'></div>
 <script>
-    const colors = ['#fed330', '#84c9b2', '#cf876b', '#7e827a', '#1a3441'];
     $.getJSON('/assets/data/coffe2.json', function (filedata) {
         const rollupData = {};
         let tem_fileData = filedata;
@@ -77,7 +76,7 @@ subCat: 多折线图
             container: 'mountNode',
             forceFit: true,
             height: window.innerHeight,
-            padding: [10,100,70,50]
+            padding: [10,70,70,50]
         });
         chart.source(data, {
             date: {
@@ -96,6 +95,9 @@ subCat: 多折线图
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
                 }
             }
         });
@@ -126,7 +128,7 @@ subCat: 多折线图
                 }
             }
         });
-        chart.line().position('date*value').color('type', colors).size(3);
+        chart.line().position('date*value').color('type').size(3);
         chart.render();
         $(document).on('click', '.g2-tooltip-tail', function () {
             const target = $(this)[0];
