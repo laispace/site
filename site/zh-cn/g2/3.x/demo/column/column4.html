@@ -23,7 +23,7 @@ subCat: 基础柱状图
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight,
-        padding: [20, 20, 50, 25]
+        padding: [20, 20, 50, 30]
     });
     chart.source(data);
     chart.scale('value', {
@@ -52,20 +52,19 @@ subCat: 基础柱状图
     chart.tooltip({
         share: true
     });
-    chart.interval().position('time*value').opacity(1)
+    chart.interval().position('time*value')
+        .opacity('time',(val)=>{
+            if (val === '13:00-14:00') {
+                    return 0.4;
+                }
+                return 1;
+        })
         .style('time', {
-
             lineWidth: (val) => {
                 if (val === '13:00-14:00') {
                     return 1;
                 }
                 return 0;
-            },
-            opacity: (val) => {
-                if (val === '13:00-14:00') {
-                    return 0.4;
-                }
-                return 1;
             },
             stroke: '#636363',
             lineDash: [3, 2]

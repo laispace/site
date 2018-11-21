@@ -11,7 +11,7 @@ subCat: 基础柱状图
 -->
 <style>
         .left-tool-box{position: absolute; top:0px; left: 0px; width: 40px; height:100%; z-index:1000}
-        .left-tool-box .sort-button {width: 70%; height:auto; position: absolute; left:25%; top:30%;}
+        .left-tool-box .sort-button {width: 70%; height:auto; position: absolute; left:15%; top:30%;}
         </style>
         <div class = 'left-tool-box'><img class = 'sort-button' src = '/assets/image/g2/demo/sortbar.png'/></div>
         <script>
@@ -32,7 +32,7 @@ subCat: 基础柱状图
             container: 'mountNode',
             forceFit: true,
         height: window.innerHeight,
-            padding: [20, 20, 50, 50]
+            padding: [20, 20, 50, 40]
         });
         chart.source(data);
         chart.scale('value', {
@@ -69,7 +69,7 @@ subCat: 基础柱状图
                 }
                 return style;
             },
-            offset: 5
+            offset: 2
         });
         chart.guide().regionFilter({
             top: true,
@@ -90,7 +90,7 @@ subCat: 基础柱状图
                 position: 'start',
                 style: {
                     fill: '#595959',
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: 300
                 },
                 content: '公司平均 14,40',
