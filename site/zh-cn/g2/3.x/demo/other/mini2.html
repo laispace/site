@@ -1,0 +1,188 @@
+<!--
+title: 某中台产品服务器概况一览
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：demo数据
+recommend: true
+subCat: 迷你图
+-->
+<style>
+        .g2-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border-radius: 4px 4px 0 0;
+            table-layout: fixed;
+        }
+        .g2-thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-bottom-color: #e8e8e8;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            background-color: #fafafa
+        }
+        .th-index {
+            width: 5%;
+        }
+        .th-id {
+            width: 15%;
+        }
+        .th-status {
+            width: 15%;
+        }
+        .g2-thead th {
+            text-align: center;
+            height: 30px;
+            font-size: 12px;
+        }
+        .g2-table-row {
+            height: 30px;
+            vertical-align: middle;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #e8e8e8;
+        }
+        .g2-table-column {
+            font-size: 12px;
+            color: #8c8c8c;
+            padding: 15px;
+            text-align: center
+        }
+        .before-start {
+            color: #bfbfbf;
+        }
+        .in-processing {
+            color: #1890ff;
+        }
+        .fail {
+            color: #f5222d;
+        }
+        .sucess {
+            color: #52c41a;
+        }
+        .abnormal {
+            color: #faad14;
+        }
+        li { font-size: 12px; }
+        li span {
+            color: #8c8c8c;
+        }
+        .g2-guide-html {
+            width: 50px;
+            height: 40px;
+            vertical-align: middle;
+            line-height: 0.8
+        }
+        .g2-guide-html .title {
+            font-size: 12px;
+            color: #8c8c8c;
+            font-weight: 300;
+        }
+        .g2-guide-html .value {
+            font-size: 14px;
+            color: #000;
+            font-weight: bold;
+        }
+</style>
+<!-- table -->
+<table class='g2-table'>
+        <!--head-->
+        <thead class='g2-thead'>
+            <tr>
+                <th class='th-index'>序号</th>
+                <th class='th-id'>服务器 ID</th>
+                <th>服务调用次数</th>
+                <th>服务调用趋势</th>
+                <th class='th-status'>状态</th>
+            </tr>
+        </thead>
+        <!--body-->
+        <tbody>
+        </tbody>
+    </table>
+<script>
+const data = [
+            { index: 1, id: 723826463, times: [{'index': 0, 'value': 74}, {'index': 1, 'value': 28}, {'index': 2, 'value': 69}, {'index': 3, 'value': 67}, {'index': 4, 'value': 48}, {'index': 5, 'value': 43}, {'index': 6, 'value': 45}, {'index': 7, 'value': 13}, {'index': 8, 'value': 85}, {'index': 9, 'value': 88}], timeSum:560,trend: [{ 'timeindex': 1, 'value': 721 }, { 'timeindex': 2, 'value': 327 }, { 'timeindex': 3, 'value': 982 }, { 'timeindex': 4, 'value': 735 }, { 'timeindex': 5, 'value': 67 }, { 'timeindex': 6, 'value': 123 }, { 'timeindex': 7, 'value': 167 }, { 'timeindex': 8, 'value': 403 }, { 'timeindex': 9, 'value': 741 }, { 'timeindex': 10, 'value': 114 }, { 'timeindex': 11, 'value': 171 }, { 'timeindex': 12, 'value': 330 }, { 'timeindex': 13, 'value': 964 }, { 'timeindex': 14, 'value': 835 }, { 'timeindex': 15, 'value': 12 }, { 'timeindex': 16, 'value': 349 }, { 'timeindex': 17, 'value': 601 }, { 'timeindex': 18, 'value': 230 }, { 'timeindex': 19, 'value': 567 }, { 'timeindex': 20, 'value': 135 }], sum: 8574, status: '进行中' },
+            { index: 2, id: 89584746, times: [{'index': 0, 'value': 172}, {'index': 1, 'value': 142}, {'index': 2, 'value': 48}, {'index': 3, 'value': 103}, {'index': 4, 'value': 53}, {'index': 5, 'value': 198}, {'index': 6, 'value': 88}, {'index': 7, 'value': 152}, {'index': 8, 'value': 30}, {'index': 9, 'value': 146}], timeSum:1132,trend: [{ 'timeindex': 1, 'value': 90 }, { 'timeindex': 2, 'value': 63 }, { 'timeindex': 3, 'value': 85 }, { 'timeindex': 4, 'value': 43 }, { 'timeindex': 5, 'value': 85 }, { 'timeindex': 6, 'value': 21 }, { 'timeindex': 7, 'value': 24 }, { 'timeindex': 8, 'value': 75 }, { 'timeindex': 9, 'value': 73 }, { 'timeindex': 10, 'value': 82 }, { 'timeindex': 11, 'value': 57 }, { 'timeindex': 12, 'value': 44 }, { 'timeindex': 13, 'value': 35 }, { 'timeindex': 14, 'value': 57 }, { 'timeindex': 15, 'value': 39 }, { 'timeindex': 16, 'value': 45 }, { 'timeindex': 17, 'value': 52 }, { 'timeindex': 18, 'value': 75 }, { 'timeindex': 19, 'value': 35 }, { 'timeindex': 20, 'value': 30 }], sum: 1100, status: '未开始' },
+            { index: 3, id: 90318249, times: [{'index': 0, 'value': 43}, {'index': 1, 'value': 40}, {'index': 2, 'value': 19}, {'index': 3, 'value': 44}, {'index': 4, 'value': 15}, {'index': 5, 'value': 19}, {'index': 6, 'value': 16}, {'index': 7, 'value': 49}, {'index': 8, 'value': 46}, {'index': 9, 'value': 43}], timeSum:334, trend: [{ 'timeindex': 1, 'value': 19 }, { 'timeindex': 2, 'value': 37 }, { 'timeindex': 3, 'value': 33 }, { 'timeindex': 4, 'value': 40 }, { 'timeindex': 5, 'value': 25 }, { 'timeindex': 6, 'value': 10 }, { 'timeindex': 7, 'value': 44 }, { 'timeindex': 8, 'value': 31 }, { 'timeindex': 9, 'value': 25 }, { 'timeindex': 10, 'value': 39 }, { 'timeindex': 11, 'value': 34 }, { 'timeindex': 12, 'value': 21 }, { 'timeindex': 13, 'value': 46 }, { 'timeindex': 14, 'value': 33 }, { 'timeindex': 15, 'value': 47 }, { 'timeindex': 16, 'value': 24 }, { 'timeindex': 17, 'value': 11 }, { 'timeindex': 18, 'value': 24 }, { 'timeindex': 19, 'value': 48 }, { 'timeindex': 20, 'value': 34 }], sum: 625, status: '失败' },
+            { index: 4, id: 983927827, times: [{'index': 0, 'value': 132}, {'index': 1, 'value': 171}, {'index': 2, 'value': 135}, {'index': 3, 'value': 164}, {'index': 4, 'value': 61}, {'index': 5, 'value': 171}, {'index': 6, 'value': 47}, {'index': 7, 'value': 45}, {'index': 8, 'value': 36}, {'index': 9, 'value': 65}], timeSum:1027,trend: [{ 'timeindex': 1, 'value': 13 }, { 'timeindex': 2, 'value': 17 }, { 'timeindex': 3, 'value': 69 }, { 'timeindex': 4, 'value': 42 }, { 'timeindex': 5, 'value': 134 }, { 'timeindex': 6, 'value': 65 }, { 'timeindex': 7, 'value': 130 }, { 'timeindex': 8, 'value': 69 }, { 'timeindex': 9, 'value': 144 }, { 'timeindex': 10, 'value': 83 }, { 'timeindex': 11, 'value': 61 }, { 'timeindex': 12, 'value': 82 }, { 'timeindex': 13, 'value': 40 }, { 'timeindex': 14, 'value': 39 }, { 'timeindex': 15, 'value': 105 }, { 'timeindex': 16, 'value': 86 }, { 'timeindex': 17, 'value': 23 }, { 'timeindex': 18, 'value': 60 }, { 'timeindex': 19, 'value': 55 }, { 'timeindex': 20, 'value': 67 }], sum: 1384, status: '成功' },
+            { index: 5, id: 7362764734, times: [{'index': 0, 'value': 140}, {'index': 1, 'value': 115}, {'index': 2, 'value': 107}, {'index': 3, 'value': 72}, {'index': 4, 'value': 124}, {'index': 5, 'value': 83}, {'index': 6, 'value': 49}, {'index': 7, 'value': 123}, {'index': 8, 'value': 57}, {'index': 9, 'value': 86}], timeSum:956,trend: [{ 'timeindex': 1, 'value': 17 }, { 'timeindex': 2, 'value': 84 }, { 'timeindex': 3, 'value': 31 }, { 'timeindex': 4, 'value': 59 }, { 'timeindex': 5, 'value': 69 }, { 'timeindex': 6, 'value': 14 }, { 'timeindex': 7, 'value': 74 }, { 'timeindex': 8, 'value': 56 }, { 'timeindex': 9, 'value': 33 }, { 'timeindex': 10, 'value': 22 }, { 'timeindex': 11, 'value': 79 }, { 'timeindex': 12, 'value': 92 }, { 'timeindex': 13, 'value': 11 }, { 'timeindex': 14, 'value': 9 }, { 'timeindex': 15, 'value': 87 }, { 'timeindex': 16, 'value': 26 }, { 'timeindex': 17, 'value': 29 }, { 'timeindex': 18, 'value': 87 }, { 'timeindex': 19, 'value': 74 }, { 'timeindex': 20, 'value': 89 }], sum: 1042, status: '异常' }
+        ];
+        //append data
+        const $tbody = $('.g2-table').children('tbody');
+        data.forEach(function (d, index) {
+            //create container
+            const $tr = $('<tr class="g2-table-row"></tr>');
+            $tbody.append($tr);
+            //index
+            const $index = $('<td class="g2-table-column g2-table-column-index">' + d.index + '</td>');
+            $tr.append($index);
+            //id
+            const $id = $('<td class="g2-table-column">' + d.id + '</td>');
+            $tr.append($id);
+            //time
+            const timeID = 'bar-chart-' + index;
+            const $time = $('<td class="g2-table-column"><div class="chartContainer" id="' + timeID + '"></div></td>');
+            $tr.append($time);
+            createBarChart(timeID,d.times,d.timeSum);
+            //data
+            const dataID = 'line-chart-' + index;
+            const $data = $('<td class="g2-table-column"><div class="chartContainer" id="' + dataID + '"></div></td>');
+            $tr.append($data);
+            createMiniLineChart(dataID, d.trend,d.sum);
+            //状态
+            const Class = getStatusType(d.status);
+            const $status = $('<td class="g2-table-column g2-table-column-index' + Class + '"><li><span>' + d.status + '</span></li></td>');
+            $tr.append($status);
+        });
+        function createBarChart(containerId, data,sum) {
+            const chart = new G2.Chart({
+                container: containerId,
+                forceFit: true,
+                height: 30,
+                padding: [5, 50, 5, 10]
+            });
+            chart.source(data);
+            chart.legend(false);
+            chart.axis(false);
+            chart.tooltip({
+                type: 'mini'
+            });
+            chart.interval().position('index*value').opacity(1);
+            chart.guide().html({
+                position: ['120%', '0%'],
+                html:  '<div class="g2-guide-html"><p class="title">总计</p><p class="value">'+sum+'</p></div>'
+            });
+            chart.render();
+        }
+        function createMiniLineChart(containerId, data, sum) {
+            const chart = new G2.Chart({
+                container: containerId,
+                forceFit: true,
+                height: 30,
+                padding: [5, 20, 5, 10]
+            });
+            chart.source(data);
+            chart.legend(false);
+            chart.axis(false);
+            chart.tooltip({
+                type: 'mini'
+            });
+            chart.line().position('timeindex*value').opacity(1).shape('smooth');
+            chart.guide().html({
+                position: ['120%', '0%'],
+                html: '<div class="g2-guide-html"><p class="title">总计</p><p class="value">'+sum+'</p></div>'
+            });
+            chart.render();
+        }
+        function getStatusType(s) {
+            if (s === '进行中') return ' in-processing';
+            if (s === '未开始') return ' before-start';
+            if (s === '失败') return ' fail';
+            if (s === '成功') return ' sucess';
+            if (s === '异常') return ' abnormal';
+        }
+</script>

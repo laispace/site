@@ -1,0 +1,95 @@
+<!--
+index: 1
+title: 任天堂游戏销售趋势
+resource:
+  jsFiles:
+    - ${url.jquery}
+plotDescription: 折线展示了 2016 年至 2017 年任天堂游戏的销售趋势。可以看出，2017年3月以来，switch主机的销售带动了任天堂游戏的销量。
+plotUsage: 数据来源：Data Wrapper
+tags: 辅助标记
+recommend: true
+subCat: 其他折线图
+-->
+<script>
+    $.getJSON('/assets/data/nintendo.json', function (data) {
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [30, 20, 50, 30]
+        });
+        chart.axis('Date', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    const dataStrings = text.split('.');
+                    return dataStrings[2]+'-'+dataStrings[1]+'-'+dataStrings[0];
+                }
+            }
+        });
+        chart.axis('Close', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                },
+            }
+        });
+        chart.tooltip({
+            crosshairs: false
+        });
+        chart.source(data, {
+            Date: {
+                tickCount: 10
+            }
+        });
+        chart.line().position('Date*Close');
+        //guide
+        const max_min = findMaxMin();
+        const max = max_min.max;
+        const min = max_min.min;
+        chart.guide().dataMarker({
+            top: true,
+            content: '全部峰值：' + max.Close,
+            position: [max.Date, max.Close],
+            style: {
+                text: {
+                    fontSize: 12
+                }
+            },
+            lineLength: 30
+        });
+        chart.guide().dataMarker({
+            top: true,
+            content: '全部谷值：' + min.Close,
+            position: [min.Date, min.Close],
+            style: {
+                text: {
+                    fontSize: 12
+                }
+            },
+            lineLength: 50
+        });
+        chart.render();
+
+        function findMaxMin() {
+            let maxValue = 0;
+            let minValue = 50000;
+            let maxObj = null;
+            let minObj = null;
+            for (var i = 0; i < data.length; i++) {
+                var d = data[i];
+                if (d.Close > maxValue) {
+                    maxValue = d.Close;
+                    maxObj = d;
+                }
+                if (d.Close < minValue) {
+                    minValue = d.Close;
+                    minObj = d;
+                }
+            }
+            return { max: maxObj, min: minObj };
+        }
+    });
+</script>

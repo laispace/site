@@ -4,11 +4,11 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - ${url['g2-plugin-slider']}
 plotDescription: 用区域图表示雨量流量关系
-plotUsage: 区域图结合 g2-plugin-slider 和 data-set 表示雨量和流量关系
+plotUsage: 区域图结合 slider interaction 和 data-set 表示雨量和流量关系
 chartDetail: ${base}zh-cn/vis/chart/area.html
 date: "2018-03-05"
+subCat: 其他
 -->
 <script>
   $('<div id="slider"></div>').insertAfter('#mountNode');
@@ -32,11 +32,11 @@ date: "2018-03-05"
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: window.innerHeight - 40,
+      height: window.innerHeight - 60,
       padding: [40, 40, 40, 80],
       animate: false
     });
-    var scale = {
+    const scale = {
       time: {
         type: 'time',
         tickCount: 8,
@@ -79,30 +79,23 @@ date: "2018-03-05"
     chart.render();
 
     // 创建 Slider
-    const slider = new Slider({
+    chart.interact('slider', {
       container: 'slider',
-      width: 'auto',
-      height: 26,
+      data: dv.rows,
       start: ds.state.start, // 和状态量对应
       end: ds.state.end,
+      scales: scale,
       xAxis: 'time',
       yAxis: 'flow',
-      scales: {
-        time: {
-          type: 'time',
-          tickCount: 10,
-          mask: 'M/DD H:mm'
-        }
-      },
-      data: dv,
       backgroundChart: {
-        type: 'line'
+        type: 'line',
+        color: 'grey'
       },
-      onChange({ startValue, endValue }) {
+      onChange(ev) {
+        const { startValue, endValue } = ev;
         ds.setState('start', startValue);
         ds.setState('end', endValue);
       }
     });
-    slider.render();
   });
 </script>

@@ -30,6 +30,16 @@ export const page1 = [
       { text: '图表示例', href: '/zh-cn/f2/3.x/demo/index.html' },
       { text: 'API 文档', href: '/zh-cn/f2/3.x/api/index.html' },
     ],
+  },
+  {
+    img: `${assets}/image/home/intro-l7.svg`,
+    title: 'L7',
+    href: `${base}zh-cn/f2/3.x/index.html`,
+    description: ' 是一套高性能，高渲染质量的地理空间数据可视化框架。',
+    links: [
+      { text: '图表示例', href: '/zh-cn/l7/1.x/demo/index.html' },
+      { text: 'API 文档', href: '/zh-cn/l7/1.x/api/index.html' },
+    ],
   }
 ];
 
@@ -99,7 +109,7 @@ export const page5 = [
     `${assets}/image/home/tmall.png`,
     `${assets}/image/home/taobao.png`,
     `${assets}/image/home/mybank.png`,
-    `${assets}/image/home/jd.png`,
+    `${assets}/image/home/gi.png`,
     `${assets}/image/home/yunos.png`,
     `${assets}/image/home/cainiao.png`,
 ];

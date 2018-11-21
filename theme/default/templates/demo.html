@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% set externalJsNotAllow = true %}
 {% block css %}
+<!-- lightslider -->
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/rmsportal/zEAWlywIPqDNpSqGGdQX.css">
 <link rel="stylesheet"
       href="https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.css">
 <link rel="stylesheet" href="{{ dist }}/demo.css"/>
@@ -12,6 +14,7 @@
 <div class="drawer-toggle">
     <span class="iconfont icon-menu-fold"></span>
 </div>
+
 <div class="drawer-overlay"></div>
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
@@ -36,12 +39,24 @@
                              role="tabpanel" data-parent="#accordion">
                             <div class="card-body">
                                 <ul class="list-group">
+                                    {% if template === 'g2-demo' %}
+                                    {% for sub, subDemos in cat.subCat %}
+                                    {% if currentDemo.subCat === sub %}
+                                    {% set displayDemos = subDemos %}
+                                    {% endif %}
+                                    {% set isCurrentPage = (currentDemo.subCat === sub) %}
+                                    <li class="list-group-item{% if isCurrentPage %} active{% endif %}">
+                                        <a href="{{ subDemos[0].href }}">{{ sub }}</a>
+                                    </li>
+                                    {% endfor %}
+                                    {% else %}
                                     {% for demo in cat.demos %}
                                     {% set isCurrentPage = (__href === demo.href) %}
                                     <li class="list-group-item{% if isCurrentPage %} active{% endif %}">
-                                        <a href="{{ demo.href }}">{{ demo.title }}</a>
+                                        <a href="{{ demo.href }}" {% if demo.openInNewTab %} target="_blank"{% endif %}>{{ demo.title }}</a>
                                     </li>
                                     {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
@@ -53,121 +68,183 @@
                 <span class="iconfont icon-left"></span>
             </button>
         </div>
-        <div class="col detail" id="detail-container">
-            <div class="demo-preview" id="demo-preview">
-                <div class="navbar justify-content-between">
-                    <h4 class="nav-link">{{ title }}
-                    {% if template == 'f2-demo' %}
-                    <div class="f2-qrcode">
-                        <span class="iconfont icon-erweima"></span>
-                        <div class="qrcode-wrapper">
-                            <div class="qrcode-content">
-                                <div class="qrcode-arrow"></div>
-                                <div class="qrcode-inner">
-                                    <div id="qrcode" data-url={{ currentDemo.naked }} ></div>
-                                </div>
-                            </div>
-                      </div>
-                    </div>
-                    {% endif %}
-                    </h4>
-                </div>
+        <div class="col" style="width: calc(100% - 216px)">
+            {% if template === 'g2-demo' %}
+            {% for sub, demos in currentDemos.subCat %}
+            {% if sub === currentDemo.subCat%}
+            <div style="margin: 20px 48px 12px 48px;font-size: 18px; font-weight: bold;">{{ sub }}</div>
+            <div style="padding: 0 48px 18px 48px; position: relative;">
+                <img id="slider-prev" src="{{ assets }}/image/slider-prev.png" alt="上一张" style="display: none" />
 
-                {% if template != 'f2-demo' %}
-                <div class="demo" id="preview"></div>
-                {% else %}
-                <div id="qrcode" style="position: absolute; top: 32px; left: 0;" data-value={{ currentDemo.naked }}></div>
-                <div class="mobile-wrapper">
-                    <div class="content">
-                        <div class="content-header">
-                            <div class="content-statbar">
-                                <div class="url" data-url={{ currentDemo.naked }}></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="demo f2" id="preview"></div>
-
-                </div>
-                {% endif %}
-
-            </div>
-            <div class="card-extra container">
-                {% if plotDescription %}
-                <section class="description">
-                    <h4>{{ resource.translate.plotDescription }}</h4>
-                    <div> {{ plotDescription | safe }}</div>
-                    {% if chartDetail %}
-                    <p><a href="{{ chartDetail }}">{{ resource.translate.chartDetail }}<span
-                            class="iconfont icon-right"></span></a></p>
-                    {% endif %}
-                </section>
-                {% endif %}
-                {% if plotUsage %}
-                <section class="usage">
-                    <h4>{{ resource.translate.usage }}</h4>
-                    <div> {{ plotUsage | safe }}</div>
-                </section>
-                {% endif %}
-                {% if relativePlots %}
-                {% if relativePlots.length %}
-                <section class="relative-plots">
-                    <h4>{{ resource.translate.relativePlots }}</h4>
-                    <ul>
-                        {% for plot in relativePlots %}
-                        <li>
-                            <a href="{{ plot.url }}">
-                                <span class="iconfont {{ plot.icon }}"></span>
-                                {{ plot.name }}
+                <ul id="slider" style="height: 100px" class="lightSlider cs-hidden">
+                        {% for demo in demos %}
+                        <li style="width: 144px; height: 100px; position: relative;">
+                            <a href="{{demo.href}}" >
+                            <img class="slider-img" src="{{ demo.screenshot }}"/>
+                            {% if demo.recommend %}
+                            <img src="{{ assets }}/image/recommend.png" class="recommend-flag" />
+                            {% endif %}
+                            {% if demo.title === currentDemo.title %}
+                                <div class="slider-overlay"></div>
+                            {% endif %}
                             </a>
                         </li>
+                        {% endfor%}
+                        {% endif %}
                         {% endfor %}
-                    </ul>
-                </section>
-                {% endif %}
-                {% endif %}
-                {% if template == 'g2-demo' %}
-                <section class="links">
-                    <h4>{{ resource.translate.referenceLinks }}</h4>
-                    <a href="http://bizcharts.net/products/bizCharts/demo/detail?id={{ currentDemo.category }}-{{ currentDemo.name }}&selectedKey={{ currentDemos.title }}&from=antv">
-                        BizCharts
-                        <span class="iconfont icon-right"></span>
-                    </a>
-                    <a href="https://viserjs.github.io/demo.html">
-                        Viser
-                        <span class="iconfont icon-right"></span>
-                    </a>
-                </section>
-                {% endif %}
+                </ul>
+
+                <img id="slider-next" src="{{ assets }}/image/slider-next.png" alt="下一张" style="display: none"/>
             </div>
-        </div>
-        <div id="resize-handler" class="col"></div>
-        <div class="col code-panel bg-secondary">
-            <div class="d-flex flex-column">
-                <div class="row toolbox navbar bg-light justify-content-between">
-                    <a href="#" class="nav-link disabled">{{ resource.translate.sourceCode }}</a>
-                    <form class="form-inline">
+            {% endif %}
+            <div class="row d-flex flex-row border-secondary" id="code-container">
+                <div class="col detail" id="detail-container">
+                    {% if template === 'g2-demo' %}
+                        <div class="g2-demo-preview" id="demo-preview">
+                            {% else %}
+                            <div class="demo-preview" id="demo-preview">
+                            {% endif %}
+                            {% if template === 'g2-demo' %}
+                            <span style="font-size: 16px;font-weight: bold;">{{ title }}</span>
+                            <p style="font-size: 12px;color: rgba(0,0,0,0.45)">{{plotDescription}}</p>
+                            {% else %}
+                            <div class="navbar justify-content-between">
+                                <h4 class="nav-link">{{ title }}
+                                    {% if template == 'f2-demo' %}
+                                    <div class="f2-qrcode">
+                                        <span class="iconfont icon-erweima"></span>
+                                        <div class="qrcode-wrapper">
+                                            <div class="qrcode-content">
+                                                <div class="qrcode-arrow"></div>
+                                                <div class="qrcode-inner">
+                                                    <div id="qrcode" data-url={{ currentDemo.naked }} ></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </h4>
+                            </div>
+                            {% endif %}
+                            {% if template != 'f2-demo' %}
+                            <div id="preview" {% if template === 'g2-demo' %} style="padding: 0" class="demo g2" {% else %} class="demo" {% endif %}></div>
+                            {% else %}
+                            <div id="qrcode" style="position: absolute; top: 32px; left: 0;" data-value={{ currentDemo.naked }}></div>
+                            <div class="mobile-wrapper">
+                                <div class="content">
+                                    <div class="content-header">
+                                        <div class="content-statbar">
+                                            <div class="url" data-url={{ currentDemo.naked }}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="demo f2" id="preview"></div>
+
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div id="resize-handler" class="col"></div>
+                    <div class="col code-panel bg-secondary" {% if template === 'g2-demo' %} style="padding-right: 48px;background-color: #fff !important"{% endif %}>
+                        <div class="d-flex flex-column" style="border: 1px solid #efefef; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                            <div class="row toolbox navbar bg-light justify-content-between">
+                                <a href="#" class="nav-link disabled" style="padding: .5rem 0">{{ resource.translate.sourceCode }}</a>
+                                <form class="form-inline">
                         <span id="alert-copy-success" class="text-success" style="display: none;">
                             {{ resource.translate.copySuccess }}
                         </span>
-                        <span id="alert-copy-fail" class="text-danger" style="display: none;">
+                                    <span id="alert-copy-fail" class="text-danger" style="display: none;">
                             {{ resource.translate.copyFail }}
                         </span>
-                        <button id="btn-copy" type="button" class="btn btn-light">
-                            <span class="iconfont icon-copy"></span>
-                            {{ resource.translate.copy }}
-                        </button>
-                        <button id="btn-execute" type="button" class="btn btn-light">
-                            <span class="iconfont icon-execute"></span>
-                            {{ resource.translate.execute }}
-                        </button>
-                    </form>
-                </div>
-                <textarea id="code-default" style="display: none;">{{ renderedContent | safe }}</textarea>
-                <textarea id="code-dark" style="display: none;">{{ renderedContentDark | safe }}</textarea>
-                <div class="row code">
-                    <textarea name="code" id="code"></textarea>
+                                    <button id="btn-fullscreen" type="button" class="btn btn-light">
+                                        <span class="iconfont icon-fullscreen"></span>
+                                        {{ resource.translate.fullScreen }}
+                                    </button>
+                                    <button id="btn-copy" type="button" class="btn btn-light">
+                                        <span class="iconfont icon-copy"></span>
+                                        {{ resource.translate.copy }}
+                                    </button>
+                                    <button id="btn-execute" type="button" class="btn btn-light">
+                                        <span class="iconfont icon-execute"></span>
+                                        {{ resource.translate.execute }}
+                                    </button>
+                                </form>
+                            </div>
+                            <textarea id="code-default" style="display: none;">{{ renderedContent | safe }}</textarea>
+                            <textarea id="code-dark" style="display: none;">{{ renderedContentDark | safe }}</textarea>
+                            <div class="row code">
+                                <textarea name="code" id="code"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
+        <div class="card-extra">
+            {% if story %}
+            <div class="design-container">
+            {% if guide %}
+            <a href={{ guide }} target="_blank">
+                <span class="iconfont icon-filedone"></span>
+                <span>设计指引</span>
+                <span class="more-info">查看更多 ></span>
+            </a>
+            {% endif %}
+            {% if story %}
+            <a href={{ story }} target="_blank">
+                <span class="iconfont icon-story"></span>
+                <span>设计故事</span>
+                <span class="more-info">查看更多 ></span>
+            </a>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% if plotDescription %}
+            <section class="description">
+                <h4>{{ resource.translate.plotDescription }}</h4>
+                <div> {{ plotDescription | safe }}</div>
+                {% if chartDetail %}
+                <p><a href="{{ chartDetail }}">{{ resource.translate.chartDetail }}<span
+                        class="iconfont icon-right"></span></a></p>
+                {% endif %}
+            </section>
+            {% endif %}
+            {% if plotUsage %}
+            <section class="usage">
+                <h4>{{ resource.translate.usage }}</h4>
+                <div> {{ plotUsage | safe }}</div>
+            </section>
+            {% endif %}
+            {% if relativePlots %}
+            {% if relativePlots.length %}
+            <section class="relative-plots">
+                <h4>{{ resource.translate.relativePlots }}</h4>
+                <ul>
+                    {% for plot in relativePlots %}
+                    <li>
+                        <a href="{{ plot.url }}">
+                            <span class="iconfont {{ plot.icon }}"></span>
+                            {{ plot.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+            {% endif %}
+            {% if template == 'g2-demo' %}
+            <section class="links">
+                <h4>{{ resource.translate.referenceLinks }}</h4>
+                <a href="http://bizcharts.net/products/bizCharts/demo/detail?id={{ currentDemo.category }}-{{ currentDemo.name }}&selectedKey={{ currentDemos.title }}&from=antv">
+                    BizCharts
+                    <span class="iconfont icon-right"></span>
+                </a>
+                <a href="https://viserjs.github.io/demo.html">
+                    Viser
+                    <span class="iconfont icon-right"></span>
+                </a>
+            </section>
+            {% endif %}
+        </div>
         </div>
     </div>
 </div>
@@ -178,32 +255,34 @@
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.resizable-0.20.0.min.js"></script>
+<!-- lightslider -->
+<script src="https://gw.alipayobjects.com/os/rmsportal/DxKBtMsnvcaitNCFyFXX.js"></script>
 <script src="{{ dist }}/demo.js"></script>
 
 {% if template == 'f2-demo' %}
 <script src="https://gw.alipayobjects.com/os/rmsportal/ZTwgYuEqPkjWTERMsszu.js"></script>
 <script type="text/javascript">
-const userAgent = navigator.userAgent;
-const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
-const currentUrl = window.location.protocol + '//' + window.location.host + $('#qrcode').data('url') + '?enableWK=YES';
-$('.url').html(currentUrl);
+  const userAgent = navigator.userAgent;
+  const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+  const currentUrl = window.location.protocol + '//' + window.location.host + $('#qrcode').data('url') + '?enableWK=YES';
+  $('.url').html(currentUrl);
 
-if (!mobile) { // in mobile
+  if (!mobile) { // in mobile
     new QRCode(document.getElementById("qrcode"), {
-        text: currentUrl,
-        width: 128,
-        height: 128,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+      text: currentUrl,
+      width: 128,
+      height: 128,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
     });
 
     $('.icon-erweima').hover(() => {
-        $('.qrcode-wrapper').toggle();
+      $('.qrcode-wrapper').toggle();
     });
-} else {
+  } else {
     $('.icon-erweima').hide();
-}
+  }
 </script>
 {% endif %}
 

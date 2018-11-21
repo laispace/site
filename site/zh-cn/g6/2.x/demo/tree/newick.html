@@ -1,0 +1,139 @@
+<!--
+index: 1
+title: Newick
+screenshot: https://cdn.nlark.com/yuque/0/2018/png/93506/1535982139182-c744350a-87b7-4fe4-a2f5-478a72f2efd7.png
+resource:
+  jsFiles:
+plotDescription: 详见：https://en.wikipedia.org/wiki/Newick_format
+-->
+<script>
+  /*
+   * Tamplate has default install the newest G6 && G6Plugins as
+   * https://unpkg.com/@antv/g6/build/g6.js
+   * https://unpkg.com/@antv/g6/build/plugins.js
+   * if you can not access this url above you can install By you own
+   */
+
+  /*
+   * 模版已经默认按以下链接安装了最新版 G6 和 G6Plugins
+   * https://unpkg.com/@antv/g6/build/g6.js
+   * https://unpkg.com/@antv/g6/build/plugins.js
+   * 如果你无法访问上述链接，你需要自己手动安装能访问的链接安装 G6 
+   */
+  const { Util } = G6;
+  const data = {
+    "name": "F",
+    "weight": 0,
+    "children": [
+      {
+        "name": "A",
+        "weight": 0.1
+      },
+      {
+        "name": "B",
+        "weight": 0.2
+      },
+      {
+        "name": "E",
+        "weight": 0.5,
+        "children": [
+          {
+            "name": "C",
+            "weight": 0.3,
+          },
+          {
+            "name": "D",
+            "weight": 0.4
+          },
+        ]
+      }
+    ]
+  };
+
+  function calculateHGap(data) {
+    data.HGap = 0;
+    Util.traverseTree(data, (child, parent) => {
+      child.HGap = (child.weight - parent.weight) * 400;
+    }, child => {
+      return child.children;
+    });
+  }
+
+  calculateHGap(data);
+  G6.registerEdge('HV', {
+    getPath(item) {
+      const group = item.getGraphicGroup();
+      const source = item.getSource();
+      const target = item.getTarget();
+      const sourceModel = source.getModel();
+      const targetModel = target.getModel();
+      return [
+        ['M', sourceModel.x, sourceModel.y],
+        ['L', sourceModel.x, targetModel.y],
+        ['L', targetModel.x, targetModel.y]
+      ];
+    }
+  });
+  const layout = new G6.Layouts.CompactBoxTree({
+    // direction: 'LR', // 方向（LR/RL/H/TB/BT/V）
+    getHGap(model) /* d */ {
+      return model.HGap;
+    },
+    getVGap() /* d */ {
+      // 竖向间距
+      return 16;
+    }
+  })
+  const tree = new G6.Tree({
+    id: 'mountNode', // 容器ID
+    height: window.innerHeight, // 画布高
+    layout,
+    fitView: 'cc' // 自动缩放
+  });
+  tree.node({
+    shape: 'treeNode',
+    size: 8,
+    label(model) {
+      const label = {
+        text: model.name,
+        fontSize: 18
+      };
+      if (model.children && model.children.length > 0) {
+        label.textAlign = 'right'
+      } else {
+        label.textAlign = 'left'
+      }
+      return label;
+    },
+    labelOffsetX(model) {
+      if (model.children && model.children.length > 0) {
+        return -10;
+      }
+      return 10;
+    },
+    labelOffsetY(model) {
+      if (model.children && model.children.length > 0) {
+        return -10;
+      }
+      return 0;
+    },
+    style: {
+      fill: 'black',
+      stroke: 'black'
+    },
+  });
+  tree.edge({
+    shape: 'HV',
+    style: {
+      stroke: 'black'
+    },
+    label(model) {
+      const target = tree.find(model.target);
+      const targetModel = target.getModel();
+      return targetModel.weight;
+    },
+    labelOffsetY: -12
+  });
+  tree.read({ roots: [data] });
+</script>
+  

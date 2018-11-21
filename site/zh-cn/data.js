@@ -8,25 +8,29 @@ const data = {
             href: '${base}zh-cn/g2/3.x/index.html',
             icon: '${assets}/image/icon/g2.svg',
             links: {
+                about: { text: '${resource.translate.about} G2', href: '${base}zh-cn/g2/3.x/index.html'},
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g2/3.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g2/3.x/tutorial/index.html' },
-                history: { text: '${resource.translate.history}', href: '${base}zh-cn/g2/3.x/tutorial/history.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/g2-docs/api-g2', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g2-docs/get-started', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/g2-docs-en', newTab: true },
+                // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g2/3.x/tutorial/history.html' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g2/3.x/tutorial/changelog.html' },
             }
         },
         g6: {
             version: '1.0.0',
             name: 'G6',
-            href: '${base}zh-cn/g6/1.x/index.html',
+            href: '${base}zh-cn/g6/2.x/index.html',
             icon: '${assets}/image/icon/g6.svg',
             links: {
-                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/1.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/1.x/tutorial/index.html' },
-                history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/1.x/tutorial/history.html' },
-                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
-                // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/1.x/tutorial/changelog.html' },
+                about: { text: '${resource.translate.about} G6', href: '${base}zh-cn/g6/2.x/index.html'},
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/2.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/g6/api-g6', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g6/quick-start', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/g6-en', newTab: true },
+                // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/2.x/tutorial/history.html' },
+                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/2.x/toolbox.html' },
+                // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/2.x/tutorial/changelog.html' },
             }
         },
         f2: {
@@ -35,13 +39,29 @@ const data = {
             href: '${base}zh-cn/f2/3.x/index.html',
             icon: '${assets}/image/icon/f2.svg',
             qrCode: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' },
+            getStarted: { text: '${resource.translate.getStarted}', href: 'https://www.yuque.com/antv/f2/getting-started' },
             links: {
+                about: { text: '${resource.translate.about} F2', href: '${base}zh-cn/f2/3.x/index.html'},
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/3.x/tutorial/index.html' },
-                English: { text: 'English', href: 'https://antv.gitbook.io/f2' },
-                history: { text: '${resource.translate.history}', href: '${base}zh-cn/f2/3.x/tutorial/history.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/f2/api-index', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/f2/grammar', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/f2-en', newTab: true },
+                // history: { text: '${resource.translate.history}', href: 'https://www.yuque.com/antv/f2/changelog' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
+            }
+        },
+        l7: {
+            version: '1.0.0',
+            name: 'L7',
+            href: '${base}zh-cn/l7/1.x/index.html',
+            icon: '${assets}/image/icon/l7.svg',
+            getStarted: { text: '${resource.translate.getStarted}', href: 'https://www.yuque.com/antv/l7/wyb66y' },
+            links: {
+                about: { text: '${resource.translate.about} L7', href: '${base}zh-cn/l7/1.x/index.html' },
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/l7/1.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/l7/vgo25g', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/l7/wyb66y', newTab: true },
+    
             }
         },
         // gallery: {
@@ -57,10 +77,11 @@ const data = {
             href: '${base}zh-cn/vis/index.html',
             icon: '${assets}/image/icon/vis.svg',
             links: {
-                blog: { text: '${resource.translate.visBlog}', href: '${base}zh-cn/vis/blog/index.html' },
-                design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/index.html'  },
-                chart: { text: '${resource.translate.visChart}', href: '${base}zh-cn/vis/chart/index.html' },
-                resource: { text: '${resource.translate.visResource}', href: '${base}zh-cn/vis/resource/index.html' },
+                index: { text: '${resource.translate.index}', href: 'https://www.yuque.com/mo-college' },
+                design: { text: '${resource.translate.visDesign}', href: 'https://www.yuque.com/mo-college/vis-design'  },
+                tutorial: { text: '${resource.translate.visTutorial}', href: 'https://www.yuque.com/mo-college/beginner-tutorial' },
+                solution: { text: '${resource.translate.visSolution}', href: 'https://www.yuque.com/mo-college/f2-fund-course' },
+                // resource: { text: '${resource.translate.visResource}', href: '${base}zh-cn/vis/resource/index.html' },
                 // publications: { text: '经典文献', href: '' },
             }
         }
@@ -68,10 +89,12 @@ const data = {
     resource: {
         translate: {
             aboutUs: '关于我们',
+            about: '关于',
             api: 'API 文档',
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
             chartDetail: '了解更多',
+            fullScreen: '全屏',
             copy: '复制',
             copyFail: '复制失败',
             copySuccess: '复制成功',
@@ -84,6 +107,7 @@ const data = {
             gallery: 'Gallery',
             getStarted: '开始使用',
             history: '更新日志',
+            index: '首页',
             inputKeyWord: '输入关键字',
             intro: '介绍',
             joinUs: '立即加入',
@@ -106,6 +130,8 @@ const data = {
             viewDetail: '查看详情',
             viewMore: '查看更多',
             vis: '墨者学院',
+            visTutorial: '可视化教程',
+            visSolution: '行业可视化方案',
             visBlog: '博客',
             visChart: '图表用法',
             visDesign: '设计原则',
@@ -136,6 +162,7 @@ const data = {
         '${products.g2}',
         '${products.g6}',
         '${products.f2}',
+        '${products.l7}',
         '${products.vis}',
         {
             name: '更多产品',
@@ -190,14 +217,16 @@ data.homepageNavs = {
     g2: data.products.g2,
     g6: data.products.g6,
     f2: data.products.f2,
-    visChart: {
+    l7: data.products.l7,
+    vis: data.products.vis
+    /*visChart: {
         name: '${resource.translate.visChart}',
         href: '${base}zh-cn/vis/chart/index.html'
     },
     visDesign: {
         name: '${resource.translate.visDesign}',
         href: '${base}zh-cn/vis/design/index.html'
-    },
+    },*/
 };
 
 module.exports = data;

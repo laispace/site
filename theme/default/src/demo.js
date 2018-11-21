@@ -12,12 +12,67 @@ const $demoPreview = $('#demo-preview');
 
 const theme = getQueryVariable('theme');
 const isDark = theme === 'dark';
+const $iframeContainer = $('#preview');
 
 if (isDark) {
-    $code.val($codeDark.val());
+  $code.val($codeDark.val());
 } else {
-    $code.val($codeDefault.val());
+  $code.val($codeDefault.val());
 }
+
+// 顶部走马灯相关
+const $prevSlider = $('#slider-prev');
+const $nextSlider = $('#slider-next');
+const sliderCount = $('#slider .slider-img').length;
+let currentSlider  = 0;
+
+function displaySliderNav() {
+  if (currentSlider < 7) {
+    $prevSlider.hide();
+  } else if (currentSlider + 7 > sliderCount) {
+    $nextSlider.hide();
+  } else {
+    $prevSlider.show();
+    $nextSlider.show();
+  }
+}
+
+if ($iframeContainer.hasClass('g2')) {
+  $('#slider .slider-img').each(function(index) {
+    if ($(this).hasClass('active')) {
+      currentSlider = parseInt(index / 7) * 7;
+    }
+  });
+  const slider = $('#slider').lightSlider({
+    item: 7,
+    slideMove: 7,
+    autoWidth: false,
+    slideMargin: 20,
+    controls: false,
+    onSliderLoad: function() {
+      $('.lSPager.lSpg').remove();
+    }
+  });
+  slider.goToSlide(currentSlider);
+  displaySliderNav();
+  if (sliderCount > 7) {
+    $prevSlider.show();
+    $nextSlider.show();
+    displaySliderNav();
+    $prevSlider.click(function() {
+      slider.goToPrevSlide();
+      currentSlider -= 7;
+      displaySliderNav();
+    });
+
+    $nextSlider.click(function() {
+      slider.goToNextSlide(true);
+      currentSlider += 7;
+      displaySliderNav();
+    });
+  }
+}
+
 $('.theme-switching .btn').each(function () {
     const $btn = $(this);
     if (isDark) {
@@ -45,8 +100,6 @@ const htmlEditor = CodeMirror.fromTextArea($code[0], {
     lineWrapping: false
 });
 
-const $iframeContainer = $('#preview');
-
 function syncCode() {
     $iframeContainer.html('<iframe></iframe>');
     const iframe = $iframeContainer.find('iframe')[0];
@@ -67,13 +120,26 @@ $('header').headroom({
 });
 
 function resizePreview() {
-    if (!$iframeContainer.hasClass("f2")) {
-        $iframeContainer.height($iframeContainer.width() / 16 * 9);
+    if (!$iframeContainer.hasClass("f2") && !$iframeContainer.hasClass('g2')) {
+      $iframeContainer.height($iframeContainer.width() / 16 * 9);
     }
     syncCode();
 }
 
+function resizeG2() {
+  if($iframeContainer.hasClass('g2')) {
+    var height = window.innerHeight - 310;
+    $demoPreview.height(height - 50);
+    $('#preview').height(height - 120);
+    $('#resize-handler').height(height);
+    $('.code-panel').height(height);
+    $('.demo-container .border-secondary').height('auto');
+  }
+  syncCode();
+}
+
 resizePreview();
+resizeG2();
 
 const $execute = $('#btn-execute');
 $execute.click(syncCode);
@@ -207,4 +273,41 @@ if ($iframeContainer.hasClass('f2')) {
         $iframeContainer.css('top', 82);
     }
 }
+
+$('#btn-fullscreen').click(function() {
+  const text = $(this).text();
+  if (~text.indexOf('全屏')) {
+    $(this).html('<span class="iconfont icon-exitfullscreen"></span> 还原');
+    $('#code-container').css({
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      zIndex: 10,
+    });
+    const height = window.innerHeight;
+    $demoPreview.css({
+      height: height,
+      marginLeft: 0
+    });
+    $('#preview').height(height - 60);
+    $('#resize-handler').height(height);
+    $('.code-panel').css({
+      height: height,
+      paddingRight: 0,
+    });
+  } else {
+    $(this).html('<span class="iconfont icon-fullscreen"></span> 全屏');
+    $('#code-container').css({ position: 'relative', zIndex: 0 });
+    if ($iframeContainer.hasClass('g2')) {
+      $demoPreview.css({ marginLeft: 48 });
+      $('.code-panel').css({ paddingRight: 48 });
+    }
+    resizeG2();
+  }
+  syncCode();
+});
+
+
 

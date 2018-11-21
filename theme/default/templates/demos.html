@@ -1,31 +1,64 @@
-{% extends "layout.html" %}
+<script src="../../../site/zh-cn/g2/3.x/demo/data.js"></script>{% extends "layout.html" %}
 {% block css %}
 <link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css"/>
 <link rel="stylesheet" href="{{ dist }}/demos.css"/>
 {% endblock %}
 {% block content %}
+<div class="toc-container" {% if currentProduct == 'g2' %} style="position:fixed;top:64px;" {% endif %}>
+    <div class="toc">
+    </div>
+</div>
 <div class="demos container-fluid {% if currentProduct == 'f2' %}f2{% endif %}">
-    <div class="row flex-xl-nowrap">
-        <div class="col-xl-1"></div>
-        <div class="col-12 col-md-12 col-xl-10">
-            <div class="container content">
+{% if currentProduct == 'g2' %}
+    <div class="row flex-xl-nowrap" style="padding-top:64px">
+        <div class="col-12 col-md-12 col-xl-12">
+            <h5>全部图表<i class="iconfont show-search"></i><span id="toggleSearch" class="iconfont">展开筛选</span></h5>
+                <div class="search-container mini" id="search-container">
+                    {% for type in keywords %}
+                    <div>
+                        <span data-text="{{type.root}}" class="tag root-tag" style="display: inline">{{type.root}}<span aria-hidden="true">&times;</span></span>
+                        {% for child in type.children %}
+                        <span data-text="{{child}}" class="tag">{{child}}<span aria-hidden="true">&times;</span></span>
+                        {% endfor %}
+                    </div>
+                    <div class="tags-divider"></div>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+    <div id="noResult">
+        <img src="{{ assets }}/image/empty-result.png" alt="">
+    </div>
+{% endif %}
+    <div class="row flex-xl-nowrap" id="categories">
+        <div class="col-12 col-md-12 col-xl-12">
+            <div class="content">
                 {% for cat in demos %}
-                <h5>{{ cat.title }}</h5>
+                <h5 data-icon="{{cat.plot.icon}}">{{ cat.title }}</h5>
                 <div class="row">
                     {% for demo in cat.demos %}
-                    <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center card-container" data-tags="{{demo.tags}}" data-recommend="{{demo.recommend}}">
                         <div class="card">
+                            {% if demo.recommend %}
+                                <img src="{{ assets }}/image/recommend.png" class="recommend-flag" />
+                            {% endif %}
                             <a class="screenshot-container" href="{{ demo.href }}"{% if demo.openInNewTab %} target="_blank"{% endif %}>
                                 <!--data-original="{{ demo.screenshot }}"-->
                                 <img src="{{ assets }}/image/screenshot-placeholder.png"
                                     class="card-img-top screenshot lazyload"
                                     data-default="{{ demo.screenshot }}"
                                     data-dark="{{ demo.screenshotDark }}"
-                                    alt="{{ demo.title }}">
+                                    alt="{{ demo.title }}"
+                                    data-recommend="{{demo.recommend}}"
+                                />
                             </a>
+                            {% if demo.tags %}
                             <div class="card-body">
-                                <a href="{{ demo.href }}"{% if demo.openInNewTab %} target="_blank"{% endif %}> {{ demo.title }} </a>
+                                {% for tag in demo.tags %}
+                                <span class="card-tag">{{tag}}</span>
+                                {% endfor %}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -33,9 +66,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="toc-container">
-            <div class="toc"></div>
-        </div>
+
     </div>
 </div>
 {% endblock %}

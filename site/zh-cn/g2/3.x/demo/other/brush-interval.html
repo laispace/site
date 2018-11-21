@@ -1,12 +1,12 @@
 <!--
-title: g2-brush 柱状图
+title: brush interaction 柱状图
 resource:
   jsFiles:
     - ${url.jquery}
     - ${url.dataSet}
-    - ${url['g2-brush']}
-plotDescription: g2-brush 柱状图
+plotDescription: brush interaction 柱状图
 date: "2018-03-24"
+subCat: 其他
 -->
 <script>
     $.getJSON('/assets/data/top2000.json', data => {
@@ -41,9 +41,7 @@ date: "2018-03-24"
 
         chart.render();
 
-        new Brush({
-            canvas: chart.get('canvas'),
-            chart,
+        chart.interact('brush', {
             type: 'X',
             onBrushstart() {
                 chart.hideTooltip();
@@ -51,10 +49,6 @@ date: "2018-03-24"
             onBrushmove() {
                 chart.hideTooltip();
             }
-        });
-        chart.on('plotdblclick', () => {
-            chart.get('options').filters = {};
-            chart.repaint();
         });
     });
 </script>

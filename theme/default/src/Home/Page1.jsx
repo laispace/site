@@ -5,11 +5,11 @@ import { page1 } from './data';
 
 export default function Page1() {
   const children = page1.map((card, i) => (
-    <Col className="card-wrapper" key={i} md={8} xs={24}>
+    <Col className="card-wrapper" key={i} md={6} xs={24}>
       <a className="card" href={card.href}>
         <h3>{card.title}</h3>
         <img src={card.img} alt="" className="card-img-top" />
-        <div className="card-body">
+        <div className="card-body" style={{ marginBottom: 50 }}>
           <span className="title">{card.title}</span>
           <span className="description text-secondary">{card.description}</span>
         </div>
@@ -24,6 +24,7 @@ export default function Page1() {
 
   return (<section className="page-wrapper page1">
     <a id="__products"></a>
+    <div className="page1-title">我们的产品</div>
     <QueueAnim
       component={Row}
       type="bottom"

@@ -1,0 +1,57 @@
+<!--
+index: 4
+title: 2017 Link Data
+resource:
+  jsFiles:
+    - ${url['g6-plugins']}
+    - ${url.jquery}
+screenshot: https://cdn.nlark.com/yuque/0/2018/gif/93506/1535804360170-d3c64356-38d9-40af-a111-b39c8232e67e.gif
+plotDescription: 详见：http://linkdata.org/
+-->
+<script>
+  $("#mountNode").prepend('<img class="legend" width="150" src="https://gw.alipayobjects.com/zos/rmsportal/AuLKMNbRvKidugdUCaXz.png" style="position: absolute;right: 20px;"/>');
+  $.getJSON('/assets/data/2017-link-data.json', data => {
+    const { Util } = G6;
+    const graph = new G6.Graph({
+      container: 'mountNode',
+      height: window.innerHeight, // 画布高
+      plugins: [
+        new G6.Plugins['tool.highlightSubgraph'],
+        new G6.Plugins['tool.fisheye'], 
+      ],
+      fitView:'autoZoom',
+    });
+    graph.node({
+      style: {
+        stroke: '#333'
+      }
+    })
+    graph.read(data);
+    // 画布向左偏移 1/6 的画布kuandu
+    const width = graph.getWidth();
+    graph.translate(-width/7, 0);
+    // 隐藏所有边
+    graph.getEdges().forEach(edge=>{
+      graph.hide(edge);
+    });
+    // 鼠标悬浮高亮节点，并显示一度关系
+    let showEdgesCache;
+    graph.on('node:mouseenter', ({item})=>{
+      const {
+        reNodes,
+        reEdges
+      } = Util.extract('bi', [item]);
+      graph.highlightSubgraph(reNodes.concat(reEdges));
+      reEdges.forEach(edge=>{
+        graph.show(edge);
+      })
+      showEdgesCache=reEdges
+    });
+    graph.on('node:mouseleave', ()=>{
+      graph.unhighlightGraph();
+      showEdgesCache.forEach(edge=>{
+        graph.hide(edge)
+      });
+    });
+  });
+</script>

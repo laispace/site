@@ -1,0 +1,92 @@
+<!--
+title: 各国人口出生率
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源：UNdata联合国数据中心
+recommend: true
+subCat: 分面
+-->
+<script>
+    $.getJSON('/assets/data/fertility.json', function (data) {
+        const ds = new DataSet();
+        const dv = ds.createView().source(data);
+        dv.transform({
+            type: 'sort',
+            callback(a, b) {
+                return a.year - b.year;
+            }
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [50, 20, 50, 100]
+        });
+        chart.source(dv, {
+            value: {
+                max: 9,
+                min: 1
+            }
+        });
+
+        chart.scale('year', {
+            range: [0, 1]
+        });
+
+        chart.scale('value', {
+            tickCount: 2,
+            sync: true,
+            formatter: (value) => {
+                return value + '%';
+            }
+        });
+
+        chart.axis('value', {
+            grid: null,
+            label: {
+                textStyle: {
+                    fontSize: 10,
+                    fill: '#aaaaaa'
+                },
+                formatter: function (text) {
+                    if (window.innerHeight > 600) {
+
+                        return text;
+                    }
+                }
+            }
+        });
+
+        chart.axis('year', {
+            tickLine: {
+                length: 0
+            },
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            }
+        });
+
+        chart.facet('rect', {
+            rowTitle: {
+                offsetX: (window.innerWidth - 100) * -1,
+                style: {
+                    fontSize: 12,
+                    textAlign: 'end',
+                    rotate: 0,
+                    fontWeight:300,
+                    fill: '#8d8d8d'
+                }
+            },
+            fields: [null, 'country'],
+            padding: 10,
+            eachView: function eachView(view) {
+                view.line().position('year*value');
+            }
+        });
+        chart.render();
+    });
+</script>

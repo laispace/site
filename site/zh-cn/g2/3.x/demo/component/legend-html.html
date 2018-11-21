@@ -4,6 +4,8 @@ resource:
   jsFiles:
     - ${url.jquery}
     - ${url.dataSet}
+tags: 自定义legend
+subCat: 组件
 -->
 <style type="text/css">
     #canvas .g2-tooltip {
@@ -126,7 +128,7 @@ const data = [
     .color('country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ])
     .label('percent', {
       formatter: (val, item) => {
-        return item.point.country + ': ' + val;
+        return item.country + ': ' + val;
       }
     })
     .style({

@@ -10,6 +10,8 @@ plotUsage:
 relativePlots:
   - ${plotByName.treemap}
   - ${plotByName.sunburst}
+tags: 数据处理,label位置
+subCat: 关系图
 -->
 <script>
     $.getJSON('/assets/data/flare.json', data => {
@@ -61,7 +63,7 @@ relativePlots:
                 labelEmit: true,
                 textStyle: (text, item) => {
                     let textAlign = item.textAlign;
-                    if (item.point.hasChildren) {
+                    if (item.hasChildren) {
                         textAlign = textAlign === 'left' ? 'right' : 'left';
                     }
                     return {

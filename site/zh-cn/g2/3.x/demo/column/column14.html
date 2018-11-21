@@ -1,0 +1,196 @@
+<!--
+title: 超市品类销售数据
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotUsage: 数据来源： demo数据
+tags: 数据处理
+recommend: true
+subCat: 基础柱状图
+-->
+<style>
+    .g2-tooltip {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 3px;
+        color: rgb(87, 87, 87);
+        font-size: 12px;
+        line-height: 20px;
+        padding: 10px 10px 6px 10px;
+        box-shadow: 0px 0px 10px #aeaeae;
+    }
+    .g2-tooltip-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    .g2-tooltip-value {
+        margin-left: 30px;
+        display: inline;
+        float: right;
+    }
+    .g2-tooltip-tail {
+        background-color: #f9f9f9;
+        color: #909090;
+        font-size: 12px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+        list-style-type: none;
+        text-align: center;
+        padding-top: 10px;
+        cursor: pointer;
+    }
+    .left-tool-box{position: absolute; top:0px; left: 0px; width: 40px; height:100%; }
+    .left-tool-box .sort-button {width: 70%; height:auto; position: absolute; left:25%; top:30%;}
+    .breadcrumb{position:absolute; left:0%; bottom:0%; width: 100%; height: 30px; color: #8c8c8c; font-size: 14px; margin-top:20px; z-index: 1000;}
+    .breadcrumb .marker {width: auto; height: 100%; float: left; margin-right: 10px;  cursor: pointer;}
+</style>
+<div class='breadcrumb'></div>
+<div class='left-tool-box'><img class='sort-button' src='/assets/image/g2/demo/sortbar.png'/></div>
+<script>
+    const show_labels = ['办公用品', '家具产品', '技术产品', '容器，箱子', '剪刀，尺子，锯', '办公装饰品', '桌子', '电话通信产品', '电脑配件', '笔、美术用品', '橡皮筋', '标签', '纸张', '办公机器', '书架', '夹子及其配件 ', '家用电器', '信封', '椅子', '复印机、传真机'];
+    let sortType = 'positive';
+    $.getJSON('/assets/data/company_sales.json', function (filedata) {
+        const rollupData = {};
+        let tem_fileData = filedata;
+        const data = combineData(tem_fileData);
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [20, 20, 80, 100]
+        });
+        chart.source(data, {
+            value: {
+                tickCount: 5
+            }
+        });
+        chart.axis('name', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                },
+                formatter(text) {
+                    if (show_labels.indexOf(text) < 0) {
+                        return '';
+                    }
+                    return text;
+                }
+            },
+            tickLine: {
+                alignWithLabel: false,
+                length: 0
+            }
+        });
+        chart.axis('value', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
+                }
+            }
+        });
+        chart.tooltip({
+            triggerOn: 'click',
+            shared: false,
+            crosshairs: false,
+            htmlContent: (title, items) => {
+                const dataType = title;
+                const container = '<div class="g2-tooltip">';
+                const titleDom = '<div class="g2-tooltip-title" style="margin-bottom: 4px;">' + title + '</div>';
+                let listDom = '<ul class="g2-tooltip-list">';
+                for (var i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    const itemDom = '<li data-index={index}>' + '<span style="background-color:' + item.color + ';width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>' + item.name + '<span class="g2-tooltip-value">' + item.value + '</span>' + '</li>';
+                    listDom += itemDom;
+                }
+                listDom += '</ul>';
+                const tailDom = '<li class="g2-tooltip-tail" data-dimension="' + dataType + '">点击下钻</li>';
+                let childrenLength = 0;
+                if (tem_fileData[dataType] && tem_fileData[dataType].hasOwnProperty('children')) {
+                    childrenLength = Object.keys(tem_fileData[dataType].children).length;
+                }
+                if (childrenLength > 0) {
+                    return container + titleDom + listDom + tailDom + '</div>';
+                } else {
+                    return container + titleDom + listDom + '</div>';
+                }
+            }
+        });
+        chart.interval().position('name*value').opacity(1);
+        chart.render();
+        $(document).on('click', '.g2-tooltip-tail', function () {
+            const target = $(this)[0];
+            drillingDown($(target));
+        });
+        function drillingDown($target) {
+            const data_type = $target.data('dimension');
+            const selected = tem_fileData[data_type];
+            rollupData[data_type] = tem_fileData;
+            const d = combineData(selected.children);
+            if (d.length > 0) {
+                chart.source(d);
+                chart.repaint();
+                tem_fileData = selected.children;
+                //绘制面包屑
+                const $breadMarker = $('<span class="marker">' + data_type + '></span>');
+                $breadMarker.data('dimension', data_type);
+                $('.breadcrumb').append($breadMarker);
+                //点击事件
+                $breadMarker.click(function () {
+                    const dataDim = $(this).data('dimension');
+                    rollingUp(dataDim);
+                    //remove the related bread marker
+                    const index = $(this).index();
+                    const markerNumber = $('.breadcrumb .marker').length;
+                    const delete_markers = [];
+                    for (let i = index; i < markerNumber; i++) {
+                        const $marker = $('.breadcrumb').children()[i];
+                        delete_markers.push($marker);
+                    }
+                    delete_markers.forEach(function (marker) {
+                        marker.remove();
+                    });
+                });
+            }
+        }
+        function rollingUp(dimension) {
+            const selected = rollupData[dimension];
+            const data = combineData(selected);
+            chart.source(data);
+            chart.repaint();
+            delete rollupData[dimension];
+            tem_fileData = selected;
+        }
+        $('.sort-button').click(function () {
+            const data = chart.get('data');
+            sortType = (sortType === 'positive') ? 'negative' : 'positive';
+            sortData(data, sortType);
+            chart.repaint();
+        });
+    });
+    function combineData(data) {
+        let output = [];
+        for (let key in data) {
+            const d = data[key];
+            if (d.value > 0) {
+                output = output.concat(d);
+            }
+        }
+        return output;
+    }
+    function sortData(data, sortType) {
+        if (sortType === 'positive') {
+            data.sort(function (a, b) {
+                return b.value - a.value;
+            });
+        } else {
+            data.sort(function (a, b) {
+                return a.value - b.value;
+            });
+        }
+    }
+</script>

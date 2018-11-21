@@ -1,0 +1,79 @@
+<!--
+index: 3
+title: 系统增长
+resource:
+  jsFiles:
+    - ${url['g6-plugins']}
+    - ${url.jquery}
+    - ${url.d3}
+screenshot: https://cdn.nlark.com/yuque/0/2018/gif/93506/1536124743866-7ef8e27b-0d66-4b0d-8df6-a989fede2951.gif
+plotDescription: 展示 2018-06-06 ～ 2018-09-06 G6 活跃系统数的增长
+-->
+<script>
+  $.getJSON('/assets/data/system-growth.json', data => {
+    const { forceSimulation, forceLink, forceManyBody, forceX, forceY, forceCollide } = d3;
+    const { Util } = G6;
+    // 设置映射
+    const Mapper = G6.Plugins['tool.mapper'];
+    const nodeColorMapper = new Mapper('node', 'index', 'color', ['#FD8C3D', '#D83F43', '#F7BED6', '#E487C7', '#46A848', '#D83F43', '#3B85BA', '#48335B', '#B7CDE9']);
+    const nodeSizeMapper = new Mapper('node', 'pv', 'size', [4, 28], {
+      scaleCfg: {
+        type: 'log'
+      }
+    });
+    let simulation;
+
+    const graph = new G6.Graph({
+      container: 'mountNode',
+      height: window.innerHeight,
+      fitView: 'cc',
+      plugins: [nodeColorMapper, nodeSizeMapper],
+    });
+    graph.read(data);
+
+    // 按 100，剩余所有，分割节点数据集
+    const nodes_100 = [];
+    const nodes_left = [];
+    const width = graph.getWidth();
+    const height = graph.getHeight();
+    const nodes = graph.getNodes().map(node=>{
+      return node.getModel();
+    });
+    nodes.forEach(node => {
+      if (nodes_100.length < 100 && Math.random() < 0.2) {
+        nodes_100.push(node);
+      } else {
+        graph.hide(node.id);
+        nodes_left.push(node);
+      }
+    });
+    simulation = forceSimulation(nodes_100)
+      .force('collision', forceCollide().radius(model => {
+        return model.size / 2 * 1.2;
+      }).iterations(2))
+      .velocityDecay(0.2)
+      .force("x", d3.forceX().strength(0.002))
+      .force("y", d3.forceY().strength(0.002))
+      .on('tick', () => {
+        graph.updateNodePosition();
+      });
+      // 每隔一段时间添加一个节点
+      setTimeout(()=>{
+        let concatNodes = nodes_100;
+        const interval = setInterval(()=>{
+          if(nodes_left.length>0) {
+            const node = nodes_left[parseInt(Math.random()*nodes_left.length)];
+            Util.Array.remove(nodes_left, node);
+            node.x = 0;
+            node.y = 0;
+            concatNodes = concatNodes.concat(node);
+            simulation.nodes(concatNodes)
+            .alpha(2).restart();
+            graph.find(node.id).show();
+          } else {
+            clearInterval(interval);
+          }
+        }, 30)
+      }, 3000);
+  });
+</script>

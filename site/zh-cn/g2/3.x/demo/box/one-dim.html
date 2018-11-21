@@ -9,12 +9,14 @@ plotDescription: Basic Box Chart，基础箱型图，又称盒须图、盒式图
 plotUsage: 仅包含一条数据的时候可以使用占位符 '1'
 relativePlots:
   - ${plotByName.box}
+tags: 数据处理
+subCat: 箱型图
 -->
 <script>
   const { DataView } = DataSet;
   const data = [
     { low: 1, q1: 9, median: 16, q3: 22, high: 24 }
-    
+
   ];
   const dv = new DataView().source(data);
   dv.transform({

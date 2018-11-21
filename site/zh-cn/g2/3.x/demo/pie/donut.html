@@ -9,6 +9,8 @@ plotUsage: 饼图的整体性太强，我们会将注意力集中在比较饼图
 relativePlots:
   - ${plotByName.bar}
 chartDetail: ${base}zh-cn/vis/chart/donut.html
+tags: 辅助标记,label位置,label样式
+subCat: 环图
 -->
 <script>
   const data = [
@@ -52,7 +54,7 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
     .color('item')
     .label('percent', {
       formatter: (val, item) => {
-        return item.point.item + ': ' + val;
+        return item.item + ': ' + val;
       }
     })
     .tooltip('item*percent', (item, percent) => {

@@ -150,7 +150,8 @@ getPort().then(function (port) {
                         show: false,
                         gotoTimeout: 600000,
                     });
-                    nightmare.viewport(800, 450) // 16 x 9
+                    // nightmare.viewport(800, 450) // 16 x 9
+                    nightmare.viewport(800, 560) // 200 x 140
                         .goto(t.targetUrl)
                         // .wait('#mountNode canvas')
                         .wait(DELAY)
