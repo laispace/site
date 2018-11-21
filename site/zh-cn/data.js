@@ -11,7 +11,7 @@ const data = {
                 about: { text: '${resource.translate.about} G2', href: '${base}zh-cn/g2/3.x/index.html'},
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/g2-docs/api-g2', newTab: true },
-                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g2-docs/tutorial-g2-chart-composition', newTab: true },
+                tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g2-docs/get-started', newTab: true },
                 English: { text: 'English', href: 'https://www.yuque.com/antv/g2-docs-en', newTab: true },
                 // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g2/3.x/tutorial/history.html' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g2/3.x/tutorial/changelog.html' },
