@@ -12,7 +12,7 @@ const data = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/g2-docs/api-g2', newTab: true },
                 tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g2-docs/get-started', newTab: true },
-                English: { text: 'English', href: 'https://www.yuque.com/antv/g2-docs-en', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/g2-docs-en?language=en-us', newTab: true },
                 // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g2/3.x/tutorial/history.html' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g2/3.x/tutorial/changelog.html' },
             }
@@ -27,7 +27,7 @@ const data = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/2.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/g6/api-g6', newTab: true },
                 tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/g6/quick-start', newTab: true },
-                English: { text: 'English', href: 'https://www.yuque.com/antv/g6-en', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/g6-en?language=en-us', newTab: true },
                 // history: { text: '${resource.translate.history}', href: '${base}zh-cn/g6/2.x/tutorial/history.html' },
                 // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/2.x/toolbox.html' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/2.x/tutorial/changelog.html' },
@@ -45,7 +45,7 @@ const data = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: 'https://www.yuque.com/antv/f2/api-index', newTab: true },
                 tutorial: { text: '${resource.translate.tutorial}', href: 'https://www.yuque.com/antv/f2/grammar', newTab: true },
-                English: { text: 'English', href: 'https://www.yuque.com/antv/f2-en', newTab: true },
+                English: { text: 'English', href: 'https://www.yuque.com/antv/f2-en?language=en-us', newTab: true },
                 // history: { text: '${resource.translate.history}', href: 'https://www.yuque.com/antv/f2/changelog' },
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }

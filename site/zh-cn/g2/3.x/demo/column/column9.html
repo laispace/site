@@ -18,7 +18,6 @@ subCat: 基础柱状图
         height: 100%;
         z-index: 1000
     }
-
     .left-tool-box .sort-button {
         width: 70%;
         height: auto;
@@ -85,15 +84,15 @@ subCat: 基础柱状图
     chart.guide().text({
         top: true,
         position: ['end', 'max'],
-        content:'达标区间',
+        content: '达标区间',
         style: {
-            fill:'#aaaaaa',
-            textAlign:'end',
-            textBaseline:'top',
-            fontWeight:300
+            fill: '#aaaaaa',
+            textAlign: 'end',
+            textBaseline: 'top',
+            fontWeight: 300
         },
-        offsetX:-10,
-        offsetY:6
+        offsetX: -10,
+        offsetY: 6
     });
     chart.interval().position('name*value').opacity(1).label('value', {
         offset: 10,

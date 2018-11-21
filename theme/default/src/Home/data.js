@@ -8,7 +8,7 @@ export const page1 = [
     description: ' 是以数据驱动，具有高度的易用性和扩展性的可视化图形语法。',
     links: [
       { text: '图表示例', href: '/zh-cn/g2/3.x/demo/index.html' },
-      { text: 'API 文档', href: '/zh-cn/g2/3.x/api/index.html' },
+      { text: 'API 文档', href: 'https://www.yuque.com/antv/g2-docs' },
     ],
   },
   {
@@ -18,7 +18,7 @@ export const page1 = [
     description: ' 是一套便捷、动态和富有交互的流程图和关系分析的图表库。',
     links: [
       { text: '图表示例', href: '/zh-cn/g6/1.x/demo/index.html' },
-      { text: 'API 文档', href: '/zh-cn/g6/1.x/api/index.html' },
+      { text: 'API 文档', href: 'https://www.yuque.com/antv/g6' },
     ],
   },
   {
@@ -28,7 +28,7 @@ export const page1 = [
     description: ' 是一套为移动而生，开箱即用的可视化解决方案。',
     links: [
       { text: '图表示例', href: '/zh-cn/f2/3.x/demo/index.html' },
-      { text: 'API 文档', href: '/zh-cn/f2/3.x/api/index.html' },
+      { text: 'API 文档', href: 'https://www.yuque.com/antv/f2' },
     ],
   },
   {
@@ -38,7 +38,7 @@ export const page1 = [
     description: ' 是一套高性能，高渲染质量的地理空间数据可视化框架。',
     links: [
       { text: '图表示例', href: '/zh-cn/l7/1.x/demo/index.html' },
-      { text: 'API 文档', href: '/zh-cn/l7/1.x/api/index.html' },
+      { text: 'API 文档', href: 'https://www.yuque.com/antv/l7' },
     ],
   }
 ];

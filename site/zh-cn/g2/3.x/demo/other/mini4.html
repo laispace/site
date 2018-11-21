@@ -9,144 +9,144 @@ recommend: true
 subCat: 迷你图
 -->
 <style>
- .g2-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            border-radius: 4px 4px 0 0;
-            table-layout: fixed;
-        }
-        .g2-thead {
-            display: table-header-group;
-            vertical-align: middle;
-            border-bottom-color: #e8e8e8;
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-            background-color: #fafafa
-        }
-        .th-index {
-            width: 30px;
-        }
-        .g2-thead th {
-            text-align: left;
-            text-indent: 20px;
-            height: 30px;
-            font-size: 12px;
-        }
-        .g2-table-row {
-            height: 20px;
-            vertical-align: middle;
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-            border-bottom-color: #e8e8e8;
-        }
-        .g2-table-column {
-            font-size: 12px;
-            color: #8c8c8c;
-            padding: 15px;
-            text-align: center
-        }
-        .g2-guide-html {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            line-height: 0.4
-        }
-        .g2-guide-html .title {
-            font-size: 12px;
-            color: #8c8c8c;
-            font-weight: 300;
-        }
-        .g2-guide-html .value {
-            font-size: 14px;
-            color: #000;
-            font-weight: bold;
-        }
-        .g2-tooltip {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0);
-            font-size: 12px;
-            line-height: 0.2;
-            text-align: left;
-            color:#888888;
-            text-shadow:#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0;
-        }
-        .g2-tooltip .value {
-            color:#303030;
-            font-weight: bold;
-            font-size:14px
-        }
-       </style>
-    <!-- table -->
-    <table class='g2-table'>
-            <!--head-->
-            <thead class='g2-thead'>
-                <tr>
-                    <th>服务调用趋势</th>
-                </tr>
-            </thead>
-            <!--body-->
-            <tbody>
-            </tbody>
-        </table>
-       <script>
-       const charts = [];
-        const data = [
-            { index: 1, trend: [{ 'index': 0, 'value': 25 }, { 'index': 1, 'value': 10 }, { 'index': 2, 'value': 28 }, { 'index': 3, 'value': 145 }, { 'index': 4, 'value': 75 }, { 'index': 5, 'value': 40 }, { 'index': 6, 'value': 143 }, { 'index': 7, 'value': 43 }, { 'index': 8, 'value': 10 }, { 'index': 9, 'value': 89 }, { 'index': 10, 'value': 142 }, { 'index': 11, 'value': 116 }, { 'index': 12, 'value': 126 }, { 'index': 13, 'value': 123 }, { 'index': 14, 'value': 121 }, { 'index': 15, 'value': 133 }, { 'index': 16, 'value': 72 }, { 'index': 17, 'value': 123 }, { 'index': 18, 'value': 117 }, { 'index': 19, 'value': 25 }, { 'index': 20, 'value': 143 }, { 'index': 21, 'value': 134 }, { 'index': 22, 'value': 144 }, { 'index': 23, 'value': 20 }, { 'index': 24, 'value': 10 }, { 'index': 25, 'value': 133 }, { 'index': 26, 'value': 20 }, { 'index': 27, 'value': 124 }, { 'index': 28, 'value': 115 }, { 'index': 29, 'value': 72 }], sum: 2621 },
-            { index: 2, trend: [{ 'index': 0, 'value': 76 }, { 'index': 1, 'value': 70 }, { 'index': 2, 'value': 88 }, { 'index': 3, 'value': 59 }, { 'index': 4, 'value': 11 }, { 'index': 5, 'value': 64 }, { 'index': 6, 'value': 3 }, { 'index': 7, 'value': 86 }, { 'index': 8, 'value': 12 }, { 'index': 9, 'value': 81 }, { 'index': 10, 'value': 61 }, { 'index': 11, 'value': 27 }, { 'index': 12, 'value': 42 }, { 'index': 13, 'value': 83 }, { 'index': 14, 'value': 64 }, { 'index': 15, 'value': 45 }, { 'index': 16, 'value': 56 }, { 'index': 17, 'value': 23 }, { 'index': 18, 'value': 11 }, { 'index': 19, 'value': 23 }, { 'index': 20, 'value': 42 }, { 'index': 21, 'value': 26 }, { 'index': 22, 'value': 38 }, { 'index': 23, 'value': 19 }, { 'index': 24, 'value': 99 }, { 'index': 25, 'value': 45 }, { 'index': 26, 'value': 81 }, { 'index': 27, 'value': 78 }, { 'index': 28, 'value': 96 }, { 'index': 29, 'value': 66 }], sum: 1575 },
-            { index: 3, trend: [{ 'index': 0, 'value': 79 }, { 'index': 1, 'value': 59 }, { 'index': 2, 'value': 76 }, { 'index': 3, 'value': 100 }, { 'index': 4, 'value': 64 }, { 'index': 5, 'value': 179 }, { 'index': 6, 'value': 65 }, { 'index': 7, 'value': 65 }, { 'index': 8, 'value': 144 }, { 'index': 9, 'value': 139 }, { 'index': 10, 'value': 192 }, { 'index': 11, 'value': 70 }, { 'index': 12, 'value': 142 }, { 'index': 13, 'value': 150 }, { 'index': 14, 'value': 109 }, { 'index': 15, 'value': 128 }, { 'index': 16, 'value': 84 }, { 'index': 17, 'value': 148 }, { 'index': 18, 'value': 167 }, { 'index': 19, 'value': 189 }, { 'index': 20, 'value': 145 }, { 'index': 21, 'value': 115 }, { 'index': 22, 'value': 77 }, { 'index': 23, 'value': 51 }, { 'index': 24, 'value': 144 }, { 'index': 25, 'value': 129 }, { 'index': 26, 'value': 186 }, { 'index': 27, 'value': 163 }, { 'index': 28, 'value': 143 }, { 'index': 29, 'value': 146 }], sum: 3648 },
-            { index: 4, trend: [{ 'index': 0, 'value': 16 }, { 'index': 1, 'value': 188 }, { 'index': 2, 'value': 24 }, { 'index': 3, 'value': 173 }, { 'index': 4, 'value': 51 }, { 'index': 5, 'value': 169 }, { 'index': 6, 'value': 125 }, { 'index': 7, 'value': 11 }, { 'index': 8, 'value': 131 }, { 'index': 9, 'value': 24 }, { 'index': 10, 'value': 70 }, { 'index': 11, 'value': 112 }, { 'index': 12, 'value': 16 }, { 'index': 13, 'value': 90 }, { 'index': 14, 'value': 175 }, { 'index': 15, 'value': 70 }, { 'index': 16, 'value': 53 }, { 'index': 17, 'value': 156 }, { 'index': 18, 'value': 143 }, { 'index': 19, 'value': 20 }, { 'index': 20, 'value': 135 }, { 'index': 21, 'value': 168 }, { 'index': 22, 'value': 44 }, { 'index': 23, 'value': 197 }, { 'index': 24, 'value': 89 }, { 'index': 25, 'value': 90 }, { 'index': 26, 'value': 103 }, { 'index': 27, 'value': 38 }, { 'index': 28, 'value': 99 }, { 'index': 29, 'value': 184 }], sum: 2964 },
-            { index: 5, trend: [{ 'index': 0, 'value': 196 }, { 'index': 1, 'value': 374 }, { 'index': 2, 'value': 138 }, { 'index': 3, 'value': 249 }, { 'index': 4, 'value': 314 }, { 'index': 5, 'value': 232 }, { 'index': 6, 'value': 257 }, { 'index': 7, 'value': 307 }, { 'index': 8, 'value': 155 }, { 'index': 9, 'value': 338 }, { 'index': 10, 'value': 377 }, { 'index': 11, 'value': 211 }, { 'index': 12, 'value': 317 }, { 'index': 13, 'value': 386 }, { 'index': 14, 'value': 205 }, { 'index': 15, 'value': 199 }, { 'index': 16, 'value': 285 }, { 'index': 17, 'value': 316 }, { 'index': 18, 'value': 200 }, { 'index': 19, 'value': 246 }, { 'index': 20, 'value': 373 }, { 'index': 21, 'value': 257 }, { 'index': 22, 'value': 348 }, { 'index': 23, 'value': 354 }, { 'index': 24, 'value': 133 }, { 'index': 25, 'value': 162 }, { 'index': 26, 'value': 275 }, { 'index': 27, 'value': 243 }, { 'index': 28, 'value': 369 }, { 'index': 29, 'value': 285 }], sum: 8102 }
-        ];
-        //append data
-        const $tbody = $('.g2-table').children('tbody');
-        data.forEach(function (d, index) {
-            //create container
-            const $tr = $('<tr class="g2-table-row"></tr>');
-            $tbody.append($tr);
-            //data
-            const dataID = 'line-chart-' + index;
-            const $data = $('<td class="g2-table-column"><div class="chartContainer" id="' + dataID + '"></div></td>');
-            $tr.append($data);
-            createMiniLineChart(dataID, d.trend, d.sum);
+    .g2-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        border-radius: 4px 4px 0 0;
+        table-layout: fixed;
+    }
+    .g2-thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-bottom-color: #e8e8e8;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        background-color: #fafafa
+    }
+    .th-index {
+        width: 30px;
+    }
+    .g2-thead th {
+        text-align: left;
+        text-indent: 20px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .g2-table-row {
+        height: 20px;
+        vertical-align: middle;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #e8e8e8;
+    }
+    .g2-table-column {
+        font-size: 12px;
+        color: #8c8c8c;
+        padding: 15px;
+        text-align: center
+    }
+    .g2-guide-html {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        line-height: 0.4
+    }
+    .g2-guide-html .title {
+        font-size: 12px;
+        color: #8c8c8c;
+        font-weight: 300;
+    }
+    .g2-guide-html .value {
+        font-size: 14px;
+        color: #000;
+        font-weight: bold;
+    }
+    .g2-tooltip {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 12px;
+        line-height: 0.2;
+        text-align: left;
+        color: #888888;
+        text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    }
+    .g2-tooltip .value {
+        color: #303030;
+        font-weight: bold;
+        font-size: 14px
+    }
+</style>
+<!-- table -->
+<table class='g2-table'>
+    <!--head-->
+    <thead class='g2-thead'>
+        <tr>
+            <th>服务调用趋势</th>
+        </tr>
+    </thead>
+    <!--body-->
+    <tbody>
+    </tbody>
+</table>
+<script>
+    const charts = [];
+    const data = [
+        { index: 1, trend: [{ 'index': 0, 'value': 25 }, { 'index': 1, 'value': 10 }, { 'index': 2, 'value': 28 }, { 'index': 3, 'value': 145 }, { 'index': 4, 'value': 75 }, { 'index': 5, 'value': 40 }, { 'index': 6, 'value': 143 }, { 'index': 7, 'value': 43 }, { 'index': 8, 'value': 10 }, { 'index': 9, 'value': 89 }, { 'index': 10, 'value': 142 }, { 'index': 11, 'value': 116 }, { 'index': 12, 'value': 126 }, { 'index': 13, 'value': 123 }, { 'index': 14, 'value': 121 }, { 'index': 15, 'value': 133 }, { 'index': 16, 'value': 72 }, { 'index': 17, 'value': 123 }, { 'index': 18, 'value': 117 }, { 'index': 19, 'value': 25 }, { 'index': 20, 'value': 143 }, { 'index': 21, 'value': 134 }, { 'index': 22, 'value': 144 }, { 'index': 23, 'value': 20 }, { 'index': 24, 'value': 10 }, { 'index': 25, 'value': 133 }, { 'index': 26, 'value': 20 }, { 'index': 27, 'value': 124 }, { 'index': 28, 'value': 115 }, { 'index': 29, 'value': 72 }], sum: 2621 },
+        { index: 2, trend: [{ 'index': 0, 'value': 76 }, { 'index': 1, 'value': 70 }, { 'index': 2, 'value': 88 }, { 'index': 3, 'value': 59 }, { 'index': 4, 'value': 11 }, { 'index': 5, 'value': 64 }, { 'index': 6, 'value': 3 }, { 'index': 7, 'value': 86 }, { 'index': 8, 'value': 12 }, { 'index': 9, 'value': 81 }, { 'index': 10, 'value': 61 }, { 'index': 11, 'value': 27 }, { 'index': 12, 'value': 42 }, { 'index': 13, 'value': 83 }, { 'index': 14, 'value': 64 }, { 'index': 15, 'value': 45 }, { 'index': 16, 'value': 56 }, { 'index': 17, 'value': 23 }, { 'index': 18, 'value': 11 }, { 'index': 19, 'value': 23 }, { 'index': 20, 'value': 42 }, { 'index': 21, 'value': 26 }, { 'index': 22, 'value': 38 }, { 'index': 23, 'value': 19 }, { 'index': 24, 'value': 99 }, { 'index': 25, 'value': 45 }, { 'index': 26, 'value': 81 }, { 'index': 27, 'value': 78 }, { 'index': 28, 'value': 96 }, { 'index': 29, 'value': 66 }], sum: 1575 },
+        { index: 3, trend: [{ 'index': 0, 'value': 79 }, { 'index': 1, 'value': 59 }, { 'index': 2, 'value': 76 }, { 'index': 3, 'value': 100 }, { 'index': 4, 'value': 64 }, { 'index': 5, 'value': 179 }, { 'index': 6, 'value': 65 }, { 'index': 7, 'value': 65 }, { 'index': 8, 'value': 144 }, { 'index': 9, 'value': 139 }, { 'index': 10, 'value': 192 }, { 'index': 11, 'value': 70 }, { 'index': 12, 'value': 142 }, { 'index': 13, 'value': 150 }, { 'index': 14, 'value': 109 }, { 'index': 15, 'value': 128 }, { 'index': 16, 'value': 84 }, { 'index': 17, 'value': 148 }, { 'index': 18, 'value': 167 }, { 'index': 19, 'value': 189 }, { 'index': 20, 'value': 145 }, { 'index': 21, 'value': 115 }, { 'index': 22, 'value': 77 }, { 'index': 23, 'value': 51 }, { 'index': 24, 'value': 144 }, { 'index': 25, 'value': 129 }, { 'index': 26, 'value': 186 }, { 'index': 27, 'value': 163 }, { 'index': 28, 'value': 143 }, { 'index': 29, 'value': 146 }], sum: 3648 },
+        { index: 4, trend: [{ 'index': 0, 'value': 16 }, { 'index': 1, 'value': 188 }, { 'index': 2, 'value': 24 }, { 'index': 3, 'value': 173 }, { 'index': 4, 'value': 51 }, { 'index': 5, 'value': 169 }, { 'index': 6, 'value': 125 }, { 'index': 7, 'value': 11 }, { 'index': 8, 'value': 131 }, { 'index': 9, 'value': 24 }, { 'index': 10, 'value': 70 }, { 'index': 11, 'value': 112 }, { 'index': 12, 'value': 16 }, { 'index': 13, 'value': 90 }, { 'index': 14, 'value': 175 }, { 'index': 15, 'value': 70 }, { 'index': 16, 'value': 53 }, { 'index': 17, 'value': 156 }, { 'index': 18, 'value': 143 }, { 'index': 19, 'value': 20 }, { 'index': 20, 'value': 135 }, { 'index': 21, 'value': 168 }, { 'index': 22, 'value': 44 }, { 'index': 23, 'value': 197 }, { 'index': 24, 'value': 89 }, { 'index': 25, 'value': 90 }, { 'index': 26, 'value': 103 }, { 'index': 27, 'value': 38 }, { 'index': 28, 'value': 99 }, { 'index': 29, 'value': 184 }], sum: 2964 },
+        { index: 5, trend: [{ 'index': 0, 'value': 196 }, { 'index': 1, 'value': 374 }, { 'index': 2, 'value': 138 }, { 'index': 3, 'value': 249 }, { 'index': 4, 'value': 314 }, { 'index': 5, 'value': 232 }, { 'index': 6, 'value': 257 }, { 'index': 7, 'value': 307 }, { 'index': 8, 'value': 155 }, { 'index': 9, 'value': 338 }, { 'index': 10, 'value': 377 }, { 'index': 11, 'value': 211 }, { 'index': 12, 'value': 317 }, { 'index': 13, 'value': 386 }, { 'index': 14, 'value': 205 }, { 'index': 15, 'value': 199 }, { 'index': 16, 'value': 285 }, { 'index': 17, 'value': 316 }, { 'index': 18, 'value': 200 }, { 'index': 19, 'value': 246 }, { 'index': 20, 'value': 373 }, { 'index': 21, 'value': 257 }, { 'index': 22, 'value': 348 }, { 'index': 23, 'value': 354 }, { 'index': 24, 'value': 133 }, { 'index': 25, 'value': 162 }, { 'index': 26, 'value': 275 }, { 'index': 27, 'value': 243 }, { 'index': 28, 'value': 369 }, { 'index': 29, 'value': 285 }], sum: 8102 }
+    ];
+    //append data
+    const $tbody = $('.g2-table').children('tbody');
+    data.forEach(function (d, index) {
+        //create container
+        const $tr = $('<tr class="g2-table-row"></tr>');
+        $tbody.append($tr);
+        //data
+        const dataID = 'line-chart-' + index;
+        const $data = $('<td class="g2-table-column"><div class="chartContainer" id="' + dataID + '"></div></td>');
+        $tr.append($data);
+        createMiniLineChart(dataID, d.trend, d.sum);
+    });
+    function createMiniLineChart(containerId, data, sum) {
+        const chart = new G2.Chart({
+            container: containerId,
+            forceFit: true,
+            height: 20,
+            padding: [0, 30, 0, 10]
         });
-        function createMiniLineChart(containerId, data, sum) {
-            const chart = new G2.Chart({
-                container: containerId,
-                forceFit: true,
-                height: 20,
-                padding: [0, 30, 0, 10]
+        chart.source(data);
+        chart.legend(false);
+        chart.axis(false);
+        chart.tooltip({
+            crosshairs: {
+                type: 'line'
+            },
+            htmlContent: function (title, items) {
+                const item = items[0];
+                return '<div class="g2-tooltip"><p>2018-08-18</p><p class="value">' + item.value + '</p></div>';
+            }
+        });
+        chart.area().position('index*value').shape('smooth').opacity(0.2);
+        chart.line().position('index*value').opacity(1).shape('smooth');
+        chart.guide().html({
+            position: ['100%', '0%'],
+            html: '<div class="g2-guide-html"><p class="title">总计</p><p class="value">' + sum + '</p></div>'
+        });
+        chart.render();
+        charts.push(chart);
+        chart.on('plotmove', function (ev) {
+            const position = { x: ev.x, y: ev.y };
+            charts.forEach(function (chart) {
+                chart.showTooltip(position);
             });
-            chart.source(data);
-            chart.legend(false);
-            chart.axis(false);
-            chart.tooltip({
-                crosshairs: {
-                    type: 'line'
-                },
-                htmlContent: function (title, items) {
-                    const item = items[0];
-                    return '<div class="g2-tooltip"><p>2018-08-18</p><p class="value">' + item.value + '</p></div>';
-                }
+        });
+        chart.on('plotleave', function () {
+            charts.forEach(function (chart) {
+                chart.hideTooltip();
             });
-            chart.area().position('index*value').shape('smooth').opacity(0.2);
-            chart.line().position('index*value').opacity(1).shape('smooth');
-            chart.guide().html({
-                position: ['100%', '0%'],
-                html: '<div class="g2-guide-html"><p class="title">总计</p><p class="value">' + sum + '</p></div>'
-            });
-            chart.render();
-            charts.push(chart);
-            chart.on('plotmove', function (ev) {
-                const position = { x: ev.x, y: ev.y };
-                charts.forEach(function (chart) {
-                    chart.showTooltip(position);
-                });
-            });
-            chart.on('plotleave', function () {
-                charts.forEach(function (chart) {
-                    chart.hideTooltip();
-                });
-            });
-        }
-       </script>
+        });
+    }
+</script>
