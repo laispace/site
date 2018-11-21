@@ -16,12 +16,16 @@ subCat: 其他折线图
             container: 'mountNode',
             forceFit: true,
             height: window.innerHeight,
-            padding: 'auto'
+            padding: [30, 20, 50, 30]
         });
         chart.axis('Date', {
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
+                },
+                formatter:function(text){
+                    const dataStrings = text.split('.');
+                    return dataStrings[2]+'-'+dataStrings[1]+'-'+dataStrings[0];
                 }
             }
         });
@@ -29,7 +33,7 @@ subCat: 其他折线图
             label: {
                 textStyle: {
                     fill: '#aaaaaa'
-                }
+                },
             }
         });
         chart.tooltip({
@@ -51,7 +55,7 @@ subCat: 其他折线图
             position: [max.Date, max.Close],
             style: {
                 text: {
-                    fontSize: 13
+                    fontSize: 12
                 }
             },
             lineLength: 30
@@ -62,7 +66,7 @@ subCat: 其他折线图
             position: [min.Date, min.Close],
             style: {
                 text: {
-                    fontSize: 13
+                    fontSize: 12
                 }
             },
             lineLength: 50
