@@ -10,23 +10,24 @@
     <link rel="icon" href="https://gw.alipayobjects.com/os/antv/assets/favoricon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css" />
     <link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_470089_qbw8f4m49c.css" /><!-- icon font -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_470089_sqmpw68n74.css" /><!-- icon font -->
     <link rel="stylesheet" href="{{ dist }}/common.css" />
     {% block css %}{% endblock %}
     {% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />
     {% endfor %}
 </head>
+</head>
 <!-- preload assets -->
 <div style="display: none;">
     <!-- logo -->
     <img src="{{ assets }}/image/logo-with-text.svg" alt="">
     <!-- promote-banner -->
-    <img src="https://gw.alipayobjects.com/zos/rmsportal/lxfqewHiRSkxDnomkhYk.png" alt="">
+    <!--<img src="https://gw.alipayobjects.com/zos/rmsportal/lxfqewHiRSkxDnomkhYk.png" alt="">-->
 </div>
 <body class="template-{{ template }}">
 <!-- promote-banner -->
-<div class="promote-banner" style="position: relative; top: 0px; opacity: 0;height: 0;">
+<!--<div class="promote-banner" style="position: relative; top: 0px; opacity: 0;height: 0;">
     <a target="_blank" href="https://1024.yuque.com">
         <img src="https://gw.alipayobjects.com/zos/rmsportal/lxfqewHiRSkxDnomkhYk.png">
         <svg class="cross" viewBox="0 0 742 742" aria-labelledby="cdsi-ant-cross-title" id="si-ant-cross" width="24" height="24" fill="white">
@@ -34,7 +35,7 @@
             <path d="M733 9q-9-9-22.5-9T688 9L371 326 54 9q-9-9-22.5-9T9 9 0 31.5 9 54l317 317L9 688q-9 9-9 22.5T9 733t22.5 9 22.5-9l317-317 317 317q9 9 22.5 9t22.5-9 9-22.5-9-22.5L416 371 733 54q9-9 9-22.5T733 9z"></path>
         </svg>
     </a>
-</div>
+</div>-->
 {% if showHeader %}
 {% include "partial/header.html" %}
 {% endif %}
