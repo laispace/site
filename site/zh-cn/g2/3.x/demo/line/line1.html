@@ -40,7 +40,7 @@ subCat: 基础折线图
           container: 'mountNode',
           forceFit: true,
           height: window.innerHeight,
-          padding: 'auto'
+          padding: [20,20,50,50]
       });
       chart.tooltip({
         crosshairs:false
@@ -52,11 +52,11 @@ subCat: 基础折线图
         subTickLine: {
           length: 3,
           stroke: '#bfbfbf',
-          lineWidth: 2
+          lineWidth: 1
           },
         tickLine: {
           length: 6,
-          lineWidth: 2,
+          lineWidth: 1,
           stroke: '#bfbfbf'
         },
         label:{
@@ -69,7 +69,10 @@ subCat: 基础折线图
         label:{
           textStyle:{
             fill:'#aaaaaa'
-            }
+            },
+            formatter:function(text){
+                    return text.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,');
+                }
         }
       });
       view1.line().position('Year*Deaths');

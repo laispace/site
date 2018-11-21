@@ -38,7 +38,7 @@ subCat: 基础折线图
       chart.point().position('date*buyin')
            .size('date',val=>{
              if(TICKS.indexOf(val)>=0){
-               return 4;
+               return 3;
              }
              return 0;
            })
@@ -50,12 +50,13 @@ subCat: 基础折线图
            },{
              textStyle:{
                fill:'#7a7a7a',
-               fontSize:13,
+               fontSize:12,
                stroke:'white',
-               lineWidth:2
+               lineWidth:2,
+               fontWeight:300
              }
            })
-           .style({ lineWidth:3 });
+           .style({ lineWidth:2 });
 
       chart.guide().line({
         top:true,
@@ -70,7 +71,7 @@ subCat: 基础折线图
           position:'start',
           style:{
             fill:'#8c8c8c',
-            fontSize:14,
+            fontSize:12,
             fontWeight:300
           },
           content:'均值线 5,396万',
