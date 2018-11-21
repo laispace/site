@@ -19,12 +19,26 @@ story: https://www.yuque.com/mo-college/chart-usage/lp167f
       container: 'mountNode',
       forceFit: true,
       height: window.innerHeight,
-      padding: 50
+      padding: [20,20,70,20]
     });
     chart.source(data);
     chart.scale('time', {
       range: [0, 1]
     });
+    chart.axis('time', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            }
+        });
+        chart.axis('rate', {
+            label: {
+                textStyle: {
+                    fill: '#aaaaaa'
+                }
+            }
+        });
     chart.line().position('time*rate');
     chart.guide().dataMarker({
       position: ['2014-01-03', 6.763],

@@ -17,7 +17,7 @@ subCat: 基础折线图
             container: 'mountNode',
             forceFit: true,
             height: window.innerHeight,
-            padding: [50, 50, 50, 50]
+            padding: [20, 50, 50, 50]
         });
         chart.axis('time', {
             label: {
@@ -39,6 +39,9 @@ subCat: 基础折线图
         chart.source(data, {
             time: {
                 tickCount: 5
+            },
+            UV:{
+                tickCount:5
             }
         });
         chart.line().position('time*UV');
