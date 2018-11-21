@@ -30,16 +30,18 @@ usecases:
 
 <!-- 第一屏，产品简介 -->
 <section class="intro">
-   <video autoplay="autoplay" loop="" src="https://gw.alipayobjects.com/os/rmsportal/wcycTgNRDuUrQLHzVhzX.mp4" style="width: 100%; height: 700px; object-fit: fill; position: absolute;top: 0"></video>
+   <div class="video_container" style="width: 100%; height: 600px; top:0px; object-fit: fill; position: absolute;margin-top: 64px; overflow: hidden;">
+     <video autoplay="autoplay" loop style="width: 100%; height: 600px; top:0px; object-fit: fill" src="https://gw.alipayobjects.com/os/rmsportal/wcycTgNRDuUrQLHzVhzX.mp4" ></video>
+     <div style="width: 100%; height: 600px; position: absolute; top:0px; object-fit: fill;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/XLzarGnjnuCzqPLHcHtC.png);
+    background-repeat: repeat;"></div>
+   
+   </div>
   <div class="container">
     <div class="header row">
       <div class="col-md-5">
         <h1 style="color:#fff"> L7 地理空间数据可视化</h1>
         <p class="main-info" style="color:#fff;font-weight:500"  >L7 中的 L 代表 Location，7 代表世界七大洲，寓意能为全球位置数据提供可视化能力。L7 的目标是提供一套地理空间数据可视化框架，易用易扩展，支持海量数据的高性能和 3D 高质量渲染，安全可靠（无地图法务风险）的地理空间数据可视化解决方案。</p>
-        <a href="{{ products.l7.getStarted.href }}" class="btn btn-primary btn-lg btn-round-link">{{ products.f2.getStarted.text }}</a>
-      </div>
-      <div class="col-md-7">
-        <div class="l7-demo-container">
+        <a href="{{ products.l7.getStarted.href }}"  target = 'blank' class="btn btn-primary btn-lg btn-round-link">{{ products.f2.getStarted.text }}</a>
       </div>
     </div>
   </div>
