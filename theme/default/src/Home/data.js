@@ -14,7 +14,7 @@ export const page1 = [
   {
     img: `${assets}/image/home/intro-g6.svg`,
     title: 'G6',
-    href: `${base}zh-cn/g6/1.x/index.html`,
+    href: `${base}zh-cn/g6/2.x/index.html`,
     description: ' 是一套便捷、动态和富有交互的流程图和关系分析的图表库。',
     links: [
       { text: '图表示例', href: '/zh-cn/g6/1.x/demo/index.html' },
@@ -34,7 +34,7 @@ export const page1 = [
   {
     img: `${assets}/image/home/intro-l7.svg`,
     title: 'L7',
-    href: `${base}zh-cn/f2/3.x/index.html`,
+    href: `${base}zh-cn/l7/1.x/index.html`,
     description: ' 是一套高性能，高渲染质量的地理空间数据可视化框架。',
     links: [
       { text: '图表示例', href: '/zh-cn/l7/1.x/demo/index.html' },
