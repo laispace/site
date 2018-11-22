@@ -30,9 +30,9 @@ usecases:
 
 <!-- 第一屏，产品简介 -->
 <section class="intro">
-   <div class="video_container" style="width: 100%; height: 664px; top:-64px; object-fit: fill; position: absolute;margin-top: 64px; overflow: hidden;">
-     <video autoplay="autoplay" loop style="width: 100%; height: 100%; top:0px; object-fit: fill" src="https://mdn.alipayobjects.com/afts/file/A*qmPlRYhAlBkAAAAAAAAAAABjAQAAAQ?bz=antv_site" ></video>
-     <div style="width: 100%; height: 100%; position: absolute; top:0px; object-fit: fill;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/oVTFrcRUOwnEpfLIoNys.png);
+   <div class="video_container" style="width: 100%; height: 664px; top:-64px; object-fit: cover; position: absolute;margin-top: 64px; overflow: hidden;">
+     <video autoplay="autoplay" loop style="width: 100%; height: 100%; top:0px; object-fit: cover" src="https://mdn.alipayobjects.com/afts/file/A*qmPlRYhAlBkAAAAAAAAAAABjAQAAAQ?bz=antv_site" ></video>
+     <div style="width: 100%; height: 100%; position: absolute; top:0px; object-fit: cover;background-image: url(https://gw.alipayobjects.com/zos/rmsportal/oVTFrcRUOwnEpfLIoNys.png);
     background-repeat: round;opacity: 0.75;" ></div>
 
    </div>
