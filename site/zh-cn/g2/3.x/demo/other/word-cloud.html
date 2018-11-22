@@ -16,7 +16,7 @@ subCat: 其他
 
 <script>
     function getTextAttrs(cfg) {
-        return _.assign({}, {
+        return _.assign({}, cfg.style, {
             fillOpacity: cfg.opacity,
             fontSize: cfg.origin._origin.size,
             rotate: cfg.origin._origin.rotate,
@@ -25,7 +25,7 @@ subCat: 其他
             fontFamily: cfg.origin._origin.font,
             fill: cfg.color,
             textBaseline: 'Alphabetic'
-        }, cfg.style);
+        });
     }
 
     // 给point注册一个词云的shape
